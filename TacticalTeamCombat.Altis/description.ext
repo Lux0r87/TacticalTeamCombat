@@ -79,6 +79,7 @@ class CfgFunctions
 	#include "SOS\Groups\functions.hpp"
 	#include "SOS\ObjectSpawn\functions.hpp"
 	#include "SOS\TacticalTeamCombat\functions.hpp"
+	#include "SOS\TTC_Map\functions.hpp"
 };
 
 
