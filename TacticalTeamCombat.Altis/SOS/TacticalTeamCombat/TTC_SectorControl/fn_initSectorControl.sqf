@@ -2,7 +2,10 @@
 	Created by Lux0r
 */
 
+
 // --------------- Definitions/Declarations ---------------
+#include "Functions\Sectors\dominanceVariables.hpp"
+
 #define TTC_SC_availableLocations ["Paros_Kalochori", "Athanos_Test"]
 #define TTC_SC_timer 10
 #define TTC_SC_sides [resistance, west, east]
@@ -33,13 +36,15 @@ _location = if (_locationIndex < 0) then {
 
 // create triggers + markers
 {
-	private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_trigger","_shape","_mrk"];
+	private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_trigger","_shape","_mrk"];
 	_name		= _x select 0;
 	_pos		= _x select 1;
 	_xrad		= _x select 2;
 	_yrad		= _x select 3;
 	_dir		= _x select 4;
 	_rectangle	= _x select 5;
+	_side		= _x select 6;
+	_dominance	= _x select 7;
 
 	// Create trigger
 	_trigger = [_name, _pos, _xrad, _yrad, _dir, _rectangle] call TTC_CORE_fnc_createTrigger;
@@ -51,6 +56,12 @@ _location = if (_locationIndex < 0) then {
 
 	// Create marker
 	_mrk = [_x] call TTC_SC_fnc_createSectorMarker;
+
+	// Create respawn position, if dominance is high enough.
+	if (_dominance > TTC_SC_dominanceSpawn) then {
+		_respawnPos = [_side, _mrk] call BIS_fnc_addRespawnPosition;
+		_x set [12, _respawnPos];
+	};
 } forEach TTC_SC_sectors;
 
 // ---------------------- Game Loop ----------------------

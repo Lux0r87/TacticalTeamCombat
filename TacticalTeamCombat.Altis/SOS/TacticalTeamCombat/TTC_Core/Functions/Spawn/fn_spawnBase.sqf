@@ -14,6 +14,10 @@ _mrkPos	= getMarkerpos format["Base_%1", _side];
 diag_log format["TTC_CORE: spawnBase: _side = %1, _prefix = %2, _mrkPos = %3", _side, _prefix, _mrkPos];
 
 if (format ["%1", _mrkPos] != "[0,0,0]") then {
+	// Create respawn position
+	_mrk		= format["BaseSpawn_%1", _side];
+	_respawnPos = [_side, _mrk] call BIS_fnc_addRespawnPosition;
+
 	// Spawn dome
 	_dome	= createVehicle ["Land_Dome_Small_F", _mrkPos, [], 0, "CAN_COLLIDE"];
 	_dir	= [_dome, missionNamespace getVariable format["%1_VehicleSpawn_Helipad", _prefix]] call BIS_fnc_DirTo;
