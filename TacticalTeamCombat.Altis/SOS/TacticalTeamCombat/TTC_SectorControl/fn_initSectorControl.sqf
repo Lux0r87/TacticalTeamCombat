@@ -3,7 +3,7 @@
 */
 
 // --------------- Definitions/Declarations ---------------
-#define TTC_SC_availableLocation 1
+#define TTC_SC_availableLocations ["Paros_Kalochori", "Athanos_Test"]
 #define TTC_SC_timer 10
 #define TTC_SC_sides [resistance, west, east]
 
@@ -18,16 +18,18 @@ private [
 _winner = false;
 
 // -------------------- Initialization --------------------
-// Get the selected location from the mission parameter. 0 = random.
-_locationIndex = ["TTC_SC_location", 0] call BIS_fnc_getParamValue;
+// Get the selected location from the mission parameter. -1 = random.
+_locationIndex = ["TTC_SC_locations", -1] call BIS_fnc_getParamValue;
 
 // Select a random location, if chosen in the mission parameter
-if (_locationIndex == 0) then {
-	_locationIndex = [1, TTC_SC_availableLocation] call BIS_fnc_randomInt;
+_location = if (_locationIndex < 0) then {
+	TTC_SC_availableLocations call BIS_fnc_selectRandom;
+} else {
+	TTC_SC_availableLocations select _locationIndex;
 };
 
 // Compile configuration file
-[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_SectorControl\Locations\location%1.sqf", _locationIndex];
+[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_SectorControl\Locations\%1.sqf", _location];
 
 // create triggers + markers
 {

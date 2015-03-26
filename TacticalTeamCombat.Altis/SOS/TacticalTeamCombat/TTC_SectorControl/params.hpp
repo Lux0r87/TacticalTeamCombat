@@ -1,6 +1,6 @@
-class TTC_SC_location {
+class TTC_SC_locations {
 	title		= "Tactical Team Combat: Location for the mission.";
-	values[]	= {0, 1};
-	texts[]		= {"Random (Default)", "Location 1"};
+	values[]	= {-1, 0, 1};
+	texts[]		= {"Random (Default)", "Paros Kalochori", "Athanos_Test"};
 	default		= 0;
 };
