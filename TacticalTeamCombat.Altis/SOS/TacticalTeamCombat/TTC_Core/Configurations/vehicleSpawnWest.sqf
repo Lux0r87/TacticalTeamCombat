@@ -2,7 +2,7 @@
 	Created by BauerMitFackel
 */
 
-diag_log "TTC: vehicleSpawnWest";
+diag_log "TTC_CORE: vehicleSpawnWest";
 
 TTC_VehicleSpawnLocation = B_VehicleSpawn_Helipad;
 TTC_VehicleSignTexture = "SOS\ObjectSpawn\Pictures\Vehicle.jpg";

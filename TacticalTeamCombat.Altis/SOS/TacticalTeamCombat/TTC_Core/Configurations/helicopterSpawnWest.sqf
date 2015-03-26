@@ -2,7 +2,7 @@
 	Created by BauerMitFackel
 */
 
-diag_log "TTC: helicopterSpawnWest";
+diag_log "TTC_CORE: helicopterSpawnWest";
 
 TTC_HelicopterSpawnLocation = B_HelicopterSpawn_Helipad;
 TTC_HelicopterSignTexture = "SOS\ObjectSpawn\Pictures\Helicopter.jpg";

@@ -4,17 +4,19 @@
 
 
 if (isNil "TTC_saveTime") then {
-	TTC_saveTime = ["SaveTime", 300] call BIS_fnc_getParamValue;
+	TTC_saveTime = ["SaveTime", 0] call BIS_fnc_getParamValue;	// Lux0r: original = 300s
 };
 
 // Server-side.
 if (isServer) then {
 	// Spawn a base for each side that is present in the current game.
 	{
-		[_x] spawn TTC_fnc_spawnBase;
+		[_x] spawn TTC_CORE_fnc_spawnBase;
 	} forEach [west, east, resistance];
-	
-	[] spawn TTC_fnc_runTimer;
+
+	[] spawn TTC_CORE_fnc_runTimer;
+
+	[] spawn TTC_SC_fnc_initSectorControl;
 };
 
 // Client-side.

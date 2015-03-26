@@ -1,17 +1,16 @@
-class TTC_Map {
-
+class TTC_Map_Functions {
 	tag = "TTC_MAP";
 
 	class Bases {
-		file = "SOS\TTC_Map\Bases";
+		file = "SOS\TacticalTeamCombat\TTC_Map\Bases";
 	};
-	
+
 	class Sectors {
-		file = "SOS\TTC_Map\Sectors";
+		file = "SOS\TacticalTeamCombat\TTC_Map\Sectors";
 	};
 
 	class Units {
-		file = "SOS\TTC_Map\Units";
+		file = "SOS\TacticalTeamCombat\TTC_Map\Units";
 		class showMarkerForUnits{};
 		class updateMarker_Infantry{};
 		class updateMarker_Vehicle{};

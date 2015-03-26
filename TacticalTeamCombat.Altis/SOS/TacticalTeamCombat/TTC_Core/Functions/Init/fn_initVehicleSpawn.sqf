@@ -8,7 +8,7 @@ private ["_sign","_side"];
 _sign = [_this, 0] call BIS_fnc_param;
 _side = [_this, 1] call BIS_fnc_param;
 
-diag_log format["TTC: initVehicleSpawn: _sign = %1, _side = %2", _sign, _side];
+diag_log format["TTC_CORE: initVehicleSpawn: _sign = %1, _side = %2", _sign, _side];
 
 // Client-side scripts:
 [] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\Configurations\vehicleSpawn%1.sqf", _side];

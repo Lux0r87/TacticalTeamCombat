@@ -7,11 +7,11 @@
 private ["_side","_prefix","_mrkPos","_dome","_dir","_domePos"];
 
 _side	= [_this, 0] call BIS_fnc_param;
-_prefix = [_side] call TTC_fnc_getPrefix;
+_prefix = [_side] call TTC_CORE_fnc_getPrefix;
 
 
 _mrkPos	= getMarkerpos format["Base_%1", _side];
-diag_log format["TTC: spawnBase: _side = %1, _prefix = %2, _mrkPos = %3", _side, _prefix, _mrkPos];
+diag_log format["TTC_CORE: spawnBase: _side = %1, _prefix = %2, _mrkPos = %3", _side, _prefix, _mrkPos];
 
 if (format ["%1", _mrkPos] != "[0,0,0]") then {
 	// Spawn dome
