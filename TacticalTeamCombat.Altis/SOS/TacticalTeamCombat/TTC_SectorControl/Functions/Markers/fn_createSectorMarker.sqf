@@ -16,7 +16,7 @@ _dominance	= _sector select 7;
 
 
 TTC_SC_sectorNo = TTC_SC_sectorNo + 1;
-_mrkName = format ["mrk_Sector%1", TTC_SC_sectorNo];
+_mrkName	= format ["mrk_Sector%1", TTC_SC_sectorNo];
 _mrkText	= format["%1 - (%2/100)", _name, _dominance];
 _mrkColor	= [_side, true] call BIS_fnc_sideColor;
 _mrk = [_mrkName, _pos, _mrkText, _mrkColor, _axisA, _axisB, 0, "ICON", "hd_dot"] call TTC_CORE_fnc_createMarker;
