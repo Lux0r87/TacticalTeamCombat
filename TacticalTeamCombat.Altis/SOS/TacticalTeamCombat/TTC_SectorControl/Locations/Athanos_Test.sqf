@@ -13,13 +13,13 @@
 
 
 TTC_SC_sectors = [
-	["1. Hill 45",				[20681,16202], 40,	35,	0,	true, west, 100, objNull, "", "", TTC_SC_neighbours_sector1],
-	["2. Paros (west)",			[20886,16899], 30,	30,	10, true, east, 100, objNull, "", "", TTC_SC_neighbours_sector2],
-	["3. Kalochori (west)",		[21209,16355], 25,	25,	65, true, east, 100, objNull, "", "", TTC_SC_neighbours_sector3],
-	["4. Paros (north)",		[20818,17057], 20,	20,	23, true, east, 100, objNull, "", "", TTC_SC_neighbours_sector4],
-	["5. Mobile Sector",		[21204,16661], 50,	50,	0,	false, east, 100, objNull, "", "", TTC_SC_neighbours_sector5],
-	["6. Kalochori (south)",	[21432,16203], 20,	20,	40,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector6],
-	["7. Paros (east)",			[20989,17050], 30,	30,	35,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector7],
-	["8. Kalochori (east)",		[21461,16418], 25,	25,	50,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector8],
-	["9. Hill 35",				[22031,17138], 40,	35,	0,	true, resistance, 100, objNull, "", "", TTC_SC_neighbours_sector9]
+	["1. Sector", [3510,10113], 30, 30, 45,	true, resistance, 100, objNull, "", "", TTC_SC_neighbours_sector1],
+	["2. Sector", [3532,10274], 20, 20, 0,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector2],
+	["3. Sector", [3574,10188], 20, 20, 0,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector3],
+	["4. Sector", [3583,10307], 20, 20, 0,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector4],
+	["5. Sector", [3607,10239], 30, 30, 0,	false, east, 100, objNull, "", "", TTC_SC_neighbours_sector5],
+	["6. Sector", [3635,10150], 20, 20, 0,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector6],
+	["7. Sector", [3615,10336], 20, 20, 0,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector7],
+	["8. Sector", [3694,10264], 20, 20, 0,	true, east, 100, objNull, "", "", TTC_SC_neighbours_sector8],
+	["9. Sector", [3826,10264], 30, 30, 0,	true, west, 100, objNull, "", "", TTC_SC_neighbours_sector9]
 ];
