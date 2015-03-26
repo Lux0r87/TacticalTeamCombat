@@ -34,9 +34,6 @@ if (hasInterface) then {
 	// Initialize jump script.
 	[] execVM "SOS\MiscScripts\jump.sqf";
 
-	// Initialize unit icon
-	[] execVM "SOS\MiscScripts\initUnitIcon.sqf";
-
 	// Initialize Virtual Arsenal.
 	[] execVM "SOS\VirtualArsenal\initVirtualArsenal.sqf";
 	
