@@ -23,10 +23,4 @@ _mrkColor	= [_side, true] call BIS_fnc_sideColor;
 _mrk		= [_mrkName, _pos, _name, _mrkColor, _axisA, _axisB, _dir, _mkrShape] call TTC_CORE_fnc_createMarker;
 _sector set [9, _mrk];
 
-// Lux0r: remove debug
-diag_log format [
-	"TTC_SC - createSectorMarker: _sector = %1, _axisA = %2, _axisB = %3, _dir = %4, _mkrShape = %5, _name = %6, _pos = %7, _side = %8, _dominance = %9,
-	_mrkName = %10, _mrkColor = %11, _mrk = %12", _sector, _axisA, _axisB, _dir, _mkrShape, _name, _pos, _side, _dominance, _mrkName, _mrkColor, _mrk
-];
-
 _mrk

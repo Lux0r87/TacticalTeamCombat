@@ -4,6 +4,7 @@ class TTC_Core_Functions {
 	class Common {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Common";
 		class createTrigger{};
+		class getLocation{};
 		class getPrefix{};
 		class hint{};
 		class runTimer{};

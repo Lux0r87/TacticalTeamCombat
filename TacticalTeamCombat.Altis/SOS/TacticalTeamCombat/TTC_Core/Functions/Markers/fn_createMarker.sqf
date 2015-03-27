@@ -16,10 +16,10 @@ _mkrType	= [_this, 8, "Empty", [""]] call BIS_fnc_param;
 _mkrAlpha	= [_this, 9, 1, [0.0]] call BIS_fnc_param;
 _mkrBrush	= [_this, 10, "Solid", [""]] call BIS_fnc_param;
 
-diag_log format [
-	"TTC_SC - createMarker: _mkrName = %1, _mkrPos = %2, _mkrText = %3, _mkrColor = %4, _axisA = %5, _axisB = %6, _dir = %7, _mkrShape = %8, _mkrType = %9,
+/*diag_log format [
+	"TTC_CORE - createMarker: _mkrName = %1, _mkrPos = %2, _mkrText = %3, _mkrColor = %4, _axisA = %5, _axisB = %6, _dir = %7, _mkrShape = %8, _mkrType = %9,
 	_mkrAlpha = %10, _mkrBrush = %11", _mkrName, _mkrPos, _mkrText, _mkrColor, _axisA, _axisB, _dir, _mkrShape, _mkrType, _mkrAlpha, _mkrBrush
-];
+];*/
 
 
 _mrk = createMarker [_mkrName, _mkrPos];

@@ -57,7 +57,7 @@ if (!isDedicated) then {
 			} forEach _objects;
 
 			// Remove unauthorized gear from the player.
-			[_backpacks, _weapons, _items] execVM "SOS\VirtualArsenal\removeUnauthorizedGear.sqf";
+			//[_backpacks, _weapons, _items] execVM "SOS\VirtualArsenal\removeUnauthorizedGear.sqf";
 		} else {
 			diag_log format["initVirtualArsenal: SOS_role is Null! player = %1, _side = %2", player, _side];
 		};

@@ -6,6 +6,5 @@ class Clear_Functions {
 		class clearItems {};
 		class clearVehicleWrecks {};
 		class getBasePositions {};
-		class getSectorPositions {};
 	};
 };

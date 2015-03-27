@@ -1067,7 +1067,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=14;
+		items=12;
 		class Item0
 		{
 			position[]={19354.014,18.131966,15302.008};
@@ -1106,12 +1106,6 @@ class Mission
 		};
 		class Item4
 		{
-			position[]={19342.381,18.237967,15312.798};
-			name="Base_West";
-			type="Empty";
-		};
-		class Item5
-		{
 			position[]={22664.396,14.411992,18960.898};
 			name="I_VehicleSpawn_Marker";
 			text="Vehicle spawn";
@@ -1119,7 +1113,7 @@ class Mission
 			colorName="ColorGUER";
 			angle=0.46594599;
 		};
-		class Item6
+		class Item5
 		{
 			position[]={22650.389,14.634091,18970.539};
 			name="BaseSpawn_GUER";
@@ -1129,7 +1123,7 @@ class Mission
 			alpha=0;
 			angle=262;
 		};
-		class Item7
+		class Item6
 		{
 			position[]={22650.389,14.634091,18970.539};
 			name="I_BaseSpawn_Marker";
@@ -1137,7 +1131,7 @@ class Mission
 			type="n_hq";
 			colorName="ColorGUER";
 		};
-		class Item8
+		class Item7
 		{
 			position[]={22609.232,14.058159,18998.615};
 			name="I_Maintenance_Marker";
@@ -1146,13 +1140,7 @@ class Mission
 			colorName="ColorGUER";
 			angle=180.134;
 		};
-		class Item9
-		{
-			position[]={22648.596,14.710052,18970.371};
-			name="Base_GUER";
-			type="Empty";
-		};
-		class Item10
+		class Item8
 		{
 			position[]={19329.117,18.428535,15325.491};
 			name="HeliSpawn_West";
@@ -1162,7 +1150,7 @@ class Mission
 			alpha=0;
 			angle=270;
 		};
-		class Item11
+		class Item9
 		{
 			position[]={19329.117,18.428535,15325.491};
 			name="B_HelicopterSpawn_Marker";
@@ -1170,7 +1158,7 @@ class Mission
 			type="b_air";
 			colorName="ColorWEST";
 		};
-		class Item12
+		class Item10
 		{
 			position[]={22634.311,14.674963,18979.348};
 			name="HeliSpawn_GUER";
@@ -1180,7 +1168,7 @@ class Mission
 			alpha=0;
 			angle=160;
 		};
-		class Item13
+		class Item11
 		{
 			position[]={22634.311,14.674963,18979.348};
 			name="I_HelicopterSpawn_Marker";

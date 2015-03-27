@@ -13,11 +13,6 @@ _mrkArea	= _sector select 9;
 _mrk		= _sector select 10;
 _color		= [_side, true] call BIS_fnc_sideColor;
 
-diag_log format [
-	"TTC_SC - updateSectorMarkers: _sector = %1, _name = %2, _side = %3, _dominance = %4, _mrkArea = %5, _mrk = %6, _color = %7",
-	_sector, _name, _side, _dominance, _mrkArea, _mrk, _color
-];
-
 
 // Update area marker
 if (_mrkArea != "") then {

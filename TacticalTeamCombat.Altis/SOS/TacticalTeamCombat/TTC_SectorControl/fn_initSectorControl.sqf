@@ -6,7 +6,6 @@
 // --------------- Definitions/Declarations ---------------
 #include "Functions\Sectors\dominanceVariables.hpp"
 
-#define TTC_SC_availableLocations ["Paros_Kalochori", "Athanos_Test"]
 #define TTC_SC_timer 10
 #define TTC_SC_sides [resistance, west, east]
 
@@ -14,22 +13,15 @@ TTC_SC_sectorNo		= 0;
 TTC_SC_sectorAreaNo	= 0;
 
 private [
-	"_winner","_locationIndex","_location","_trigger","_list","_guer","_west","_east","_guerCount","_westCount","_eastCount","_counts","_maxDiff","_max",
+	"_winner","_location","_trigger","_list","_guer","_west","_east","_guerCount","_westCount","_eastCount","_counts","_maxDiff","_max",
 	"_find","_sides","_side","_max2","_diff"
 ];
 
 _winner = false;
 
 // -------------------- Initialization --------------------
-// Get the selected location from the mission parameter. -1 = random.
-_locationIndex = ["TTC_SC_locations", -1] call BIS_fnc_getParamValue;
-
-// Select a random location, if chosen in the mission parameter
-_location = if (_locationIndex < 0) then {
-	TTC_SC_availableLocations call BIS_fnc_selectRandom;
-} else {
-	TTC_SC_availableLocations select _locationIndex;
-};
+// Get location string
+_location = [] call TTC_CORE_fnc_getLocation;
 
 // Compile configuration file
 [] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_SectorControl\Locations\%1.sqf", _location];
