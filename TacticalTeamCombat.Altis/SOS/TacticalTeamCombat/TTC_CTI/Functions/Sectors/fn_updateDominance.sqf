@@ -17,34 +17,37 @@ _dominance	= _sector select 7;
 
 // The attacking side is capturing the sector:
 if (_sectorSide != _side) then {
-	_dominance = ((_dominance - _diff) max TTC_CTI_dominanceMin);
+	// Check if the attacking side can capture this sector.
+	if ([_sector, _side] call TTC_CTI_fnc_canCapture) then {
+		_dominance = ((_dominance - _diff) max TTC_CTI_dominanceMin);
 
-	// Remove respawn position, if dominance is too low.
-	if (_dominance < TTC_CTI_dominanceSpawn) then {
-		_respawnPos	= _sector select 12;
-		_respawnPos call BIS_fnc_removeRespawnPosition;
-	};
+		// Remove respawn position, if dominance is too low.
+		if (_dominance < TTC_CTI_dominanceSpawn) then {
+			_respawnPos	= _sector select 12;
+			_respawnPos call BIS_fnc_removeRespawnPosition;
+		};
 
-	// Sector captured by attacking side:
-	if (_dominance == TTC_CTI_dominanceMin) then {
-		_sectorName	= _sector select 0;
-		_marker		= _sector select 10;
-		_respawnPos	= _sector select 12;
+		// Sector captured by attacking side:
+		if (_dominance == TTC_CTI_dominanceMin) then {
+			_sectorName	= _sector select 0;
+			_marker		= _sector select 10;
+			_respawnPos	= _sector select 12;
 
-		// Set dominance to maximum + change side of sector.
-		_dominance = TTC_CTI_dominanceMax;
-		_sector set [6, _side];
+			// Set dominance to maximum + change side of sector.
+			_dominance = TTC_CTI_dominanceMax;
+			_sector set [6, _side];
 
-		// Create respawn position, for the team that captured the sector.
-		_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
-		_sector set [12, _respawnPos];
+			// Create respawn position, for the team that captured the sector.
+			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
+			_sector set [12, _respawnPos];
 
-		// Show message for everyone.
-		_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
-		<t align='center' size='1.5'>%1</t><br/><br/>
-		The sector was captured by %2.", _sectorName, _side];
+			// Show message for everyone.
+			_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
+			<t align='center' size='1.5'>%1</t><br/><br/>
+			The sector was captured by %2.", _sectorName, _side];
 
-		[_message,"TTC_CORE_fnc_hint"] call BIS_fnc_MP;
+			[_message,"TTC_CORE_fnc_hint"] call BIS_fnc_MP;
+		};
 	};
 } else {	// The current side is defending the sector:
 	_dominance = ((_dominance + _diff) min TTC_CTI_dominanceMax);
