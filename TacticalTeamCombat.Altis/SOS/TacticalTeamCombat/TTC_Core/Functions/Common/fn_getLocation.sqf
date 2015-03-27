@@ -11,7 +11,7 @@ private ["_index"];
 // Safety measure: Only select a new location, if TTC_CORE_location is not defined.
 if (isNil "TTC_CORE_location") then {
 	// Get the selected location from the mission parameter. -1 = random.
-	_index = ["TTC_SC_locations", -1] call BIS_fnc_getParamValue;
+	_index = ["TTC_CTI_locations", -1] call BIS_fnc_getParamValue;
 
 	// Select a random location, if chosen in the mission parameter
 	TTC_CORE_location = if (_index < 0) then {

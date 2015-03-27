@@ -18,7 +18,7 @@ _color		= [_side, true] call BIS_fnc_sideColor;
 if (_mrkArea != "") then {
 	_mrkArea setMarkerColor _color;
 } else {
-	diag_log format ["TTC_SC - updateSectorMarkers: ERROR = _mrkArea for '%1' is undefined!", _name];
+	diag_log format ["TTC_CTI - updateSectorMarkers: ERROR = _mrkArea for '%1' is undefined!", _name];
 };
 
 // Update marker
@@ -27,5 +27,5 @@ if (_mrk != "") then {
 	_mrkText = format["%1 - (%2/100)", _name, _dominance];
 	_mrk setMarkerText _mrkText;
 } else {
-	diag_log format ["TTC_SC - updateSectorMarkers: ERROR = _mrk for '%1' is undefined!", _name];
+	diag_log format ["TTC_CTI - updateSectorMarkers: ERROR = _mrk for '%1' is undefined!", _name];
 };

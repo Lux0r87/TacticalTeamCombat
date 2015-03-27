@@ -58,7 +58,7 @@ forceRotorLibSimulation		= 0;
 
 
 class Header {
-	gameType				= SC;	// game type
+	gameType				= CTI;	// game type. CTI = Capture The Island
 	minPlayers				= 2;	// min # of players the mission supports
 	maxPlayers				= 34;	// max # of players the mission supports
 	playerCountMultipleOf	= 1;	// OFP:Elite option.

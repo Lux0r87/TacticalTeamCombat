@@ -17,8 +17,8 @@ _side		= _sector select 6;
 _dominance	= _sector select 7;
 
 
-TTC_SC_sectorAreaNo = TTC_SC_sectorAreaNo + 1;
-_mrkName	= format ["mrk_SectorArea%1", TTC_SC_sectorAreaNo];
+TTC_CTI_sectorAreaNo = TTC_CTI_sectorAreaNo + 1;
+_mrkName	= format ["mrk_SectorArea%1", TTC_CTI_sectorAreaNo];
 _mrkColor	= [_side, true] call BIS_fnc_sideColor;
 _mrk		= [_mrkName, _pos, _name, _mrkColor, _axisA, _axisB, _dir, _mkrShape] call TTC_CORE_fnc_createMarker;
 _sector set [9, _mrk];

@@ -16,7 +16,7 @@ if (isServer) then {
 
 	[] spawn TTC_CORE_fnc_runTimer;
 
-	[] spawn TTC_SC_fnc_initSectorControl;
+	[] spawn TTC_CTI_fnc_initCTI;
 };
 
 // Client-side.

@@ -17,22 +17,22 @@ _dominance	= _sector select 7;
 
 // The attacking side is capturing the sector:
 if (_sectorSide != _side) then {
-	_dominance = ((_dominance - _diff) max TTC_SC_dominanceMin);
+	_dominance = ((_dominance - _diff) max TTC_CTI_dominanceMin);
 
 	// Remove respawn position, if dominance is too low.
-	if (_dominance < TTC_SC_dominanceSpawn) then {
+	if (_dominance < TTC_CTI_dominanceSpawn) then {
 		_respawnPos	= _sector select 12;
 		_respawnPos call BIS_fnc_removeRespawnPosition;
 	};
 
 	// Sector captured by attacking side:
-	if (_dominance == TTC_SC_dominanceMin) then {
+	if (_dominance == TTC_CTI_dominanceMin) then {
 		_sectorName	= _sector select 0;
 		_marker		= _sector select 10;
 		_respawnPos	= _sector select 12;
 
 		// Set dominance to maximum + change side of sector.
-		_dominance = TTC_SC_dominanceMax;
+		_dominance = TTC_CTI_dominanceMax;
 		_sector set [6, _side];
 
 		// Create respawn position, for the team that captured the sector.
@@ -47,10 +47,10 @@ if (_sectorSide != _side) then {
 		[_message,"TTC_CORE_fnc_hint"] call BIS_fnc_MP;
 	};
 } else {	// The current side is defending the sector:
-	_dominance = ((_dominance + _diff) min TTC_SC_dominanceMax);
+	_dominance = ((_dominance + _diff) min TTC_CTI_dominanceMax);
 
 	// (Re)create respawn position for defenders, if dominance is high enough.
-	if (_dominance >= TTC_SC_dominanceSpawn) then {
+	if (_dominance >= TTC_CTI_dominanceSpawn) then {
 		_marker		= _sector select 10;
 		_respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
 		_sector set [12, _respawnPos];
@@ -61,4 +61,4 @@ if (_sectorSide != _side) then {
 _sector set [7, _dominance];
 
 // Update the sector markers.
-[_sector] call TTC_SC_fnc_updateSectorMarkers;
+[_sector] call TTC_CTI_fnc_updateSectorMarkers;

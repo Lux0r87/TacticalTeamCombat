@@ -6,11 +6,11 @@
 // --------------- Definitions/Declarations ---------------
 #include "Functions\Sectors\dominanceVariables.hpp"
 
-#define TTC_SC_timer 10
-#define TTC_SC_sides [resistance, west, east]
+#define TTC_CTI_timer 10
+#define TTC_CTI_sides [resistance, west, east]
 
-TTC_SC_sectorNo		= 0;
-TTC_SC_sectorAreaNo	= 0;
+TTC_CTI_sectorNo		= 0;
+TTC_CTI_sectorAreaNo	= 0;
 
 private [
 	"_winner","_location","_trigger","_list","_guer","_west","_east","_guerCount","_westCount","_eastCount","_counts","_maxDiff","_max",
@@ -24,7 +24,7 @@ _winner = false;
 _location = [] call TTC_CORE_fnc_getLocation;
 
 // Compile configuration file
-[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_SectorControl\Locations\%1.sqf", _location];
+[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_CTI\Locations\%1.sqf", _location];
 
 // create triggers + markers
 {
@@ -44,17 +44,17 @@ _location = [] call TTC_CORE_fnc_getLocation;
 
 	// Create area marker
 	_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
-	_mrk = [_x, _xrad, _yrad, _dir, _shape] call TTC_SC_fnc_createSectorAreaMarker;
+	_mrk = [_x, _xrad, _yrad, _dir, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
 
 	// Create marker
-	_mrk = [_x] call TTC_SC_fnc_createSectorMarker;
+	_mrk = [_x] call TTC_CTI_fnc_createSectorMarker;
 
 	// Create respawn position, if dominance is high enough.
-	if (_dominance > TTC_SC_dominanceSpawn) then {
+	if (_dominance > TTC_CTI_dominanceSpawn) then {
 		_respawnPos = [_side, _mrk] call BIS_fnc_addRespawnPosition;
 		_x set [12, _respawnPos];
 	};
-} forEach TTC_SC_sectors;
+} forEach TTC_CTI_sectors;
 
 // ---------------------- Game Loop ----------------------
 while {!_winner} do {
@@ -67,7 +67,7 @@ while {!_winner} do {
 		_list = +(list _trigger);
 
 		if (!isNil "_list") then {
-			diag_log format ["TTC_SC - startSectorContol: _list = %1", _list];
+			diag_log format ["TTC_CTI - initCTI: _list = %1", _list];
 
 			// Is sector not empty?
 			if (count _list > 0) then {
@@ -100,24 +100,24 @@ while {!_winner} do {
 				_eastCount	= count _east;
 				_counts		= [_guerCount, _westCount, _eastCount];
 
-				diag_log format ["TTC_SC - startSectorContol: _guer (%1) = %2", _guerCount, _guer];
-				diag_log format ["TTC_SC - startSectorContol: _west (%1) = %2", _westCount, _west];
-				diag_log format ["TTC_SC - startSectorContol: _east (%1) = %2", _eastCount, _east];
+				diag_log format ["TTC_CTI - initCTI: _guer (%1) = %2", _guerCount, _guer];
+				diag_log format ["TTC_CTI - initCTI: _west (%1) = %2", _westCount, _west];
+				diag_log format ["TTC_CTI - initCTI: _east (%1) = %2", _eastCount, _east];
 
 				// Is one side dominant in this sector?
 				_maxDiff	= [_counts] call BIS_fnc_maxDiffArray;
-				diag_log format ["TTC_SC - startSectorContol: _maxDiff = %1", _maxDiff];
+				diag_log format ["TTC_CTI - initCTI: _maxDiff = %1", _maxDiff];
 
 				if (_maxDiff > 0) then {
 					// Find maximum units count and associated index.
 					_max	= [_counts, 1] call BIS_fnc_findExtreme;
 					_find	= [_counts, _max] call BIS_fnc_arrayFindDeep;
-					diag_log format ["TTC_SC - startSectorContol: _max = %1, _find = %2", _max, _find];
+					diag_log format ["TTC_CTI - initCTI: _max = %1, _find = %2", _max, _find];
 
 					// Find the side that is currently dominating the sector.
-					_sides	= +TTC_SC_sides;
+					_sides	= +TTC_CTI_sides;
 					_side	= _sides select (_find select 0);
-					diag_log format ["TTC_SC - startSectorContol: _side = %1", _side];
+					diag_log format ["TTC_CTI - initCTI: _side = %1", _side];
 
 					// Remove values from array.
 					_counts	= _counts - [_max];
@@ -126,26 +126,26 @@ while {!_winner} do {
 					// Find 2nd maximum
 					_max2	= [_counts, 1] call BIS_fnc_findExtreme;
 					_diff	= abs (_max - _max2);
-					diag_log format ["TTC_SC - startSectorContol: _max2 = %1, _diff = %2", _max2, _diff];
+					diag_log format ["TTC_CTI - initCTI: _max2 = %1, _diff = %2", _max2, _diff];
 
 					// Update the capture progress
-					[_x, _side, _diff*20] call TTC_SC_fnc_updateDominance;	// Lux0r: remove *20. test purpose only!
+					[_x, _side, _diff*20] call TTC_CTI_fnc_updateDominance;	// Lux0r: remove *20. test purpose only!
 				};
 			};
 		};
-	} forEach TTC_SC_sectors;
+	} forEach TTC_CTI_sectors;
 
 	// Check if one side wins the mission
-	//_winner = [] call TTC_SC_fnc_;
+	//_winner = [] call TTC_CTI_fnc_;
 
-	sleep TTC_SC_timer;
+	sleep TTC_CTI_timer;
 };
 
 // ------------------------- End -------------------------
 
 
 // Show message
-//[] call TTC_SC_fnc_;
+//[] call TTC_CTI_fnc_;
 
 // End the mission
-//[] call TTC_SC_fnc_;
+//[] call TTC_CTI_fnc_;
