@@ -17,20 +17,20 @@ _mkrAlpha	= [_this, 9, 1, [0.0]] call BIS_fnc_param;
 _mkrBrush	= [_this, 10, "Solid", [""]] call BIS_fnc_param;
 
 /*[
-	["TTC_CTI: createMarker:"], ["_mkrName = %1", _mkrName], ["_mkrPos = %1", _mkrPos], ["_mkrText = %1", _mkrText], ["_mkrColor = %1", _mkrColor],
+	["TTC_CTI: createMarkerLocal:"], ["_mkrName = %1", _mkrName], ["_mkrPos = %1", _mkrPos], ["_mkrText = %1", _mkrText], ["_mkrColor = %1", _mkrColor],
 	["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_dir = %1", _dir], ["_mkrShape = %1", _mkrShape], ["_mkrType = %1", _mkrType],
 	["_mkrAlpha = %1", _mkrAlpha], ["_mkrBrush = %1", _mkrBrush]
 ] call TTC_CORE_fnc_log;*/
 
 
-_mrk = createMarker [_mkrName, _mkrPos];
-_mrk setMarkerText _mkrText;
-_mrk setMarkerColor _mkrColor;
-_mrk setMarkerSize [_axisA, _axisB];
-_mrk setMarkerDir _dir;
-_mrk setMarkerShape _mkrShape;
-_mrk setMarkerType _mkrType;
-_mrk setMarkerAlpha _mkrAlpha;
-_mrk setMarkerBrush _mkrBrush;
+_mrk = createMarkerLocal [_mkrName, _mkrPos];
+_mrk setMarkerTextLocal _mkrText;
+_mrk setMarkerColorLocal _mkrColor;
+_mrk setMarkerSizeLocal [_axisA, _axisB];
+_mrk setMarkerDirLocal _dir;
+_mrk setMarkerShapeLocal _mkrShape;
+_mrk setMarkerTypeLocal _mkrType;
+_mrk setMarkerAlphaLocal _mkrAlpha;
+_mrk setMarkerBrushLocal _mkrBrush;
 
 _mrk

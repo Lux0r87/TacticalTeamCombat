@@ -47,7 +47,7 @@ _location = [] call TTC_CORE_fnc_getLocation;
 	_mrk = [_x, _xrad, _yrad, _dir, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
 
 	// Create marker
-	_mrk = [_x] call TTC_CTI_fnc_createSectorMarker;
+	_mrk = [_x, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
 
 	// Create respawn position, if dominance is high enough.
 	if (_dominance > TTC_CTI_dominanceSpawn) then {
@@ -56,29 +56,24 @@ _location = [] call TTC_CORE_fnc_getLocation;
 	};
 } forEach TTC_CTI_sectors;
 
+// Update the sector markers, to set the visibility for the different sides.
+[] call TTC_CTI_fnc_updateSectors;
+
 // ---------------------- Game Loop ----------------------
 while {!_winner} do {
 	// Iterate over all sectors
 	{
-		_trigger = _x select 8;
-		diag_log format ["-------------------- %1 --------------------", triggerText _trigger];
-
 		// Copy list of units that would activate the trigger.
+		_trigger = _x select 8;
 		_list = +(list _trigger);
 
 		if (!isNil "_list") then {
-			diag_log format ["TTC_CTI - initCTI: _list = %1", _list];
-
 			// Is sector not empty?
 			if (count _list > 0) then {
 				// Get units for each side
 				_guer = [];
 				_west = [];
 				_east = [];
-
-				//_guer	= [_list, {side _x == resistance}] call BIS_fnc_conditionalSelect;
-				//_west	= [_list, {side _x == west}] call BIS_fnc_conditionalSelect;
-				//_east	= [_list, {side _x == east}] call BIS_fnc_conditionalSelect;
 
 				// Iterate over the list of units in this trigger area.
 				{
@@ -100,24 +95,17 @@ while {!_winner} do {
 				_eastCount	= count _east;
 				_counts		= [_guerCount, _westCount, _eastCount];
 
-				diag_log format ["TTC_CTI - initCTI: _guer (%1) = %2", _guerCount, _guer];
-				diag_log format ["TTC_CTI - initCTI: _west (%1) = %2", _westCount, _west];
-				diag_log format ["TTC_CTI - initCTI: _east (%1) = %2", _eastCount, _east];
-
 				// Is one side dominant in this sector?
 				_maxDiff	= [_counts] call BIS_fnc_maxDiffArray;
-				diag_log format ["TTC_CTI - initCTI: _maxDiff = %1", _maxDiff];
 
 				if (_maxDiff > 0) then {
 					// Find maximum units count and associated index.
 					_max	= [_counts, 1] call BIS_fnc_findExtreme;
 					_find	= [_counts, _max] call BIS_fnc_arrayFindDeep;
-					diag_log format ["TTC_CTI - initCTI: _max = %1, _find = %2", _max, _find];
 
 					// Find the side that is currently dominating the sector.
 					_sides	= +TTC_CTI_sides;
 					_side	= _sides select (_find select 0);
-					diag_log format ["TTC_CTI - initCTI: _side = %1", _side];
 
 					// Remove values from array.
 					_counts	= _counts - [_max];
@@ -126,7 +114,6 @@ while {!_winner} do {
 					// Find 2nd maximum
 					_max2	= [_counts, 1] call BIS_fnc_findExtreme;
 					_diff	= abs (_max - _max2);
-					diag_log format ["TTC_CTI - initCTI: _max2 = %1, _diff = %2", _max2, _diff];
 
 					// Update the capture progress
 					[_x, _side, _diff*20] call TTC_CTI_fnc_updateDominance;	// Lux0r: remove *20. test purpose only!

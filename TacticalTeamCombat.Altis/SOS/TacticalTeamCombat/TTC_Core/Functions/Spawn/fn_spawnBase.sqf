@@ -4,7 +4,7 @@
 	Created by Lux0r
 */
 
-#define TTC_CORE_saveDistance 1500
+#define TTC_CORE_safetyDistance 1200
 
 private ["_side","_prefix","_location","_basePos","_mrk","_respawnPos","_mrkName","_mrkColor","_dome","_dir","_domePos"];
 
@@ -28,7 +28,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	// Create global marker
 	_mrkName	= format ["mrk_Base_%1", _side];
 	_mrkColor	= [_side, true] call BIS_fnc_sideColor;
-	_mrk		= [_mrkName, _basePos, "", _mrkColor, TTC_CORE_saveDistance, TTC_CORE_saveDistance, 0, "ELLIPSE", "Empty", 0.3] call TTC_CORE_fnc_createMarker;
+	_mrk		= [_mrkName, _basePos, "", _mrkColor, TTC_CORE_safetyDistance, TTC_CORE_safetyDistance, 0, "ELLIPSE", "Empty", 0.3] call TTC_CORE_fnc_createMarker;
 
 	// Spawn dome
 	_dome	= createVehicle ["Land_Dome_Small_F", _basePos, [], 0, "CAN_COLLIDE"];

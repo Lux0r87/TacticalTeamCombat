@@ -2,7 +2,6 @@
 	Created by BauerMitFackel
 */
 
-diag_log "TTC_CORE: vehicleSpawnGUER";
 
 TTC_VehicleSpawnLocation = I_VehicleSpawn_Helipad;
 TTC_VehicleSignTexture = "SOS\ObjectSpawn\Pictures\Vehicle.jpg";

@@ -1215,8 +1215,8 @@ class Mission
 		class Item2
 		{
 			position[]={19340.652,18.307947,15312.729};
-			a=1500;
-			b=1500;
+			a=1200;
+			b=1200;
 			activationBy="GUER";
 			interruptable=1;
 			age="UNKNOWN";
@@ -1230,8 +1230,8 @@ class Mission
 		class Item3
 		{
 			position[]={22647.477,14.753351,18970.264};
-			a=1500;
-			b=1500;
+			a=1200;
+			b=1200;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";

@@ -15,6 +15,19 @@ _sectorSide	= _sector select 6;
 _dominance	= _sector select 7;
 
 
+_TTC_CTI_update = {
+	// Don't add "_sector" to private variables. This function modifies the original variable.
+	private ["_dominance"];
+	_sector		= _this select 0;
+	_dominance	= _this select 1;
+
+	// Update the dominance variable.
+	_sector set [7, _dominance];
+
+	// Update all sectors.
+	[] call TTC_CTI_fnc_updateSectors;
+};
+
 // The attacking side is capturing the sector:
 if (_sectorSide != _side) then {
 	// Check if the attacking side can capture this sector.
@@ -48,20 +61,23 @@ if (_sectorSide != _side) then {
 
 			[_message,"TTC_CORE_fnc_hint"] call BIS_fnc_MP;
 		};
+
+		// Update the sector.
+		[_sector, _dominance] call _TTC_CTI_update;
 	};
 } else {	// The current side is defending the sector:
-	_dominance = ((_dominance + _diff) min TTC_CTI_dominanceMax);
+	// Check if dominance is not at maximum already.
+	if (_dominance < TTC_CTI_dominanceMax) then {
+		_dominance = ((_dominance + _diff) min TTC_CTI_dominanceMax);
 
-	// (Re)create respawn position for defenders, if dominance is high enough.
-	if (_dominance >= TTC_CTI_dominanceSpawn) then {
-		_marker		= _sector select 10;
-		_respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
-		_sector set [12, _respawnPos];
+		// (Re)create respawn position for defenders, if dominance is high enough.
+		if (_dominance >= TTC_CTI_dominanceSpawn) then {
+			_marker		= _sector select 10;
+			_respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
+			_sector set [12, _respawnPos];
+		};
+
+		// Update the sector.
+		[_sector, _dominance] call _TTC_CTI_update;
 	};
 };
-
-// Update the dominance variable.
-_sector set [7, _dominance];
-
-// Update the sector markers.
-[_sector] call TTC_CTI_fnc_updateSectorMarkers;

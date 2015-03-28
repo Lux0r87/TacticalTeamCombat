@@ -7,6 +7,7 @@ class TTC_Core_Functions {
 		class getLocation{};
 		class getPrefix{};
 		class hint{};
+		class log{};
 		class runTimer{};
 		class systemChat{};
 	};
@@ -21,6 +22,8 @@ class TTC_Core_Functions {
 	class Markers {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Markers";
 		class createMarker{};
+		class createMarkerLocal{};
+		class setMarkerAlphaLocal{};
 	};
 
 	class Spawn {

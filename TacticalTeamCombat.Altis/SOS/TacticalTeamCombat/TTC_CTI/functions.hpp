@@ -16,7 +16,9 @@ class TTC_CTI_Functions {
 	class Sectors {
 		file = "SOS\TacticalTeamCombat\TTC_CTI\Functions\Sectors";
 		class canCapture{};
+		class canSee{};
 		class connectedToBase{};
 		class updateDominance{};
+		class updateSectors{};
 	};
 };

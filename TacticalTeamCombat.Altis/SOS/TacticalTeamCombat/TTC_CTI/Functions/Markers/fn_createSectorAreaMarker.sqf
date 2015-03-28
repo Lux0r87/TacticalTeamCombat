@@ -16,6 +16,11 @@ _pos		= _sector select 1;
 _side		= _sector select 6;
 _dominance	= _sector select 7;
 
+/*[
+	["TTC_CTI: createSectorAreaMarker:"], ["_sector = %1", _sector], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_dir = %1", _dir],
+	["_mkrShape = %1", _mkrShape], ["_name = %1", _name], ["_pos = %1", _pos], ["_side = %1", _side], ["_dominance = %1", _dominance]
+] call TTC_CORE_fnc_log;*/
+
 
 TTC_CTI_sectorAreaNo = TTC_CTI_sectorAreaNo + 1;
 _mrkName	= format ["mrk_SectorArea%1", TTC_CTI_sectorAreaNo];

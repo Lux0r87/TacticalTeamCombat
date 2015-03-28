@@ -2,7 +2,6 @@
 	Created by Lux0r
 */
 
-diag_log "TTC_CORE: createTrigger";
 
 private ["_text","_pos","_xrad","_yrad","_dir","_rectangle","_type","_actBy","_actType","_actRepeat","_trigger"];
 
