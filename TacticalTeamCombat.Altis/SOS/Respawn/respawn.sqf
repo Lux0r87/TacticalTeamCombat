@@ -10,9 +10,6 @@ diag_log format["respawn.sqf: player = %1", player];
 // Client-side: Define respawn positions and respawn inventory for specific roles.
 if (!isDedicated) then {
 
-	_rolesFile = "TTC_ROLES" call TTC_CORE_fnc_getConstantsFile;
-	[] call compile preprocessFileLineNumbers _rolesFile;
-
 	private ["_side","_roleId"];
 
 	waitUntil {!(IsNull player) && (time > 0.0)};
@@ -24,31 +21,31 @@ if (!isDedicated) then {
 		
 		switch (_roleId) do {
 			// Platoon Lead
-			case _PLATOON_LEADER_ID: {
+			case PLATOON_LEADER_ID: {
 				[player, format["%1_PL_SL", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case _MEDIC_ID: {
+			case MEDIC_ID: {
 				[player, format["%1_PL_Medic", _side]] call bis_fnc_addRespawnInventory;
 			};
 			// Ghost 1 + 2, Shadow 1 + 2
-			case _TEAM_LEADER_ID	: {
+			case TEAM_LEADER_ID	: {
 				[player, format["%1_TL", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case _MACHINE_GUNNER_ID: {
+			case MACHINE_GUNNER_ID: {
 				[player, format["%1_MMG_Mk200", _side]] call bis_fnc_addRespawnInventory;
 				[player, format["%1_MMG_MXSW", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case _MISSILE_SPECIALIST_ID: {
+			case MISSILE_SPECIALIST_ID: {
 				[player, format["%1_AT", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case _COMBAT_ENGINEER_ID: {
+			case COMBAT_ENGINEER_ID: {
 				[player, format["%1_CombatEngineer", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case _MEDIC_ID: {
+			case MEDIC_ID: {
 				[player, format["%1_Medic", _side]] call bis_fnc_addRespawnInventory;
 			};
 			// Pilots
-			case _PILOT_ID: {
+			case PILOT_ID: {
 				[player, format["%1_HelicopterPilot", _side]] call bis_fnc_addRespawnInventory;
 			};
 			default {
