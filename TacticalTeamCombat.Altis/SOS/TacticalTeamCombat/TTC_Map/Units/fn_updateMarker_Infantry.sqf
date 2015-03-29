@@ -13,23 +13,8 @@ if (isDedicated) exitWith {
 	Returns the type of the marker for a given unit.
 */
 _getMarkerType = {
-
-	private["_prefix", "_type"];
-	
-	_prefix = switch (_side) do {
-		case west: {
-			"b";
-		};
-		case east: {
-			"o";
-		};
-		case independent: {
-			"n";
-		};
-	};
-	
-	_type = format["%1_inf", _prefix];
-	_type;
+	_prefix = [_side] call TTC_CORE_fnc_getMrkTypePrefix;
+	_unit getVariable ["TTC_markerType", format["%1_unknown", _prefix]];
 };
 
 

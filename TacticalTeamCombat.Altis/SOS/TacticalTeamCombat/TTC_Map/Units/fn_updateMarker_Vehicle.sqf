@@ -15,19 +15,8 @@ if (isDedicated) exitWith {
 _getMarkerType = {
 
 	private["_prefix", "_vehicleClass", "_suffix", "_type"];
-		
-	_prefix = switch (_side) do {
-		case west: {
-			"b";
-		};
-		case east: {
-			"o";
-		};
-		case independent: {
-			"n";
-		};
-	};
-	
+
+	_prefix = [_side] call TTC_CORE_fnc_getMrkTypePrefix;	
 	_vehicleClass = getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "vehicleClass");
 	_suffix = switch (_vehicleClass) do {
 		case "Air": {

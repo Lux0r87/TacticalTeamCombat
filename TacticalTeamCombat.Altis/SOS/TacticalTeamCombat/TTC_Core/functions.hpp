@@ -7,6 +7,7 @@ class TTC_Core_Functions {
 		class endMission{};
 		class endMissionAll{};
 		class getLocation{};
+		class getMrkTypePrefix{};
 		class getPrefix{};
 		class getRoleNameById{};
 		class hint{};
