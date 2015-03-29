@@ -33,7 +33,7 @@ if (!isDedicated) then {
 		_radius		= 500;
 		_unit		= _this select 0;
 		_projectile = _this select 6;
-		_basePos	= missionNamespace getVariable [format["TTC_CORE_Base_%1", side _unit], [0,0]];
+		_basePos	= missionNamespace getVariable [format["TTC_BASE_%1", side _unit], [0,0]];
 
 		if ((format ["%1", _basePos] != "[0,0]") && ((_unit distance _basePos) < _radius)) then {
 			fDelay = fDelay + 1;

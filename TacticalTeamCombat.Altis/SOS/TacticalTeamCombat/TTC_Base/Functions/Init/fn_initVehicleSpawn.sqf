@@ -11,7 +11,7 @@ _side = [_this, 1] call BIS_fnc_param;
 
 
 // Client-side scripts:
-[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\Configurations\vehicleSpawn%1.sqf", _side];
+[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_Base\Configurations\vehicleSpawn%1.sqf", _side];
 
 // Iterate over every vehicle in the TTC_Vehicles array and add the corresponding action to the sign
 {

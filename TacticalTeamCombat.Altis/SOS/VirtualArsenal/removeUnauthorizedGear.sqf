@@ -24,7 +24,7 @@ _minDistance			= 500;
 
 while {true} do {
 	sleep 5;
-	_basePos	= missionNamespace getVariable [format["TTC_CORE_Base_%1", _side], [0,0]];
+	_basePos	= missionNamespace getVariable [format["TTC_BASE_%1", _side], [0,0]];
 
 	if (format ["%1", _basePos] != "[0,0]") then {
 		_distance	= player distance _basePos;

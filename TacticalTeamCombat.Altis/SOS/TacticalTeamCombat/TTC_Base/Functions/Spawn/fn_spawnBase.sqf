@@ -4,7 +4,7 @@
 	Created by Lux0r
 */
 
-#define TTC_CORE_safetyDistance 1200
+#define TTC_BASE_safetyDistance 1200
 
 private ["_side","_prefix","_location","_basePos","_mrk","_respawnPos","_mrkName","_mrkColor","_dome","_dir","_domePos"];
 
@@ -15,10 +15,10 @@ _prefix		= [_side] call TTC_CORE_fnc_getPrefix;
 _location	= [] call TTC_CORE_fnc_getLocation;
 
 // Compile configuration file
-[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_Core\Locations\%1.sqf", _location];
+[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_Base\Locations\%1.sqf", _location];
 
 // Get base position
-_basePos	= missionNamespace getVariable [format["TTC_CORE_Base_%1", _side], [0,0]];
+_basePos	= missionNamespace getVariable [format["TTC_BASE_%1", _side], [0,0]];
 
 if (format ["%1", _basePos] != "[0,0]") then {
 	// Create respawn position
@@ -28,7 +28,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	// Create global marker
 	_mrkName	= format ["mrk_Base_%1", _side];
 	_mrkColor	= [_side, true] call BIS_fnc_sideColor;
-	_mrk		= [_mrkName, _basePos, "", _mrkColor, TTC_CORE_safetyDistance, TTC_CORE_safetyDistance, 0, "ELLIPSE", "Empty", 0.3] call TTC_CORE_fnc_createMarker;
+	_mrk		= [_mrkName, _basePos, "", _mrkColor, TTC_BASE_safetyDistance, TTC_BASE_safetyDistance, 0, "ELLIPSE", "Empty", 0.3] call TTC_CORE_fnc_createMarker;
 
 	// Spawn dome
 	_dome	= createVehicle ["Land_Dome_Small_F", _basePos, [], 0, "CAN_COLLIDE"];

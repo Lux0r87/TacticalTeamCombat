@@ -6,10 +6,10 @@
 
 
 // Independent
-TTC_CORE_Base_Guer	= [22648, 18970];
+TTC_BASE_Guer	= [22648, 18970];
 
 // Blufor
-TTC_CORE_Base_West	= [19342, 15312];
+TTC_BASE_West	= [19342, 15312];
 
 // Opfor
-TTC_CORE_Base_East	= [0, 0];
+TTC_BASE_East	= [0, 0];
