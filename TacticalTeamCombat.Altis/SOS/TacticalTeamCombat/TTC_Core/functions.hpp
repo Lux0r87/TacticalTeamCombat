@@ -8,10 +8,17 @@ class TTC_Core_Functions {
 		class endMissionAll{};
 		class getLocation{};
 		class getPrefix{};
+		class getRoleNameById{};
 		class hint{};
 		class log{};
 		class runTimer{};
 		class systemChat{};
+	};
+		
+	class Init {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Init";
+		class initUnit{};
+		class initRoles{preInit = 1;};
 	};
 
 	class Markers {

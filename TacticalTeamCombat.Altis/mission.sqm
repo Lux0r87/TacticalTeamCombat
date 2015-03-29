@@ -76,27 +76,27 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=3;
+				items=2;
 				class Item0
 				{
-					position[]={19337.049,18.312874,15310.415};
-					azimut=407.4856;
+					position[]={19336.625,18.253174,15309.369};
+					azimut=407.48599;
 					special="NONE";
 					id=0;
 					side="WEST";
 					vehicle="B_Soldier_SL_F";
-					player="PLAYER COMMANDER";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
 					text="B_PL_PlatoonLeader";
-					init="init_Handle = [this, ""Platoon Lead"", ""PlatoonLeader"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_PL"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Platoon Leader [must have a microphone]";
 				};
 				class Item1
 				{
 					position[]={19335.605,18.312361,15310.308};
-					azimut=407.4856;
+					azimut=407.48599;
 					special="NONE";
 					id=1;
 					side="WEST";
@@ -104,22 +104,8 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="B_PL_Medic";
-					init="init_Handle = [this, ""Platoon Lead"", ""PlatoonMedic"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MED"", ""SOS\Textures\Uniform.paa""] spawn  TTC_CORE_fnc_initUnit;";
 					description="Platoon Medic";
-				};
-				class Item2
-				{
-					position[]={19336.641,18.22867,15308.952};
-					azimut=407.4856;
-					special="NONE";
-					id=2;
-					side="WEST";
-					vehicle="B_soldier_AA_F";
-					player="PLAY CDG";
-					skill=0.60000002;
-					text="B_PL_MissileSpecialistAA";
-					init="init_Handle = [this, ""Platoon Lead"", ""PlatoonAA"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
-					description="Platoon Missile Specialist (AA)";
 				};
 			};
 		};
@@ -128,13 +114,13 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=6;
+				items=5;
 				class Item0
 				{
-					position[]={19336.721,18.10363,15303.417};
+					position[]={19332.143,18.271143,15308.693};
 					azimut=408.37708;
 					special="NONE";
-					id=3;
+					id=2;
 					side="WEST";
 					vehicle="B_Soldier_TL_F";
 					player="PLAY CDG";
@@ -142,80 +128,65 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="B_K1_TeamLeader";
-					init="init_Handle = [this, ""Knight 1"", ""TeamLeader"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_TL"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 1 - Team Leader [must have a microphone]";
 				};
 				class Item1
 				{
-					position[]={19334.797,18.115721,15305.476};
+					position[]={19334.1,18.15027,15306.679};
 					azimut=408.37708;
 					special="NONE";
-					id=4;
+					id=3;
 					side="WEST";
 					vehicle="B_soldier_AR_F";
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="B_K1_MMG1";
-					init="init_Handle = [this, ""Knight 1"", ""MMG"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MG"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 1 - Machinegunner";
 				};
 				class Item2
 				{
-					position[]={19335.82,18.106964,15304.431};
+					position[]={19333.066,18.187822,15307.571};
 					azimut=408.37708;
 					special="NONE";
-					id=5;
+					id=4;
 					side="WEST";
 					vehicle="B_soldier_LAT_F";
 					player="PLAY CDG";
 					skill=0.2;
 					text="B_K1_AT";
-					init="init_Handle = [this, ""Knight 1"", ""AntiTank"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MS"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 1 - AT Rifleman";
 				};
 				class Item3
 				{
-					position[]={19332.105,18.262932,15308.546};
+					position[]={19335.869,18.112934,15304.706};
 					azimut=408.37708;
 					special="NONE";
-					id=6;
+					id=5;
 					side="WEST";
 					vehicle="B_engineer_F";
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="B_K1_CombatEngineer";
-					init="init_Handle = [this, ""Knight 1"", ""CombatEngineer"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_CE"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 1 - Combat Engineer";
 					syncId=0;
 					synchronizations[]={0};
 				};
 				class Item4
 				{
-					position[]={19333.039,18.189289,15307.588};
+					position[]={19335.043,18.116837,15305.682};
 					azimut=408.37708;
 					special="NONE";
-					id=7;
-					side="WEST";
-					vehicle="B_Soldier_GL_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.2;
-					text="B_K1_Grenadier";
-					init="init_Handle = [this, ""Knight 1"", ""Grenadier"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
-					description="Knight 1 - Grenadier";
-				};
-				class Item5
-				{
-					position[]={19333.918,18.152149,15306.611};
-					azimut=408.37708;
-					special="NONE";
-					id=8;
+					id=6;
 					side="WEST";
 					vehicle="B_medic_F";
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="B_K1_Medic";
-					init="init_Handle = [this, ""Knight 1"", ""Medic"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MED"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 1 - Medic";
 				};
 			};
@@ -239,7 +210,7 @@ class Mission
 							typeName="Show";
 						};
 					};
-					id=9;
+					id=7;
 					side="LOGIC";
 					vehicle="ModuleZoneProtection_F";
 					leader=1;
@@ -254,7 +225,7 @@ class Mission
 				{
 					position[]={19340.668,18.272091,15311.081};
 					azimut=0.394669;
-					id=10;
+					id=8;
 					side="LOGIC";
 					vehicle="LocationArea_F";
 					skill=0.60000002;
@@ -283,7 +254,7 @@ class Mission
 							typeName="Show";
 						};
 					};
-					id=11;
+					id=9;
 					side="LOGIC";
 					vehicle="ModuleZoneProtection_F";
 					leader=1;
@@ -297,7 +268,7 @@ class Mission
 				{
 					position[]={22647.48,14.767234,18968.953};
 					azimut=0.394669;
-					id=12;
+					id=10;
 					side="LOGIC";
 					vehicle="LocationArea_F";
 					skill=0.60000002;
@@ -312,13 +283,13 @@ class Mission
 			side="GUER";
 			class Vehicles
 			{
-				items=3;
+				items=2;
 				class Item0
 				{
-					position[]={22643.729,14.806811,18967.002};
+					position[]={22643.807,14.772079,18965.682};
 					azimut=23.389601;
 					special="NONE";
-					id=13;
+					id=11;
 					side="GUER";
 					vehicle="I_Soldier_SL_F";
 					player="PLAY CDG";
@@ -326,7 +297,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.60000002;
 					text="I_PL_PlatoonLeader";
-					init="init_Handle = [this, ""Platoon Lead"", ""PlatoonLeader"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_PL"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Platoon Leader [must have a microphone]";
 				};
 				class Item1
@@ -334,28 +305,14 @@ class Mission
 					position[]={22642.635,14.856268,18966.332};
 					azimut=23.389645;
 					special="NONE";
-					id=14;
+					id=12;
 					side="GUER";
 					vehicle="I_medic_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_PL_Medic";
-					init="init_Handle = [this, ""Platoon Lead"", ""PlatoonMedic"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MED"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Platoon Medic";
-				};
-				class Item2
-				{
-					position[]={22644.125,14.746804,18965.666};
-					azimut=23.389645;
-					special="NONE";
-					id=15;
-					side="GUER";
-					vehicle="I_Soldier_AA_F";
-					player="PLAY CDG";
-					skill=0.60000002;
-					text="I_PL_MissileSpecialistAA";
-					init="init_Handle = [this, ""Platoon Lead"", ""PlatoonAA"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
-					description="Platoon Missile Specialist (AA)";
 				};
 			};
 		};
@@ -364,21 +321,21 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=6;
+				items=5;
 				class Item0
 				{
 					position[]={19333.518,18.305054,15309.671};
-					azimut=49.30368;
+					azimut=49.303699;
 					special="NONE";
-					id=16;
+					id=13;
 					side="WEST";
 					vehicle="B_Soldier_TL_F";
-					player="PLAY CDG";
+					player="PLAYER COMMANDER";
 					leader=1;
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="B_K2_TeamLeader";
-					init="init_Handle = [this, ""Knight 2"", ""TeamLeader"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_TL"", ""SOS\Textures\Uniform.paa""] spawn  TTC_CORE_fnc_initUnit;";
 					description="Knight 2 - Team Leader [must have a microphone]";
 				};
 				class Item1
@@ -386,13 +343,13 @@ class Mission
 					position[]={19335.227,18.158813,15307.665};
 					azimut=49.30368;
 					special="NONE";
-					id=17;
+					id=14;
 					side="WEST";
 					vehicle="B_soldier_AR_F";
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="B_K2_MMG1";
-					init="init_Handle = [this, ""Knight 2"", ""MMG"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MG"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 2 - Machinegunner";
 				};
 				class Item2
@@ -400,58 +357,43 @@ class Mission
 					position[]={19334.363,18.229427,15308.651};
 					azimut=49.30368;
 					special="NONE";
-					id=18;
+					id=15;
 					side="WEST";
 					vehicle="B_soldier_LAT_F";
 					player="PLAY CDG";
 					skill=0.2;
 					text="B_K2_AT";
-					init="init_Handle = [this, ""Knight 2"", ""AntiTank"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MS"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 2 - AT Rifleman";
 				};
 				class Item3
 				{
-					position[]={19337.791,18.145184,15304.648};
+					position[]={19337.051,18.146599,15305.695};
 					azimut=49.30368;
 					special="NONE";
-					id=19;
+					id=16;
 					side="WEST";
 					vehicle="B_engineer_F";
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="B_K2_CombatEngineer";
-					init="init_Handle = [this, ""Knight 2"", ""CombatEngineer"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_CE"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 2 - Combat Engineer";
 					syncId=5;
 					synchronizations[]={5};
 				};
 				class Item4
 				{
-					position[]={19336.963,18.147129,15305.629};
-					azimut=49.30368;
-					special="NONE";
-					id=20;
-					side="WEST";
-					vehicle="B_Soldier_GL_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.2;
-					text="B_K2_Grenadier";
-					init="init_Handle = [this, ""Knight 2"", ""Grenadier"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
-					description="Knight 2 - Grenadier";
-				};
-				class Item5
-				{
 					position[]={19336.111,18.147739,15306.68};
 					azimut=49.30368;
 					special="NONE";
-					id=21;
+					id=17;
 					side="WEST";
 					vehicle="B_medic_F";
 					player="PLAY CDG";
 					skill=0.33333331;
 					text="B_K2_Medic";
-					init="init_Handle = [this, ""Knight 2"", ""Medic"", ""SOS\Textures\Uniform.paa"", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MED"", ""SOS\Textures\Uniform.paa""] spawn TTC_CORE_fnc_initUnit;";
 					description="Knight 2 - Medic";
 				};
 			};
@@ -461,13 +403,13 @@ class Mission
 			side="GUER";
 			class Vehicles
 			{
-				items=6;
+				items=5;
 				class Item0
 				{
 					position[]={22644.701,14.733613,18963.42};
 					azimut=29.192305;
 					special="NONE";
-					id=22;
+					id=18;
 					side="GUER";
 					vehicle="I_Soldier_TL_F";
 					player="PLAY CDG";
@@ -475,7 +417,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="I_A1_TeamLeader";
-					init="init_Handle = [this, ""Archer 1"", ""TeamLeader"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_TL"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 1 - Team Leader [must have a microphone]";
 				};
 				class Item1
@@ -483,13 +425,13 @@ class Mission
 					position[]={22641.242,14.866268,18965.361};
 					azimut=29.192305;
 					special="NONE";
-					id=23;
+					id=19;
 					side="GUER";
 					vehicle="I_Soldier_AR_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A1_MMG1";
-					init="init_Handle = [this, ""Archer 1"", ""MMG"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MG"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 1 - Machinegunner";
 				};
 				class Item2
@@ -497,13 +439,13 @@ class Mission
 					position[]={22642.367,14.88811,18964.793};
 					azimut=29.192305;
 					special="NONE";
-					id=24;
+					id=20;
 					side="GUER";
 					vehicle="I_Soldier_LAT_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A1_AT";
-					init="init_Handle = [this, ""Archer 1"", ""AntiTank"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MS"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 1 - AT Rifleman";
 				};
 				class Item3
@@ -511,42 +453,27 @@ class Mission
 					position[]={22643.504,14.818833,18964.141};
 					azimut=29.192305;
 					special="NONE";
-					id=25;
+					id=21;
 					side="GUER";
 					vehicle="I_engineer_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A1_CombatEngineer";
-					init="init_Handle = [this, ""Archer 1"", ""CombatEngineer"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_CE"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 1 - Combat Engineer";
 				};
 				class Item4
 				{
-					position[]={22646.928,14.574823,18962.102};
-					azimut=29.192305;
-					special="NONE";
-					id=26;
-					side="GUER";
-					vehicle="I_Soldier_GL_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.33333331;
-					text="I_A1_Grenadier";
-					init="init_Handle = [this, ""Archer 1"", ""Grenadier"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
-					description="Archer 1 - Grenadier";
-				};
-				class Item5
-				{
 					position[]={22645.811,14.654162,18962.783};
 					azimut=29.192305;
 					special="NONE";
-					id=27;
+					id=22;
 					side="GUER";
 					vehicle="I_medic_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A1_Medic";
-					init="init_Handle = [this, ""Archer 1"", ""Medic"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MED"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 1 - Medic";
 				};
 			};
@@ -556,13 +483,13 @@ class Mission
 			side="GUER";
 			class Vehicles
 			{
-				items=6;
+				items=5;
 				class Item0
 				{
 					position[]={22642.652,14.912998,18962.365};
 					azimut=29.541571;
 					special="NONE";
-					id=28;
+					id=23;
 					side="GUER";
 					vehicle="I_Soldier_TL_F";
 					player="PLAY CDG";
@@ -570,21 +497,21 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="I_A2_TeamLeader";
-					init="init_Handle = [this, ""I_A2"", ""TeamLeader"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_TL"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 2 - Team Leader [must have a microphone]";
 				};
 				class Item1
 				{
-					position[]={22645.951,14.677217,18960.453};
+					position[]={22640.365,14.879966,18963.711};
 					azimut=29.541571;
 					special="NONE";
-					id=29;
+					id=24;
 					side="GUER";
 					vehicle="I_Soldier_AR_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A2_MMG1";
-					init="init_Handle = [this, ""I_A2"", ""MMG"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MG"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 2 - Machinegunner";
 				};
 				class Item2
@@ -592,13 +519,13 @@ class Mission
 					position[]={22644.852,14.755654,18961.098};
 					azimut=29.541571;
 					special="NONE";
-					id=30;
+					id=25;
 					side="GUER";
 					vehicle="I_Soldier_LAT_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A2_AT";
-					init="init_Handle = [this, ""I_A2"", ""AntiTank"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MS"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 2 - AT Rifleman";
 				};
 				class Item3
@@ -606,42 +533,27 @@ class Mission
 					position[]={22643.707,14.837459,18961.762};
 					azimut=29.541571;
 					special="NONE";
-					id=31;
+					id=26;
 					side="GUER";
 					vehicle="I_engineer_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A2_CombatEngineer";
-					init="init_Handle = [this, ""I_A2"", ""CombatEngineer"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_CE"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 2 - Combat Engineer";
 				};
 				class Item4
 				{
-					position[]={22640.299,14.880814,18963.6};
-					azimut=29.541571;
-					special="NONE";
-					id=32;
-					side="GUER";
-					vehicle="I_Soldier_GL_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.33333331;
-					text="I_A2_Grenadier";
-					init="init_Handle = [this, ""I_A2"", ""Grenadier"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
-					description="Archer 2 - Grenadier";
-				};
-				class Item5
-				{
 					position[]={22641.436,14.903084,18963.01};
 					azimut=29.541571;
 					special="NONE";
-					id=33;
+					id=27;
 					side="GUER";
 					vehicle="I_medic_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="I_A2_Medic";
-					init="init_Handle = [this, ""I_A2"", ""Medic"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_MED"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Archer 2 - Medic";
 				};
 			};
@@ -657,7 +569,7 @@ class Mission
 					position[]={22646.574,14.617846,18964.098};
 					azimut=-324.44977;
 					special="NONE";
-					id=34;
+					id=28;
 					side="GUER";
 					vehicle="I_helipilot_F";
 					player="PLAY CDG";
@@ -665,7 +577,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.2;
 					text="I_R1_HelicopterPilot";
-					init="init_Handle = [this, ""Reaper 1"", ""HelicopterPilot"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_PIL"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Reaper 1 - Helicopter Pilot [must have a microphone]";
 				};
 			};
@@ -681,7 +593,7 @@ class Mission
 					position[]={22645.422,14.66872,18964.768};
 					azimut=-324.44977;
 					special="NONE";
-					id=35;
+					id=29;
 					side="GUER";
 					vehicle="I_helipilot_F";
 					player="PLAY CDG";
@@ -689,7 +601,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.2;
 					text="I_R2_HelicopterPilot";
-					init="init_Handle = [this, ""Reaper 2"", ""HelicopterPilot"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_PIL"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Reaper 2 - Helicopter Pilot [must have a microphone]";
 				};
 			};
@@ -704,7 +616,7 @@ class Mission
 				{
 					position[]={19338.873,18.137426,15306.402};
 					azimut=61.226444;
-					id=36;
+					id=30;
 					side="WEST";
 					vehicle="B_Helipilot_F";
 					player="PLAY CDG";
@@ -712,7 +624,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="B_R1_HeliopterPilot";
-					init="init_Handle = [this, ""Reaper 1"", ""HelicopterPilot"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_PIL"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Reaper 1 - Helicopter Pilot [must have a microphone]";
 					syncId=6;
 					synchronizations[]={6};
@@ -728,8 +640,8 @@ class Mission
 				class Item0
 				{
 					position[]={19337.98,18.138275,15307.425};
-					azimut=61.226444;
-					id=37;
+					azimut=61.226398;
+					id=31;
 					side="WEST";
 					vehicle="B_Helipilot_F";
 					player="PLAY CDG";
@@ -737,7 +649,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="B_R2_HelicopterPilot";
-					init="init_Handle = [this, ""Reaper 2"", ""HelicopterPilot"", """", """"] execVM ""SOS\MiscScripts\initUnit.sqf"";";
+					init="init_Handle = [this, ""TTC_PIL"", """"] spawn TTC_CORE_fnc_initUnit;";
 					description="Reaper 2 - Helicopter Pilot [must have a microphone]";
 				};
 			};
@@ -761,7 +673,7 @@ class Mission
 							typeName="Show";
 						};
 					};
-					id=38;
+					id=32;
 					side="LOGIC";
 					vehicle="ModuleZoneProtection_F";
 					leader=1;
@@ -775,7 +687,7 @@ class Mission
 				{
 					position[]={22648.461,14.752366,18969.027};
 					azimut=0.394669;
-					id=39;
+					id=33;
 					side="LOGIC";
 					vehicle="LocationArea_F";
 					skill=0.60000002;
@@ -804,7 +716,7 @@ class Mission
 							typeName="Show";
 						};
 					};
-					id=40;
+					id=34;
 					side="LOGIC";
 					vehicle="ModuleZoneProtection_F";
 					leader=1;
@@ -819,7 +731,7 @@ class Mission
 				{
 					position[]={19342.346,18.202724,15311.079};
 					azimut=0.394669;
-					id=41;
+					id=35;
 					side="LOGIC";
 					vehicle="LocationArea_F";
 					skill=0.60000002;
@@ -837,7 +749,7 @@ class Mission
 		{
 			position[]={19360.08,18.157211,15296.423};
 			azimut=43;
-			id=42;
+			id=36;
 			side="EMPTY";
 			vehicle="Land_HelipadEmpty_F";
 			leader=1;
@@ -848,7 +760,7 @@ class Mission
 		{
 			position[]={19355.48,18.135883,15301.028};
 			azimut=133;
-			id=43;
+			id=37;
 			side="EMPTY";
 			vehicle="Land_Noticeboard_F";
 			leader=1;
@@ -860,7 +772,7 @@ class Mission
 		{
 			position[]={19348.518,18.529343,15321.415};
 			azimut=225.88107;
-			id=44;
+			id=38;
 			side="EMPTY";
 			vehicle="B_supplyCrate_F";
 			skill=0.60000002;
@@ -871,7 +783,7 @@ class Mission
 		{
 			position[]={19349.973,18.388447,15320.011};
 			azimut=225.88107;
-			id=45;
+			id=39;
 			side="EMPTY";
 			vehicle="B_supplyCrate_F";
 			skill=0.60000002;
@@ -882,7 +794,7 @@ class Mission
 		{
 			position[]={19351.424,18.315557,15318.666};
 			azimut=225.88107;
-			id=46;
+			id=40;
 			side="EMPTY";
 			vehicle="B_supplyCrate_F";
 			skill=0.60000002;
@@ -893,7 +805,7 @@ class Mission
 		{
 			position[]={19309.293,18.777187,15347.849};
 			azimut=50;
-			id=47;
+			id=41;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;
@@ -903,7 +815,7 @@ class Mission
 		{
 			position[]={19328.342,18.336277,15326.413};
 			azimut=317;
-			id=48;
+			id=42;
 			side="EMPTY";
 			vehicle="Land_Noticeboard_F";
 			leader=1;
@@ -915,7 +827,7 @@ class Mission
 		{
 			position[]={19324,18.12834,15331.365};
 			azimut=50;
-			id=49;
+			id=43;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			leader=1;
@@ -926,7 +838,7 @@ class Mission
 		{
 			position[]={22671.896,14.254457,18957.498};
 			azimut=206;
-			id=50;
+			id=44;
 			side="EMPTY";
 			vehicle="Land_HelipadEmpty_F";
 			leader=1;
@@ -937,7 +849,7 @@ class Mission
 		{
 			position[]={22665.758,14.399458,18960.432};
 			azimut=115;
-			id=51;
+			id=45;
 			side="EMPTY";
 			vehicle="Land_Noticeboard_F";
 			leader=1;
@@ -949,7 +861,7 @@ class Mission
 		{
 			position[]={22654.705,14.197507,18979.16};
 			azimut=208.63829;
-			id=52;
+			id=46;
 			side="EMPTY";
 			vehicle="I_supplyCrate_F";
 			skill=0.60000002;
@@ -960,7 +872,7 @@ class Mission
 		{
 			position[]={22653.109,14.246807,18979.984};
 			azimut=208.63829;
-			id=53;
+			id=47;
 			side="EMPTY";
 			vehicle="I_supplyCrate_F";
 			skill=0.60000002;
@@ -971,7 +883,7 @@ class Mission
 		{
 			position[]={22651.486,14.296963,18980.844};
 			azimut=208.63829;
-			id=54;
+			id=48;
 			side="EMPTY";
 			vehicle="I_supplyCrate_F";
 			skill=0.60000002;
@@ -982,7 +894,7 @@ class Mission
 		{
 			position[]={22609.088,14.053127,18998.324};
 			azimut=227;
-			id=55;
+			id=49;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;
@@ -992,7 +904,7 @@ class Mission
 		{
 			position[]={22633.4,14.648132,18980.168};
 			azimut=317;
-			id=56;
+			id=50;
 			side="EMPTY";
 			vehicle="Land_Noticeboard_F";
 			leader=1;
@@ -1004,7 +916,7 @@ class Mission
 		{
 			position[]={22624.975,14.432852,18981.445};
 			azimut=227;
-			id=57;
+			id=51;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			leader=1;
@@ -1015,7 +927,7 @@ class Mission
 		{
 			position[]={19356.582,18.13435,15302.402};
 			azimut=315;
-			id=58;
+			id=52;
 			side="EMPTY";
 			vehicle="Flag_NATO_F";
 			leader=1;
@@ -1026,7 +938,7 @@ class Mission
 		{
 			position[]={19354.129,18.139999,15299.832};
 			azimut=315;
-			id=59;
+			id=53;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1037,7 +949,7 @@ class Mission
 		{
 			position[]={22666.377,14.378081,18961.654};
 			azimut=290.17447;
-			id=60;
+			id=54;
 			side="EMPTY";
 			vehicle="Flag_AAF_F";
 			leader=1;
@@ -1048,7 +960,7 @@ class Mission
 		{
 			position[]={22665.217,14.413906,18959.133};
 			azimut=290.17447;
-			id=61;
+			id=55;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1059,7 +971,7 @@ class Mission
 		{
 			position[]={22977.436,2.8512011,15783.865};
 			azimut=244;
-			id=62;
+			id=56;
 			side="EMPTY";
 			vehicle="ArrowMarker_R_F";
 			skill=0.60000002;

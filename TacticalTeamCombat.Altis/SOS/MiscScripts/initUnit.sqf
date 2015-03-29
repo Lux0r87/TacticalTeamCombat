@@ -20,7 +20,7 @@ _unit addEventHandler ["respawn", format ["
 ]];
 
 // Initialize Role
-_unit setVariable ["SOS_role", _role, true];
+_unit setVariable ["TTC_roleId", _role, true];
 
 // Appearance
 if (_uniformTexture != "") then {

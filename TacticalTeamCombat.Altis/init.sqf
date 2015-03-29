@@ -35,7 +35,7 @@ if (hasInterface) then {
 	[] execVM "SOS\MiscScripts\jump.sqf";
 
 	// Initialize Virtual Arsenal.
-	[] execVM "SOS\VirtualArsenal\initVirtualArsenal.sqf";
+	//[] execVM "SOS\VirtualArsenal\initVirtualArsenal.sqf";
 	
 	// Firing in base protection.
 	[] execVM "SOS\MiscScripts\noFireZone.sqf";

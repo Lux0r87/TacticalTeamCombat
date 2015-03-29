@@ -9,51 +9,46 @@ diag_log format["respawn.sqf: player = %1", player];
 
 // Client-side: Define respawn positions and respawn inventory for specific roles.
 if (!isDedicated) then {
-	private ["_side","_role"];
+
+	_rolesFile = "TTC_ROLES" call TTC_CORE_fnc_getConstantsFile;
+	[] call compile preprocessFileLineNumbers _rolesFile;
+
+	private ["_side","_roleId"];
 
 	waitUntil {!(IsNull player) && (time > 0.0)};
 
 	_side = side player;
-	_role = player getVariable "SOS_role";	
-	if (!isNil "_role") then {
-		diag_log format["respawn.sqf: SOS_role is not Null! player = %1, _side = %2, _role = %3", player, _side, _role];
-
-		switch (_role) do {
+	_roleId = player getVariable "TTC_roleId";	
+	if (!isNil "_roleId") then {
+		diag_log format["respawn.sqf: TTC_roleId is not Null! player = %1, _side = %2, _roleId = %3", player, _side, _roleId];
+		
+		switch (_roleId) do {
 			// Platoon Lead
-			case "PlatoonLeader": {
+			case _PLATOON_LEADER_ID: {
 				[player, format["%1_PL_SL", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case "PlatoonMedic": {
+			case _MEDIC_ID: {
 				[player, format["%1_PL_Medic", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case "PlatoonAA": {
-				[player, format["%1_PL_AA", _side]] call bis_fnc_addRespawnInventory;
-			};
 			// Ghost 1 + 2, Shadow 1 + 2
-			case "TeamLeader": {
+			case _TEAM_LEADER_ID	: {
 				[player, format["%1_TL", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case "MMG": {
+			case _MACHINE_GUNNER_ID: {
 				[player, format["%1_MMG_Mk200", _side]] call bis_fnc_addRespawnInventory;
 				[player, format["%1_MMG_MXSW", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case "AntiTank": {
+			case _MISSILE_SPECIALIST_ID: {
 				[player, format["%1_AT", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case "CombatEngineer": {
+			case _COMBAT_ENGINEER_ID: {
 				[player, format["%1_CombatEngineer", _side]] call bis_fnc_addRespawnInventory;
 			};
-			case "Grenadier": {
-				[player, format["%1_Grenadier", _side]] call bis_fnc_addRespawnInventory;
-			};
-			case "AssistantMMG": {
-				[player, format["%1_AssistantMMG", _side]] call bis_fnc_addRespawnInventory;
-			};
-			case "Medic": {
+			case _MEDIC_ID: {
 				[player, format["%1_Medic", _side]] call bis_fnc_addRespawnInventory;
 			};
 			// Pilots
-			case "HelicopterPilot": {
+			case _PILOT_ID: {
 				[player, format["%1_HelicopterPilot", _side]] call bis_fnc_addRespawnInventory;
 			};
 			default {
@@ -61,7 +56,7 @@ if (!isDedicated) then {
 			};
 		};
 	} else {
-		diag_log format["respawn.sqf: SOS_role is Null! player = %1, _side = %2", player, _side];
+		diag_log format["respawn.sqf: TTC_roleId is Null! player = %1, _side = %2", player, _side];
 	};
 } else {
 	diag_log format["respawn.sqf: Is not dedicated! player = %1", player];
