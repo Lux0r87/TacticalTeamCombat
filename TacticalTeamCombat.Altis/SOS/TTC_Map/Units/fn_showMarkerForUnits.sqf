@@ -52,6 +52,9 @@ while {_RUN} do {
 		_unit = _units select 0;
 		while {!isNil{_unit}} do {
 		
+			_unitClass = getText(configFile >> "CfgVehicles" >> typeOf _unit >> "textSingular");
+			diag_log format["XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Unit Class = %1", _unitClass];
+		
 			if (_unit call _showMarkerForUnit) then {
 				
 				_marker = [] call _getNextMarker;
