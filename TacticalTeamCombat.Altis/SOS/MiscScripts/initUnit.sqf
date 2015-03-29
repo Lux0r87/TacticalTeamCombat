@@ -11,7 +11,6 @@ _role			= [_this, 2] call BIS_fnc_param;
 _uniformTexture	= [_this, 3, "", [""]] call BIS_fnc_param;
 _insignia		= [_this, 4, "", [""]] call BIS_fnc_param;
 
-diag_log format["initUnit: _unit = %1, _groupId = %2, _role = %3, _uniformTexture = %4, _insignia = %5", _unit, _groupId, _role, _uniformTexture, _insignia];
 
 // Group ID
 group _unit setGroupId [_groupId]; 

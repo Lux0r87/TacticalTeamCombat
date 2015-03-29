@@ -15,52 +15,55 @@
 */
 
 
-private ["_authorizedBackpacks","_authorizedWeapons","_authorizedItems","_side","_mrkPos","_minDistance","_distance","_inBase","_accessoryName","_weaponName","_backpack","_backpackName"];
+private ["_authorizedBackpacks","_authorizedWeapons","_authorizedItems","_side","_minDistance","_basePos","_distance","_inBase","_accessoryName","_weaponName","_backpack","_backpackName"];
 _authorizedBackpacks	= _this select 0;
 _authorizedWeapons		= _this select 1;
 _authorizedItems		= _this select 2;
 _side					= side player;
-_mrkPos					= getMarkerpos format ["Base_%1", _side];
 _minDistance			= 500;
 
 while {true} do {
 	sleep 5;
-	_distance	= player distance _mrkPos;
-	_inBase		= _distance < _minDistance;
+	_basePos	= missionNamespace getVariable [format["TTC_BASE_%1", _side], [0,0]];
 
-	// Check if player is using unauthorized primary weapon accessories.
-	{
-		if (_x != "" && !(_x in _authorizedItems)) then {
-			// Exception: Outside the base it's allowed to use all weapon accessories.
-			if (_inBase) then {
-				_accessoryName = getText (configFile >> "CfgWeapons" >> format["%1", _x] >> "displayName");
-				systemChat format["This role is not allowed to use weapon accessory: %1.", _accessoryName];
-				player removePrimaryWeaponItem _x;
+	if (format ["%1", _basePos] != "[0,0]") then {
+		_distance	= player distance _basePos;
+		_inBase		= _distance < _minDistance;
+
+		// Check if player is using unauthorized primary weapon accessories.
+		{
+			if (_x != "" && !(_x in _authorizedItems)) then {
+				// Exception: Outside the base it's allowed to use all weapon accessories.
+				if (_inBase) then {
+					_accessoryName = getText (configFile >> "CfgWeapons" >> format["%1", _x] >> "displayName");
+					systemChat format["This role is not allowed to use weapon accessory: %1.", _accessoryName];
+					player removePrimaryWeaponItem _x;
+				};
 			};
-		};
-	} forEach (player weaponAccessories primaryWeapon player);
+		} forEach (player weaponAccessories primaryWeapon player);
 
-	// Check if player is using unauthorized weapons (including rangefinder).
-	{
-		if (_x != "" && !(_x in _authorizedWeapons)) then {
-			// Exception: Outside the base it's allowed to use some default weapons.
-			// if (_inBase || !(_x in (missionNamespace getVariable format["VA_Weapons%1",_side]))) then {
-			if (_inBase) then {
-				_weaponName = getText (configFile >> "CfgWeapons" >> format["%1", _x] >> "displayName");
-				systemChat format["This role is not allowed to use weapon: %1.", _weaponName];
-				player removeWeapon _x;
+		// Check if player is using unauthorized weapons (including rangefinder).
+		{
+			if (_x != "" && !(_x in _authorizedWeapons)) then {
+				// Exception: Outside the base it's allowed to use some default weapons.
+				// if (_inBase || !(_x in (missionNamespace getVariable format["VA_Weapons%1",_side]))) then {
+				if (_inBase) then {
+					_weaponName = getText (configFile >> "CfgWeapons" >> format["%1", _x] >> "displayName");
+					systemChat format["This role is not allowed to use weapon: %1.", _weaponName];
+					player removeWeapon _x;
+				};
 			};
-		};
-	} forEach weapons player;
+		} forEach weapons player;
 
-	// Check if player is using an unauthorized backpack.
-	_backpack = backpack player;
-	if (_backpack != "" && !(_backpack in _authorizedBackpacks)) then {
-		// Exception: Outside the base it's allowed to use all backpacks.
-		if (_inBase) then {
-			_backpackName = getText (configFile >> "CfgVehicles" >> format["%1", _backpack] >> "displayName");
-			systemChat format["This role is not allowed to use backpack: %1.", _backpackName];
-			removeBackpack player;
+		// Check if player is using an unauthorized backpack.
+		_backpack = backpack player;
+		if (_backpack != "" && !(_backpack in _authorizedBackpacks)) then {
+			// Exception: Outside the base it's allowed to use all backpacks.
+			if (_inBase) then {
+				_backpackName = getText (configFile >> "CfgVehicles" >> format["%1", _backpack] >> "displayName");
+				systemChat format["This role is not allowed to use backpack: %1.", _backpackName];
+				removeBackpack player;
+			};
 		};
 	};
 };
