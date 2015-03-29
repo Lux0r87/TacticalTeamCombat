@@ -11,6 +11,7 @@
 	#include "Patterns\9_sectors.hpp"
 #endif
 
+TTC_CTI_Sides = [west, resistance];
 
 TTC_CTI_sectors = [
 	["1. Hill 45",				[20681,16202], 40,	35,	0,	true, west,			100, objNull, "", "", TTC_CTI_neighbours_sector1, []],

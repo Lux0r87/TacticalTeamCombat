@@ -7,7 +7,7 @@
 #include "Functions\Sectors\dominanceVariables.hpp"
 
 #define TTC_CTI_timer 10
-#define TTC_CTI_sides [resistance, west, east]
+#define TTC_CTI_allSides [resistance, west, east]
 
 TTC_CTI_sectorNo		= 0;
 TTC_CTI_sectorAreaNo	= 0;
@@ -17,7 +17,7 @@ private [
 	"_find","_sides","_side","_max2","_diff"
 ];
 
-_winner = false;
+_winner = sideUnknown;
 
 // -------------------- Initialization --------------------
 // Get location string
@@ -60,7 +60,7 @@ _location = [] call TTC_CORE_fnc_getLocation;
 [] call TTC_CTI_fnc_updateSectors;
 
 // ---------------------- Game Loop ----------------------
-while {!_winner} do {
+while {_winner == sideUnknown} do {
 	// Iterate over all sectors
 	{
 		// Copy list of units that would activate the trigger.
@@ -104,7 +104,7 @@ while {!_winner} do {
 					_find	= [_counts, _max] call BIS_fnc_arrayFindDeep;
 
 					// Find the side that is currently dominating the sector.
-					_sides	= +TTC_CTI_sides;
+					_sides	= +TTC_CTI_allSides;
 					_side	= _sides select (_find select 0);
 
 					// Remove values from array.
@@ -123,7 +123,7 @@ while {!_winner} do {
 	} forEach TTC_CTI_sectors;
 
 	// Check if one side wins the mission
-	//_winner = [] call TTC_CTI_fnc_;
+	_winner = [] call TTC_CTI_fnc_sideCapturedAllSectors;
 
 	sleep TTC_CTI_timer;
 };
@@ -131,8 +131,13 @@ while {!_winner} do {
 // ------------------------- End -------------------------
 
 
-// Show message
-//[] call TTC_CTI_fnc_;
+// Show message for everyone.
+_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
+<t align='center' size='1.5'>%1 wins</t><br/><br/>
+The mission is over.", _winner];
 
-// End the mission
-//[] call TTC_CTI_fnc_;
+[_message,"TTC_CORE_fnc_hint"] call BIS_fnc_MP;
+
+// End the mission for all players after 10 seconds.
+sleep 10;
+[TTC_CTI_Sides, _winner] call TTC_CORE_fnc_endMissionAll;

@@ -18,6 +18,7 @@ class TTC_CTI_Functions {
 		class canCapture{};
 		class canSee{};
 		class connectedToBase{};
+		class sideCapturedAllSectors{};
 		class updateDominance{};
 		class updateSectors{};
 	};
