@@ -2,16 +2,20 @@
 	Created by Lux0r
 */
 
+
+#include "markerVariables.hpp"
+#include "sectorVariables.hpp"
+
 private ["_sector","_dominanceMax","_name","_side","_dominance","_mrkArea","_mrk","_color"];
 
 _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
 
-_name		= _sector select 0;
-_side		= _sector select 6;
-_dominance	= _sector select 7;
-_mrkArea	= _sector select 9;
-_mrk		= _sector select 10;
+_name		= _sector select TTC_CTI_sector_name;
+_side		= _sector select TTC_CTI_sector_side;
+_dominance	= _sector select TTC_CTI_sector_dominance;
+_mrkArea	= _sector select TTC_CTI_sector_markerArea;
+_mrk		= _sector select TTC_CTI_sector_marker;
 _color		= [_side, true] call BIS_fnc_sideColor;
 
 /*[
@@ -40,7 +44,7 @@ if (_mrkArea != "") then {
 	_mrkArea setMarkerColor _color;
 
 	// Update the sector on the clients.
-	[_sector, _mrkArea, 0.3] call _TTC_CTI_updateSectorClient;
+	[_sector, _mrkArea, TTC_CTI_sectorAreaMarkerAlpha] call _TTC_CTI_updateSectorClient;
 };
 
 // Update marker
@@ -50,5 +54,5 @@ if (_mrk != "") then {
 	_mrk setMarkerText _mrkText;
 
 	// Update the sector on the clients.
-	[_sector, _mrk, 1] call _TTC_CTI_updateSectorClient;
+	[_sector, _mrk, TTC_CTI_sectorMarkerAlpha] call _TTC_CTI_updateSectorClient;
 };

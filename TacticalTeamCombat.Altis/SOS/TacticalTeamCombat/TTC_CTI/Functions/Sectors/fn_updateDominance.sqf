@@ -3,6 +3,7 @@
 */
 
 #include "dominanceVariables.hpp"
+#include "sectorVariables.hpp"
 
 // Don't add "_sector" to private variables. This function modifies the original variable.
 private ["_side","_diff","_sectorSide","_dominance","_sectorName","_marker","_message","_respawnPos"];
@@ -11,8 +12,8 @@ _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, east, [east]] call BIS_fnc_param;
 _diff	= [_this, 2, 0, [0]] call BIS_fnc_param;
 
-_sectorSide	= _sector select 6;
-_dominance	= _sector select 7;
+_sectorSide	= _sector select TTC_CTI_sector_side;
+_dominance	= _sector select TTC_CTI_sector_dominance;
 
 
 _TTC_CTI_update = {
@@ -22,7 +23,7 @@ _TTC_CTI_update = {
 	_dominance	= _this select 1;
 
 	// Update the dominance variable.
-	_sector set [7, _dominance];
+	_sector set [TTC_CTI_sector_dominance, _dominance];
 
 	// Update all sectors.
 	[] call TTC_CTI_fnc_updateSectors;
@@ -36,23 +37,23 @@ if (_sectorSide != _side) then {
 
 		// Remove respawn position, if dominance is too low.
 		if (_dominance < TTC_CTI_dominanceSpawn) then {
-			_respawnPos	= _sector select 12;
+			_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
 			_respawnPos call BIS_fnc_removeRespawnPosition;
 		};
 
 		// Sector captured by attacking side:
 		if (_dominance == TTC_CTI_dominanceMin) then {
-			_sectorName	= _sector select 0;
-			_marker		= _sector select 10;
-			_respawnPos	= _sector select 12;
+			_sectorName	= _sector select TTC_CTI_sector_name;
+			_marker		= _sector select TTC_CTI_sector_marker;
+			_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
 
 			// Set dominance to maximum + change side of sector.
 			_dominance = TTC_CTI_dominanceMax;
-			_sector set [6, _side];
+			_sector set [TTC_CTI_sector_side, _side];
 
 			// Create respawn position, for the team that captured the sector.
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
-			_sector set [12, _respawnPos];
+			_sector set [TTC_CTI_sector_respawnPos, _respawnPos];
 
 			// Show message for everyone.
 			_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
@@ -72,9 +73,9 @@ if (_sectorSide != _side) then {
 
 		// (Re)create respawn position for defenders, if dominance is high enough.
 		if (_dominance >= TTC_CTI_dominanceSpawn) then {
-			_marker		= _sector select 10;
+			_marker		= _sector select TTC_CTI_sector_marker;
 			_respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
-			_sector set [12, _respawnPos];
+			_sector set [TTC_CTI_sector_respawnPos, _respawnPos];
 		};
 
 		// Update the sector.

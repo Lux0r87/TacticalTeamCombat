@@ -6,12 +6,14 @@
 */
 
 
+#include "sectorVariables.hpp"
+
 private ["_sector","_side","_neighbours","_canCapture","_base","_neighbour","_neighbourSide","_return","_connected"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, east, [east]] call BIS_fnc_param;
 
-_neighbours	= _sector select 11;
+_neighbours	= _sector select TTC_CTI_sector_neighbours;
 _canCapture	= false;
 _base		= format["base%1", _side];
 
@@ -28,7 +30,7 @@ if (_base in _neighbours) exitWith {
 	// Skip bases (strings).
 	if (typeName _x == "SCALAR") then {
 		_neighbour		= TTC_CTI_sectors select _x;
-		_neighbourSide	= _neighbour select 6;
+		_neighbourSide	= _neighbour select TTC_CTI_sector_side;
 
 		// Check if the given side controls this neighbour sector.
 		if (_side == _neighbourSide) then {

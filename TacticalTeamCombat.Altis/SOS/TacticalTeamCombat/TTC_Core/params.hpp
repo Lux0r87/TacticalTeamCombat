@@ -8,6 +8,13 @@ class TTC_CORE_saveTime {
 class TTC_CORE_locations {
 	title		= "Tactical Team Combat: Location for the mission.";
 	values[]	= {-1, 0, 1};
-	texts[]		= {"Random (Default)", "Paros Kalochori", "Athanos_Test"};
+	texts[]		= {"Random (Default)", "Paros - Kalochori"};
 	default		= 0;
+};
+
+class TTC_CORE_sectorPatterns {
+	title		= "Tactical Team Combat: Location for the mission.";
+	values[]	= {-1, 0, 1};
+	texts[]		= {"Random (Default)", "7 Sectors", "9 Sectors"};
+	default		= -1;
 };
