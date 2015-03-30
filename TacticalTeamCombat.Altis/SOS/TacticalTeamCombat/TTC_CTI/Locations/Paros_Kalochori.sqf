@@ -2,7 +2,7 @@
 	Defines the position, direction and size of all sectors (triggers) at this location.
 	
 	The sectors are defined with the following pattern:
-	[<name>, [<posX>,<poY>], <axisA>, <axisB>, <direction>, <rectangle>, <side>, <dominance>, <trigger>, <markerArea>, <marker>, <neighbours>, <respawnPos>]
+	[<name>, [<posX>,<poY>], <axisA>, <axisB>, <direction>, <rectangle>, <side>, <dominance>, <trigger>, <markerArea>, <marker>, <neighbours>, <respawnPos>, <respawnDir>]
 	
 	Created by Lux0r
 */
@@ -14,13 +14,13 @@
 TTC_CTI_Sides = [west, resistance];
 
 TTC_CTI_sectors = [
-	["1. Hill 45",				[20681,16202], 40,	35,	0,	true, west,			100, objNull, "", "", TTC_CTI_neighbours_sector1, []],
-	["2. Paros (west)",			[20886,16899], 30,	30,	10, true, east,			100, objNull, "", "", TTC_CTI_neighbours_sector2, []],
-	["3. Kalochori (west)",		[21209,16355], 25,	25,	65, true, east,			100, objNull, "", "", TTC_CTI_neighbours_sector3, []],
-	["4. Paros (north)",		[20818,17057], 20,	20,	23, true, east,			100, objNull, "", "", TTC_CTI_neighbours_sector4, []],
-	["5. Mobile Sector",		[21204,16661], 50,	50,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector5, []],
-	["6. Kalochori (south)",	[21432,16203], 20,	20,	40,	true, east,			100, objNull, "", "", TTC_CTI_neighbours_sector6, []],
-	["7. Paros (east)",			[20989,17050], 30,	30,	35,	true, east,			100, objNull, "", "", TTC_CTI_neighbours_sector7, []],
-	["8. Kalochori (east)",		[21461,16418], 25,	25,	50,	true, east,			100, objNull, "", "", TTC_CTI_neighbours_sector8, []],
-	["9. Hill 35",				[22031,17138], 40,	35,	0,	true, resistance,	100, objNull, "", "", TTC_CTI_neighbours_sector9, []]
+	["A",			[20681,16202], 40,	40,	0,	false, west,		100, objNull, "", "", TTC_CTI_neighbours_sector1, [], 25],
+	["B",			[20887,16894], 30,	30,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector2, [], 90],
+	["C",			[21225,16358], 25,	25,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector3, [], 65],
+	["D",			[20644,17235], 50,	50,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector4, [], 270],
+	["E - Mobile",	[21204,16661], 75,	75,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector5, [], 320],
+	["F",			[21430,16209], 15,	15,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector6, [], 140],
+	["G",			[20992,17049], 30,	30,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector7, [], 220],
+	["H",			[21466,16424], 25,	25,	0,	false, east,		100, objNull, "", "", TTC_CTI_neighbours_sector8, [], 245],
+	["I",			[22031,17138], 40,	40,	0,	false, resistance,	100, objNull, "", "", TTC_CTI_neighbours_sector9, [], 230]
 ];

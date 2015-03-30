@@ -22,12 +22,13 @@ _color		= [_side, true] call BIS_fnc_sideColor;
 
 _TTC_CTI_updateSectorClient = {
 	private ["_sector","_mrk","_canSee","_alpha"];
-	_sector = _this select 0;
-	_mrk	= _this select 1;
+	_sector		= _this select 0;
+	_mrk		= _this select 1;
+	_alphaMax	= _this select 2;
 
 	{
 		_canSee = [_sector, _x] call TTC_CTI_fnc_canSee;
-		_alpha	= if (_canSee) then {1;} else {0;};
+		_alpha	= if (_canSee) then {_alphaMax;} else {0;};
 
 		// Update the sector markers on the clients.
 		[[_mrk, _alpha], "TTC_CORE_fnc_setMarkerAlphaLocal", _x, false] call BIS_fnc_MP;
@@ -39,7 +40,7 @@ if (_mrkArea != "") then {
 	_mrkArea setMarkerColor _color;
 
 	// Update the sector on the clients.
-	[_sector, _mrkArea] call _TTC_CTI_updateSectorClient;
+	[_sector, _mrkArea, 0.3] call _TTC_CTI_updateSectorClient;
 };
 
 // Update marker
@@ -49,5 +50,5 @@ if (_mrk != "") then {
 	_mrk setMarkerText _mrkText;
 
 	// Update the sector on the clients.
-	[_sector, _mrk] call _TTC_CTI_updateSectorClient;
+	[_sector, _mrk, 1] call _TTC_CTI_updateSectorClient;
 };

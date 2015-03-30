@@ -51,7 +51,7 @@ class Mission
 	randomSeed=8687785;
 	class Intel
 	{
-		briefingName="Tactical Team Combat v0.0.1 (Alpha)";
+		briefingName="Tactical Team Combat v0.1.0 (Alpha)";
 		resistanceWest=0;
 		startWeather=0.29999998;
 		startWind=0.099999994;
