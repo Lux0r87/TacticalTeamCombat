@@ -21,6 +21,9 @@ if (isServer) then {
 
 // Client-side.
 if (hasInterface) then {
+
+	[] spawn TTC_CORE_fnc_initPlayer;
+
 	"TTC_saveTime" addPublicVariableEventHandler {
 		_value = _this select 1;
 
