@@ -5,6 +5,7 @@
 
 // --------------- Definitions/Declarations ---------------
 #include "Functions\Sectors\dominanceVariables.hpp"
+#include "Functions\Sectors\sectorVariables.hpp"
 
 #define TTC_CTI_timer 10
 #define TTC_CTI_allSides [resistance, west, east]
@@ -13,7 +14,7 @@ TTC_CTI_sectorNo		= 0;
 TTC_CTI_sectorAreaNo	= 0;
 
 private [
-	"_winner","_location","_trigger","_list","_guer","_west","_east","_guerCount","_westCount","_eastCount","_counts","_maxDiff","_max",
+	"_winner","_location","_sectorPattern","_trigger","_list","_guer","_west","_east","_guerCount","_westCount","_eastCount","_counts","_maxDiff","_max",
 	"_find","_sides","_side","_max2","_diff"
 ];
 
@@ -23,24 +24,27 @@ _winner = sideUnknown;
 // Get location string
 _location = [] call TTC_CORE_fnc_getLocation;
 
+// Get sector pattern string
+_sectorPattern = [] call TTC_CORE_fnc_getSectorPattern;
+
 // Compile configuration file
-[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_CTI\Locations\%1.sqf", _location];
+[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_CTI\Locations\%1\%2.sqf", _sectorPattern, _location];
 
 // create triggers + markers
 {
 	private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_trigger","_shape","_mrk"];
-	_name		= _x select 0;
-	_pos		= _x select 1;
-	_xrad		= _x select 2;
-	_yrad		= _x select 3;
-	_dir		= _x select 4;
-	_rectangle	= _x select 5;
-	_side		= _x select 6;
-	_dominance	= _x select 7;
+	_name		= _x select TTC_CTI_sector_name;
+	_pos		= _x select TTC_CTI_sector_position;
+	_xrad		= _x select TTC_CTI_sector_axisA;
+	_yrad		= _x select TTC_CTI_sector_axisB;
+	_dir		= _x select TTC_CTI_sector_direction;
+	_rectangle	= _x select TTC_CTI_sector_rectangle;
+	_side		= _x select TTC_CTI_sector_side;
+	_dominance	= _x select TTC_CTI_sector_dominance;
 
 	// Create trigger
 	_trigger = [_name, _pos, _xrad, _yrad, _dir, _rectangle] call TTC_CORE_fnc_createTrigger;
-	_x set [8, _trigger];
+	_x set [TTC_CTI_sector_trigger, _trigger];
 
 	// Create area marker
 	_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
@@ -52,7 +56,7 @@ _location = [] call TTC_CORE_fnc_getLocation;
 	// Create respawn position, if dominance is high enough.
 	if (_dominance > TTC_CTI_dominanceSpawn) then {
 		_respawnPos = [_side, _mrk] call BIS_fnc_addRespawnPosition;
-		_x set [12, _respawnPos];
+		_x set [TTC_CTI_sector_respawnPos, _respawnPos];
 	};
 } forEach TTC_CTI_sectors;
 
@@ -64,7 +68,7 @@ while {_winner == sideUnknown} do {
 	// Iterate over all sectors
 	{
 		// Copy list of units that would activate the trigger.
-		_trigger = _x select 8;
+		_trigger = _x select TTC_CTI_sector_trigger;
 		_list = +(list _trigger);
 
 		if (!isNil "_list") then {

@@ -10,6 +10,7 @@ class TTC_Core_Functions {
 		class getMrkTypePrefix{};
 		class getPrefix{};
 		class getRoleNameById{};
+		class getSectorPattern{};
 		class hint{};
 		class log{};
 		class runTimer{};

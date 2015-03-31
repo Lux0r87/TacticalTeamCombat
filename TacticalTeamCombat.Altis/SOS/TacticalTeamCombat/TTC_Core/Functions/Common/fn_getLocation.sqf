@@ -5,7 +5,7 @@
 */
 
 
-#define TTC_CORE_availableLocations ["Paros_Kalochori", "Athanos_Test"]
+#define TTC_CORE_availableLocations ["Paros_Kalochori"]
 
 private ["_index"];
 

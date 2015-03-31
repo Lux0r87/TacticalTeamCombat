@@ -5,14 +5,16 @@
 */
 
 
+#include "sectorVariables.hpp"
+
 private ["_sector","_blacklist","_sectorSide","_sectorID","_neighbours","_base","_return","_neighbour","_neighbourSide"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _blacklist	= [_this, 1, [], [[]]] call BIS_fnc_param;
-_sectorSide	= [_this, 2, (_sector select 6), [east]] call BIS_fnc_param;
+_sectorSide	= [_this, 2, (_sector select TTC_CTI_sector_side), [east]] call BIS_fnc_param;
 _sectorID	= [_this, 3, -100, [0]] call BIS_fnc_param;
 
-_neighbours	= _sector select 11;
+_neighbours	= _sector select TTC_CTI_sector_neighbours;
 
 
 // Get sectorID if undefined.
@@ -38,7 +40,7 @@ if (_base in _neighbours) exitWith {
 	// Skip bases (strings) and already checked sectors
 	if ((typeName _x == "SCALAR") && !(_x in _blacklist)) then {
 		_neighbour		= TTC_CTI_sectors select _x;
-		_neighbourSide	= _neighbour select 6;
+		_neighbourSide	= _neighbour select TTC_CTI_sector_side;
 
 		// Check if the neighbour sector belong to the same side.
 		if (_sectorSide == _neighbourSide) then {
