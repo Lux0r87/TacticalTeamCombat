@@ -126,8 +126,8 @@ class TTC_RscStructuredText {
     colorBackground[] = COLOR_TRANSPARENT;
     size = "0.04 / (getResolution select 5)";
  
-    h = GUI_GRID_H;
-    w = GUI_GRID_W;
+    h = 0.05;
+    w = 0.10;
 
     text = "";
     

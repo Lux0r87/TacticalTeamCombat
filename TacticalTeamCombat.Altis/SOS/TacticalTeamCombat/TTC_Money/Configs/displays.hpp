@@ -19,14 +19,13 @@ class RscTitles {
 				style	= ST_RIGHT;
 				size	= "0.03 / (getResolution select 5)";
 				
-				x = 52		* GUI_GRID_W + GUI_GRID_X;
-				y = 33.6	* GUI_GRID_H + GUI_GRID_Y;
-				w = 16		* GUI_GRID_W;
-				h = 1.2		* GUI_GRID_H;
-				
+				x = safezoneX + safezoneW - 0.26;
+				y = safezoneY + safezoneH - 0.07;
+				w = 0.25;
+				h = 0.06;
+								
 				class Attributes {
-					font	= "PuristaSemiBold";
-					align	= "right";
+					align		= "right";
 				};
             };
         
