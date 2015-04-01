@@ -15,6 +15,7 @@ class TTC_CTI_Functions {
 
 	class Sectors {
 		file = "SOS\TacticalTeamCombat\TTC_CTI\Functions\Sectors";
+		class addRespawnPositions{};
 		class canCapture{};
 		class canSee{};
 		class connectedToBase{};

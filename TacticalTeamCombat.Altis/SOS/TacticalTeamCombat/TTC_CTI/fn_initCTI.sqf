@@ -32,15 +32,13 @@ _sectorPattern = [] call TTC_CORE_fnc_getSectorPattern;
 
 // create triggers + markers
 {
-	private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_trigger","_shape","_mrk"];
+	private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_trigger","_shape","_mrk"];
 	_name		= _x select TTC_CTI_sector_name;
 	_pos		= _x select TTC_CTI_sector_position;
 	_xrad		= _x select TTC_CTI_sector_axisA;
 	_yrad		= _x select TTC_CTI_sector_axisB;
 	_dir		= _x select TTC_CTI_sector_direction;
 	_rectangle	= _x select TTC_CTI_sector_rectangle;
-	_side		= _x select TTC_CTI_sector_side;
-	_dominance	= _x select TTC_CTI_sector_dominance;
 
 	// Create trigger
 	_trigger = [_name, _pos, _xrad, _yrad, _dir, _rectangle] call TTC_CORE_fnc_createTrigger;
@@ -52,16 +50,20 @@ _sectorPattern = [] call TTC_CORE_fnc_getSectorPattern;
 
 	// Create marker
 	_mrk = [_x, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
-
-	// Create respawn position, if dominance is high enough.
-	if (_dominance > TTC_CTI_dominanceSpawn) then {
-		_respawnPos = [_side, _mrk] call BIS_fnc_addRespawnPosition;
-		_x set [TTC_CTI_sector_respawnPos, _respawnPos];
-	};
 } forEach TTC_CTI_sectors;
 
 // Update the sector markers, to set the visibility for the different sides.
 [] call TTC_CTI_fnc_updateSectors;
+
+// Add respawn positions to the sectors, after the save time is over.
+[] spawn {
+	waitUntil {
+		sleep 1;
+		TTC_saveTime <= 0
+	};
+
+	[] call TTC_CTI_fnc_addRespawnPositions;
+};
 
 // ---------------------- Game Loop ----------------------
 while {_winner == sideUnknown} do {
