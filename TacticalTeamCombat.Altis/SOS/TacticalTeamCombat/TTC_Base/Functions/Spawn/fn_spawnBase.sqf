@@ -48,7 +48,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	_dome setVariable ['bis_disabled_Door_2',1,true];
 
 	// Wait before unlocking the doors
-	sleep TTC_saveTime;
+	sleep TTC_safetyTime;
 	_dome setVariable ['bis_disabled_Door_1',0,true];
 	_dome setVariable ['bis_disabled_Door_2',0,true];
 

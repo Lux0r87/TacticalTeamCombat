@@ -3,8 +3,8 @@
 */
 
 
-if (isNil "TTC_saveTime") then {
-	TTC_saveTime = ["TTC_CORE_saveTime", 300] call BIS_fnc_getParamValue;
+if (isNil "TTC_safetyTime") then {
+	TTC_safetyTime = ["TTC_CORE_safetyTime", 300] call BIS_fnc_getParamValue;
 };
 
 // Server-side.
@@ -24,7 +24,7 @@ if (hasInterface) then {
 
 	[] spawn TTC_CORE_fnc_initPlayer;
 
-	"TTC_saveTime" addPublicVariableEventHandler {
+	"TTC_safetyTime" addPublicVariableEventHandler {
 		_value = _this select 1;
 
 		if (_value > 0) then {

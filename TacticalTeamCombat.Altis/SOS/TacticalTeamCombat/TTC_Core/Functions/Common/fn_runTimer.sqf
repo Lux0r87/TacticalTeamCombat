@@ -5,12 +5,12 @@
 */
 
 
-if (isNil "TTC_saveTime") then {
-	TTC_saveTime = ["TTC_CORE_saveTime", 300] call BIS_fnc_getParamValue;
+if (isNil "TTC_safetyTime") then {
+	TTC_safetyTime = ["TTC_CORE_safetyTime", 300] call BIS_fnc_getParamValue;
 };
 
-while {TTC_saveTime > 0} do {
+while {TTC_safetyTime > 0} do {
 	sleep 1;
-	TTC_saveTime = TTC_saveTime - 1;
-	publicVariable "TTC_saveTime";
+	TTC_safetyTime = TTC_safetyTime - 1;
+	publicVariable "TTC_safetyTime";
 };

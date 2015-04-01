@@ -16,7 +16,7 @@ class TTC_Core_Functions {
 		class runTimer{};
 		class systemChat{};
 	};
-		
+
 	class Init {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Init";
 		class initPlayer{};

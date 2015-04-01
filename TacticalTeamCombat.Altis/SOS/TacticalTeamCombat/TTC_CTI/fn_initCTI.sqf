@@ -55,11 +55,11 @@ _sectorPattern = [] call TTC_CORE_fnc_getSectorPattern;
 // Update the sector markers, to set the visibility for the different sides.
 [] call TTC_CTI_fnc_updateSectors;
 
-// Add respawn positions to the sectors, after the save time is over.
+// Add respawn positions to the sectors, after the safety time is over.
 [] spawn {
 	waitUntil {
 		sleep 1;
-		TTC_saveTime <= 0
+		TTC_safetyTime <= 0
 	};
 
 	[] call TTC_CTI_fnc_addRespawnPositions;
