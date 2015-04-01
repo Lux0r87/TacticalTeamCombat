@@ -11,6 +11,7 @@ class TTC_CTI_Functions {
 		class createSectorAreaMarker{};
 		class createSectorMarker{};
 		class updateSectorMarkers{};
+		class updateSectorMarkersLocal{};
 	};
 
 	class Sectors {

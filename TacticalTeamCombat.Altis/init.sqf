@@ -28,9 +28,6 @@ if (isServer) then {
 
 // Client-side scripts:
 if (hasInterface) then {
-	// Show unit markers
-	[] spawn TTC_MAP_fnc_showMarkerForUnits;
-
 	// Initialize jump script.
 	[] execVM "SOS\MiscScripts\jump.sqf";
 

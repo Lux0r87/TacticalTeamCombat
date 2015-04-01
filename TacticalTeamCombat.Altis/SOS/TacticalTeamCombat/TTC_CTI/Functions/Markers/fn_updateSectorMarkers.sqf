@@ -3,56 +3,49 @@
 */
 
 
-#include "markerVariables.hpp"
 #include "sectorVariables.hpp"
 
-private ["_sector","_dominanceMax","_name","_side","_dominance","_mrkArea","_mrk","_color"];
+// Don't add "_sector" to private variables. This function modifies the original variable.
+private ["_dominanceMax","_recalculate","_target","_mrkArea","_mrk","_visibility","_isNull","_sides","_find","_canSee"];
 
 _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
+_recalculate	= [_this, 2, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
+_target			= [_this, 3, ObjNull, [ObjNull]] call BIS_fnc_param;
 
-_name		= _sector select TTC_CTI_sector_name;
-_side		= _sector select TTC_CTI_sector_side;
-_dominance	= _sector select TTC_CTI_sector_dominance;
 _mrkArea	= _sector select TTC_CTI_sector_markerArea;
 _mrk		= _sector select TTC_CTI_sector_marker;
-_color		= [_side, true] call BIS_fnc_sideColor;
+_visibility	= _sector select TTC_CTI_sector_visibility;
+
+_isNull		= isNull _target;
+_sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_Sides};
 
 /*[
-	["TTC_CTI: updateSectorMarkers:"], ["_sector = %1", _sector], ["_dominanceMax = %1", _dominanceMax], ["_name = %1", _name], ["_side = %1", _side],
-	["_dominance = %1", _dominance], ["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_color = %1", _color]
+	["TTC_CTI: updateSectorMarkers:"], ["_sector = %1", _sector], ["_dominanceMax = %1", _dominanceMax], ["_target = %1", _target], ["_recalculate = %1", _recalculate],
+	["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_isNull = %1", _isNull], ["_sides = %1", _sides]
 ] call TTC_CORE_fnc_log;*/
 
 
-_TTC_CTI_updateSectorClient = {
-	private ["_sector","_mrk","_canSee","_alpha"];
-	_sector		= _this select 0;
-	_mrk		= _this select 1;
-	_alphaMax	= _this select 2;
+{
+	if (_isNull) then {
+		_target = _x;
+	};
 
-	{
+	_find = ([TTC_CTI_Sides, _x] call BIS_fnc_arrayFindDeep) select 0;
+
+	if (_recalculate) then {
 		_canSee = [_sector, _x] call TTC_CTI_fnc_canSee;
-		_alpha	= if (_canSee) then {_alphaMax;} else {0;};
+		_visibility set [_find, _canSee];
+		_sector set [TTC_CTI_sector_visibility, _visibility];
+	} else {
+		_canSee = _visibility select _find;
+	};
 
-		// Update the sector markers on the clients.
-		[[_mrk, _alpha], "TTC_CORE_fnc_setMarkerAlphaLocal", _x, false] call BIS_fnc_MP;
-	} forEach [west, east, resistance];
-};
-
-// Update area marker
-if (_mrkArea != "") then {
-	_mrkArea setMarkerColor _color;
-
-	// Update the sector on the clients.
-	[_sector, _mrkArea, TTC_CTI_sectorAreaMarkerAlpha] call _TTC_CTI_updateSectorClient;
-};
-
-// Update marker
-if (_mrk != "") then {
-	_mrk setMarkerColor _color;
-	_mrkText = format[" %1 - %2%3", _name, (_dominance/_dominanceMax)*100, "%"];
-	_mrk setMarkerText _mrkText;
-
-	// Update the sector on the clients.
-	[_sector, _mrk, TTC_CTI_sectorMarkerAlpha] call _TTC_CTI_updateSectorClient;
-};
+	if (_canSee) then {
+		[[_sector, _dominanceMax], "TTC_CTI_fnc_updateSectorMarkersLocal", _target, false] call BIS_fnc_MP;
+	} else {
+		// Hide the sector markers for this side.
+		[[_mrkArea, 0], "TTC_CORE_fnc_setMarkerAlphaLocal", _target, false] call BIS_fnc_MP;
+		[[_mrk, 0], "TTC_CORE_fnc_setMarkerAlphaLocal", _target, false] call BIS_fnc_MP;
+	};
+} forEach _sides;

@@ -17,6 +17,10 @@ _neighbours	= _sector select TTC_CTI_sector_neighbours;
 _canCapture	= false;
 _base		= format["base%1", _side];
 
+/*[
+	["TTC_CTI: canCapture:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_neighbours = %1", _neighbours], ["_base = %1", _base]
+] call TTC_CORE_fnc_log;*/
+
 
 // Return true, if one of the neighbours is the base of this side.
 if (_base in _neighbours) exitWith {

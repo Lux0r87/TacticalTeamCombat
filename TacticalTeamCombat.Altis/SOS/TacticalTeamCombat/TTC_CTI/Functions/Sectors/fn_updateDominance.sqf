@@ -18,22 +18,24 @@ _dominance	= _sector select TTC_CTI_sector_dominance;
 
 _TTC_CTI_update = {
 	// Don't add "_sector" to private variables. This function modifies the original variable.
-	private ["_dominance"];
-	_sector		= _this select 0;
-	_dominance	= _this select 1;
+	private ["_dominance","_recalculate"];
+	_sector			= _this select 0;
+	_dominance		= _this select 1;
+	_recalculate	= _this select 2;
 
 	// Update the dominance variable.
 	_sector set [TTC_CTI_sector_dominance, _dominance];
 
-	// Update all sectors.
-	[] call TTC_CTI_fnc_updateSectors;
+	// Update the sector markers.
+	[_sector, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
 };
 
 // The attacking side is capturing the sector:
 if (_sectorSide != _side) then {
 	// Check if the attacking side can capture this sector.
 	if ([_sector, _side] call TTC_CTI_fnc_canCapture) then {
-		_dominance = ((_dominance - _diff) max TTC_CTI_dominanceMin);
+		_recalculate	= false;
+		_dominance		= ((_dominance - _diff) max TTC_CTI_dominanceMin);
 
 		// Remove respawn position, if dominance is too low.
 		if (_dominance < TTC_CTI_dominanceSpawn) then {
@@ -55,6 +57,12 @@ if (_sectorSide != _side) then {
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
 			_sector set [TTC_CTI_sector_respawnPos, _respawnPos];
 
+			// Update the sector markers for the neighbours.
+			_recalculate = true;
+			{
+				[_x, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
+			} forEach TTC_CTI_sectors;
+
 			// Show message for everyone.
 			_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
 			<t align='center' size='1.5'>%1</t><br/><br/>
@@ -64,7 +72,7 @@ if (_sectorSide != _side) then {
 		};
 
 		// Update the sector.
-		[_sector, _dominance] call _TTC_CTI_update;
+		[_sector, _dominance, _recalculate] call _TTC_CTI_update;
 	};
 } else {	// The current side is defending the sector:
 	// Check if dominance is not at maximum already.
@@ -79,6 +87,6 @@ if (_sectorSide != _side) then {
 		};
 
 		// Update the sector.
-		[_sector, _dominance] call _TTC_CTI_update;
+		[_sector, _dominance, false] call _TTC_CTI_update;
 	};
 };
