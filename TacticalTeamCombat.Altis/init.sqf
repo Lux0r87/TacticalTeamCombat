@@ -67,19 +67,3 @@ if (hasInterface) then {
 
 // Initialize Mag Repack.
 [] execVM "outlw_magRepack\MagRepack_init_sv.sqf";
-
-// Start TPWCAS.
-_suppression_enabled	= ["Suppression_Enabled", 1] call BIS_fnc_getParamValue;
-tpwcas_mode				= ["Suppression_Mode", 2] call BIS_fnc_getParamValue;
-
-if (_suppression_enabled == 1) then {
-	diag_log format ["%1 - starting TPWCAS_A3 with tpwcas_mode [%2]", time, tpwcas_mode];
-	[tpwcas_mode] execVM "tpwcas\tpwcas_script_init.sqf";
-
-	// enable AI Suppression statistics logging (once every 60 seconds)
-	if (tpwcas_mode == 2 || isServer) then {
-		waitUntil {!(isNil "bdetect_init_done")};
-
-		[] spawn tpwcas_fnc_log_benchmark;
-	};
-};
