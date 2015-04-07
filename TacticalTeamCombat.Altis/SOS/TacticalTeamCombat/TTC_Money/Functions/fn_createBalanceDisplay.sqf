@@ -12,16 +12,14 @@ if (isNil {TTC_MONEY_balance}) exitWith {
 
 1000 cutRsc ["TTC_MONEY_BalanceDisplay", "PLAIN"];
 
-_balance = TTC_MONEY_balance;
 _display = uiNamespace getVariable "TTC_MONEY_balanceDisplay";
 _control = _display displayCtrl 1001;
 
 while {true} do {
-	
 	_balance = TTC_MONEY_balance;
-	_text    = parseText format["<t>%1 %2</t>", _balance, "BTC"];
+	_text    = parseText format["<t>%1</t><img image='SOS\TacticalTeamCombat\TTC_Money\Pics\Bitcoin.paa' size='0.8'/>", _balance];
 	_control ctrlSetStructuredText _text;
-	
+
 	// Wait until the balance changes
 	waitUntil{TTC_MONEY_balance != _balance};
 	uiSleep 1;
