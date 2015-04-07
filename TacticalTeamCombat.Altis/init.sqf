@@ -11,7 +11,7 @@ initGlobalVariables = [] execVM "SOS\MiscScripts\initGlobalVariables.sqf";
 [] execVM "Briefing.sqf";
 
 // Initialize Tactical Team Combat
-[] execVM "SOS\TacticalTeamCombat\initTTC.sqf";
+[] spawn TTC_fnc_initTTC;
 
 // Server-side scripts:
 if (isServer) then {
