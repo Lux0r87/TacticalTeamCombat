@@ -17,7 +17,7 @@ _control = _display displayCtrl 1001;
 
 while {true} do {
 	_balance = TTC_MONEY_balance;
-	_text    = parseText format["<t>%1</t><img image='SOS\TacticalTeamCombat\TTC_Money\Pics\Bitcoin.paa' size='0.8'/>", _balance];
+	_text    = parseText format["<t>%1</t><img image='SOS\TacticalTeamCombat\TTC_Money\Pics\Bitcoin.paa' size='0.9'/>", _balance];
 	_control ctrlSetStructuredText _text;
 
 	// Wait until the balance changes
