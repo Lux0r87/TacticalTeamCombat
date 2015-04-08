@@ -6,7 +6,7 @@
 #include "sectorVariables.hpp"
 
 // Don't add "_sector" to private variables. This function modifies the original variable.
-private ["_side","_diff","_sectorSide","_dominance","_sectorName","_marker","_message","_respawnPos"];
+private ["_side","_diff","_sectorSide","_dominance","_recalculate","_respawnPos","_sectorName","_marker","_patrol","_message"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, east, [east]] call BIS_fnc_param;
@@ -28,6 +28,13 @@ _TTC_CTI_update = {
 
 	// Update the sector markers.
 	[_sector, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
+
+	if (_recalculate) then {
+		// Update the sector markers for the neighbours.
+		{
+			[_x, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
+		} forEach TTC_CTI_sectors;
+	};
 };
 
 // The attacking side is capturing the sector:
@@ -45,9 +52,10 @@ if (_sectorSide != _side) then {
 
 		// Sector captured by attacking side:
 		if (_dominance == TTC_CTI_dominanceMin) then {
-			_sectorName	= _sector select TTC_CTI_sector_name;
-			_marker		= _sector select TTC_CTI_sector_marker;
-			_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
+			_recalculate	= true;
+			_sectorName		= _sector select TTC_CTI_sector_name;
+			_marker			= _sector select TTC_CTI_sector_marker;
+			_respawnPos		= _sector select TTC_CTI_sector_respawnPos;
 
 			// Set dominance to maximum + change side of sector.
 			_dominance = TTC_CTI_dominanceMax;
@@ -57,11 +65,8 @@ if (_sectorSide != _side) then {
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
 			_sector set [TTC_CTI_sector_respawnPos, _respawnPos];
 
-			// Update the sector markers for the neighbours.
-			_recalculate = true;
-			{
-				[_x, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
-			} forEach TTC_CTI_sectors;
+			// Create sector patrol.
+			_patrol = [_sector] call TTC_CTI_fnc_createSectorPatrol;
 
 			// Show message for everyone.
 			_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>

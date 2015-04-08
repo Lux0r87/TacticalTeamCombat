@@ -3,6 +3,8 @@ class TTC_Core_Functions {
 
 	class Common {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Common";
+		class addToBlacklist{};
+		class addWaypoint{};
 		class createTrigger{};
 		class endMission{};
 		class endMissionAll{};
@@ -15,6 +17,7 @@ class TTC_Core_Functions {
 		class log{};
 		class runTimer{};
 		class systemChat{};
+		class taskPatrol{};
 	};
 
 	class Init {

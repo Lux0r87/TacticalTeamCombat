@@ -25,3 +25,4 @@
 #define TTC_CTI_sector_respawnPos 12
 #define TTC_CTI_sector_respawnDir 13
 #define TTC_CTI_sector_visibility 14
+#define TTC_CTI_sector_patrol 15

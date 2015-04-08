@@ -42,9 +42,9 @@ if (isServer) then {
 	// Compile configuration file
 	[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_CTI\Locations\%1\%2.sqf", _sectorPattern, _location];
 
-	// create triggers + markers
+	// Initialize the sectors (create triggers, markers, patrols)
 	{
-		private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_visibility","_trigger","_shape","_mrk","_canSee"];
+		private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_visibility","_trigger","_shape","_mrk","_patrol","_canSee"];
 		_sector		= _x;
 		_name		= _sector select TTC_CTI_sector_name;
 		_pos		= _sector select TTC_CTI_sector_position;
@@ -65,6 +65,10 @@ if (isServer) then {
 		// Create marker
 		_mrk = [_sector, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
 
+		// Create sector patrol.
+		_patrol = [_sector] call TTC_CTI_fnc_createSectorPatrol;
+
+		// Set the visibility of this sector for each side.
 		{
 			_canSee = [_sector, _x] call TTC_CTI_fnc_canSee;
 			_visibility set [_forEachIndex, _canSee];
