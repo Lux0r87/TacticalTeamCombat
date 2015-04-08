@@ -15,9 +15,8 @@ initGlobalVariables = [] execVM "SOS\MiscScripts\initGlobalVariables.sqf";
 
 // Server-side scripts:
 if (isServer) then {
-	// Initialize time of day (chosen in the mission parameters). Default: 14
-	_startingTimeHour = ["TimeOfDay", 17] call BIS_fnc_getParamValue;
-	setDate [2035, 7, 6, _startingTimeHour, 0];
+	// Initialize time of day (chosen in the mission parameters).
+	[] execVM "SOS\Time\setTime.sqf";
 
 	// Set overcast, fog and rain (chosen in the mission parameters).
 	[] execVM "SOS\Weather\setWeather.sqf";
