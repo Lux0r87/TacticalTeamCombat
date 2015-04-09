@@ -18,3 +18,10 @@ class TTC_CORE_sectorPatterns {
 	texts[]		= {"Random (Default)", "7 Sectors", "9 Sectors"};
 	default		= -1;
 };
+
+class TTC_CORE_fatigue {
+	title = "Tactical Team Combat: Fatigue";
+	values[] = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+	texts[] = {"0%","10%","20%","30%","40%","50% (Default)","60%","70%","80%","90%","100%"};
+	default = 50;
+};

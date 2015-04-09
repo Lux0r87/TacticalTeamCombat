@@ -24,6 +24,9 @@ if (hasInterface) then {
 	// Init player.
 	[] spawn TTC_CORE_fnc_initPlayer;
 
+	// Handle the fatigue.
+	[player] call TTC_CORE_fnc_handleFatigue;
+
 	// Show unit markers.
 	[] spawn TTC_MAP_fnc_showMarkerForUnits;
 
