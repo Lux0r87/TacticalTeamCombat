@@ -17,12 +17,12 @@ class TTC_CTI_Functions {
 	class Sectors {
 		file = "SOS\TacticalTeamCombat\TTC_CTI\Functions\Sectors";
 		class addRespawnPositions{};
-		class canCapture{};
-		class canSee{};
-		class connectedToBase{};
+		class canCaptureSector{};
+		class canSeeSector{};
 		class createMobileSector{};
 		class createSectorPatrol{};
 		class getInMobileSector{};
+		class isSectorConnectedToBase{};
 		class mobileSectorIsMoving{};
 		class sideCapturedAllSectors{};
 		class updateDominance{};

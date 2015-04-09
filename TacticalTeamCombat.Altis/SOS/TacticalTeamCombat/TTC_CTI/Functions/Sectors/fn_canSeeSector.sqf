@@ -19,7 +19,7 @@ _canSee		= false;
 _base		= format["base%1", _side];
 
 /*[
-	["TTC_CTI: canSee:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_sectorSide = %1", _sectorSide], ["_neighbours = %1", _neighbours],
+	["TTC_CTI: canSeeSector:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_sectorSide = %1", _sectorSide], ["_neighbours = %1", _neighbours],
 	["_canSee = %1", _canSee], ["_base = %1", _base]
 ] call TTC_CORE_fnc_log;*/
 

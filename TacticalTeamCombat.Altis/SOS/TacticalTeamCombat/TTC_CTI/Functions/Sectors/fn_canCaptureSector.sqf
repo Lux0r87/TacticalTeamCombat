@@ -18,7 +18,7 @@ _canCapture	= false;
 _base		= format["base%1", _side];
 
 /*[
-	["TTC_CTI: canCapture:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_neighbours = %1", _neighbours], ["_base = %1", _base]
+	["TTC_CTI: canCaptureSector:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_neighbours = %1", _neighbours], ["_base = %1", _base]
 ] call TTC_CORE_fnc_log;*/
 
 
@@ -38,7 +38,7 @@ if (_base in _neighbours) exitWith {
 
 		// Check if the given side controls this neighbour sector.
 		if (_side == _neighbourSide) then {
-			_return = [_neighbour] call TTC_CTI_fnc_connectedToBase;
+			_return = [_neighbour] call TTC_CTI_fnc_isSectorConnectedToBase;
 			_connected	= _return select 0;
 
 			// The sector can be captured, if the neighbour sector is connected with the base.

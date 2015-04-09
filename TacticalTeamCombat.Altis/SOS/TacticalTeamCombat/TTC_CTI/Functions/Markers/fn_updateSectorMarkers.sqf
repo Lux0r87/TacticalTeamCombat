@@ -37,7 +37,7 @@ _mrk setMarkerPos _pos;
 	_find = ([TTC_CTI_Sides, _x] call BIS_fnc_arrayFindDeep) select 0;
 
 	if (_recalculate) then {
-		_canSee = [_sector, _x] call TTC_CTI_fnc_canSee;
+		_canSee = [_sector, _x] call TTC_CTI_fnc_canSeeSector;
 		_visibility set [_find, _canSee];
 		_sector set [TTC_CTI_sector_visibility, _visibility];
 	} else {

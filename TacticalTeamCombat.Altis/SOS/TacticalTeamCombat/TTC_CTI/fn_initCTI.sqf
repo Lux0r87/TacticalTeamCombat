@@ -82,7 +82,7 @@ if (isServer) then {
 
 		// Set the visibility of this sector for each side.
 		{
-			_canSee = [_sector, _x] call TTC_CTI_fnc_canSee;
+			_canSee = [_sector, _x] call TTC_CTI_fnc_canSeeSector;
 			_visibility set [_forEachIndex, _canSee];
 			_sector set [TTC_CTI_sector_visibility, _visibility];
 		} forEach TTC_CTI_Sides;

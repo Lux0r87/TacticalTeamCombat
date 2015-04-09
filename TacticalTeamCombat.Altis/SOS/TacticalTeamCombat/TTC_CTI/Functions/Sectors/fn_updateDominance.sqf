@@ -44,7 +44,7 @@ _TTC_CTI_update = {
 // The attacking side is capturing the sector:
 if (_sectorSide != _side) then {
 	// Check if the attacking side can capture this sector.
-	if ([_sector, _side] call TTC_CTI_fnc_canCapture) then {
+	if ([_sector, _side] call TTC_CTI_fnc_canCaptureSector) then {
 		_recalculate	= false;
 		_dominance		= ((_dominance - _diff) max TTC_CTI_dominanceMin);
 		_respawnPos		= _sector select TTC_CTI_sector_respawnPos;
