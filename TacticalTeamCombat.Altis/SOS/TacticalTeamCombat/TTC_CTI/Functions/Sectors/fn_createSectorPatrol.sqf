@@ -26,11 +26,11 @@ _safePos	= [_pos, 0, _radius, 0, 0, 1000, 0] call BIS_fnc_findSafePos;
 
 
 // Delete old patrol
-{
+/*{
 	if (alive _x) then {
 		deleteVehicle _x;
 	};
-} forEach units _patrol;
+} forEach units _patrol;*/
 
 if (count units _patrol <= 0) then {
 	deleteGroup _patrol;

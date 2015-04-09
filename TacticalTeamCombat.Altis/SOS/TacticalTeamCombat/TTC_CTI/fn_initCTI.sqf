@@ -25,10 +25,7 @@ if (isServer) then {
 	TTC_CTI_sectorNo		= 0;
 	TTC_CTI_sectorAreaNo	= 0;
 
-	private [
-		"_winner","_location","_sectorPattern","_trigger","_list","_guer","_west","_east","_guerCount","_westCount","_eastCount","_counts","_maxDiff","_max",
-		"_find","_sides","_side","_max2","_diff"
-	];
+	private ["_winner","_location","_sectorPattern","_trigger","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"];
 
 	_winner = sideUnknown;
 
@@ -117,33 +114,37 @@ if (isServer) then {
 						};
 					} forEach _list;
 
-					_guerCount	= count _guer;
-					_westCount	= count _west;
-					_eastCount	= count _east;
-					_counts		= [_guerCount, _westCount, _eastCount];
-
 					// Is one side dominant in this sector?
+					_counts		= [count _guer, count _west, count _east];
 					_maxDiff	= [_counts] call BIS_fnc_maxDiffArray;
 
 					if (_maxDiff > 0) then {
 						// Find maximum units count and associated index.
 						_max	= [_counts, 1] call BIS_fnc_findExtreme;
-						_find	= [_counts, _max] call BIS_fnc_arrayFindDeep;
+						_find	= ([_counts, _max] call BIS_fnc_arrayFindDeep) select 0;
 
 						// Find the side that is currently dominating the sector.
 						_sides	= +TTC_CTI_allSides;
-						_side	= _sides select (_find select 0);
+						_side	= _sides select _find;
 
-						// Remove values from array.
-						_counts	= _counts - [_max];
+						// Remove values from the arrays.
+						_counts set [_find, -1];
+						_counts	= _counts - [-1];
 						_sides	= _sides - [_side];
 
 						// Find 2nd maximum
 						_max2	= [_counts, 1] call BIS_fnc_findExtreme;
 						_diff	= abs (_max - _max2);
 
+						/*[
+							["TTC_CTI: initCTI:"], ["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
+							["_sides = %1", _sides], ["_side = %1", _side], ["_max2 = %1", _max2], ["_diff = %1", _diff]
+						] call TTC_CORE_fnc_log;*/
+
 						// Update the capture progress
-						[_x, _side, _diff*20] call TTC_CTI_fnc_updateDominance;	// Lux0r: remove *20. test purpose only!
+						if (_diff > 0) then {
+							[_x, _side, _diff*20] call TTC_CTI_fnc_updateDominance;	// Lux0r: remove *20. test purpose only!
+						};
 					};
 				};
 			};

@@ -15,6 +15,10 @@ _diff	= [_this, 2, 0, [0]] call BIS_fnc_param;
 _sectorSide	= _sector select TTC_CTI_sector_side;
 _dominance	= _sector select TTC_CTI_sector_dominance;
 
+/*[
+	["TTC_CTI: updateDominance:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_diff = %1", _diff], ["_sectorSide = %1", _sectorSide], ["_dominance = %1", _dominance]
+] call TTC_CORE_fnc_log;*/
+
 
 _TTC_CTI_update = {
 	// Don't add "_sector" to private variables. This function modifies the original variable.
@@ -43,11 +47,12 @@ if (_sectorSide != _side) then {
 	if ([_sector, _side] call TTC_CTI_fnc_canCapture) then {
 		_recalculate	= false;
 		_dominance		= ((_dominance - _diff) max TTC_CTI_dominanceMin);
+		_respawnPos		= _sector select TTC_CTI_sector_respawnPos;
 
 		// Remove respawn position, if dominance is too low.
-		if (_dominance < TTC_CTI_dominanceSpawn) then {
-			_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
-			_respawnPos call BIS_fnc_removeRespawnPosition;
+		if ((count _respawnPos > 0) && (_dominance < TTC_CTI_dominanceSpawn)) then {
+			_removed = _respawnPos call BIS_fnc_removeRespawnPosition;
+			_sector set [TTC_CTI_sector_respawnPos, []];
 		};
 
 		// Sector captured by attacking side:
@@ -55,7 +60,6 @@ if (_sectorSide != _side) then {
 			_recalculate	= true;
 			_sectorName		= _sector select TTC_CTI_sector_name;
 			_marker			= _sector select TTC_CTI_sector_marker;
-			_respawnPos		= _sector select TTC_CTI_sector_respawnPos;
 
 			// Set dominance to maximum + change side of sector.
 			_dominance = TTC_CTI_dominanceMax;
@@ -82,10 +86,11 @@ if (_sectorSide != _side) then {
 } else {	// The current side is defending the sector:
 	// Check if dominance is not at maximum already.
 	if (_dominance < TTC_CTI_dominanceMax) then {
-		_dominance = ((_dominance + _diff) min TTC_CTI_dominanceMax);
+		_dominance	= ((_dominance + _diff) min TTC_CTI_dominanceMax);
+		_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
 
 		// (Re)create respawn position for defenders, if dominance is high enough.
-		if (_dominance >= TTC_CTI_dominanceSpawn) then {
+		if ((count _respawnPos == 0) && (_dominance >= TTC_CTI_dominanceSpawn)) then {
 			_marker		= _sector select TTC_CTI_sector_marker;
 			_respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
 			_sector set [TTC_CTI_sector_respawnPos, _respawnPos];
