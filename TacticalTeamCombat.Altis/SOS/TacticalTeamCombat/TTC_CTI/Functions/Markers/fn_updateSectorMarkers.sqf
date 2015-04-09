@@ -6,13 +6,14 @@
 #include "sectorVariables.hpp"
 
 // Don't add "_sector" to private variables. This function modifies the original variable.
-private ["_dominanceMax","_recalculate","_target","_mrkArea","_mrk","_visibility","_isNull","_sides","_find","_canSee"];
+private ["_dominanceMax","_recalculate","_target","_pos","_mrkArea","_mrk","_visibility","_isNull","_sides","_find","_canSee"];
 
 _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
 _recalculate	= [_this, 2, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
 _target			= [_this, 3, ObjNull, [ObjNull]] call BIS_fnc_param;
 
+_pos		= _sector select TTC_CTI_sector_position;
 _mrkArea	= _sector select TTC_CTI_sector_markerArea;
 _mrk		= _sector select TTC_CTI_sector_marker;
 _visibility	= _sector select TTC_CTI_sector_visibility;
@@ -21,10 +22,12 @@ _isNull		= isNull _target;
 _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_Sides};
 
 /*[
-	["TTC_CTI: updateSectorMarkers:"], ["_sector = %1", _sector], ["_dominanceMax = %1", _dominanceMax], ["_target = %1", _target], ["_recalculate = %1", _recalculate],
-	["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_isNull = %1", _isNull], ["_sides = %1", _sides]
+	["TTC_CTI: updateSectorMarkers:"], ["_sector = %1", _sector], ["_dominanceMax = %1", _dominanceMax], ["_recalculate = %1", _recalculate], ["_target = %1", _target],
+	["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_visibility = %1", _visibility], ["_isNull = %1", _isNull], ["_sides = %1", _sides]
 ] call TTC_CORE_fnc_log;*/
 
+_mrkArea setMarkerPos _pos;
+_mrk setMarkerPos _pos;
 
 {
 	if (_isNull) then {

@@ -12,7 +12,7 @@ private ["_sector","_side","_sectorSide","_neighbours","_canSee","_base","_neigh
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, east, [east]] call BIS_fnc_param;
-_sectorSide	= [_this, 2, (_sector select 6), [east]] call BIS_fnc_param;
+_sectorSide	= [_this, 2, (_sector select TTC_CTI_sector_side), [east]] call BIS_fnc_param;
 
 _neighbours	= _sector select TTC_CTI_sector_neighbours;
 _canSee		= false;

@@ -13,6 +13,16 @@ if (hasInterface) then {
 
 	// Update all markers locally.
 	[[false, player], "TTC_CTI_fnc_updateSectors", false, false] call BIS_fnc_MP;
+
+	"TTC_CTI_mobileSector_timeOut" addPublicVariableEventHandler {
+		_value = _this select 1;
+
+		if (_value > 0) then {
+			hintSilent format ["%1s left to move the mobile sector.", _value];
+		} else {
+			hintSilent "Mobile sector stopped!";
+		};
+	};
 };
 
 
@@ -64,6 +74,11 @@ if (isServer) then {
 
 		// Create sector patrol.
 		_patrol = [_sector] call TTC_CTI_fnc_createSectorPatrol;
+
+		// Create vehicle for mobile sector(s).
+		if (count _sector >= 17) then {
+			[_sector, _forEachIndex] call TTC_CTI_fnc_createMobileSector;
+		};
 
 		// Set the visibility of this sector for each side.
 		{

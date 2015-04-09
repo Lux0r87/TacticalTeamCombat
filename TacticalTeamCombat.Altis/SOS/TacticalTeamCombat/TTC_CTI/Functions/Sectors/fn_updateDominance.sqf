@@ -6,7 +6,7 @@
 #include "sectorVariables.hpp"
 
 // Don't add "_sector" to private variables. This function modifies the original variable.
-private ["_side","_diff","_sectorSide","_dominance","_recalculate","_respawnPos","_sectorName","_marker","_patrol","_message"];
+private ["_side","_diff","_sectorSide","_dominance","_recalculate","_respawnPos","_removed","_sectorName","_marker","_patrol","_veh","_message"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, east, [east]] call BIS_fnc_param;
@@ -71,6 +71,15 @@ if (_sectorSide != _side) then {
 
 			// Create sector patrol.
 			_patrol = [_sector] call TTC_CTI_fnc_createSectorPatrol;
+
+			// Unlock the vehicle for mobile sector.
+			if (count _sector >= 17) then {
+				_veh = _sector select TTC_CTI_sector_vehicle;
+
+				if (!isNull _veh) then {
+					_veh lock false;
+				};
+			};
 
 			// Show message for everyone.
 			_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
