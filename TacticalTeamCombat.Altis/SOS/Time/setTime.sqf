@@ -5,25 +5,28 @@
 */
 
 
-private ["_timeOfDay"];
+private ["_paramValue","_timeOfDay"];
 
 
 // Run this script only on server-side.
 if (isServer) then {
-	// Initialize time of day (chosen in the mission parameters). Default: Day [6am-5pm]
-	_timeOfDay = ["TimeOfDay", -2] call BIS_fnc_getParamValue;
-	diag_log format["TIME: _timeOfDay = %1", _timeOfDay];
+	_paramValue = ["TimeOfDay", -2] call BIS_fnc_getParamValue;
 
-	if (_timeOfDay < 0) then {
-		// Day [6am-5pm]
-		_timeOfDay = [6, 17] call BIS_fnc_randomInt;
-
-		// Night [6pm-5am]
-		if (_timeOfDay == -1) then {
-			_timeOfDay = (_timeOfDay + 12) mod 24;
+	_timeOfDay = switch (_paramValue) do {
+		case -1: {	// Night [6pm-5am]
+			(([6, 17] call BIS_fnc_randomInt) + 12) mod 24;
+		};
+		case -2: {	// Day [6am-5pm]
+			[6, 17] call BIS_fnc_randomInt;
+		};
+		case -3: {	// Random [0am-11pm]
+			[0, 23] call BIS_fnc_randomInt;
+		};
+		default {	// Use time of day chosen in the mission parameter.
+			_paramValue;
 		};
 	};
 
-	diag_log format["TIME: _timeOfDay = %1", _timeOfDay];
+	diag_log format["TIME: _paramValue = %1, _timeOfDay = %2", _paramValue, _timeOfDay];
 	setDate [2025, 7, 6, _timeOfDay, 0];
 };
