@@ -21,11 +21,14 @@ if (isServer) then {
 
 // Client-side.
 if (hasInterface) then {
-	// Init player.
+	// Initialize player.
 	[] spawn TTC_CORE_fnc_initPlayer;
 
 	// Handle the fatigue.
 	[player] call TTC_CORE_fnc_handleFatigue;
+
+	// Initialize nametags.
+	[] call TTC_CORE_fnc_initNametags;
 
 	// Show unit markers.
 	[] spawn TTC_MAP_fnc_showMarkerForUnits;

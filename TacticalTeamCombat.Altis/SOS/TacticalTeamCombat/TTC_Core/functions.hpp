@@ -35,4 +35,11 @@ class TTC_Core_Functions {
 		class createMarkerLocal{};
 		class setMarkerAlphaLocal{};
 	};
+
+	class Nametags {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Nametags";
+		class draw3D{};
+		class initNametags{};
+		class keyDown{};
+	};
 };
