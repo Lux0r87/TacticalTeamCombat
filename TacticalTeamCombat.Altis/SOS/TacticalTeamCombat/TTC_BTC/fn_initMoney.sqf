@@ -3,11 +3,11 @@
 */
 
 
+// Initialize the money variable..
+TTC_BTC_money = 0;
+
 // Client-side.
 if (hasInterface) then {
-	// Initialize the money variable..
-	TTC_BTC_money = 0;
-
 	// Create the money display (HUD).
 	[] spawn TTC_BTC_fnc_createMoneyDisplay;
 
