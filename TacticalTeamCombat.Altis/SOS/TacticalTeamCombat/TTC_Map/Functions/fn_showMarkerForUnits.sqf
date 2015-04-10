@@ -22,7 +22,7 @@ _showMarkerForUnit = {
 	private["_unit", "_show"];
 	
 	_unit = _this;
-	_show = (side player == side _unit);
+	_show = (side player == side _unit) && (alive _unit);
 	_show;
 };
 
@@ -45,7 +45,7 @@ _getNextMarker = {
 while {_RUN} do {
 		
 	_markerNumber = 0; 
-	_units = allUnits;
+	_units = allUnits - allDead;
 	
 	if (count _units > 0) then {
 	

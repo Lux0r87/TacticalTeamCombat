@@ -40,10 +40,14 @@ _getMarkerAlpha = {
 	private["_alpha"];
 
 	_alpha = 0.5;
-	if (_unit == player) then {
-		_alpha = 1.0;
+	if (isPlayer _unit) then {
+	
+		_alpha = 0.75;
+		if (_unit == player) then {
+			_alpha = 1.0;
+		} ;
 	};
-		
+	
 	_alpha;
 };
 
@@ -58,13 +62,16 @@ _getMarkerSize = {
 
 	_size = switch (_side) do {
 		case west: {
-			[1.0,1.0];
+			[1.0, 1.0];
 		};
 		case east: {
-			[1.1,0.7];
+			[1.1, 0.7];
 		};
 		case independent: {
-			[1.1,0.7];
+			[1.1, 0.7];
+		};
+		default {
+			[0.0, 0.0];
 		};
 	};
 		
