@@ -44,7 +44,7 @@ if (_base in _neighbours) exitWith {
 
 		// Check if the neighbour sector belong to the same side.
 		if (_sectorSide == _neighbourSide) then {
-			_return = [_neighbour, _blacklist, _sectorSide, _x] call TTC_CTI_fnc_isConnectedToBase;
+			_return = [_neighbour, _blacklist, _sectorSide, _x] call TTC_CTI_fnc_isSectorConnectedToBase;
 			_connected	= _return select 0;
 			_blacklist	= _return select 1;
 

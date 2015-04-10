@@ -5,12 +5,17 @@
 #include "dominanceVariables.hpp"
 #include "sectorVariables.hpp"
 
+#define TTC_BTC_multiplier 10
+#define TTC_BTC_captureBonus 1000
+#define TTC_BTC_captureBonusTeam 500
+
 // Don't add "_sector" to private variables. This function modifies the original variable.
-private ["_side","_diff","_sectorSide","_dominance","_recalculate","_respawnPos","_removed","_sectorName","_marker","_patrol","_veh","_message"];
+private ["_side","_diff","_list","_sectorSide","_dominance","_recalculate","_respawnPos","_removed","_sectorName","_marker","_patrol","_veh","_message"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, east, [east]] call BIS_fnc_param;
 _diff	= [_this, 2, 0, [0]] call BIS_fnc_param;
+_list	= [_this, 3, [], [[]]] call BIS_fnc_param;
 
 _sectorSide	= _sector select TTC_CTI_sector_side;
 _dominance	= _sector select TTC_CTI_sector_dominance;
@@ -41,6 +46,17 @@ _TTC_CTI_update = {
 	};
 };
 
+_TTC_CTI_changeMoney = {
+	private ["_message","_amount","_units"];
+	_message	= _this select 0;
+	_amount		= _this select 1;
+	_units		= [_list, {side _x == _side}] call BIS_fnc_conditionalSelect;
+
+	{
+		[[_message, _amount], "TTC_BTC_fnc_changeMoney", _x, false] call BIS_fnc_MP;
+	} forEach _units;
+};
+
 // The attacking side is capturing the sector:
 if (_sectorSide != _side) then {
 	// Check if the attacking side can capture this sector.
@@ -48,6 +64,9 @@ if (_sectorSide != _side) then {
 		_recalculate	= false;
 		_dominance		= ((_dominance - _diff) max TTC_CTI_dominanceMin);
 		_respawnPos		= _sector select TTC_CTI_sector_respawnPos;
+
+		// Add money for attackers.
+		["Attacked Sector", _diff * TTC_BTC_multiplier] call _TTC_CTI_changeMoney;
 
 		// Remove respawn position, if dominance is too low.
 		if ((count _respawnPos > 0) && (_dominance < TTC_CTI_dominanceSpawn)) then {
@@ -64,6 +83,12 @@ if (_sectorSide != _side) then {
 			// Set dominance to maximum + change side of sector.
 			_dominance = TTC_CTI_dominanceMax;
 			_sector set [TTC_CTI_sector_side, _side];
+
+			// Add money for attackers (capture bonus).
+			["Captured Sector", TTC_BTC_captureBonus] call _TTC_CTI_changeMoney;
+
+			// Add money for the whole team (capture bonus).
+			[["Team Captured Sector", TTC_BTC_captureBonusTeam], "TTC_BTC_fnc_changeMoney", _side, false] call BIS_fnc_MP;
 
 			// Create respawn position, for the team that captured the sector.
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
@@ -97,6 +122,9 @@ if (_sectorSide != _side) then {
 	if (_dominance < TTC_CTI_dominanceMax) then {
 		_dominance	= ((_dominance + _diff) min TTC_CTI_dominanceMax);
 		_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
+
+		// Add money for defenders.
+		["Defended Sector", _diff * TTC_BTC_multiplier] call _TTC_CTI_changeMoney;
 
 		// (Re)create respawn position for defenders, if dominance is high enough.
 		if ((count _respawnPos == 0) && (_dominance >= TTC_CTI_dominanceSpawn)) then {

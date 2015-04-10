@@ -158,7 +158,7 @@ if (isServer) then {
 
 						// Update the capture progress
 						if (_diff > 0) then {
-							[_x, _side, _diff*20] call TTC_CTI_fnc_updateDominance;	// Lux0r: remove *20. test purpose only!
+							[_x, _side, _diff*TTC_CTI_timer, _list] call TTC_CTI_fnc_updateDominance;
 						};
 					};
 				};

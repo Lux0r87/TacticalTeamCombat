@@ -11,9 +11,9 @@ class TTC_BTC_balanceDisplay {
 			idc		= 1003;
 			size	= "0.03 / (getResolution select 5)";
 
-			x = safezoneX + safezoneW - 0.297;
+			x = safezoneX + safezoneW - 0.347;
 			y = safezoneY + safezoneH - 0.17;
-			w = 0.25;
+			w = 0.30;
 			h = 0.10;
 		};
 	};
