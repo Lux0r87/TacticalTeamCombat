@@ -12,4 +12,7 @@ if (hasInterface) then {
 
 	// Create the money display (HUD).
 	[] spawn TTC_BTC_fnc_createMoneyDisplay;
+
+	// Basic income for the player
+	[] spawn TTC_BTC_fnc_basicIncome;
 };

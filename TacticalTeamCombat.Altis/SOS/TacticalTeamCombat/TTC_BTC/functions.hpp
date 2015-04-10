@@ -8,6 +8,7 @@ class TTC_Cash_Functions {
 
 	class Functions {	
 		file = "SOS\TacticalTeamCombat\TTC_BTC\Functions";
+		class basicIncome{};
 		class changeMoney{};
 		class createMoneyDisplay{};
 	};
