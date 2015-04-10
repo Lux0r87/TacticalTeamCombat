@@ -9,6 +9,8 @@ if (isNil "TTC_safetyTime") then {
 
 [] spawn TTC_CTI_fnc_initCTI;
 
+[] call TTC_BTC_fnc_initMoney;
+
 // Server-side.
 if (isServer) then {
 	// Spawn a base for each side that is present in the current game.
@@ -21,9 +23,6 @@ if (isServer) then {
 
 // Client-side.
 if (hasInterface) then {
-	// Initialize player.
-	[] spawn TTC_CORE_fnc_initPlayer;
-
 	// Handle the fatigue.
 	[player] call TTC_CORE_fnc_handleFatigue;
 

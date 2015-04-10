@@ -96,45 +96,44 @@
 
 // Colors
 #define COLOR_BLACK             {0,0,0,1}
+#define COLOR_HALF_BLACK		{0,0,0,0.5}
 #define COLOR_TRANSPARENT       {0,0,0,0}
 #define COLOR_WHITE             {1,1,1,1}
 
 class TTC_RscText {
-
-    idc = -1;
-    access = 0;
-    type = CT_STATIC;
-    style = ST_LEFT;
-    font="PuristaMedium";
-    colorText[] = COLOR_WHITE;
-    colorBackground[] = COLOR_TRANSPARENT;
-    sizeEx = "0.04 / (getResolution select 5)";
-    shadow = false;
-    fixedWidth = false;
-    
+    idc			= -1;
+    access		= 0;
+    type		= CT_STATIC;
+    style		= ST_LEFT;
+    font		= "PuristaMedium";
+    colorText[]			= COLOR_WHITE;
+    colorBackground[]	= COLOR_TRANSPARENT;
+    sizeEx		= "0.04 / (getResolution select 5)";
+    shadow		= false;
+    fixedWidth	= false;
+   
     h = GUI_GRID_H;
     w = GUI_GRID_W;
 
     text = "";
 };
 
-class TTC_RscStructuredText {
-    
-    idc   = -1;
-    type  = CT_STRUCTURED_TEXT;
-    style = ST_LEFT;
-    colorBackground[] = COLOR_TRANSPARENT;
-    size = "0.04 / (getResolution select 5)";
+class TTC_RscStructuredText_AlignRight {    
+    idc		= -1;
+    type	= CT_STRUCTURED_TEXT;
+    style	= ST_RIGHT;
+    colorBackground[]	= COLOR_TRANSPARENT;
+    size	= "0.04 / (getResolution select 5)";
  
     h = 0.05;
     w = 0.10;
 
     text = "";
-    
+
     class Attributes {
         font   = "PuristaMedium";
         color  = "#ffffff";
-        align  = "left";
+        align  = "right";
         valign = "middle";
     };
 };

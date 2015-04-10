@@ -24,7 +24,6 @@ class TTC_Core_Functions {
 
 	class Init {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Init";
-		class initPlayer{};
 		class initUnit{};
 		class initRoles{preInit = 1;};
 	};
