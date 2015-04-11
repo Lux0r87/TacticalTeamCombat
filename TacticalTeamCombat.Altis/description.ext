@@ -75,7 +75,6 @@ class CfgFunctions
 {
 	#include "CHVD\CfgFunctions.hpp"
 	#include "SOS\Clear\functions.hpp"
-	#include "SOS\CustomFunctions\functions.hpp"
 	#include "SOS\ObjectSpawn\functions.hpp"
 	#include "SOS\TacticalTeamCombat\functions.hpp"
 };
