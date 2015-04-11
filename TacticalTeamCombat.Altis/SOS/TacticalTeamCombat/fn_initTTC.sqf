@@ -9,7 +9,7 @@ if (isNil "TTC_safetyTime") then {
 
 [] spawn TTC_CTI_fnc_initCTI;
 
-[] call TTC_BTC_fnc_initMoney;
+[] call TTC_BTC_fnc_initBTC;
 
 // Server-side.
 if (isServer) then {

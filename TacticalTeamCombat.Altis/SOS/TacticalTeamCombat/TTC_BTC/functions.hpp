@@ -3,13 +3,13 @@ class TTC_Cash_Functions {
 
 	class Init {
 		file = "SOS\TacticalTeamCombat\TTC_BTC";
-		class initMoney{};
+		class initBTC{};
 	};
 
 	class Functions {	
 		file = "SOS\TacticalTeamCombat\TTC_BTC\Functions";
 		class basicIncome{};
-		class changeMoney{};
-		class createMoneyDisplay{};
+		class changeBalance{};
+		class createBalanceDisplay{};
 	};
 };
