@@ -6,7 +6,7 @@
 
 
 // Client-side:
-if (!isDedicated) then {
+if (hasInterface) then {
 	private ["_side","_roleId"];
 	waitUntil {!(IsNull player) && (time > 0.0)};
 
@@ -14,7 +14,7 @@ if (!isDedicated) then {
 	_roleId	= player getVariable "TTC_roleId";
 
 	// Use respawn inventory for the specific role.
-	if (!isNil "_roleId") then {		
+	if (!isNil "_roleId") then {
 		switch (_roleId) do {
 			// Platoon Lead
 			case PLATOON_LEADER_ID: {
@@ -55,5 +55,7 @@ if (!isDedicated) then {
 				diag_log format["TTC_CORE - addRespawnInventory: TTC_roleId is unknown! player = %1, _side = %2", player, _side];
 			};
 		};
+	} else {
+		diag_log format["TTC_CORE - addRespawnInventory: TTC_roleId is Nil! player = %1, _side = %2", player, _side];
 	};
 };

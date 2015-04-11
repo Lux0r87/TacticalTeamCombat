@@ -1,14 +1,11 @@
+// Initialize Tactical Team Combat
+[] call TTC_fnc_initTTC;
+
 // Set 'false' if you want to disable "None" option for terrain
 CHVD_allowNoGrass = false;
 
-// Initialize global variables for different scripts.
-initGlobalVariables = [] execVM "SOS\MiscScripts\initGlobalVariables.sqf";
-
 // Run the briefing file.
 [] execVM "Briefing.sqf";
-
-// Initialize Tactical Team Combat
-[] spawn TTC_fnc_initTTC;
 
 // Server-side scripts:
 if (isServer) then {

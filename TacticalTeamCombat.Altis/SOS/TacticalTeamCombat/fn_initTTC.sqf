@@ -7,11 +7,11 @@ if (isNil "TTC_safetyTime") then {
 	TTC_safetyTime = ["TTC_CORE_safetyTime", 300] call BIS_fnc_getParamValue;
 };
 
-[] spawn TTC_CTI_fnc_initCTI;
-
 [] call TTC_BTC_fnc_initBTC;
 
-// Server-side.
+[] spawn TTC_CTI_fnc_initCTI;
+
+// Server-side:
 if (isServer) then {
 	// Spawn a base for each side that is present in the current game.
 	{
@@ -21,7 +21,7 @@ if (isServer) then {
 	[] spawn TTC_CORE_fnc_runTimer;
 };
 
-// Client-side.
+// Client-side:
 if (hasInterface) then {
 	// Add the respawn inventory.
 	[] spawn TTC_CORE_fnc_addRespawnInventory;
