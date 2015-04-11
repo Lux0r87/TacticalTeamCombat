@@ -32,6 +32,9 @@ if (hasInterface) then {
 	// Show unit markers.
 	[] spawn TTC_MAP_fnc_showMarkerForUnits;
 
+	// Add eventHandler to detect team kills.
+	player addEventHandler ["killed", TTC_BTC_fnc_killed];
+
 	"TTC_safetyTime" addPublicVariableEventHandler {
 		_value = _this select 1;
 

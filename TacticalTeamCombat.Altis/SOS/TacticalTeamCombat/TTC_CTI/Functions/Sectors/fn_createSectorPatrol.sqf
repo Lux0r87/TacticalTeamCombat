@@ -44,6 +44,7 @@ _sector set [TTC_CTI_sector_patrol, _grp];
 	_prefix = [_side] call TTC_CORE_fnc_getPrefix;
 	_unitType = _prefix + _x;
 	_unit = _grp createUnit [_unitType, _safePos, [], 0, "NONE"];
+	_unit addEventHandler ["killed", TTC_BTC_fnc_killed];
 } forEach _unitTypes;
 
 // Start patrolling.

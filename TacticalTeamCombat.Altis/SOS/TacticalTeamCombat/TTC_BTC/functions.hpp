@@ -11,5 +11,6 @@ class TTC_Cash_Functions {
 		class basicIncome{};
 		class changeBalance{};
 		class createBalanceDisplay{};
+		class killed{};
 	};
 };
