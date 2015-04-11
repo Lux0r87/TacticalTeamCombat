@@ -21,15 +21,28 @@
 #define TTC_CORE_conditionIsUnit (TTC_CORE_isUnit && {TTC_CORE_isFriendly})
 #define TTC_CORE_conditionIsVehicle (TTC_CORE_isVehicle && {!(player in crew cursorTarget)})
 
-private ["_color","_crew","_unit","_unitNames"];
+private ["_color","_name","_crew","_unit","_unitNames"];
 
 _color	= [side player, false] call BIS_fnc_sideColor;
 
+_getRoleOrClassName = {
+	private ["_roleName","_name"];
+	_roleName = cursorTarget getVariable "TTC_roleName";
+
+	_name = if (!isNil "_roleName") then {
+		_roleName;
+	} else {
+		TTC_CORE_cursorTargetClassname;
+	};
+
+	_name
+};
 
 if (alive cursorTarget) then {
 	if (TTC_CORE_cursorTargetDistance <= TTC_CORE_distanceClose) then {
 		if (TTC_CORE_conditionIsUnit) then {
-			drawIcon3D ["", _color, TTC_CORE_nametagPosUnit, 0, 0, 0, format["%1 (%2)",TTC_CORE_cursorTargetClassname, TTC_CORE_cursorTargetName], 2, TTC_CORE_fontSizeClose, TTC_CORE_fontClose];
+			_name = [] call _getRoleOrClassName;
+			drawIcon3D ["", _color, TTC_CORE_nametagPosUnit, 0, 0, 0, format["%1 (%2)", _name, TTC_CORE_cursorTargetName], 2, TTC_CORE_fontSizeClose, TTC_CORE_fontClose];
 		};
 
 		if (TTC_CORE_conditionIsVehicle) then {
@@ -55,7 +68,8 @@ if (alive cursorTarget) then {
 	} else {
 		if (TTC_CORE_cursorTargetDistance <= TTC_CORE_distanceFar) then {
 			if (TTC_CORE_conditionIsUnit) then {
-				drawIcon3D ["", _color, TTC_CORE_nametagPosUnit, 0, 0, 0, TTC_CORE_cursorTargetClassname, 2, TTC_CORE_fontSizeFar, TTC_CORE_fontFar];
+				_name = [] call _getRoleOrClassName;
+				drawIcon3D ["", _color, TTC_CORE_nametagPosUnit, 0, 0, 0, _name, 2, TTC_CORE_fontSizeFar, TTC_CORE_fontFar];
 			};
 
 			if (TTC_CORE_conditionIsVehicle) then {

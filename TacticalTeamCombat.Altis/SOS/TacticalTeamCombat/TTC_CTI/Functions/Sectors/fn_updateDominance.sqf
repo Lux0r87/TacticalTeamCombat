@@ -25,10 +25,10 @@ _list	= [_this, 3, [], [[]]] call BIS_fnc_param;
 _sectorSide	= _sector select TTC_CTI_sector_side;
 _dominance	= _sector select TTC_CTI_sector_dominance;
 
-[
+/*[
 	["TTC_CTI: updateDominance:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_diff = %1", _diff], ["_list = %1", _list],
 	["_sectorSide = %1", _sectorSide], ["_dominance = %1", _dominance]
-] call TTC_CORE_fnc_log;
+] call TTC_CORE_fnc_log;*/
 
 
 _TTC_CTI_update = {
