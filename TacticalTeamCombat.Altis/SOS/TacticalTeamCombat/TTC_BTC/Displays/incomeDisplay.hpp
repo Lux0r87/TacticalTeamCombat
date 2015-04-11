@@ -11,10 +11,10 @@ class TTC_BTC_incomeDisplay {
 			idc		= 1003;
 			size	= "0.03 / (getResolution select 5)";
 
-			x = safezoneX + safezoneW - 0.347;
-			y = safezoneY + safezoneH - 0.17;
+			x = safezoneX + safezoneW - 0.31;
+			y = safezoneY + safezoneH - 0.15;
 			w = 0.30;
-			h = 0.10;
+			h = 0.07;
 		};
 	};
 };

@@ -14,7 +14,7 @@ class TTC_BTC_balanceDisplay {
 			x = safezoneX + safezoneW - 0.31;
 			y = safezoneY + safezoneH - 0.07;
 			w = 0.30;
-			h = 0.06;
+			h = 0.04;
 		};
 	};
 };

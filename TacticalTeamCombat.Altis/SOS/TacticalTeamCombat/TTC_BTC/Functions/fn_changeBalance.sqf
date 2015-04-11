@@ -10,7 +10,7 @@
 
 disableSerialization;
 
-private ["_change","_message","_amount","_display","_control","_color","_text"];
+private ["_change","_message","_amount","_display","_control","_color","_sign","_text"];
 
 
 if (isNil "TTC_BTC_balanceChanges") then {
@@ -48,7 +48,8 @@ _color = if (_amount < 0) then {
 };
 
 // Set the text for the balance display.
-_text = parseText format["<t size='0.8'>%1</t><br/><t color='%2'>%3</t>", _message, _color, _amount];
+_sign = if (_amount > 0) then {"+"} else {""};
+_text = parseText format["<t size='0.6'>%1</t><br/><t size='0.8' color='%2'>%3%4</t>", _message, _color, _sign, _amount];
 _control ctrlSetStructuredText _text;
 
 // Update the new value for the balance (cannot be negative!).
