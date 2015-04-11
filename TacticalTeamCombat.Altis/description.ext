@@ -75,13 +75,11 @@ class CfgFunctions
 {
 	#include "CHVD\CfgFunctions.hpp"
 	#include "SOS\Clear\functions.hpp"
-	#include "SOS\ObjectSpawn\functions.hpp"
 	#include "SOS\TacticalTeamCombat\functions.hpp"
 };
 
 
 class Params {
-	#include "SOS\ObjectSpawn\params.hpp"
 	#include "SOS\TacticalTeamCombat\params.hpp"
 	#include "SOS\Time\params.hpp"
 	#include "SOS\Weather\params.hpp"

@@ -25,3 +25,10 @@ class TTC_CORE_fatigue {
 	texts[] = {"0%","10%","20%","30%","40%","50% (Default)","60%","70%","80%","90%","100%"};
 	default = 50;
 };
+
+class TTC_CORE_DisableThermal {
+	title		= "Tactical Team Combat: Disable thermal imaging for vehicles?";
+	values[]	= {1, 0};
+	texts[]		= {"Yes (Default)", "No"};
+	default		= 1;
+};

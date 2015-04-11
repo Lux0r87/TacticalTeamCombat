@@ -46,4 +46,10 @@ class TTC_Core_Functions {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Respawn";
 		class addRespawnInventory{};
 	};
+
+	class Spawn {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Spawn";
+		class spawnHelicopter {};
+		class spawnVehicle {};
+	};
 };

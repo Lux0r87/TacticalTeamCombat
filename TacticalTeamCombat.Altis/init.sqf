@@ -55,8 +55,5 @@ if (hasInterface) then {
 // Initialize LM Medic System.
 [] execVM "SOS\MiscScripts\lm_medic_system.sqf";
 
-// Initialize global variables for the object spawn.
-[] execVM "SOS\ObjectSpawn\initObjectSpawn.sqf";
-
 // Initialize Mag Repack.
 [] execVM "outlw_magRepack\MagRepack_init_sv.sqf";

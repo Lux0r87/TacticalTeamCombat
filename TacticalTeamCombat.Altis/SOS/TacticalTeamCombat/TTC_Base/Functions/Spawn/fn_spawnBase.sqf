@@ -32,7 +32,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 
 	// Spawn dome
 	_dome	= createVehicle ["Land_Dome_Small_F", _basePos, [], 0, "CAN_COLLIDE"];
-	_dir	= [_dome, missionNamespace getVariable format["%1_VehicleSpawn_Helipad", _prefix]] call BIS_fnc_DirTo;
+	_dir	= [_dome, missionNamespace getVariable format["TTC_BASE_%1_VehSpawnPos", _side]] call BIS_fnc_DirTo;
 	_dome setDir _dir;
 	_domePos = getPos _dome;
 	_dome setVectorUp (surfaceNormal _domePos);

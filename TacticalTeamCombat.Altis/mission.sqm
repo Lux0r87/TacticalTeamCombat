@@ -35,9 +35,8 @@ class Mission
 		"A3_Modules_F_Curator_Multiplayer",
 		"A3_Modules_F",
 		"A3_Characters_F_INDEP",
-		"A3_Structures_F_Mil_Helipads",
-		"A3_Structures_F_Civ_InfoBoards",
 		"A3_Weapons_F_Ammoboxes",
+		"A3_Structures_F_Mil_Helipads",
 		"A3_Weapons_F_Beta_Ammoboxes",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Signs_F",
@@ -842,234 +841,142 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=21;
+		items=13;
 		class Item0
-		{
-			position[]={19360.08,18.157211,15296.423};
-			azimut=43;
-			id=42;
-			side="EMPTY";
-			vehicle="Land_HelipadEmpty_F";
-			leader=1;
-			skill=0.60000002;
-			text="B_VehicleSpawn_Helipad";
-		};
-		class Item1
-		{
-			position[]={19355.48,18.135883,15301.028};
-			azimut=133;
-			id=43;
-			side="EMPTY";
-			vehicle="Land_Noticeboard_F";
-			leader=1;
-			skill=0.60000002;
-			text="B_VehicleSpawn_Sign";
-			init="init_handle = [this, west] spawn TTC_BASE_fnc_initVehicleSpawn;";
-		};
-		class Item2
 		{
 			position[]={19348.518,18.529343,15321.415};
 			azimut=225.88107;
-			id=44;
+			id=42;
 			side="EMPTY";
 			vehicle="B_supplyCrate_F";
 			skill=0.60000002;
 			text="AmmoBox1";
 			init="init_handle = [this] spawn TTC_BASE_fnc_initAmmoBox;";
 		};
-		class Item3
+		class Item1
 		{
 			position[]={19349.973,18.388447,15320.011};
 			azimut=225.88107;
-			id=45;
+			id=43;
 			side="EMPTY";
 			vehicle="B_supplyCrate_F";
 			skill=0.60000002;
 			text="AmmoBox2";
 			init="init_handle = [this] spawn TTC_BASE_fnc_initAmmoBox;";
 		};
-		class Item4
+		class Item2
 		{
 			position[]={19351.424,18.315557,15318.666};
 			azimut=225.88107;
-			id=46;
+			id=44;
 			side="EMPTY";
 			vehicle="B_supplyCrate_F";
 			skill=0.60000002;
 			text="AmmoBox3";
 			init="init_handle = [this] spawn TTC_BASE_fnc_initAmmoBox;";
 		};
-		class Item5
+		class Item3
 		{
 			position[]={19309.293,18.777187,15347.849};
 			azimut=50;
-			id=47;
+			id=45;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;
 			text="B_Maintenance_Helipad";
 		};
-		class Item6
-		{
-			position[]={19328.342,18.336277,15326.413};
-			azimut=317;
-			id=48;
-			side="EMPTY";
-			vehicle="Land_Noticeboard_F";
-			leader=1;
-			skill=0.60000002;
-			text="B_HelicopterSpawn_Sign";
-			init="init_handle = [this, west] spawn TTC_BASE_fnc_initHelicopterSpawn;";
-		};
-		class Item7
-		{
-			position[]={19324,18.12834,15331.365};
-			azimut=50;
-			id=49;
-			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
-			leader=1;
-			skill=0.60000002;
-			text="B_HelicopterSpawn_Helipad";
-		};
-		class Item8
-		{
-			position[]={22671.896,14.254457,18957.498};
-			azimut=206;
-			id=50;
-			side="EMPTY";
-			vehicle="Land_HelipadEmpty_F";
-			leader=1;
-			skill=0.60000002;
-			text="I_VehicleSpawn_Helipad";
-		};
-		class Item9
-		{
-			position[]={22665.758,14.399458,18960.432};
-			azimut=115;
-			id=51;
-			side="EMPTY";
-			vehicle="Land_Noticeboard_F";
-			leader=1;
-			skill=0.60000002;
-			text="I_VehicleSpawn_Sign";
-			init="init_handle = [this, resistance] spawn TTC_BASE_fnc_initVehicleSpawn;";
-		};
-		class Item10
+		class Item4
 		{
 			position[]={22654.705,14.197507,18979.16};
 			azimut=208.63829;
-			id=52;
+			id=46;
 			side="EMPTY";
 			vehicle="I_supplyCrate_F";
 			skill=0.60000002;
 			text="AmmoBox4";
 			init="init_handle = [this] spawn TTC_BASE_fnc_initAmmoBox;";
 		};
-		class Item11
+		class Item5
 		{
 			position[]={22653.109,14.246807,18979.984};
 			azimut=208.63829;
-			id=53;
+			id=47;
 			side="EMPTY";
 			vehicle="I_supplyCrate_F";
 			skill=0.60000002;
 			text="AmmoBox5";
 			init="init_handle = [this] spawn TTC_BASE_fnc_initAmmoBox;";
 		};
-		class Item12
+		class Item6
 		{
 			position[]={22651.486,14.296963,18980.844};
 			azimut=208.63829;
-			id=54;
+			id=48;
 			side="EMPTY";
 			vehicle="I_supplyCrate_F";
 			skill=0.60000002;
 			text="AmmoBox6";
 			init="init_handle = [this] spawn TTC_BASE_fnc_initAmmoBox;";
 		};
-		class Item13
+		class Item7
 		{
 			position[]={22609.088,14.053127,18998.324};
 			azimut=227;
-			id=55;
+			id=49;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;
 			text="I_Maintenance_Helipad";
 		};
-		class Item14
-		{
-			position[]={22633.4,14.648132,18980.168};
-			azimut=317;
-			id=56;
-			side="EMPTY";
-			vehicle="Land_Noticeboard_F";
-			leader=1;
-			skill=0.60000002;
-			text="I_HelicopterSpawn_Sign";
-			init="init_handle = [this, resistance] spawn TTC_BASE_fnc_initHelicopterSpawn;";
-		};
-		class Item15
-		{
-			position[]={22624.975,14.432852,18981.445};
-			azimut=227;
-			id=57;
-			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
-			leader=1;
-			skill=0.60000002;
-			text="I_HelicopterSpawn_Helipad";
-		};
-		class Item16
+		class Item8
 		{
 			position[]={19356.582,18.13435,15302.402};
 			azimut=315;
-			id=58;
+			id=50;
 			side="EMPTY";
 			vehicle="Flag_NATO_F";
 			leader=1;
 			skill=0.60000002;
 			init="this allowDamage false;";
 		};
-		class Item17
+		class Item9
 		{
 			position[]={19354.129,18.139999,15299.832};
 			azimut=315;
-			id=59;
+			id=51;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
 			skill=0.60000002;
 			init="this allowDamage false; this setFlagTexture ""SOS\Pictures\SOS_flag.jpg"";";
 		};
-		class Item18
+		class Item10
 		{
 			position[]={22666.377,14.378081,18961.654};
 			azimut=290.17447;
-			id=60;
+			id=52;
 			side="EMPTY";
 			vehicle="Flag_AAF_F";
 			leader=1;
 			skill=0.60000002;
 			init="this allowDamage false;";
 		};
-		class Item19
+		class Item11
 		{
 			position[]={22665.217,14.413906,18959.133};
 			azimut=290.17447;
-			id=61;
+			id=53;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
 			skill=0.60000002;
 			init="this allowDamage false; this setFlagTexture ""SOS\Pictures\SOS_flag.jpg"";";
 		};
-		class Item20
+		class Item12
 		{
 			position[]={22977.436,2.8512011,15783.865};
 			azimut=244;
-			id=62;
+			id=54;
 			side="EMPTY";
 			vehicle="ArrowMarker_R_F";
 			skill=0.60000002;

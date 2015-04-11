@@ -12,7 +12,7 @@
 // Run this script only on client-side.
 if (!isDedicated) then {
 	private ["_objects","_gear","_backpacks","_weapons","_magazines","_items"];
-	_objects = [AmmoBox1, AmmoBox2, AmmoBox3, AmmoBox4, AmmoBox5, AmmoBox6, B_HelicopterSpawn_Sign, I_HelicopterSpawn_Sign];
+	_objects = [AmmoBox1, AmmoBox2, AmmoBox3, AmmoBox4, AmmoBox5, AmmoBox6];
 
 	waitUntil {!IsNull player && alive player};
 

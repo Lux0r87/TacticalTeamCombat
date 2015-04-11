@@ -7,6 +7,8 @@ if (isNil "TTC_safetyTime") then {
 	TTC_safetyTime = ["TTC_CORE_safetyTime", 300] call BIS_fnc_getParamValue;
 };
 
+TTC_disableThermal = ["DisableThermal", 1] call BIS_fnc_getParamValue;
+
 [] call TTC_BTC_fnc_initBTC;
 
 [] spawn TTC_CTI_fnc_initCTI;
