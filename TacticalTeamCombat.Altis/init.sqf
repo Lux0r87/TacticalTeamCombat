@@ -1,6 +1,3 @@
-// Add respawn positions.
-[] execVM "SOS\Respawn\respawn.sqf";
-
 // Set 'false' if you want to disable "None" option for terrain
 CHVD_allowNoGrass = false;
 

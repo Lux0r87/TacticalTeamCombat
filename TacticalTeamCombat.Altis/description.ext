@@ -67,8 +67,7 @@ class Header {
 
 
 class CfgRespawnInventory {
-	#include "SOS\Respawn\RolesGUER.hpp"
-	#include "SOS\Respawn\RolesWEST.hpp"
+	#include "SOS\TacticalTeamCombat\TTC_Core\Functions\Respawn\inventories.hpp"
 };
 
 

@@ -17,7 +17,7 @@ _killer	= [_this, 1] call BIS_fnc_param;
 
 
 // Check if killer is a human player.
-if (isPlayer _killer) then {
+if ((isPlayer _killer) && (_unit != _killer)) then {
 	// Workaround: Use factions instead of sides. Side for dead unit is always CIV!
 	_factionUnit	= [faction _unit, 0, 2] call BIS_fnc_trimString;
 	_factionKiller	= [faction _killer, 0, 2] call BIS_fnc_trimString;

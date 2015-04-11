@@ -23,6 +23,9 @@ if (isServer) then {
 
 // Client-side.
 if (hasInterface) then {
+	// Add the respawn inventory.
+	[] spawn TTC_CORE_fnc_addRespawnInventory;
+
 	// Handle the fatigue.
 	[player] call TTC_CORE_fnc_handleFatigue;
 

@@ -41,4 +41,9 @@ class TTC_Core_Functions {
 		class initNametags{};
 		class keyDown{};
 	};
+
+	class Respawn {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Respawn";
+		class addRespawnInventory{};
+	};
 };
