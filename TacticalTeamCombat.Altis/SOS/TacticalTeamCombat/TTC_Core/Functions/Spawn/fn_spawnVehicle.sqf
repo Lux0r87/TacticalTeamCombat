@@ -5,17 +5,21 @@
 */
 
 
-private ["_vehicleType","_spawn","_texture","_spawnPos","_veh"];
+private ["_vehicleType","_spawnPos","_spawnDir","_owner","_texture","_lock","_veh"];
 
-_vehicleType	= _this select 0;
-_spawn			= _this select 1;
-_texture		= _this select 2;
+_vehicleType	= [_this, 0] call BIS_fnc_param;
+_spawnPos		= [_this, 1] call BIS_fnc_param;
+_spawnDir		= [_this, 2] call BIS_fnc_param;
+_owner			= [_this, 3, objNull, [objNull]] call BIS_fnc_param;
+_texture		= [_this, 4, "", [""]] call BIS_fnc_param;
+_lock			= [_this, 5, true, [true]] call BIS_fnc_param;
 
 
-// Create the vehicle
-_spawnPos = getPos _spawn;
-_veh = _vehicleType createVehicle [_spawnPos select 0, _spawnPos select 1, (_spawnPos select 2) + 0.5];
-_veh setDir (getDir _spawn);
+// Create the vehicle.
+_veh = _vehicleType createVehicle [_spawnPos select 0, _spawnPos select 1, 0.5];
+_veh setDir _spawnDir;
+_veh setVariable ["TTC_isOwner", _owner, true];
+_veh lock _lock;
 
 // Remove weapons and items, re-add some FAKs
 clearWeaponCargoGlobal _veh;

@@ -45,6 +45,7 @@ _sector set [TTC_CTI_sector_patrol, _grp];
 	_unitType = _prefix + _x;
 	_unit = _grp createUnit [_unitType, _safePos, [], 0, "NONE"];
 	_unit addEventHandler ["killed", TTC_BTC_fnc_killed];
+	_unit setVariable ["TTC_isLocked", true, true];
 } forEach _unitTypes;
 
 // Start patrolling.

@@ -40,6 +40,10 @@ if (hasInterface) then {
 	// Add eventHandler to detect team kills.
 	player addEventHandler ["killed", TTC_BTC_fnc_killed];
 
+	// Add eventHandler to protect the inventory.
+	player addEventHandler ["InventoryOpened", TTC_CORE_fnc_inventoryOpened];
+
+	// Add variableEventHandler to show the remaining safety time.
 	"TTC_safetyTime" addPublicVariableEventHandler {
 		_value = _this select 1;
 

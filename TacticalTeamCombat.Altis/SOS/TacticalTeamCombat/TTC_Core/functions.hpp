@@ -22,6 +22,11 @@ class TTC_Core_Functions {
 		class taskPatrol{};
 	};
 
+	class EventHandler {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\EventHandler";
+		class inventoryOpened{};
+	};
+
 	class Init {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Init";
 		class initUnit{};
