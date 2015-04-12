@@ -8,9 +8,10 @@ class TTC_Cash_Functions {
 
 	class Functions {	
 		file = "SOS\TacticalTeamCombat\TTC_BTC\Functions";
+		class addBalanceChange{};
 		class basicIncome{};
-		class changeBalance{};
 		class createBalanceDisplay{};
 		class killed{};
+		class showIncomeDisplay{};
 	};
 };

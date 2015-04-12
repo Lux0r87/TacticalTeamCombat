@@ -12,6 +12,6 @@ while {true} do {
 	sleep TTC_BTC_basicIncomeTimer;
 
 	if (alive player) then {
-		["Basic Income", TTC_BTC_basicIncome] spawn TTC_BTC_fnc_changeBalance;
+		["Basic Income", TTC_BTC_basicIncome] spawn TTC_BTC_fnc_addBalanceChange;
 	};
 };

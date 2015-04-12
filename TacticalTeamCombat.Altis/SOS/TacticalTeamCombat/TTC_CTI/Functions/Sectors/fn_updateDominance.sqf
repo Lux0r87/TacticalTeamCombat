@@ -55,7 +55,7 @@ _TTC_CTI_update = {
 	};
 };
 
-_TTC_CTI_changeBalance = {
+_TTC_CTI_addBalanceChange = {
 	private ["_message","_amount","_units"];
 	_message	= _this select 0;
 	_amount		= _this select 1;
@@ -63,7 +63,7 @@ _TTC_CTI_changeBalance = {
 
 	// Change the balance for all human players of this side in the sector.
 	{
-		[[_message, _amount], "TTC_BTC_fnc_changeBalance", _x, false] call BIS_fnc_MP;
+		[[_message, _amount], "TTC_BTC_fnc_addBalanceChange", _x, false] call BIS_fnc_MP;
 	} forEach _units;
 };
 
@@ -76,7 +76,7 @@ if (_sectorSide != _side) then {
 		_respawnPos		= _sector select TTC_CTI_sector_respawnPos;
 
 		// Attackers get money.
-		["Attacked Sector", TTC_CTI_amountAttack] call _TTC_CTI_changeBalance;
+		["Attacked Sector", TTC_CTI_amountAttack] call _TTC_CTI_addBalanceChange;
 
 		// Remove respawn position, if dominance is too low.
 		if ((count _respawnPos > 0) && (_dominanceNew < TTC_CTI_dominanceSpawn)) then {
@@ -95,10 +95,10 @@ if (_sectorSide != _side) then {
 			_sector set [TTC_CTI_sector_side, _side];
 
 			// Attackers get money (capture bonus).
-			["Captured Sector", TTC_CTI_captureBonus] call _TTC_CTI_changeBalance;
+			["Captured Sector", TTC_CTI_captureBonus] call _TTC_CTI_addBalanceChange;
 
 			// The attacker's team gets money (capture bonus).
-			[["Team Captured Sector", TTC_CTI_captureBonusTeam], "TTC_BTC_fnc_changeBalance", _side, false] call BIS_fnc_MP;
+			[["Team Captured Sector", TTC_CTI_captureBonusTeam], "TTC_BTC_fnc_addBalanceChange", _side, false] call BIS_fnc_MP;
 
 			// Create respawn position, for the team that captured the sector.
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
@@ -134,7 +134,7 @@ if (_sectorSide != _side) then {
 		_respawnPos	= _sector select TTC_CTI_sector_respawnPos;
 
 		// Defenders get money.
-		["Defended Sector", TTC_CTI_amountDefend] call _TTC_CTI_changeBalance;
+		["Defended Sector", TTC_CTI_amountDefend] call _TTC_CTI_addBalanceChange;
 
 		// (Re)create respawn position for defenders, if dominance is high enough.
 		if ((count _respawnPos == 0) && (_dominanceNew >= TTC_CTI_dominanceSpawn)) then {
@@ -146,10 +146,10 @@ if (_sectorSide != _side) then {
 		// Sector protected by defending side:
 		if (_dominanceNew == TTC_CTI_dominanceMax) then {
 			// Defenders get money (defend bonus).
-			["Protected Sector", TTC_CTI_defendBonus] call _TTC_CTI_changeBalance;
+			["Protected Sector", TTC_CTI_defendBonus] call _TTC_CTI_addBalanceChange;
 
 			// The defender's team gets money (defend bonus).
-			[["Team Protected Sector", TTC_CTI_defendBonusTeam], "TTC_BTC_fnc_changeBalance", _side, false] call BIS_fnc_MP;
+			[["Team Protected Sector", TTC_CTI_defendBonusTeam], "TTC_BTC_fnc_addBalanceChange", _side, false] call BIS_fnc_MP;
 		};
 
 		// Update the sector.

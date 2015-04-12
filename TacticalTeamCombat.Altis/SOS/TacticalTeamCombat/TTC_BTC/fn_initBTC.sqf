@@ -16,5 +16,5 @@ if (hasInterface) then {
 
 	// Add start-up capital for the player.
 	_startupCapital = ["TTC_BTC_startupCapital", 5000] call BIS_fnc_getParamValue;
-	["Start-up Capital", _startupCapital] spawn TTC_BTC_fnc_changeBalance;
+	["Start-up Capital", _startupCapital] spawn TTC_BTC_fnc_addBalanceChange;
 };

@@ -26,9 +26,9 @@ if ((isPlayer _killer) && (_unit != _killer)) then {
 	if (_factionUnit == _factionKiller) then {
 		// Penalty for the player.
 		if (isPlayer _unit) then {
-			[["Team Kill", TTC_CORE_penalty_teamkillPlayer], "TTC_BTC_fnc_changeBalance", _killer, false] call BIS_fnc_MP;
+			[["Team Kill", TTC_CORE_penalty_teamkillPlayer], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
 		} else {
-			[["Team Kill (AI)", TTC_CORE_penalty_teamkillAI], "TTC_BTC_fnc_changeBalance", _killer, false] call BIS_fnc_MP;
+			[["Team Kill (AI)", TTC_CORE_penalty_teamkillAI], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
 		};
 	};
 };
