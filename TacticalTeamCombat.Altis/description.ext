@@ -1,6 +1,7 @@
 #include "outlw_magRepack\MagRepack_config.hpp"
 #include "CHVD\dialog.hpp"
 #include "SOS\TacticalTeamCombat\TTC_BTC\moneyDisplays.hpp"
+#include "SOS\TacticalTeamCombat\TTC_Shop\dialogs.hpp"
 
 
 // String (usually mission name) shown during mission loading.
