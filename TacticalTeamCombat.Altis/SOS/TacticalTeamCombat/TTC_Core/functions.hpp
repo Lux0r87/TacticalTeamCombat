@@ -22,6 +22,11 @@ class TTC_Core_Functions {
 		class taskPatrol{};
 	};
 
+	class EventHandler {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\EventHandler";
+		class inventoryOpened{};
+	};
+
 	class Init {
 		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Init";
 		class initUnit{};
@@ -40,5 +45,16 @@ class TTC_Core_Functions {
 		class draw3D{};
 		class initNametags{};
 		class keyDown{};
+	};
+
+	class Respawn {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Respawn";
+		class addRespawnInventory{};
+	};
+
+	class Spawn {
+		file = "SOS\TacticalTeamCombat\TTC_Core\Functions\Spawn";
+		class spawnHelicopter {};
+		class spawnVehicle {};
 	};
 };

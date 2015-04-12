@@ -4,8 +4,6 @@ class TTC_Base_Functions {
 	class Init {
 		file = "SOS\TacticalTeamCombat\TTC_Base\Functions\Init";
 		class initAmmoBox{};
-		class initVehicleSpawn {};
-		class initHelicopterSpawn {};
 	};
 
 	class Spawn {

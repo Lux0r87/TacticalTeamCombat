@@ -1,6 +1,6 @@
 #include "outlw_magRepack\MagRepack_config.hpp"
 #include "CHVD\dialog.hpp"
-#include "SOS\TacticalTeamCombat\TTC_BTC\moneyDisplays.hpp"
+#include "SOS\TacticalTeamCombat\TTC_BTC\displays.hpp"
 #include "SOS\TacticalTeamCombat\TTC_Shop\dialogs.hpp"
 
 
@@ -68,8 +68,7 @@ class Header {
 
 
 class CfgRespawnInventory {
-	#include "SOS\Respawn\RolesGUER.hpp"
-	#include "SOS\Respawn\RolesWEST.hpp"
+	#include "SOS\TacticalTeamCombat\TTC_Core\Functions\Respawn\inventories.hpp"
 };
 
 
@@ -77,14 +76,11 @@ class CfgFunctions
 {
 	#include "CHVD\CfgFunctions.hpp"
 	#include "SOS\Clear\functions.hpp"
-	#include "SOS\CustomFunctions\functions.hpp"
-	#include "SOS\ObjectSpawn\functions.hpp"
 	#include "SOS\TacticalTeamCombat\functions.hpp"
 };
 
 
 class Params {
-	#include "SOS\ObjectSpawn\params.hpp"
 	#include "SOS\TacticalTeamCombat\params.hpp"
 	#include "SOS\Time\params.hpp"
 	#include "SOS\Weather\params.hpp"
