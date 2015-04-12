@@ -29,6 +29,7 @@ if ((isPlayer _killer) && (_unit != _killer)) then {
 			[["Team Kill", TTC_CORE_penalty_teamkillPlayer], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
 		} else {
 			[["Team Kill (AI)", TTC_CORE_penalty_teamkillAI], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
+			[_unit] call TTC_BTC_fnc_removeGear;
 		};
 	};
 };
