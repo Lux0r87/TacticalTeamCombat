@@ -17,6 +17,7 @@ class TTC_Core_Functions {
 		class hint{};
 		class log{};
 		class runTimer{};
+		class setTriggersStatements{};
 		class speedLimit{};
 		class systemChat{};
 		class taskPatrol{};

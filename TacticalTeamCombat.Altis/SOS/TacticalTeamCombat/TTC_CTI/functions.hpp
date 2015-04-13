@@ -20,6 +20,7 @@ class TTC_CTI_Functions {
 		class canCaptureSector{};
 		class canSeeSector{};
 		class createMobileSector{};
+		class createSectorDisplay{};
 		class createSectorPatrol{};
 		class getInMobileSector{};
 		class isSectorConnectedToBase{};
