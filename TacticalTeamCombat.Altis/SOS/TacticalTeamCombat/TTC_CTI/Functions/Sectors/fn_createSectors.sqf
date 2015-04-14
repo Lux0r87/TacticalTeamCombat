@@ -3,6 +3,8 @@
 */
 
 
+#define TTC_CTI_sector_statements ["this", "[thisTrigger] spawn TTC_CTI_fnc_createSectorDisplay;", "1004 cutFadeOut 0.5"]
+
 private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_neighbours","_respawnDir","_isMobile","_sector"];
 
 
@@ -21,18 +23,18 @@ private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance"
 	_isMobile	= _x select 10;
 
 	// Create a trigger, which represents the sector.
-	_sector = [_name, _pos, _xrad, _yrad, _dir, _rectangle] call TTC_CORE_fnc_createTrigger;
+	_sector = [_name, _pos, _xrad, _yrad, _dir, _rectangle, TTC_CTI_sector_statements] call TTC_CORE_fnc_createTrigger;
 	TTC_CTI_sectors pushBack _sector;
 
 	// Initialize all sector variables.
-	_sector setVariable ["TTC_CTI_sector_name", _name];
+	_sector setVariable ["TTC_CTI_sector_name", _name, true];
 	_sector setVariable ["TTC_CTI_sector_position", _pos];
 	_sector setVariable ["TTC_CTI_sector_axisA", _xrad];
 	_sector setVariable ["TTC_CTI_sector_axisB", _yrad];
 	_sector setVariable ["TTC_CTI_sector_direction", _dir];
 	_sector setVariable ["TTC_CTI_sector_rectangle", _rectangle];
-	_sector setVariable ["TTC_CTI_sector_side", _side];
-	_sector setVariable ["TTC_CTI_sector_dominance", _dominance];
+	_sector setVariable ["TTC_CTI_sector_side", _side, true];
+	_sector setVariable ["TTC_CTI_sector_dominance", _dominance, true];
 	_sector setVariable ["TTC_CTI_sector_neighbours", _neighbours];
 	_sector setVariable ["TTC_CTI_sector_respawnDir", _respawnDir];
 	_sector setVariable ["TTC_CTI_sector_isMobile", _isMobile];

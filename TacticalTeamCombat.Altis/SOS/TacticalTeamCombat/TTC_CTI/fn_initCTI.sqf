@@ -14,9 +14,6 @@ if (hasInterface) then {
 	// Update all markers locally.
 	[[false, player], "TTC_CTI_fnc_updateSectors", false, false] call BIS_fnc_MP;
 
-	// Create the sector display (HUD).
-	[] spawn TTC_CTI_fnc_createSectorDisplay;
-
 	"TTC_CTI_mobileSector_timeOut" addPublicVariableEventHandler {
 		_value = _this select 1;
 
@@ -97,9 +94,6 @@ if (isServer) then {
 			_sector setVariable ["TTC_CTI_sector_visibility", _visibility];
 		} forEach TTC_CTI_Sides;
 	} forEach TTC_CTI_sectors;
-
-	// Add trigger statements on all clients (including JIP).
-	[[TTC_CTI_sectors, ["this", "hint 'trigger on'; diag_log 'trigger on'", "hint 'trigger off'; diag_log 'trigger off'"]], "TTC_CORE_fnc_setTriggersStatements", true, true] call BIS_fnc_MP;
 
 	// Add respawn positions to the sectors, after the safety time is over.
 	[] spawn {

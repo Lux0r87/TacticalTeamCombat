@@ -36,7 +36,7 @@ _TTC_CTI_update = {
 	_recalculate	= _this select 2;
 
 	// Update the dominance variable.
-	_sector setVariable ["TTC_CTI_sector_dominance", _dominanceNew];
+	_sector setVariable ["TTC_CTI_sector_dominance", _dominanceNew, true];
 
 	// Update the sector markers.
 	[_sector, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
@@ -88,7 +88,7 @@ if (_sectorSide != _side) then {
 
 			// Set dominance to maximum + change side of sector.
 			_dominanceNew = TTC_CTI_dominanceMax;
-			_sector setVariable ["TTC_CTI_sector_side", _side];
+			_sector setVariable ["TTC_CTI_sector_side", _side, true];
 
 			// Attackers get money (capture bonus).
 			["Captured Sector", TTC_CTI_captureBonus] call _TTC_CTI_addBalanceChange;

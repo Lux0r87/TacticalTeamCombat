@@ -3,8 +3,8 @@
 class TTC_CTI_sectorDisplay {
 	idd			= 1004;
 	duration	= 999999;
-	fadeIn		= 0;
-	fadeOut		= 0;
+	fadeIn		= 0.5;
+	fadeOut		= 0.5;
 	onLoad		= uiNamespace setVariable ["TTC_CTI_sectorDisplay", _this select 0];
 	onUnLoad	= uiNamespace setVariable ["TTC_CTI_sectorDisplay", nil];
 
