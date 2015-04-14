@@ -14,9 +14,9 @@ _turret		= [_this, 3] call BIS_fnc_param;
 
 _sector		= _veh getVariable ["TTC_sector", objNull];
 
-/*[
-	["TTC_CTI: getInMobileSector:"], ["_veh = %1", _veh], ["_position = %1", _position], ["_unit = %1", _unit], ["_turret = %1", _turret], ["_sector = %1", _sector]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_getInMobileSector", 
+	[["_veh = %1", _veh], ["_position = %1", _position], ["_unit = %1", _unit], ["_turret = %1", _turret]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 if (!isNull _sector) then {

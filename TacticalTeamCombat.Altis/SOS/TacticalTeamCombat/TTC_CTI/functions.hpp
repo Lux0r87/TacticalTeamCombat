@@ -25,6 +25,7 @@ class TTC_CTI_Functions {
 		class createSectors{};
 		class getInMobileSector{};
 		class isSectorConnectedToBase{};
+		class logSector{};
 		class mobileSectorIsMoving{};
 		class sideCapturedAllSectors{};
 		class updateDominance{};

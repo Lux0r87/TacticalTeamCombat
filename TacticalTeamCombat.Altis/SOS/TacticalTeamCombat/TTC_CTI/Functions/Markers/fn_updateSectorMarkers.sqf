@@ -19,10 +19,11 @@ _visibility	= _sector getVariable "TTC_CTI_sector_visibility";
 _isNull		= isNull _target;
 _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_Sides};
 
-/*[
-	["TTC_CTI: updateSectorMarkers:"], ["_sector = %1", _sector], ["_dominanceMax = %1", _dominanceMax], ["_recalculate = %1", _recalculate], ["_target = %1", _target],
-	["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_visibility = %1", _visibility], ["_isNull = %1", _isNull], ["_sides = %1", _sides]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_updateSectorMarkers",
+	[["_dominanceMax = %1", _dominanceMax], ["_recalculate = %1", _recalculate], ["_target = %1", _target],	["_mrkArea = %1", _mrkArea],
+	["_mrk = %1", _mrk], ["_visibility = %1", _visibility], ["_isNull = %1", _isNull], ["_sides = %1", _sides]]
+] call TTC_CTI_fnc_logSector;*/
+
 
 _mrkArea setMarkerPos _pos;
 _mrk setMarkerPos _pos;

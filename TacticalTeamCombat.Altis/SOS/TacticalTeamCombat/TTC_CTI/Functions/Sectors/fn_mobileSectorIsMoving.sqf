@@ -14,10 +14,7 @@ _sectorSide	= [_this, 3, _sector getVariable ["TTC_CTI_sector_side", sideUnknown
 _marker		= [_this, 4, _sector getVariable ["TTC_CTI_sector_marker", ""], [""]] call BIS_fnc_param;
 _respawnPos	= [_this, 5, _sector getVariable ["TTC_CTI_sector_respawnPos", [0,0]], [[]], [2, 3]] call BIS_fnc_param;
 
-/*[
-	["TTC_CTI: mobileSectorIsMoving:"], ["_veh = %1", _veh], ["_unit = %1", _unit], ["_sector = %1", _sector], ["_sectorSide = %1", _sectorSide],
-	["_marker = %1", _marker], ["_respawnPos = %1", _respawnPos]
-] call TTC_CORE_fnc_log;*/
+//[_sector, "TTC_CTI_fnc_mobileSectorIsMoving", [["_veh = %1", _veh], ["_unit = %1", _unit]]] call TTC_CTI_fnc_logSector;
 
 
 _veh setVariable ["TTC_isMoving", true];

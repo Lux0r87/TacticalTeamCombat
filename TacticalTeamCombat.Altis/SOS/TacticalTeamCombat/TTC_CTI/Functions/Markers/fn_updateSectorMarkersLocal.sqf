@@ -4,7 +4,8 @@
 	Created by Lux0r
 */
 
-#include "markerVariables.hpp"
+#define TTC_CTI_sectorMarkerAlpha 1
+#define TTC_CTI_sectorAreaMarkerAlpha 0.3
 
 private ["_sector","_dominanceMax","_name","_side","_dominance","_mrkArea","_mrk","_color"];
 
@@ -18,10 +19,10 @@ _mrkArea	= _sector getVariable "TTC_CTI_sector_markerArea";
 _mrk		= _sector getVariable "TTC_CTI_sector_marker";
 _color		= [_side, true] call BIS_fnc_sideColor;
 
-/*[
-	["TTC_CTI: updateSectorMarkersLocal:"], ["_sector = %1", _sector], ["_dominanceMax = %1", _dominanceMax], ["_name = %1", _name], ["_side = %1", _side],
-	["_dominance = %1", _dominance], ["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_color = %1", _color]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_updateSectorMarkersLocal", 
+	[["_dominanceMax = %1", _dominanceMax], ["_name = %1", _name], ["_side = %1", _side], ["_dominance = %1", _dominance],
+	["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_color = %1", _color]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 // Update area marker

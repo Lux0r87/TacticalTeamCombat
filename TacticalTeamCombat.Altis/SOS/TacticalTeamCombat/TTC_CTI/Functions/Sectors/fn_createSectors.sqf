@@ -6,7 +6,7 @@
 private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_neighbours","_respawnDir","_isMobile","_sector"];
 
 
-// Iterate over all sector definitions
+// Iterate over all sector definitions:
 {
 	_name		= _x select 0;
 	_pos		= _x select 1;
@@ -43,3 +43,18 @@ private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance"
 		["_respawnDir = %1", _respawnDir], ["_isMobile = %1", _isMobile]
 	] call TTC_CORE_fnc_log;*/
 } forEach TTC_CTI_sectorDefinitions;
+
+// Iterate over all sectors:
+{
+	_neighbours	= _x getVariable ["TTC_CTI_sector_neighbours", []];
+
+	// Replace neighbour IDs with sector objects (triggers).
+	{
+		if (typeName _x == "SCALAR") then {
+			_neighbour = TTC_CTI_sectors select _x;
+			_neighbours set [_forEachIndex, _neighbour];
+		};
+	} forEach _neighbours;
+
+	_x setVariable ["TTC_CTI_sector_neighbours", _neighbours];
+} forEach TTC_CTI_sectors;

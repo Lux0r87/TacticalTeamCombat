@@ -12,10 +12,9 @@ _side		= [_this, 4, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [s
 _vehType	= [_this, 5, "O_Truck_03_device_F", [""]] call BIS_fnc_param;
 _speedLimit	= [_this, 6, 30, [0]] call BIS_fnc_param;
 
-/*[
-	["TTC_CTI: createMobileSector:"], ["_sector = %1", _sector], ["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side],
-	["_vehType = %1", _vehType], ["_speedLimit = %1", _speedLimit]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_createMobileSector",
+	[["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side], ["_vehType = %1", _vehType], ["_speedLimit = %1", _speedLimit]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 // Create vehicle.

@@ -23,15 +23,14 @@ _list		= [_this, 3, [], [[]]] call BIS_fnc_param;
 _sectorSide	= [_this, 4, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
 _dominance	= [_this, 5, _sector getVariable ["TTC_CTI_sector_dominance", TTC_CTI_dominanceMax], [0]] call BIS_fnc_param;
 
-/*[
-	["TTC_CTI: updateDominance:"], ["_sector = %1", _sector], ["_side = %1", _side], ["_diff = %1", _diff], ["_list = %1", _list],
-	["_sectorSide = %1", _sectorSide], ["_dominance = %1", _dominance]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_updateDominance", 
+	[["_side = %1", _side], ["_diff = %1", _diff], ["_list = %1", _list], ["_sectorSide = %1", _sectorSide], ["_dominance = %1", _dominance]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 _TTC_CTI_update = {
 	// Don't add "_sector" to private variables. This function modifies the original variable.
-	private ["_dominanceNew","_recalculate","_neighbours","_neighbour"];
+	private ["_dominanceNew","_recalculate","_neighbours"];
 	_sector			= _this select 0;
 	_dominanceNew	= _this select 1;
 	_recalculate	= _this select 2;
@@ -47,8 +46,7 @@ _TTC_CTI_update = {
 
 		// Update the sector markers for the neighbours.
 		{
-			_neighbour = TTC_CTI_sectors select _x;
-			[_neighbour, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
+			[_x, TTC_CTI_dominanceMax, _recalculate] call TTC_CTI_fnc_updateSectorMarkers;
 		} forEach _neighbours;
 	};
 };

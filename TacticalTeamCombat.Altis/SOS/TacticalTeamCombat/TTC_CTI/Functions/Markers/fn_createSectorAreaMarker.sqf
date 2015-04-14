@@ -3,8 +3,6 @@
 */
 
 
-#include "markerVariables.hpp"
-
 private ["_sector","_name","_pos","_axisA","_axisB","_dir","_side","_dominance","_mrkShape","_mrkName","_mrkColor","_mrk"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
@@ -17,16 +15,16 @@ _side		= [_this, 6, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [s
 _dominance	= [_this, 7, _sector getVariable ["TTC_CTI_sector_dominance", 100], [0]] call BIS_fnc_param;
 _mrkShape	= [_this, 8, "RECTANGLE", [""]] call BIS_fnc_param;	// "ICON", "RECTANGLE" or "ELLIPSE"
 
-/*[
-	["TTC_CTI: createSectorAreaMarker:"], ["_sector = %1", _sector], ["_name = %1", _name], ["_pos = %1", _pos], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB],
-	["_dir = %1", _dir], ["_side = %1", _side], ["_dominance = %1", _dominance], ["_mrkShape = %1", _mrkShape]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_createSectorAreaMarker",
+	[["_name = %1", _name], ["_pos = %1", _pos], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB],
+	["_dir = %1", _dir], ["_side = %1", _side], ["_dominance = %1", _dominance], ["_mrkShape = %1", _mrkShape]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 TTC_CTI_sectorAreaNo = TTC_CTI_sectorAreaNo + 1;
 _mrkName	= format ["mrk_SectorArea%1", TTC_CTI_sectorAreaNo];
 _mrkColor	= [_side, true] call BIS_fnc_sideColor;
-_mrk		= [_mrkName, _pos, _name, _mrkColor, _axisA, _axisB, _dir, _mrkShape, "Empty", TTC_CTI_sectorAreaMarkerAlpha, "SolidBorder"] call TTC_CORE_fnc_createMarker;
+_mrk		= [_mrkName, _pos, _name, _mrkColor, _axisA, _axisB, _dir, _mrkShape, "Empty", 0, "SolidBorder"] call TTC_CORE_fnc_createMarker;
 _sector setVariable ["TTC_CTI_sector_markerArea", _mrk];
 
 _mrk

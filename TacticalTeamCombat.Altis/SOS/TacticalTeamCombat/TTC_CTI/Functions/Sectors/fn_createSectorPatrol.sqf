@@ -16,10 +16,10 @@ _unitTypes	= [_this, 6, ["_Soldier_SL_F","_Soldier_AR_F","_Soldier_LAT_F","_sold
 _radius		= _axisA min _axisB;
 _safePos	= [_pos, 0, _radius, 0, 0, 1000, 0] call BIS_fnc_findSafePos;
 
-/*[
-	["TTC_CTI: createSectorPatrol:"], ["_sector = %1", _sector], ["_pos = %1", _pos], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_side = %1", _side],
-	["_patrol = %1", _patrol], ["_unitTypes = %1", _unitTypes], ["_radius = %1", _radius], ["_safePos = %1", _safePos]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_createSectorPatrol",
+	[["_pos = %1", _pos], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_side = %1", _side], ["_patrol = %1", _patrol],
+	["_unitTypes = %1", _unitTypes], ["_radius = %1", _radius], ["_safePos = %1", _safePos]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 // Delete old patrol
