@@ -6,7 +6,6 @@
 disableSerialization;
 
 #include "dominanceVariables.hpp"
-#include "sectorVariables.hpp"
 
 private ["_display","_control","_text"];
 

@@ -5,18 +5,17 @@
 */
 
 #include "markerVariables.hpp"
-#include "sectorVariables.hpp"
 
 private ["_sector","_dominanceMax","_name","_side","_dominance","_mrkArea","_mrk","_color"];
 
 _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
 
-_name		= _sector select TTC_CTI_sector_name;
-_side		= _sector select TTC_CTI_sector_side;
-_dominance	= _sector select TTC_CTI_sector_dominance;
-_mrkArea	= _sector select TTC_CTI_sector_markerArea;
-_mrk		= _sector select TTC_CTI_sector_marker;
+_name		= _sector getVariable "TTC_CTI_sector_name";
+_side		= _sector getVariable "TTC_CTI_sector_side";
+_dominance	= _sector getVariable "TTC_CTI_sector_dominance";
+_mrkArea	= _sector getVariable "TTC_CTI_sector_markerArea";
+_mrk		= _sector getVariable "TTC_CTI_sector_marker";
 _color		= [_side, true] call BIS_fnc_sideColor;
 
 /*[

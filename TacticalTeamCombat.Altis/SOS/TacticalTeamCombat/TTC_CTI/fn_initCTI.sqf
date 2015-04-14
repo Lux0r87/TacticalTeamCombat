@@ -4,8 +4,8 @@
 
 
 #include "Functions\Sectors\dominanceVariables.hpp"
-#include "Functions\Sectors\sectorVariables.hpp"
 
+TTC_CTI_sectors = [];
 
 // Client-side scripts:
 if (hasInterface) then {
@@ -38,10 +38,12 @@ if (isServer) then {
 	TTC_CTI_sectorNo		= 0;
 	TTC_CTI_sectorAreaNo	= 0;
 
-	private ["_winner","_location","_sectorPattern","_trigger","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"];
+	private [
+		"_winner","_location","_sectorPattern","_sector","_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_respawnDir","_isMobile",
+		"_shape","_mrk","_patrol","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"
+	];
 
-	_winner		= sideUnknown;
-	_triggers	= [];
+	_winner = sideUnknown;
 
 	// -------------------- Initialization --------------------
 	// Get location string
@@ -53,48 +55,51 @@ if (isServer) then {
 	// Compile configuration file
 	[] call compile preprocessFileLineNumbers format["SOS\TacticalTeamCombat\TTC_CTI\Locations\%1\%2.sqf", _sectorPattern, _location];
 
-	// Initialize the sectors (create triggers, markers, patrols)
-	{
-		private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_visibility","_trigger","_shape","_mrk","_patrol","_canSee"];
-		_sector		= _x;
-		_name		= _sector select TTC_CTI_sector_name;
-		_pos		= _sector select TTC_CTI_sector_position;
-		_xrad		= _sector select TTC_CTI_sector_axisA;
-		_yrad		= _sector select TTC_CTI_sector_axisB;
-		_dir		= _sector select TTC_CTI_sector_direction;
-		_rectangle	= _sector select TTC_CTI_sector_rectangle;
-		_visibility	= _sector select TTC_CTI_sector_visibility;
+	// Create all sectors and initialize the variables.
+	[] call TTC_CTI_fnc_createSectors;
 
-		// Create trigger
-		_trigger = [_name, _pos, _xrad, _yrad, _dir, _rectangle] call TTC_CORE_fnc_createTrigger;
-		_sector set [TTC_CTI_sector_trigger, _trigger];
-		_triggers pushBack _trigger;
+	// Iterate over all sectors:
+	{
+		private ["_visibility","_canSee"];
+		_sector		= _x;
+		_name		= _sector getVariable "TTC_CTI_sector_name";
+		_pos		= _sector getVariable "TTC_CTI_sector_position";
+		_xrad		= _sector getVariable "TTC_CTI_sector_axisA";
+		_yrad		= _sector getVariable "TTC_CTI_sector_axisB";
+		_dir		= _sector getVariable "TTC_CTI_sector_direction";
+		_rectangle	= _sector getVariable "TTC_CTI_sector_rectangle";
+		_side		= _sector getVariable "TTC_CTI_sector_side";
+		_dominance	= _sector getVariable "TTC_CTI_sector_dominance";
+		_respawnDir	= _sector getVariable "TTC_CTI_sector_respawnDir";
+		_isMobile	= _sector getVariable "TTC_CTI_sector_isMobile";
 
 		// Create area marker
 		_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
-		_mrk = [_sector, _xrad, _yrad, _dir, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
+		_mrk = [_sector, _name, _pos, _xrad, _yrad, _dir, _side, _dominance, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
 
 		// Create marker
-		_mrk = [_sector, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
+		_mrk = [_sector, _name, _pos, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
 
 		// Create sector patrol.
-		_patrol = [_sector] call TTC_CTI_fnc_createSectorPatrol;
+		_patrol = [_sector, _pos, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
 
 		// Create vehicle for mobile sector(s).
-		if (count _sector >= 17) then {
-			[_sector, _forEachIndex] call TTC_CTI_fnc_createMobileSector;
+		if (_isMobile) then {
+			[_sector, _pos, _dir, _side] call TTC_CTI_fnc_createMobileSector;
 		};
 
-		// Set the visibility of this sector for each side.
+		// Set the visibility of the sector for each side.
+		_visibility	= [];
+
 		{
-			_canSee = [_sector, _x] call TTC_CTI_fnc_canSeeSector;
-			_visibility set [_forEachIndex, _canSee];
-			_sector set [TTC_CTI_sector_visibility, _visibility];
+			_canSee = [_sector, _x, _side] call TTC_CTI_fnc_canSeeSector;
+			_visibility pushBack _canSee;
+			_sector setVariable ["TTC_CTI_sector_visibility", _visibility];
 		} forEach TTC_CTI_Sides;
 	} forEach TTC_CTI_sectors;
 
 	// Add trigger statements on all clients (including JIP).
-	[[_triggers, ["this", "hint 'trigger on'; diag_log 'trigger on'", "hint 'trigger off'; diag_log 'trigger off'"]], "TTC_CORE_fnc_setTriggersStatements", true, true] call BIS_fnc_MP;
+	[[TTC_CTI_sectors, ["this", "hint 'trigger on'; diag_log 'trigger on'", "hint 'trigger off'; diag_log 'trigger off'"]], "TTC_CORE_fnc_setTriggersStatements", true, true] call BIS_fnc_MP;
 
 	// Add respawn positions to the sectors, after the safety time is over.
 	[] spawn {
@@ -111,8 +116,7 @@ if (isServer) then {
 		// Iterate over all sectors
 		{
 			// Copy list of units that would activate the trigger.
-			_trigger = _x select TTC_CTI_sector_trigger;
-			_list = +(list _trigger);
+			_list = +(list _x);
 
 			if (!isNil "_list") then {
 				// Is sector not empty?

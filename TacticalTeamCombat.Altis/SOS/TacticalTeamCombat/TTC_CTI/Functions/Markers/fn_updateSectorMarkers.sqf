@@ -3,8 +3,6 @@
 */
 
 
-#include "sectorVariables.hpp"
-
 // Don't add "_sector" to private variables. This function modifies the original variable.
 private ["_dominanceMax","_recalculate","_target","_pos","_mrkArea","_mrk","_visibility","_isNull","_sides","_find","_canSee"];
 
@@ -13,10 +11,10 @@ _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
 _recalculate	= [_this, 2, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
 _target			= [_this, 3, ObjNull, [ObjNull]] call BIS_fnc_param;
 
-_pos		= _sector select TTC_CTI_sector_position;
-_mrkArea	= _sector select TTC_CTI_sector_markerArea;
-_mrk		= _sector select TTC_CTI_sector_marker;
-_visibility	= _sector select TTC_CTI_sector_visibility;
+_pos		= _sector getVariable "TTC_CTI_sector_position";
+_mrkArea	= _sector getVariable "TTC_CTI_sector_markerArea";
+_mrk		= _sector getVariable "TTC_CTI_sector_marker";
+_visibility	= _sector getVariable "TTC_CTI_sector_visibility";
 
 _isNull		= isNull _target;
 _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_Sides};
@@ -39,7 +37,7 @@ _mrk setMarkerPos _pos;
 	if (_recalculate) then {
 		_canSee = [_sector, _x] call TTC_CTI_fnc_canSeeSector;
 		_visibility set [_find, _canSee];
-		_sector set [TTC_CTI_sector_visibility, _visibility];
+		_sector setVariable ["TTC_CTI_sector_visibility", _visibility];
 	} else {
 		_canSee = _visibility select _find;
 	};
