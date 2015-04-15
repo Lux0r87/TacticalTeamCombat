@@ -118,6 +118,26 @@ class TTC_RscText {
     text = "";
 };
 
+class TTC_RscStructuredText_AlignCenter {    
+    idc		= -1;
+    type	= CT_STRUCTURED_TEXT;
+    style	= ST_RIGHT;
+    colorBackground[]	= COLOR_TRANSPARENT;
+    size	= "0.04 / (getResolution select 5)";
+ 
+    h = 0.05;
+    w = 0.10;
+
+    text = "";
+
+    class Attributes {
+        font   = "PuristaSemiBold";
+        color  = "#ffffff";
+        align  = "center";
+        valign = "middle";
+    };
+};
+
 class TTC_RscStructuredText_AlignRight {    
     idc		= -1;
     type	= CT_STRUCTURED_TEXT;

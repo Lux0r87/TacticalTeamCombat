@@ -2,9 +2,8 @@
 #include "CHVD\dialog.hpp"
 
 #include "SOS\TacticalTeamCombat\TTC_UI\Defines.hpp"
-
-#include "SOS\TacticalTeamCombat\TTC_BTC\displays.hpp"
-#include "SOS\TacticalTeamCombat\TTC_Shop\dialogs.hpp"
+#include "SOS\TacticalTeamCombat\TTC_Shop\Dialogs.hpp"
+#include "SOS\TacticalTeamCombat\displays.hpp"
 
 
 // String (usually mission name) shown during mission loading.

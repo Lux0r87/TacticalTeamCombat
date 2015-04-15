@@ -9,7 +9,6 @@
 
 
 #include "dominanceVariables.hpp"
-#include "sectorVariables.hpp"
 
 private ["_side","_sectorSide","_dominance"];
 
@@ -20,8 +19,8 @@ _side = sideUnknown;
 {
 	scopeName "searchLoop";
 
-	_sectorSide = _x select TTC_CTI_sector_side;
-	_dominance	= _x select TTC_CTI_sector_dominance;
+	_sectorSide = _x getVariable "TTC_CTI_sector_side";
+	_dominance	= _x getVariable "TTC_CTI_sector_dominance";
 
 	// Cancel searching, if the sector is not controlled by the same side or the dominance is not at maximum.
 	if ((_side != sideUnknown && {_side != _sectorSide}) || (_dominance < TTC_CTI_dominanceMax)) then {

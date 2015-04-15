@@ -20,9 +20,12 @@ class TTC_CTI_Functions {
 		class canCaptureSector{};
 		class canSeeSector{};
 		class createMobileSector{};
+		class createSectorDisplay{};
 		class createSectorPatrol{};
+		class createSectors{};
 		class getInMobileSector{};
 		class isSectorConnectedToBase{};
+		class logSector{};
 		class mobileSectorIsMoving{};
 		class sideCapturedAllSectors{};
 		class updateDominance{};

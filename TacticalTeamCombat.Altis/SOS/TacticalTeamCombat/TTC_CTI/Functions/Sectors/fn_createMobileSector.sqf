@@ -3,24 +3,18 @@
 */
 
 
-#include "sectorVariables.hpp"
-
-// Don't add "_sector" to private variables. This function modifies the original variable.
-private ["_sectorID","_vehType","_speedLimit","_pos","_dir","_side","_veh"];
+private ["_sector","_pos","_dir","_side","_vehType","_speedLimit","_veh"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
-_sectorID	= [_this, 1] call BIS_fnc_param;
-_vehType	= [_this, 2, "O_Truck_03_device_F", [""]] call BIS_fnc_param;
-_speedLimit	= [_this, 3, 30, [0]] call BIS_fnc_param;
+_pos		= [_this, 2, _sector getVariable ["TTC_CTI_sector_position", [0,0]], [[]], [2, 3]] call BIS_fnc_param;
+_dir		= [_this, 3, _sector getVariable ["TTC_CTI_sector_direction", 0], [0]] call BIS_fnc_param;
+_side		= [_this, 4, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
+_vehType	= [_this, 5, "O_Truck_03_device_F", [""]] call BIS_fnc_param;
+_speedLimit	= [_this, 6, 30, [0]] call BIS_fnc_param;
 
-_pos	= _sector select TTC_CTI_sector_position;
-_dir	= _sector select TTC_CTI_sector_direction;
-_side	= _sector select TTC_CTI_sector_side;
-
-/*[
-	["TTC_CTI: createMobileSector:"], ["_sector = %1", _sector], ["_sectorID = %1", _sectorID], ["_vehType = %1", _vehType], ["_speedLimit = %1", _speedLimit],
-	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]
-] call TTC_CORE_fnc_log;*/
+/*[_sector, "TTC_CTI_fnc_createMobileSector",
+	[["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side], ["_vehType = %1", _vehType], ["_speedLimit = %1", _speedLimit]]
+] call TTC_CTI_fnc_logSector;*/
 
 
 // Create vehicle.
@@ -28,7 +22,7 @@ _veh = _vehType createVehicle _pos;
 _veh setDir _dir;
 _veh lock true;
 _veh allowDamage false;
-_veh setVariable ["TTC_sectorID", _sectorID];
+_veh setVariable ["TTC_sector", _sector];
 
 // Limit speed of the vehicle.
 [_veh, _speedLimit] spawn TTC_CORE_fnc_speedLimit;
@@ -37,4 +31,4 @@ _veh setVariable ["TTC_sectorID", _sectorID];
 _veh addEventHandler ["GetIn", TTC_CTI_fnc_getInMobileSector];
 
 // Save vehicle for the mobile sector.
-_sector set [TTC_CTI_sector_vehicle, _veh];
+_sector setVariable ["TTC_CTI_sector_vehicle", _veh];
