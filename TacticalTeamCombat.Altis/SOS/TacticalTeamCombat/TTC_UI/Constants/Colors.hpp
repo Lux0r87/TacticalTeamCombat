@@ -1,5 +1,19 @@
-// Created by BauerMitFackel
-// @see: http://flatuicolors.com/
+/*
+	Color definitions
+	Created by BauerMitFackel
+*/
+
+#define COLOR_TRANSPARENT			{0.000,	0.000,	0.000,	0.00}
+
+#define COLOR_BLACK_A100			{0.000,	0.000,	0.000,	1.00}
+#define COLOR_BLACK_A75				{0.000,	0.000,	0.000,	0.75}
+#define COLOR_BLACK_A50				{0.000,	0.000,	0.000,	0.50}
+#define COLOR_BLACK_A25				{0.000,	0.000,	0.000,	0.25}
+
+#define COLOR_WHITE_A100			{1.000,	1.000,	1.000,	1.00}
+#define COLOR_WHITE_A75				{1.000,	1.000,	1.000,	0.75}
+#define COLOR_WHITE_A50				{1.000,	1.000,	1.000,	0.50}
+#define COLOR_WHITE_A25				{1.000,	1.000,	1.000,	0.25}
 
 #define COLOR_TURQUOISE_A100		{0.102,	0.737,	0.612,	1.00}
 #define COLOR_TURQUOISE_A75			{0.102,	0.737,	0.612,	0.75}

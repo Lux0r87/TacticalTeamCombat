@@ -1,5 +1,8 @@
 #include "outlw_magRepack\MagRepack_config.hpp"
 #include "CHVD\dialog.hpp"
+
+#include "SOS\TacticalTeamCombat\TTC_UI\Defines.hpp"
+
 #include "SOS\TacticalTeamCombat\TTC_BTC\displays.hpp"
 #include "SOS\TacticalTeamCombat\TTC_Shop\dialogs.hpp"
 
