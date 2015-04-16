@@ -14,8 +14,8 @@ _CATEGORY_LIST_IDC = 51001;
 */
 _addCategoryToList = {
 		
-	_id					= [_this, 0] call BIS_fnc_param;
-	_name				= [_this, 1] call BIS_fnc_param;
+	_id		= [_this, TTC_SHOP_CATEGORY_id] call BIS_fnc_param;
+	_name	= [_this, TTC_SHOP_CATEGORY_name] call BIS_fnc_param;
 		
 	_index = lnbAddRow [_CATEGORY_LIST_IDC, [_name]];
 	lnbSetValue  [_CATEGORY_LIST_IDC, [_index, 0], _id];
@@ -32,6 +32,10 @@ lnbSetCurSelRow [_CATEGORY_LIST_IDC, -1];
 
 {
 	_category = _x;
-	_category call _addCategoryToList;
-
+	
+	_articleCount = count (_category select TTC_SHOP_CATEGORY_articles);
+	if (_articleCount > 0) then {
+		_category call _addCategoryToList;
+	};
+	
 } forEach _categories;

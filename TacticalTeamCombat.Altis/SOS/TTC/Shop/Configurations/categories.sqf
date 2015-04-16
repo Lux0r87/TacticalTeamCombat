@@ -3,6 +3,10 @@
     Created by BauerMitFackel
 */
 
+TTC_SHOP_CATEGORY_id			= 0;
+TTC_SHOP_CATEGORY_name			= 1;
+TTC_SHOP_CATEGORY_articles		= 2;
+
 _weapons		= [1000,	"Weapons",			TTC_SHOP_weapons];
 _ammunition		= [2000,	"Ammunition",		TTC_SHOP_ammunition];
 _explosives		= [3000,	"Explosives",		TTC_SHOP_explosives];
