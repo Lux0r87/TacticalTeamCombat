@@ -2,12 +2,12 @@
     Created by BauerMitFackel
 */
 
-#define TTC_SHOP_DIALOG_W											0.650 * safezoneW
-#define TTC_SHOP_DIALOG_H											0.650 * safezoneH
-#define TTC_SHOP_DIALOG_LIST_HEADER_H								0.040 * safezoneH
-#define TTC_SHOP_DIALOG_SPACING										0.004 * ((safezoneH + safezoneW) / 2)
+#define TTC_SHOP_DIALOG_W											(0.650 * safezoneW)
+#define TTC_SHOP_DIALOG_H											(0.650 * safezoneH)
+#define TTC_SHOP_DIALOG_LIST_HEADER_H								(0.040 * safezoneH)
+#define TTC_SHOP_DIALOG_SPACING										(0.004 * ((safezoneH + safezoneW) / 2))
 #define TTC_SHOP_DIALOG_COLUMN_1_W									TTC_SHOP_DIALOG_W * 0.2
-#define TTC_SHOP_DIALOG_COLUMN_2_W									TTC_SHOP_DIALOG_W * 0.5 - (TTC_SHOP_DIALOG_SPACING * 2)
+#define TTC_SHOP_DIALOG_COLUMN_2_W									(TTC_SHOP_DIALOG_W * 0.5 - (TTC_SHOP_DIALOG_SPACING * 2))
 #define TTC_SHOP_DIALOG_COLUMN_3_W									TTC_SHOP_DIALOG_W * 0.3
 #define TTC_SHOP_DIALOG_COLUMN_1_X									(safezoneX + (safezoneW / 2)) - (TTC_SHOP_DIALOG_W / 2)
 #define TTC_SHOP_DIALOG_COLUMN_1_Y									(safezoneY + (safezoneH / 2)) - (TTC_SHOP_DIALOG_H / 2)
@@ -31,7 +31,7 @@
 // Column 2
 // #define TTC_SHOP_DIALOG_ARTICLE_PICTURE_W						TTC_SHOP_DIALOG_COLUMN_2_W * 0.4
 // #define TTC_SHOP_DIALOG_ARTICLE_PICTURE_H						0.15 * safezoneH
-#define TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_W						TTC_SHOP_DIALOG_COLUMN_2_W // (TTC_SHOP_DIALOG_COLUMN_2_W * 0.6) - TTC_SHOP_DIALOG_SPACING
+#define TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_W						(TTC_SHOP_DIALOG_COLUMN_2_W * 0.6) - TTC_SHOP_DIALOG_SPACING
 #define TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_H						0.15 * safezoneH // TTC_SHOP_DIALOG_ARTICLE_PICTURE_H
 #define TTC_SHOP_DIALOG_ARTICLE_LIST_HEADER_W						TTC_SHOP_DIALOG_COLUMN_2_W
 #define TTC_SHOP_DIALOG_ARTICLE_LIST_HEADER_H						TTC_SHOP_DIALOG_LIST_HEADER_H
