@@ -1,5 +1,5 @@
 // Initialize Tactical Team Combat
-[] call TTC_fnc_initTTC;
+[] call TTC_fnc_init;
 
 // Set 'false' if you want to disable "None" option for terrain
 CHVD_allowNoGrass = false;

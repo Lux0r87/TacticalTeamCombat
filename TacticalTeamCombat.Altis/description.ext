@@ -1,9 +1,9 @@
 #include "outlw_magRepack\MagRepack_config.hpp"
 #include "CHVD\dialog.hpp"
 
-#include "SOS\TacticalTeamCombat\TTC_UI\Defines.hpp"
-#include "SOS\TacticalTeamCombat\TTC_Shop\Dialogs.hpp"
-#include "SOS\TacticalTeamCombat\displays.hpp"
+#include "SOS\TTC\UI\Defines.hpp"
+#include "SOS\TTC\Shop\Dialogs.hpp"
+#include "SOS\TTC\displays.hpp"
 
 
 // String (usually mission name) shown during mission loading.
@@ -70,7 +70,7 @@ class Header {
 
 
 class CfgRespawnInventory {
-	#include "SOS\TacticalTeamCombat\TTC_Core\Functions\Respawn\inventories.hpp"
+	#include "SOS\TTC\Core\Functions\Respawn\inventories.hpp"
 };
 
 
@@ -78,12 +78,12 @@ class CfgFunctions
 {
 	#include "CHVD\CfgFunctions.hpp"
 	#include "SOS\Clear\functions.hpp"
-	#include "SOS\TacticalTeamCombat\functions.hpp"
+	#include "SOS\TTC\functions.hpp"
 };
 
 
 class Params {
-	#include "SOS\TacticalTeamCombat\params.hpp"
+	#include "SOS\TTC\params.hpp"
 	#include "SOS\Time\params.hpp"
 	#include "SOS\Weather\params.hpp"
 };
