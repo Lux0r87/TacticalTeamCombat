@@ -12,12 +12,13 @@ class TTC_Shop {
 		class getArticleById {};
 		class getArticlesByCategoryId {};
 		class onArticleSelected {};
-		class onCategorySelected {};
 		class onBuyClicked {};
+		class onCategorySelected {};
 		class onClearClicked {};
 		class onLoadClicked {};
 		class onSaveClicked {};
 		class setArticleDescription {};
+		class setArticlePicture {};
 		class setArticles {};
 		class setCategories {};
 

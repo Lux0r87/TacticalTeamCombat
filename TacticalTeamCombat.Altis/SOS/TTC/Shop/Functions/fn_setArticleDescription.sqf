@@ -1,15 +1,15 @@
 /*
-	The script updates the article picture.
+	The script updates the article description.
 	Params: [_name, _description]
 	
     Created by BauerMitFackel
 */
 
 disableSerialization;
-_ARTICLE_DESCRIPTION_IDC = 52003;
+_CONTROL_IDC = 52003;
 
-_display = uiNamespace getVariable ["TTC_SHOP_shopDialog", nil];
-_control = _display displayCtrl _ARTICLE_DESCRIPTION_IDC;
+_dialog = uiNamespace getVariable ["TTC_SHOP_shopDialog", nil];
+_control = _dialog displayCtrl _CONTROL_IDC;
 
 _name			= [_this, 0, nil] call BIS_fnc_param;
 _description	= [_this, 1, nil] call BIS_fnc_param;

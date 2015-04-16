@@ -8,6 +8,7 @@
 
 #define TTC_SHOP_DIALOG_CATEGORY_LIST_IDC				51001
 #define TTC_SHOP_DIALOG_ARTICLE_LIST_IDC				52001
+#define TTC_SHOP_DIALOG_ARTICLE_PICTURE_IDC				52002
 #define TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_IDC			52003
 #define TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_IDC			53001
 #define TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_IDC			53002
@@ -65,6 +66,14 @@ class TTC_SHOP_ShopDialog {
 			h = TTC_SHOP_DIALOG_ARTICLE_LIST_BACKGROUND_H;
 		};
 		
+		class TTC_SHOP_ArticlePicture_Background: TTC_UI_Background_Light {
+		
+			x = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_X;
+			y = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_Y;
+			w = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_W;
+			h = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_H;
+		};
+		
 		class TTC_SHOP_ShoppingCard_Header : TTC_UI_Text {
 					
 			style		= ST_CENTER;
@@ -114,12 +123,23 @@ class TTC_SHOP_ShopDialog {
 			w = TTC_SHOP_DIALOG_ARTICLE_LIST_W;
 			h = TTC_SHOP_DIALOG_ARTICLE_LIST_H;
 			
-			onLBSelChanged = "_this spawn TTC_SHOP_fnc_onArticleSelected;";
+			onLBSelChanged			= "_this spawn TTC_SHOP_fnc_onArticleSelected;";
+			onMouseButtonDblClick	= "_this spawn TTC_SHOP_fnc_onArticleDoubleClick;";
 		};
-				
+		
+		class TTC_SHOP_ArticlePicture: TTC_UI_Picture {
+		
+			idc 		= TTC_SHOP_DIALOG_ARTICLE_PICTURE_IDC;
+			
+			x = TTC_SHOP_DIALOG_ARTICLE_PICTURE_X;
+			y = TTC_SHOP_DIALOG_ARTICLE_PICTURE_Y;
+			w = TTC_SHOP_DIALOG_ARTICLE_PICTURE_W;
+			h = TTC_SHOP_DIALOG_ARTICLE_PICTURE_H;
+		};
+		
 		class TTC_SHOP_ArticleDescription: TTC_UI_StructuredText {
 		
-			idc = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_IDC;
+			idc 		= TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_IDC;
 			
 			x = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_X;
 			y = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_Y;
@@ -130,9 +150,9 @@ class TTC_SHOP_ShopDialog {
 		
 		class TTC_SHOP_ShoppingCard_Save: TTC_UI_Button {
 		
-			idc		= TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_IDC;
-			text	= "Save"; //--- ToDo: Localize;
-			action	= "[] spawn TTC_SHOP_fnc_onSaveClicked";
+			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_IDC;
+			text		= "Save"; //--- ToDo: Localize;
+			action		= "[] spawn TTC_SHOP_fnc_onSaveClicked";
 			
 			x = TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_X;
 			y = TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_Y;
@@ -142,9 +162,9 @@ class TTC_SHOP_ShopDialog {
 		
 		class TTC_SHOP_ShoppingCard_Load: TTC_UI_Button {
 		
-			idc		= TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_IDC;
-			text	= "Load"; //--- ToDo: Localize;
-			action	= "[] spawn TTC_SHOP_fnc_onLoadClicked";
+			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_IDC;
+			text		= "Load"; //--- ToDo: Localize;
+			action		= "[] spawn TTC_SHOP_fnc_onLoadClicked";
 			
 			x = TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_X;
 			y = TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_Y;
@@ -154,9 +174,9 @@ class TTC_SHOP_ShopDialog {
 		
 		class TTC_SHOP_ShoppingCard_Clear: TTC_UI_Button {
 		
-			idc		= TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_IDC;
-			text	= "Clear"; //--- ToDo: Localize;
-			action	= "[] spawn TTC_SHOP_fnc_onClearClicked";
+			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_IDC;
+			text		= "Clear"; //--- ToDo: Localize;
+			action		= "[] spawn TTC_SHOP_fnc_onClearClicked";
 			
 			x = TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_X;
 			y = TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_Y;
@@ -191,9 +211,9 @@ class TTC_SHOP_ShopDialog {
 		
 		class TTC_SHOP_Cancel: TTC_UI_ButtonDanger {
 		
-			idc		= TTC_SHOP_DIALOG_CANCEL_IDC;
-			text	= "Cancel"; //--- ToDo: Localize;
-			action	= "closeDialog 0";
+			idc			= TTC_SHOP_DIALOG_CANCEL_IDC;
+			text		= "Cancel"; //--- ToDo: Localize;
+			action		= "closeDialog 0";
 			
 			x = TTC_SHOP_DIALOG_CANCEL_X;
 			y = TTC_SHOP_DIALOG_CANCEL_Y;
@@ -203,10 +223,10 @@ class TTC_SHOP_ShopDialog {
 		
 		class TTC_SHOP_Buy: TTC_UI_ButtonSuccess {
 		
-			idc		= TTC_SHOP_DIALOG_BUY_IDC;
-			text	= "Buy"; //--- ToDo: Localize;
-			sizeEx	= "0.038 / (getResolution select 5)";
-			action	= "[] spawn TTC_SHOP_fnc_onBuyClicked";
+			idc			= TTC_SHOP_DIALOG_BUY_IDC;
+			text		= "Buy"; //--- ToDo: Localize;
+			sizeEx		= "0.038 / (getResolution select 5)";
+			action		= "[] spawn TTC_SHOP_fnc_onBuyClicked";
 			
 			x = TTC_SHOP_DIALOG_BUY_X;
 			y = TTC_SHOP_DIALOG_BUY_Y;

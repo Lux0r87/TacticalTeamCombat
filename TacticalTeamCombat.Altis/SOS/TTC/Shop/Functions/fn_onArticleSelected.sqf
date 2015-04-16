@@ -17,9 +17,10 @@ if (_index >= 0) then {
 
 	_articleId		= _control lnbValue [_index, 0];
 	_article 		= _articleId call TTC_SHOP_fnc_getArticleById;	
-	_picture		= _article select 5;
-	_name			= _article select 3;
-	_description	= _article select 4;
+	_picture		= _article select TTC_SHOP_ARTICLE_picture;
+	_name			= _article select TTC_SHOP_ARTICLE_displayName;
+	_description	= _article select TTC_SHOP_ARTICLE_description;
 };
 
+_picture call TTC_SHOP_fnc_setArticlePicture;
 [_name, _description] call TTC_SHOP_fnc_setArticleDescription;
