@@ -52,3 +52,4 @@
 #define MB_BUTTON_OK			1
 #define MB_BUTTON_CANCEL		2
 #define MB_BUTTON_USER			4
+

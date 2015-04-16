@@ -84,3 +84,4 @@ class TTC_UI_ButtonWarning_Dark: TTC_UI_Button_Dark {
 	colorFocused[]				= COLOR_PUMPKIN_A100;
 	colorBorder[]				= COLOR_PUMPKIN_A100;
 };
+

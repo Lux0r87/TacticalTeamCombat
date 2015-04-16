@@ -24,3 +24,4 @@ class TTC_UI_StructuredText_Dark {
 		color	= "#FFFFFF";
 	};
 };
+

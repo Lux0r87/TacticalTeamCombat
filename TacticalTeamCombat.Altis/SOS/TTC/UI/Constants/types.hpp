@@ -36,3 +36,4 @@
 #define CT_MAP              	100
 #define CT_MAP_MAIN         	101
 #define CT_LISTNBOX         	102
+

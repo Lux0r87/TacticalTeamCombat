@@ -8,3 +8,4 @@ class TTC_UI_Picture_Light :TTC_UI_Picture_Dark {
 	colorShadow[]		= COLOR_TRANSPARENT;
 	colorText[]			= COLOR_WHITE_A100;
 };
+

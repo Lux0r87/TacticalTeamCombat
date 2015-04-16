@@ -7,3 +7,4 @@
 
 class TTC_UI_Picture: TTC_UI_Picture_Dark {
 };
+

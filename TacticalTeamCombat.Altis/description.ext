@@ -1,7 +1,7 @@
 #include "outlw_magRepack\MagRepack_config.hpp"
 #include "CHVD\dialog.hpp"
 
-#include "SOS\TTC\UI\Defines.hpp"
+#include "SOS\TTC\UI\defines.hpp"
 #include "SOS\TTC\Shop\Dialogs.hpp"
 #include "SOS\TTC\displays.hpp"
 

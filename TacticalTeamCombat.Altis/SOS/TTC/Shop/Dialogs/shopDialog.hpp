@@ -2,7 +2,7 @@
     Created by BauerMitFackel
 */
 
-#include "ShopDialog_Layout.hpp"
+#include "shopDialog_Layout.hpp"
 
 #define TTC_SHOP_DIALOG_IDD 							50000
 
@@ -215,3 +215,4 @@ class TTC_SHOP_ShopDialog {
 		};
 	};
 };
+

@@ -26,3 +26,4 @@ class TTC_UI_Picture_Dark {
 	tooltipColorBox[]	= COLOR_BLACK_A75;		// Tooltip frame color
 	tooltipColorShade[]	= COLOR_BLACK_A75;		// Tooltip background color
 };
+

@@ -24,5 +24,3 @@
 	class TTC_UI_ButtonWarning:		TTC_UI_ButtonWarning_Dark {};
 	
 #endif
-
-
