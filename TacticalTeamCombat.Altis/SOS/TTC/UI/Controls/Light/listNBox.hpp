@@ -1,3 +1,7 @@
+/*
+	Created by BauerMitFackel
+*/
+
 class TTC_UI_ListNBox_Light: TTC_UI_ListNBox_Dark {
 
 	colorText[]					= COLOR_BLACK_A100;			// Text and frame color

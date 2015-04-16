@@ -2,8 +2,15 @@
 	Created by BauerMitFackel
 */
 
-#include "Dark\listNBox_Dark.hpp"
-#include "Light\listNBox_Light.hpp"
+#include "Dark\listNBox.hpp"
+#include "Light\listNBox.hpp"
 
-class TTC_UI_ListNBox: TTC_UI_ListNBox_Dark {
-};
+#ifdef TTC_UI_THEME_LIGHT
+
+	class TTC_UI_ListNBox: TTC_UI_ListNBox_Light {};
+
+#else
+
+	class TTC_UI_ListNBox: TTC_UI_ListNBox_Dark {};
+	
+#endif

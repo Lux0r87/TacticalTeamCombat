@@ -36,4 +36,3 @@ class TTC_UI_BackgroundWarning_Light: TTC_UI_Background_Light {
 
 	colorBackground[]	= COLOR_CARROT_A75; 
 };
-

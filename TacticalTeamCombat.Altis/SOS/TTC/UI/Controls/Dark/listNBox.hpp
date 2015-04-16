@@ -42,8 +42,8 @@ class TTC_UI_ListNBox_Dark {
 	columns[] = {0.0}; // Horizontal coordinates of columns (relative to list width, in range from 0 to 1)
 
 	drawSideArrows = 0; // 1 to draw buttons linked by idcLeft and idcRight on both sides of selected line. They are resized to line height
-	idcLeft = -1; // Left button IDC
-	idcRight = -1; // Right button IDC
+	idcLeft = -1;
+	idcRight = -1;
 
 	soundSelect[] = {"\A3\ui_f\data\sound\RscListbox\soundSelect",0.09,1}; // Sound played when an item is selected
 	

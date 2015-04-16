@@ -2,8 +2,8 @@
 	Created by BauerMitFackel
 */
 
-#include "Dark\button_Dark.hpp"
-#include "Light\button_Light.hpp"
+#include "Dark\button.hpp"
+#include "Light\button.hpp"
 
 #ifdef TTC_UI_THEME_LIGHT
 

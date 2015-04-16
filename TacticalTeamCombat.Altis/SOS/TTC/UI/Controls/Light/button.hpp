@@ -63,4 +63,3 @@ class TTC_UI_ButtonWarning_Light: TTC_UI_Button_Light {
 	colorFocused[]				= COLOR_CARROT_A100;
 	colorBorder[]				= COLOR_CARROT_A100;
 };
-

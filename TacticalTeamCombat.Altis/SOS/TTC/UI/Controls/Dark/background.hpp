@@ -45,4 +45,3 @@ class TTC_UI_BackgroundWarning_Dark: TTC_UI_Background_Dark {
 
 	colorBackground[]	= COLOR_PUMPKIN_A75; 
 };
-

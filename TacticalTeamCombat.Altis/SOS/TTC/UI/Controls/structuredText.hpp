@@ -2,7 +2,15 @@
 	Created by BauerMitFackel
 */
 
-#include "Dark\structuredText_Dark.hpp"
-#include "Light\structuredText_Light.hpp"
+#include "Dark\structuredText.hpp"
+#include "Light\structuredText.hpp"
 
-class TTC_UI_StructuredText: TTC_UI_StructuredText_Dark {};
+#ifdef TTC_UI_THEME_LIGHT
+
+	class TTC_UI_StructuredText: TTC_UI_StructuredText_Light {};
+
+#else
+
+	class TTC_UI_StructuredText: TTC_UI_StructuredText_Dark {};
+	
+#endif

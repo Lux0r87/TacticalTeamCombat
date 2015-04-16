@@ -1,19 +1,38 @@
 /*
+	All categories are defined in this script.
     Created by BauerMitFackel
 */
 
-TTC_SHOP_weaponsCategory		= [1000, "Weapons",		TTC_SHOP_weapons];
-TTC_SHOP_magazinesCategory		= [2000, "Magazines",	TTC_SHOP_magazines];
-TTC_SHOP_vehiclesCategory		= [3000, "Vehicles",	TTC_SHOP_vehicles];
-TTC_SHOP_helicoptersCategory	= [4000, "Helicopters", TTC_SHOP_helicopters];
+_weapons		= [1000,	"Weapons",			TTC_SHOP_weapons];
+_ammunition		= [2000,	"Ammunition",		TTC_SHOP_ammunition];
+_explosives		= [3000,	"Explosives",		TTC_SHOP_explosives];
+_items			= [4000,	"Items",			TTC_SHOP_items];
+_headgear		= [5000,	"Headgear",			TTC_SHOP_headgear];
+_uniforms		= [6000,	"Uniforms",			TTC_SHOP_uniform];
+_vests			= [7000,	"Vests",			TTC_SHOP_vests];
+_backpacks		= [8000,	"Backpacks",		TTC_SHOP_backpacks];
+_vehicles		= [9000,	"Vehicles",			TTC_SHOP_vehicles];
+_helicopters	= [10000,	"Helicopters",		TTC_SHOP_helicopters];
+_uavs			= [11000,	"UAVs", 			TTC_SHOP_uavs];
+_ugvs			= [12000,	"UGVs", 			TTC_SHOP_ugvs];
+
 
 /*
 	Array containing all categories
+	Must be sorted. The order is used in the category list
 */
 TTC_SHOP_categories = [
 
-	TTC_SHOP_weaponsCategory,
-	TTC_SHOP_magazinesCategory,
-	TTC_SHOP_vehiclesCategory,
-	TTC_SHOP_helicoptersCategory
+	_weapons,
+	_ammunition,
+	_explosives,
+	_items,
+	_headgear,
+	_uniforms,
+	_vests,
+	_backpacks,
+	_vehicles,
+	_helicopters,
+	_uavs,
+	_ugvs
 ];

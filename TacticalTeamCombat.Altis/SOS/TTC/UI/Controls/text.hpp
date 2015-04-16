@@ -2,8 +2,15 @@
 	Created by BauerMitFackel
 */
 
-#include "Dark\text_Dark.hpp"
-#include "Light\text_Light.hpp"
+#include "Dark\text.hpp"
+#include "Light\text.hpp"
 
-class TTC_UI_Text: TTC_UI_Text_Dark {
-};
+#ifdef TTC_UI_THEME_LIGHT
+
+	class TTC_UI_Text: TTC_UI_Text_Light {};
+
+#else
+
+	class TTC_UI_Text: TTC_UI_Text_Dark {};
+	
+#endif
