@@ -11,6 +11,7 @@ class TTC_Shop {
 		class createShopDialog {};
 		class getArticleById {};
 		class getArticlesByCategoryId {};
+		class onArticleDoubleClick {};
 		class onArticleSelected {};
 		class onBuyClicked {};
 		class onCategorySelected {};
