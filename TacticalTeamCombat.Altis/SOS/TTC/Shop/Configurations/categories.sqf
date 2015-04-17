@@ -26,7 +26,6 @@ _ugvs			= [12000,	"UGVs", 			TTC_SHOP_ugvs];
 	Must be sorted. The order is used in the category list
 */
 TTC_SHOP_categories = [
-
 	_weapons,
 	_ammunition,
 	_explosives,
