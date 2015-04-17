@@ -295,9 +295,15 @@ TTC_SHOP_articles_headgear = TTC_SHOP_articles_goggles + TTC_SHOP_articles_banda
 /*
 	UNIFORMS format: [_id, _name, _maxAmount, _price]
 */
-TTC_SHOP_articles_uniforms = [
-	
+TTC_SHOP_articles_uniforms_GhillieSuit_WEST = [
+	[1500, "U_B_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getWeapon	// Ghillie Suit [NATO]
 ];
+
+TTC_SHOP_articles_uniforms_GhillieSuit_GUER = [
+	[1501, "U_I_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getWeapon	// Ghillie Suit [AAF]
+];
+
+TTC_SHOP_articles_uniforms = TTC_SHOP_articles_uniforms_GhillieSuit_WEST + TTC_SHOP_articles_uniforms_GhillieSuit_GUER;
 
 
 /*
