@@ -8,17 +8,18 @@ TTC_SHOP_CATEGORY_name			= 1;
 TTC_SHOP_CATEGORY_articles		= 2;
 
 _weapons		= [1000,	"Weapons",			TTC_SHOP_weapons];
-_ammunition		= [2000,	"Ammunition",		TTC_SHOP_ammunition];
-_explosives		= [3000,	"Explosives",		TTC_SHOP_explosives];
-_items			= [4000,	"Items",			TTC_SHOP_items];
-_headgear		= [5000,	"Headgear",			TTC_SHOP_headgear];
-_uniforms		= [6000,	"Uniforms",			TTC_SHOP_uniform];
-_vests			= [7000,	"Vests",			TTC_SHOP_vests];
-_backpacks		= [8000,	"Backpacks",		TTC_SHOP_backpacks];
-_vehicles		= [9000,	"Vehicles",			TTC_SHOP_vehicles];
-_helicopters	= [10000,	"Helicopters",		TTC_SHOP_helicopters];
-_uavs			= [11000,	"UAVs", 			TTC_SHOP_uavs];
-_ugvs			= [12000,	"UGVs", 			TTC_SHOP_ugvs];
+_attachments	= [2000,	"Attachments",		TTC_SHOP_attachments];
+_ammunition		= [3000,	"Ammunition",		TTC_SHOP_ammunition];
+_explosives		= [4000,	"Explosives",		TTC_SHOP_explosives];
+_items			= [5000,	"Items",			TTC_SHOP_items];
+_headgear		= [6000,	"Headgear",			TTC_SHOP_headgear];
+_uniforms		= [7000,	"Uniforms",			TTC_SHOP_uniform];
+_vests			= [8000,	"Vests",			TTC_SHOP_vests];
+_backpacks		= [9000,	"Backpacks",		TTC_SHOP_backpacks];
+_vehicles		= [10000,	"Vehicles",			TTC_SHOP_vehicles];
+_helicopters	= [11000,	"Helicopters",		TTC_SHOP_helicopters];
+_uavs			= [12000,	"UAVs", 			TTC_SHOP_uavs];
+_ugvs			= [13000,	"UGVs", 			TTC_SHOP_ugvs];
 
 
 /*
@@ -27,6 +28,7 @@ _ugvs			= [12000,	"UGVs", 			TTC_SHOP_ugvs];
 */
 TTC_SHOP_categories = [
 	_weapons,
+	_attachments,
 	_ammunition,
 	_explosives,
 	_items,

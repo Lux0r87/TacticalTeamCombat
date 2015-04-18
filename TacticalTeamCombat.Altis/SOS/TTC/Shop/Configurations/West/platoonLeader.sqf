@@ -3,6 +3,7 @@
 */
 
 TTC_SHOP_weapons		= TTC_SHOP_articles_weapons;
+TTC_SHOP_attachments	= TTC_SHOP_articles_attachments;
 TTC_SHOP_ammunition 	= TTC_SHOP_articles_ammunition;
 TTC_SHOP_explosives		= TTC_SHOP_articles_explosives;
 TTC_SHOP_items			= TTC_SHOP_articles_items;
