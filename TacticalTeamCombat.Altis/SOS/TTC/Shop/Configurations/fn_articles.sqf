@@ -190,91 +190,133 @@ _getUAV = {
 	(_this + ["CfgVehicles", _descrition]) call _getArticle;
 };
 
+
 /*
 	WEAPONS format: [_id, _name, _maxAmount, _price]
 */
 // Pistols
+TTC_SHOP_articles_pistol_P07	=  [1000, "hgun_P07_F",					TTC_SHOP_amountMin,	80] call _getWeapon;	// P07 9 mm
+TTC_SHOP_articles_pistol_ACPC2	=  [1001, "hgun_ACPC2_F",				TTC_SHOP_amountMin,	80] call _getWeapon;	// ACP-C2 .45
+TTC_SHOP_articles_pistol_Rook40	=  [1002, "hgun_Rook40_F",				TTC_SHOP_amountMin,	80] call _getWeapon;	// Rook-40 9 mm
+TTC_SHOP_articles_pistol_4_five	=  [1003, "hgun_Pistol_heavy_01_F",		TTC_SHOP_amountMin,	140] call _getWeapon;	// 4-five .45
+TTC_SHOP_articles_pistol_Zubr	=  [1004, "hgun_Pistol_heavy_02_F",		TTC_SHOP_amountMin,	140] call _getWeapon;	// Zubr .45
+
 TTC_SHOP_articles_pistols = [
-	[1000, "hgun_P07_F",					TTC_SHOP_amountMin,	80] call _getWeapon,	// P07 9 mm
-	[1001, "hgun_ACPC2_F",					TTC_SHOP_amountMin,	80] call _getWeapon,	// ACP-C2 .45
-	[1002, "hgun_Rook40_F",					TTC_SHOP_amountMin,	80] call _getWeapon,	// Rook-40 9 mm
-	[1003, "hgun_Pistol_heavy_01_F",		TTC_SHOP_amountMin,	140] call _getWeapon,	// 4-five .45
-	[1004, "hgun_Pistol_heavy_02_F",		TTC_SHOP_amountMin,	140] call _getWeapon	// Zubr .45
+	TTC_SHOP_articles_pistol_P07,
+	TTC_SHOP_articles_pistol_ACPC2,
+	TTC_SHOP_articles_pistol_Rook40,
+	TTC_SHOP_articles_pistol_4,
+	TTC_SHOP_articles_pistol_Zubr
 ];
 
 // SMGs
+TTC_SHOP_articles_smg_Vermin	=  [1010, "SMG_01_F",					TTC_SHOP_amountMin, 300] call _getWeapon;	// Vermin SMG .45 ACP
+TTC_SHOP_articles_smg_PDW2000	=  [1011, "hgun_PDW2000_F",				TTC_SHOP_amountMin,	300] call _getWeapon;	// PDW2000 9 mm
+TTC_SHOP_articles_smg_Sting		=  [1012, "SMG_02_F",					TTC_SHOP_amountMin,	300] call _getWeapon;	// Sting 9 mm
+
 TTC_SHOP_articles_smgs = [
-	[1010, "SMG_01_F",						TTC_SHOP_amountMin, 300] call _getWeapon,	// Vermin SMG .45 ACP
-	[1011, "hgun_PDW2000_F",				TTC_SHOP_amountMin,	300] call _getWeapon,	// PDW2000 9 mm
-	[1012, "SMG_02_F",						TTC_SHOP_amountMin,	300] call _getWeapon	// Sting 9 mm
+	TTC_SHOP_articles_smg_Vermin,
+	TTC_SHOP_articles_smg_PDW2000,
+	TTC_SHOP_articles_smg_Sting
 ];
 
 // Carbines
+TTC_SHOP_articles_carbine_MXC		=  [1020, "arifle_MXC_F",			TTC_SHOP_amountMin,	480] call _getWeapon;	// MXC 6.5 mm
+TTC_SHOP_articles_carbine_TRG20		=  [1021, "arifle_TRG20_F",			TTC_SHOP_amountMin,	480] call _getWeapon;	// TRG-20 5.56 mm
+TTC_SHOP_articles_carbine_Mk20C		=  [1022, "arifle_Mk20C_F",			TTC_SHOP_amountMin,	480] call _getWeapon;	// Mk20C 5.56 mm (C)
+TTC_SHOP_articles_carbine_Katiba_C	=  [1023, "arifle_Katiba_C_F",		TTC_SHOP_amountMin,	480] call _getWeapon;	// Katiba Carbine 6.5 mm
+
 TTC_SHOP_articles_carbines = [
-	[1020, "arifle_MXC_F",					TTC_SHOP_amountMin,	480] call _getWeapon,	// MXC 6.5 mm
-	[1021, "arifle_TRG20_F",				TTC_SHOP_amountMin,	480] call _getWeapon,	// TRG-20 5.56 mm
-	[1022, "arifle_Mk20C_F",				TTC_SHOP_amountMin,	480] call _getWeapon,	// Mk20C 5.56 mm (C)
-	[1023, "arifle_Katiba_C_F",				TTC_SHOP_amountMin,	480] call _getWeapon	// Katiba Carbine 6.5 mm
+	TTC_SHOP_articles_carbine_MXC,
+	TTC_SHOP_articles_carbine_TRG20,
+	TTC_SHOP_articles_carbine_Mk20C,
+	TTC_SHOP_articles_carbine_Katiba_C
 ];
 
 // Assault rifles
+TTC_SHOP_articles_assaultRifle_MX		= [1030, "arifle_MX_F",			TTC_SHOP_amountMin,	600] call _getWeapon;	// MX 6.5 mm
+TTC_SHOP_articles_assaultRifle_TRG21	= [1031, "arifle_TRG21_F",		TTC_SHOP_amountMin,	600] call _getWeapon;	// TRG-21 5.56 mm
+TTC_SHOP_articles_assaultRifle_Mk20		= [1032, "arifle_Mk20_F",		TTC_SHOP_amountMin,	600] call _getWeapon;	// Mk20 5.56 mm (C)
+TTC_SHOP_articles_assaultRifle_Katiba	= [1033, "arifle_Katiba_F",		TTC_SHOP_amountMin,	600] call _getWeapon;	// Katiba 6.5 mm
+
 TTC_SHOP_articles_assaultRifles = [
-	[1030, "arifle_MX_F",					TTC_SHOP_amountMin,	600] call _getWeapon,	// MX 6.5 mm
-	[1031, "arifle_TRG21_F",				TTC_SHOP_amountMin,	600] call _getWeapon,	// TRG-21 5.56 mm
-	[1032, "arifle_Mk20_F",					TTC_SHOP_amountMin,	600] call _getWeapon,	// Mk20 5.56 mm (C)
-	[1033, "arifle_Katiba_F",				TTC_SHOP_amountMin,	600] call _getWeapon	// Katiba 6.5 mm
+	TTC_SHOP_articles_assaultRifle_MX,
+	TTC_SHOP_articles_assaultRifle_TRG21,
+	TTC_SHOP_articles_assaultRifle_Mk20,
+	TTC_SHOP_articles_assaultRifle_Katiba
 ];
 
 // Grenade Launcher
+TTC_SHOP_articles_grenadeLauncher_MX_GL		= [1040, "arifle_MX_GL_F",		TTC_SHOP_amountMin,	750] call _getWeapon;	// MX 3GL 6.5 mm
+TTC_SHOP_articles_grenadeLauncher_TRG21_GL	= [1041, "arifle_TRG21_GL_F",	TTC_SHOP_amountMin,	750] call _getWeapon;	// TRG-21 EGLM 5.56 mm
+TTC_SHOP_articles_grenadeLauncher_Katiba_GL	= [1041, "arifle_Katiba_GL_F",	TTC_SHOP_amountMin,	750] call _getWeapon;	// Katiba GL 6.5 mm
+
 TTC_SHOP_articles_grenadeLauncher = [
-	[1040, "arifle_MX_GL_F",				TTC_SHOP_amountMin,	750] call _getWeapon,	// MX 3GL 6.5 mm
-	[1041, "arifle_TRG21_GL_F",				TTC_SHOP_amountMin,	750] call _getWeapon,	// TRG-21 EGLM 5.56 mm
-	[1041, "arifle_Katiba_GL_F",			TTC_SHOP_amountMin,	750] call _getWeapon	// Katiba GL 6.5 mm
+	TTC_SHOP_articles_grenadeLauncher_MX_GL,
+	TTC_SHOP_articles_grenadeLauncher_TRG21_GL,
+	TTC_SHOP_articles_grenadeLauncher_Katiba_GL
 ];
 
 // Marksman rifles
-TTC_SHOP_articles_marksmanRifles = [
-	[1050, "arifle_MXM_F",					TTC_SHOP_amountMin,	840] call _getWeapon,	// MXM 6.5 mm
-	[1051, "srifle_DMR_01_F",				TTC_SHOP_amountMin,	1050] call _getWeapon,	// Rahim 7.62 mm
-	[1052, "srifle_EBR_F",					TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk18 ABR 7.62 mm
+TTC_SHOP_articles_marksmanRifle_MXM			= [1050, "arifle_MXM_F",		TTC_SHOP_amountMin,	840] call _getWeapon;	// MXM 6.5 mm
+TTC_SHOP_articles_marksmanRifle_Mk18_ABR	= [1051, "srifle_EBR_F",		TTC_SHOP_amountMin,	1050] call _getWeapon;	// Mk18 ABR 7.62 mm
+TTC_SHOP_articles_marksmanRifle_Rahim		= [1052, "srifle_DMR_01_F",		TTC_SHOP_amountMin,	1050] call _getWeapon;	// Rahim 7.62 mm
+
+TTC_SHOP_articles_marksmanRifle_Mk1_EMR = [
 	[1053, "srifle_DMR_03_F",				TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk-I EMR 7.62mm (Black)
 	[1054, "srifle_DMR_03_khaki_F",			TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk-I EMR 7.62mm (Khaki)
 	[1055, "srifle_DMR_03_tan_F",			TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk-I EMR 7.62mm (Sand)
 	[1056, "srifle_DMR_03_multicam_F",		TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk-I EMR 7.62mm (Camo)
-	[1057, "srifle_DMR_03_woodland_F",		TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk-I EMR 7.62mm (Woodland)
+	[1057, "srifle_DMR_03_woodland_F",		TTC_SHOP_amountMin,	1050] call _getWeapon	// Mk-I EMR 7.62mm (Woodland)
+];
+
+TTC_SHOP_articles_marksmanRifle_Cyrus = [
 	[1058, "srifle_DMR_05_blk_F",			TTC_SHOP_amountMin,	1050] call _getWeapon,	// Cyrus 9.3mm (Black)
 	[1059, "srifle_DMR_05_hex_F",			TTC_SHOP_amountMin,	1050] call _getWeapon,	// Cyrus 9.3mm (Hex)
-	[1060, "srifle_DMR_05_tan_f",			TTC_SHOP_amountMin,	1050] call _getWeapon,	// Cyrus 9.3mm (Tan)
+	[1060, "srifle_DMR_05_tan_f",			TTC_SHOP_amountMin,	1050] call _getWeapon	// Cyrus 9.3mm (Tan)
+];
+
+TTC_SHOP_articles_marksmanRifle_Mk14 = [
 	[1061, "srifle_DMR_06_camo_F",			TTC_SHOP_amountMin,	1050] call _getWeapon,	// Mk14 7.62mm (Camo)
 	[1062, "srifle_DMR_06_olive_F",			TTC_SHOP_amountMin,	1050] call _getWeapon	// Mk14 7.62mm (Olive)
 ];
 
+TTC_SHOP_articles_marksmanRifles = [
+	TTC_SHOP_articles_marksmanRifle_MXM,
+	TTC_SHOP_articles_marksmanRifle_Mk18_ABR,
+	TTC_SHOP_articles_marksmanRifle_Rahim
+] + TTC_SHOP_articles_marksmanRifle_Mk1_EMR + TTC_SHOP_articles_marksmanRifle_Cyrus + TTC_SHOP_articles_marksmanRifle_Mk14;
+
 // Sniper rifles
-TTC_SHOP_articles_sniperRifles = [
-	[1070, "srifle_GM6_F",					TTC_SHOP_amountMin,	1365] call _getWeapon,	// GM6 Lynx 12.7 mm
-	[1071, "srifle_LRR_F",					TTC_SHOP_amountMin,	1365] call _getWeapon,	// M320 LRR .408
+TTC_SHOP_articles_sniperRifle_GM6			= [1070, "srifle_GM6_F",		TTC_SHOP_amountMin,	1365] call _getWeapon;	// GM6 Lynx 12.7 mm
+TTC_SHOP_articles_sniperRifle_M320			= [1071, "srifle_LRR_F",		TTC_SHOP_amountMin,	1365] call _getWeapon;	// M320 LRR .408
+
+TTC_SHOP_articles_sniperRifle_MAR10 = [
 	[1072, "srifle_DMR_02_F",				TTC_SHOP_amountMin,	1365] call _getWeapon,	// MAR-10 .338 (Black)
-	[1073, "srifle_DMR_02_camo_F",			TTC_SHOP_amountMin,	1365] call _getWeapon,	// MAR-10 .338 (Camo)
-	[1074, "srifle_DMR_02_sniper_F",		TTC_SHOP_amountMin,	1365] call _getWeapon,	// MAR-10 .338 (Sand)
+	[1073, "srifle_DMR_02_camo_F",			TTC_SHOP_amountMin,	1365] call _getWeapon	// MAR-10 .338 (Camo)
+];
+
+TTC_SHOP_articles_sniperRifle_ASP1_Kir = [
 	[1075, "srifle_DMR_04_F",				TTC_SHOP_amountMin,	1365] call _getWeapon,	// ASP-1 Kir 12.7mm (Black)
 	[1076, "srifle_DMR_04_Tan_F",			TTC_SHOP_amountMin,	1365] call _getWeapon	// ASP-1 Kir 12.7mm (Tan)
 ];
+
+TTC_SHOP_articles_sniperRifles = [
+	TTC_SHOP_articles_sniperRifle_GM6,
+	TTC_SHOP_articles_sniperRifle_M320
+] + TTC_SHOP_articles_sniperRifle_MAR10 + TTC_SHOP_articles_sniperRifle_ASP1_Kir;
 
 TTC_SHOP_articles_weapons = (
 	TTC_SHOP_articles_pistols + TTC_SHOP_articles_smgs + TTC_SHOP_articles_carbines + TTC_SHOP_articles_assaultRifles + TTC_SHOP_articles_grenadeLauncher +
 	TTC_SHOP_articles_marksmanRifles + TTC_SHOP_articles_sniperRifles
 );
 
-/*
-	AMMUNITION format: [_id, _name, _maxAmount, _price]
-*/
-TTC_SHOP_articles_flashlight = [
-	[1100, "acc_flashlight",				TTC_SHOP_amountMin,	25] call _getItem	// Flashlight
-];
 
-TTC_SHOP_articles_pointer = [
-	[1101, "acc_pointer_IR",				TTC_SHOP_amountMin,	50] call _getItem	// IR Laser Pointer
-];
+/*
+	ATTACHMENTS format: [_id, _name, _maxAmount, _price]
+*/
+TTC_SHOP_articles_flashlight	= [1100, "acc_flashlight",		TTC_SHOP_amountMin,	25] call _getItem;	// Flashlight
+TTC_SHOP_articles_laserpointer	= [1101, "acc_pointer_IR",		TTC_SHOP_amountMin,	50] call _getItem;	// IR Laser Pointer
 
 TTC_SHOP_articles_scopes_pistols = [
 	[1110, "optic_MRD",						TTC_SHOP_amountMin,	75] call _getItem,	// Sound Suppressor (9 mm)
@@ -332,7 +374,11 @@ TTC_SHOP_articles_silencers = [
 	[1170, "muzzle_snds_93mmg_tan",			TTC_SHOP_amountMin,	405] call _getItem	// Sound Suppressor (9.3mm, Tan)
 ];
 
-TTC_SHOP_articles_attachments = TTC_SHOP_articles_flashlight + TTC_SHOP_articles_pointer + TTC_SHOP_articles_scopes + TTC_SHOP_articles_silencers;
+TTC_SHOP_articles_attachments = [
+	TTC_SHOP_articles_flashlight,
+	TTC_SHOP_articles_laserpointer
+] + TTC_SHOP_articles_scopes + TTC_SHOP_articles_silencers;
+
 
 /*
 	AMMUNITION format: [_id, _name, _maxAmount, _price]
@@ -368,6 +414,7 @@ TTC_SHOP_articles_rockets = [
 ];
 
 TTC_SHOP_articles_ammunition = TTC_SHOP_articles_magazines + TTC_SHOP_articles_rockets;
+
 
 /*
 	EXPLOSIVES format: [_id, _name, _maxAmount, _price]
@@ -408,13 +455,8 @@ TTC_SHOP_articles_engineer = [
 	[1421, "MineDetector",					TTC_SHOP_amountMax,  150] call _getWeapon	// Mine Detector
 ];
 
-TTC_SHOP_articles_binocular = [
-	[1430, "Binocular",						TTC_SHOP_amountMin,  60] call _getWeapon	// Binoculars
-];
-
-TTC_SHOP_articles_rangefinder= [
-	[1431, "Rangefinder",					TTC_SHOP_amountMin,  600] call _getWeapon	// Rangefinder
-];
+TTC_SHOP_articles_binocular		= [1430, "Binocular",	TTC_SHOP_amountMin,  60] call _getWeapon;	// Binoculars
+TTC_SHOP_articles_rangefinder	= [1431, "Rangefinder",	TTC_SHOP_amountMin,  600] call _getWeapon;	// Rangefinder
 
 TTC_SHOP_articles_nightvision = [
 	[1440, "NVGoggles",						TTC_SHOP_amountMin,  400] call _getWeapon,	// NV Goggles (Brown)
@@ -432,10 +474,10 @@ TTC_SHOP_articles_uavTerminal_GUER = [
 
 TTC_SHOP_articles_uavTerminals = TTC_SHOP_articles_uavTerminal_WEST + TTC_SHOP_articles_uavTerminal_GUER;
 
-TTC_SHOP_articles_items = (
-	TTC_SHOP_articles_basicItems + TTC_SHOP_articles_medic + TTC_SHOP_articles_engineer + TTC_SHOP_articles_binocular + TTC_SHOP_articles_rangefinder +
-	TTC_SHOP_articles_nightvision + TTC_SHOP_articles_uavTerminals
-);
+TTC_SHOP_articles_items = TTC_SHOP_articles_basicItems + TTC_SHOP_articles_medic + TTC_SHOP_articles_engineer + [
+	TTC_SHOP_articles_binocular,
+	TTC_SHOP_articles_rangefinder
+] + TTC_SHOP_articles_nightvision + TTC_SHOP_articles_uavTerminals;
 
 
 /*
@@ -495,29 +537,36 @@ TTC_SHOP_articles_shemags = [
 	[1555, "H_ShemagOpen_tan",				TTC_SHOP_amountMin,	 30] call _getWeapon	// Shemag (Tan)
 ];
 
+TTC_SHOP_articles_beret_black			= [1560, "H_Beret_blk",		TTC_SHOP_amountMin,	 50] call _getWeapon;	// Beret (Black)
+TTC_SHOP_articles_beret_red				= [1561, "H_Beret_red",		TTC_SHOP_amountMin,	 50] call _getWeapon;	// Beret (Red)
+TTC_SHOP_articles_beret_green			= [1562, "H_Beret_grn",		TTC_SHOP_amountMin,	 50] call _getWeapon;	// Beret (Green)
+TTC_SHOP_articles_beret_NATO			= [1563, "H_Beret_02",		TTC_SHOP_amountMin,	 50] call _getWeapon;	// Beret [NATO]
+TTC_SHOP_articles_beret_NATO_Colonel	= [1564, "H_Beret_Colonel",	TTC_SHOP_amountMin,	 50] call _getWeapon;	// Beret [NATO] (Colonel)
+
 TTC_SHOP_articles_berets = [
-	[1560, "H_Beret_blk",					TTC_SHOP_amountMin,	 50] call _getWeapon,	// Beret (Black)
-	[1561, "H_Beret_red",					TTC_SHOP_amountMin,	 50] call _getWeapon,	// Beret (Red)
-	[1562, "H_Beret_grn",					TTC_SHOP_amountMin,	 50] call _getWeapon,	// Beret (Green)
-	[1563, "H_Beret_02",					TTC_SHOP_amountMin,	 50] call _getWeapon,	// Beret [NATO]
-	[1564, "H_Beret_Colonel",				TTC_SHOP_amountMin,	 50] call _getWeapon	// Beret [NATO] (Colonel)
+	TTC_SHOP_articles_beret_black,
+	TTC_SHOP_articles_beret_red,
+	TTC_SHOP_articles_beret_green,
+	TTC_SHOP_articles_beret_NATO,
+	TTC_SHOP_articles_beret_NATO_Colonel
 ];
 
-TTC_SHOP_articles_headgear = TTC_SHOP_articles_goggles + TTC_SHOP_articles_bandanna + TTC_SHOP_articles_balaclava + TTC_SHOP_articles_shemags + TTC_SHOP_articles_berets;
+TTC_SHOP_articles_headgear = (
+	TTC_SHOP_articles_goggles + TTC_SHOP_articles_bandanna + TTC_SHOP_articles_balaclava +
+	TTC_SHOP_articles_shemags + TTC_SHOP_articles_berets
+);
 
 
 /*
 	UNIFORMS format: [_id, _name, _maxAmount, _price]
 */
-TTC_SHOP_articles_uniforms_GhillieSuit_WEST = [
-	[1600, "U_B_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getUniform	// Ghillie Suit [NATO]
-];
+TTC_SHOP_articles_uniforms_GhillieSuit_WEST	= [1600, "U_B_GhillieSuit",	TTC_SHOP_amountMin,  800] call _getUniform;	// Ghillie Suit [NATO]
+TTC_SHOP_articles_uniforms_GhillieSuit_GUER	= [1601, "U_I_GhillieSuit",	TTC_SHOP_amountMin,  800] call _getUniform;	// Ghillie Suit [AAF]
 
-TTC_SHOP_articles_uniforms_GhillieSuit_GUER = [
-	[1601, "U_I_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getUniform	// Ghillie Suit [AAF]
+TTC_SHOP_articles_uniforms = [
+	TTC_SHOP_articles_uniforms_GhillieSuit_WEST,
+	TTC_SHOP_articles_uniforms_GhillieSuit_GUER
 ];
-
-TTC_SHOP_articles_uniforms = TTC_SHOP_articles_uniforms_GhillieSuit_WEST + TTC_SHOP_articles_uniforms_GhillieSuit_GUER;
 
 
 /*
@@ -575,55 +624,102 @@ TTC_SHOP_articles_carryalls = [
 	[1834, "B_Carryall_cbr",				TTC_SHOP_amountMin,  450] call _getBackpack		// Carryall Backpack (Coyote)
 ];
 
-TTC_SHOP_articles_uavBackpack_WEST = [
-	[1840, "B_UAV_01_backpack_F",			TTC_SHOP_amountMin,  900] call _getBackpack	// UAV Backpack
+TTC_SHOP_articles_uavBackpack_WEST	= [1840, "B_UAV_01_backpack_F",	TTC_SHOP_amountMin,  900] call _getBackpack;	// UAV Backpack
+TTC_SHOP_articles_uavBackpack_GUER	= [1841, "I_UAV_01_backpack_F",	TTC_SHOP_amountMin,  900] call _getBackpack;	// UAV Backpack
+
+TTC_SHOP_articles_uavBackpacks = [
+	TTC_SHOP_articles_uavBackpack_WEST,
+	TTC_SHOP_articles_uavBackpack_GUER
 ];
 
-TTC_SHOP_articles_uavBackpack_GUER = [
-	[1841, "I_UAV_01_backpack_F",			TTC_SHOP_amountMin,  900] call _getBackpack	// UAV Backpack
-];
-
-TTC_SHOP_articles_uavBackpacks = TTC_SHOP_articles_uavBackpack_WEST + TTC_SHOP_articles_uavBackpack_GUER;
-
-TTC_SHOP_articles_backpacks = TTC_SHOP_articles_fieldPacks + TTC_SHOP_articles_assaultPacks + TTC_SHOP_articles_kitbags + TTC_SHOP_articles_carryalls + TTC_SHOP_articles_uavBackpacks;
+TTC_SHOP_articles_backpacks = (
+	TTC_SHOP_articles_fieldPacks + TTC_SHOP_articles_assaultPacks + TTC_SHOP_articles_kitbags +
+	TTC_SHOP_articles_carryalls + TTC_SHOP_articles_uavBackpacks
+);
 
 
 /*
 	VEHICLES format: [_id, _name, _maxAmount, _price]
 */
-TTC_SHOP_articles_vehicles_WEST = [
-	[1900, "B_Quadbike_01_F",				TTC_SHOP_amountMax,  100] call _getVehicle,		// Quadbike
+// West / Blufor
+TTC_SHOP_articles_vehicle_quadbike_WEST	= [1900, "B_Quadbike_01_F",	TTC_SHOP_amountMax,  100] call _getVehicle;	// Quadbike
+
+TTC_SHOP_articles_vehicle_offroads_WEST = [
 	[1901, "B_G_Offroad_01_F",				TTC_SHOP_amountMax,  250] call _getVehicle,		// Offroad
-	[1902, "B_G_Offroad_01_armed_F",		TTC_SHOP_amountMax,  400] call _getVehicle,		// Offroad (Armed)
+	[1902, "B_G_Offroad_01_armed_F",		TTC_SHOP_amountMax,  400] call _getVehicle		// Offroad (Armed)
+];
+
+TTC_SHOP_articles_vehicles_hunter = [
 	[1903, "B_MRAP_01_F",					TTC_SHOP_amountMax,  500] call _getVehicle,		// Hunter
 	[1904, "B_MRAP_01_hmg_F",				TTC_SHOP_amountMax,  750] call _getVehicle,		// Hunter HMG
-	[1905, "B_MRAP_01_gmg_F",				TTC_SHOP_amountMax,  1000] call _getVehicle,	// Hunter GMG
-	[1906, "B_Truck_01_transport_F",		TTC_SHOP_amountMax,  625] call _getVehicle,		// HEMTT Transport
-	[1907, "B_Truck_01_covered_F",			TTC_SHOP_amountMax,  625] call _getVehicle,		// HEMTT Transport (Covered)
-	[1908, "B_APC_Tracked_01_rcws_F",		TTC_SHOP_amountMax,  2250] call _getVehicle,	// IFV-6c Panther
-	[1909, "B_APC_Tracked_01_CRV_F",		TTC_SHOP_amountMax,  2250] call _getVehicle,	// CRV-6e Bobcat
-	[1910, "B_APC_Tracked_01_AA_F",			TTC_SHOP_amountMax,  3000] call _getVehicle,	// IFV-6a Cheetah
-	[1911, "B_APC_Wheeled_01_cannon_F",		TTC_SHOP_amountMax,  3750] call _getVehicle,	// AMV-7 Marshall
-	[1912, "B_MBT_01_cannon_F",				TTC_SHOP_amountMax,  5250] call _getVehicle,	// M2A1 Slammer
-	[1913, "B_MBT_01_TUSK_F",				TTC_SHOP_amountMax,  5250] call _getVehicle		// M2A4 Slammer UP
+	[1905, "B_MRAP_01_gmg_F",				TTC_SHOP_amountMax,  1000] call _getVehicle		// Hunter GMG
 ];
 
-TTC_SHOP_articles_vehicles_GUER = [
-	[1920, "I_Quadbike_01_F",				TTC_SHOP_amountMax,  100] call _getVehicle,		// Quadbike
+TTC_SHOP_articles_vehicles_hemtt = [
+	[1906, "B_Truck_01_transport_F",		TTC_SHOP_amountMax,  625] call _getVehicle,		// HEMTT Transport
+	[1907, "B_Truck_01_covered_F",			TTC_SHOP_amountMax,  625] call _getVehicle		// HEMTT Transport (Covered)
+];
+
+TTC_SHOP_articles_vehicle_panther	= [1908, "B_APC_Tracked_01_rcws_F",		TTC_SHOP_amountMax,  2250] call _getVehicle;	// IFV-6c Panther
+TTC_SHOP_articles_vehicle_bobcat	= [1909, "B_APC_Tracked_01_CRV_F",		TTC_SHOP_amountMax,  2250] call _getVehicle;	// CRV-6e Bobcat
+TTC_SHOP_articles_vehicle_cheetah	= [1910, "B_APC_Tracked_01_AA_F",		TTC_SHOP_amountMax,  3000] call _getVehicle;	// IFV-6a Cheetah
+TTC_SHOP_articles_vehicle_marshall	= [1911, "B_APC_Wheeled_01_cannon_F",	TTC_SHOP_amountMax,  3750] call _getVehicle;	// AMV-7 Marshall
+TTC_SHOP_articles_vehicle_slammer	= [1912, "B_MBT_01_cannon_F",			TTC_SHOP_amountMax,  5250] call _getVehicle;	// M2A1 Slammer
+TTC_SHOP_articles_vehicle_slammerUP	= [1913, "B_MBT_01_TUSK_F",				TTC_SHOP_amountMax,  5250] call _getVehicle;	// M2A4 Slammer UP
+
+TTC_SHOP_articles_vehicles_WEST = (
+	[TTC_SHOP_articles_vehicle_quadbike_WEST] +
+	TTC_SHOP_articles_vehicle_offroads_WEST +
+	TTC_SHOP_articles_vehicles_hunter +
+	TTC_SHOP_articles_vehicles_hemtt + [
+		TTC_SHOP_articles_vehicle_panther,
+		TTC_SHOP_articles_vehicle_bobcat,
+		TTC_SHOP_articles_vehicle_cheetah,
+		TTC_SHOP_articles_vehicle_marshall,
+		TTC_SHOP_articles_vehicle_slammer,
+		TTC_SHOP_articles_vehicle_slammerUP
+	]
+);
+
+// Independent
+TTC_SHOP_articles_vehicle_quadbike_GUER	= [1920, "I_Quadbike_01_F",	TTC_SHOP_amountMax,  100] call _getVehicle;		// Quadbike
+
+TTC_SHOP_articles_vehicle_offroads_GUER = [
 	[1921, "I_G_Offroad_01_F",				TTC_SHOP_amountMax,  250] call _getVehicle,		// Offroad
-	[1922, "I_G_Offroad_01_armed_F",		TTC_SHOP_amountMax,  400] call _getVehicle,		// Offroad (Armed)
+	[1922, "I_G_Offroad_01_armed_F",		TTC_SHOP_amountMax,  400] call _getVehicle		// Offroad (Armed)
+];
+
+TTC_SHOP_articles_vehicles_strider = [
 	[1923, "I_MRAP_03_F",					TTC_SHOP_amountMax,  500] call _getVehicle,		// Strider
 	[1924, "I_MRAP_03_hmg_F",				TTC_SHOP_amountMax,  750] call _getVehicle,		// Strider HMG
-	[1925, "I_MRAP_03_gmg_F",				TTC_SHOP_amountMax,  1000] call _getVehicle,	// Strider GMG
-	[1926, "I_Truck_02_transport_F",		TTC_SHOP_amountMax,  625] call _getVehicle,		// Zamak Transport
-	[1927, "I_Truck_02_covered_F",			TTC_SHOP_amountMax,  625] call _getVehicle,		// Zamak Transport (Covered)
-	[1928, "I_APC_tracked_03_cannon_F",		TTC_SHOP_amountMax,  2250] call _getVehicle,	// FV-720 Mora
-	[1929, "I_APC_Wheeled_03_cannon_F",		TTC_SHOP_amountMax,  3750] call _getVehicle,	// AFV-4 Gorgon
-	[1930, "I_MBT_03_cannon_F",				TTC_SHOP_amountMax,  5250] call _getVehicle		// MBT-52 Kuma
+	[1925, "I_MRAP_03_gmg_F",				TTC_SHOP_amountMax,  1000] call _getVehicle		// Strider GMG
 ];
 
+TTC_SHOP_articles_vehicles_zamak = [
+	[1926, "I_Truck_02_transport_F",		TTC_SHOP_amountMax,  625] call _getVehicle,		// Zamak Transport
+	[1927, "I_Truck_02_covered_F",			TTC_SHOP_amountMax,  625] call _getVehicle		// Zamak Transport (Covered)
+];
+
+TTC_SHOP_articles_vehicle_mora		= [1928, "I_APC_tracked_03_cannon_F",	TTC_SHOP_amountMax,  2250] call _getVehicle;	// FV-720 Mora
+TTC_SHOP_articles_vehicle_gorgon	= [1929, "I_APC_Wheeled_03_cannon_F",	TTC_SHOP_amountMax,  3750] call _getVehicle;	// AFV-4 Gorgon
+TTC_SHOP_articles_vehicle_kuma		= [1930, "I_MBT_03_cannon_F",			TTC_SHOP_amountMax,  5250] call _getVehicle;	// MBT-52 Kuma
+
+TTC_SHOP_articles_vehicles_GUER = (
+	[TTC_SHOP_articles_vehicle_quadbike_GUER] +
+	TTC_SHOP_articles_vehicle_offroads_GUER +
+	TTC_SHOP_articles_vehicles_strider +
+	TTC_SHOP_articles_vehicles_zamak + [
+		TTC_SHOP_articles_vehicle_mora,
+		TTC_SHOP_articles_vehicle_gorgon,
+		TTC_SHOP_articles_vehicle_kuma
+	]
+);
+
+// East / Opfor
+TTC_SHOP_articles_vehicle_tigris = [1940, "O_APC_Tracked_02_AA_F",	TTC_SHOP_amountMax,  3000] call _getVehicle;	// ZSU-39 Tigris
+
 TTC_SHOP_articles_vehicles_EAST = [
-	[1940, "O_APC_Tracked_02_AA_F",			TTC_SHOP_amountMax,  3000] call _getVehicle	// ZSU-39 Tigris
+	TTC_SHOP_articles_vehicle_tigris
 ];
 
 TTC_SHOP_articles_vehicles = TTC_SHOP_articles_vehicles_WEST + TTC_SHOP_articles_vehicles_GUER + TTC_SHOP_articles_vehicles_EAST;
@@ -632,25 +728,21 @@ TTC_SHOP_articles_vehicles = TTC_SHOP_articles_vehicles_WEST + TTC_SHOP_articles
 /*
 	HELICOPTERS format: [_id, _name, _maxAmount, _price]
 */
-TTC_SHOP_articles_helicopters_hummingbird = [
-	[2000, "B_Heli_Light_01_F",						TTC_SHOP_amountMax,  750] call _getVehicle	// MH-9 Hummingbird
-];
+TTC_SHOP_articles_helicopters_hummingbird = [2000, "B_Heli_Light_01_F",	TTC_SHOP_amountMax,  750] call _getVehicle;	// MH-9 Hummingbird
 
 TTC_SHOP_articles_helicopters_huron = [
 	[2010, "B_Heli_Transport_03_unarmed_F",			TTC_SHOP_amountMax,  1350] call _getVehicle,	// CH-67 Huron (Unarmed)
 	[2011, "B_Heli_Transport_03_unarmed_green_F",	TTC_SHOP_amountMax,  1350] call _getVehicle,	// CH-67 Huron Unarmed (Green)
 	[2012, "B_Heli_Transport_03_F",					TTC_SHOP_amountMax,  1875] call _getVehicle,	// CH-67 Huron
-	[2013, "B_Heli_Transport_03_black_F",			TTC_SHOP_amountMax,  1875] call _getVehicle	// CH-67 Huron (Black)
+	[2013, "B_Heli_Transport_03_black_F",			TTC_SHOP_amountMax,  1875] call _getVehicle		// CH-67 Huron (Black)
 ];
 
 TTC_SHOP_articles_helicopters_ghosthawk = [
 	[2020, "B_Heli_Transport_01_F",					TTC_SHOP_amountMax,  1875] call _getVehicle,	// UH-80 Ghost Hawk
-	[2021, "B_Heli_Transport_01_camo_F",			TTC_SHOP_amountMax,  1875] call _getVehicle	// UH-80 Ghost Hawk (Camo)
+	[2021, "B_Heli_Transport_01_camo_F",			TTC_SHOP_amountMax,  1875] call _getVehicle		// UH-80 Ghost Hawk (Camo)
 ];
 
-TTC_SHOP_articles_helicopters_pawnee = [
-	[2030, "B_Heli_Light_01_armed_F",				TTC_SHOP_amountMax,  3750] call _getVehicle		// AH-9 Pawnee
-];
+TTC_SHOP_articles_helicopters_pawnee = [2030, "B_Heli_Light_01_armed_F",	TTC_SHOP_amountMax,  3750] call _getVehicle;	// AH-9 Pawnee
 
 TTC_SHOP_articles_helicopters_hellcat = [
 	[2040, "I_Heli_light_03_F",						TTC_SHOP_amountMax,  750] call _getVehicle,		// WY-55 Hellcat
@@ -686,25 +778,9 @@ TTC_SHOP_articles_helicopters_taru_black = [
 ];
 
 TTC_SHOP_articles_helicopters = (
-	TTC_SHOP_articles_helicopters_hummingbird + TTC_SHOP_articles_helicopters_ghosthawk + TTC_SHOP_articles_helicopters_pawnee + TTC_SHOP_articles_helicopters_hellcat +
+	[TTC_SHOP_articles_helicopters_hummingbird] + TTC_SHOP_articles_helicopters_ghosthawk + [TTC_SHOP_articles_helicopters_pawnee] + TTC_SHOP_articles_helicopters_hellcat +
 	TTC_SHOP_articles_helicopters_orca + TTC_SHOP_articles_helicopters_huron + TTC_SHOP_articles_helicopters_taru + TTC_SHOP_articles_helicopters_taru_black
 );
-
-
-/*
-	UAVs format: [_id, _name, _maxAmount, _price]
-*/
-TTC_SHOP_articles_ugvs_WEST = [
-	[2100, "B_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getUGV,	// UGV Stomper
-	[2101, "B_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getUGV	// UGV Stomper RCWS
-];
-
-TTC_SHOP_articles_ugvs_GUER = [
-	[2110, "I_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getUGV,	// UGV Stomper
-	[2111, "I_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getUGV	// UGV Stomper RCWS
-];
-
-TTC_SHOP_articles_ugvs = TTC_SHOP_articles_ugvs_WEST + TTC_SHOP_articles_ugvs_GUER;
 
 
 /*
@@ -721,6 +797,22 @@ TTC_SHOP_articles_uavs_GUER = [
 ];
 
 TTC_SHOP_articles_uavs = TTC_SHOP_articles_uavs_WEST + TTC_SHOP_articles_uavs_GUER;
+
+
+/*
+	UAVs format: [_id, _name, _maxAmount, _price]
+*/
+TTC_SHOP_articles_ugvs_WEST = [
+	[2100, "B_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getUGV,	// UGV Stomper
+	[2101, "B_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getUGV	// UGV Stomper RCWS
+];
+
+TTC_SHOP_articles_ugvs_GUER = [
+	[2110, "I_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getUGV,	// UGV Stomper
+	[2111, "I_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getUGV	// UGV Stomper RCWS
+];
+
+TTC_SHOP_articles_ugvs = TTC_SHOP_articles_ugvs_WEST + TTC_SHOP_articles_ugvs_GUER;
 
 
 /*

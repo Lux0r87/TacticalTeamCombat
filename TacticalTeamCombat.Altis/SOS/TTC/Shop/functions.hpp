@@ -5,9 +5,24 @@
 class TTC_Shop {
 	tag = "TTC_SHOP";
 
+	class Init {
+		file = "SOS\TTC\Shop";
+
+		class init{};
+	};
+
+	class Configurations {
+		file = "SOS\TTC\Shop\Configurations";
+
+		class articles {
+			preInit = 1;
+		};
+	};
+
 	class Functions {		
 		file = "SOS\TTC\Shop\Functions";
 
+		class addArticles {};
 		class createShopDialog {};
 		class getArticleById {};
 		class getArticlesByCategoryId {};
@@ -22,9 +37,5 @@ class TTC_Shop {
 		class setArticlePicture {};
 		class setArticles {};
 		class setCategories {};
-
-		class init {
-			preInit = 1;
-		};
 	};
 };
