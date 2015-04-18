@@ -16,17 +16,40 @@ TTC_SHOP_ARTICLE_maxAmount		= 6;
 
 
 _getArticle = {
-	private["_id","_name","_maxAmount","_price","_config","_displayName","_descriptionShort","_picture","_data"];
+	private["_id","_name","_maxAmount","_price","_config","_descriptionShort","_descriptionLong","_descriptionUse","_displayName","_picture","_description","_data"];
 
 	_id					= [_this, 0] call BIS_fnc_param;
 	_name				= [_this, 1] call BIS_fnc_param;
 	_maxAmount			= [_this, 2] call BIS_fnc_param;
 	_price				= [_this, 3] call BIS_fnc_param;
 	_config				= [_this, 4] call BIS_fnc_param;
+	_descriptionShort	= [_this, 5, (getText(configFile >> _config >> _name >> "descriptionShort")), [""]] call BIS_fnc_param;
+	_descriptionLong	= [_this, 6, "", [""]] call BIS_fnc_param;
+	_descriptionUse		= [_this, 7, (getText(configFile >> _config >> _name >> "descriptionUse")), [""]] call BIS_fnc_param;
+	_displayName		= [_this, 8, (getText(configFile >> _config >> _name >> "displayName")), [""]] call BIS_fnc_param;
+	_picture			= [_this, 9, (getText(configFile >> _config >> _name >> "picture")), [""]] call BIS_fnc_param;
 
-	_displayName		= getText(configFile >> _config >> _name >> "displayName");
-	_descriptionShort	= getText(configFile >> _config >> _name >> "descriptionShort");
-	_picture			= getText(configFile >> _config >> _name >> "picture");
+	_description = "";
+
+	if (_descriptionShort != "") then {
+		_description = _descriptionShort;
+	};
+
+	if (_descriptionUse != "") then {
+		if (_description != "") then {
+			_description = _description + format ["<br/>%1", _descriptionUse];
+		} else {
+			_description = _descriptionUse;
+		};
+	};
+
+	if (_descriptionLong != "") then {
+		if (_description != "") then {
+			_description = _description + format ["<br/><br/>%1", _descriptionLong];
+		} else {
+			_description = _descriptionLong;
+		};
+	};
 
 	_data = [];
 	_data set [TTC_SHOP_ARTICLE_id, _id];
@@ -34,27 +57,138 @@ _getArticle = {
 	_data set [TTC_SHOP_ARTICLE_maxAmount, _maxAmount];
 	_data set [TTC_SHOP_ARTICLE_price, _price];
 	_data set [TTC_SHOP_ARTICLE_displayName, _displayName];
-	_data set [TTC_SHOP_ARTICLE_description, _descriptionShort];
+	_data set [TTC_SHOP_ARTICLE_description, _description];
 	_data set [TTC_SHOP_ARTICLE_picture, _picture];
 	_data;
 };
 
+_getCapacity = {
+	private ["_name","_container","_capacity"];
+	_name	= [_this, 0] call BIS_fnc_param;
+
+	_container	= getText	(configFile >> "CfgWeapons" >> _name >> "ItemInfo" >> "containerClass");
+	_capacity	= getNumber	(configFile >> "CfgVehicles" >> _container >> "maximumLoad");
+	
+	_capacity;
+};
+
 _getWeapon = {
-	(_this + ["CfgWeapons"]) call _getArticle;
+	private ["_name","_text"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_short		= getText	(configFile >> "CfgWeapons" >> _name >> "descriptionShort");
+	_text		= getText	(configFile >> "CfgWeapons" >> _name >> "Library" >> "libTextDesc");
+
+	(_this + ["CfgWeapons", _short, _text]) call _getArticle;
 };
 
 _getMagazine = {
 	(_this + ["CfgMagazines"]) call _getArticle;
 };
 
+_getItem = {
+	(_this + ["CfgWeapons"]) call _getArticle;
+};
+
 _getGlasses = {
 	(_this + ["CfgGlasses"]) call _getArticle;
 };
 
-_getVehicle = {
-	(_this + ["CfgVehicles"]) call _getArticle;
+_countVehicleSeats = {
+	private ["_name","_hasDriver","_transport","_seats","_turrets","_class","_hasGunner"];
+	_name	= [_this, 0] call BIS_fnc_param;
+
+	_hasDriver	= getNumber	(configFile >> "CfgVehicles" >> _name >> "hasDriver");
+	_transport	= getNumber	(configFile >> "CfgVehicles" >> _name >> "transportSoldier");
+	_seats		= _hasDriver + _transport;
+	_turrets	= (configFile >> "CfgVehicles" >> _name >> "Turrets");
+	//diag_log format["_name = %1, _hasDriver = %2, _transport = %3, _turrets = %4", _name, _hasDriver, _transport, count _turrets];
+
+	for "_i" from 0 to count _turrets -1 do {
+		 _class = _turrets select _i;
+
+		if (isClass _class) then {
+			//_isPersonTurret = getNumber	(configFile >> "CfgVehicles" >> _name >> "Turrets" >> configName _class >> "isPersonTurret");
+			_hasGunner = getNumber	(configFile >> "CfgVehicles" >> _name >> "Turrets" >> configName _class >> "hasGunner");
+			_seats = _seats + _hasGunner;
+		};
+	};
+
+	_seats;
 };
 
+_getUniform = {
+	private ["_name","_mass","_capacity","_descrition"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_mass		= getNumber	(configFile >> "CfgWeapons" >> _name >> "ItemInfo" >> "mass");
+	_capacity	= [_name] call _getCapacity;
+	_descrition	= format["Mass: %1<br/>Capacity: %2", _mass, _capacity];
+	(_this + ["CfgWeapons", _descrition]) call _getArticle;
+};
+
+_getVest = {
+	private ["_name","_mass","_capacity","_armor","_descrition"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_mass		= getNumber	(configFile >> "CfgWeapons" >> _name >> "ItemInfo" >> "mass");
+	_capacity	= [_name] call _getCapacity;
+	_armor		= getNumber	(configFile >> "CfgWeapons" >> _name >> "ItemInfo" >> "armor");
+	_descrition	= format["Mass: %1<br/>Capacity: %2<br/>Armor: %3", _mass, _capacity, _armor];
+	(_this + ["CfgWeapons", _descrition]) call _getArticle;
+};
+
+_getBackpack = {
+	private ["_name","_mass","_capacity","_descrition"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_mass		= getNumber	(configFile >> "CfgVehicles" >> _name >> "mass");
+	_capacity	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maximumLoad");
+	_descrition	= format["Mass: %1<br/>Capacity: %2", _mass, _capacity];
+	(_this + ["CfgVehicles", _descrition]) call _getArticle;
+};
+
+_getVehicle = {
+	private ["_name","_capacity","_armor","_seats","_maxSpeed","_text","_descrition"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_capacity	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maximumLoad");
+	_armor		= getNumber	(configFile >> "CfgVehicles" >> _name >> "armor");
+	_seats		= [_name] call _countVehicleSeats;
+	_maxSpeed	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maxSpeed");
+	_text		= getText	(configFile >> "CfgVehicles" >> _name >> "Library" >> "libTextDesc");
+	_descrition	= format["Capacity: %1<br/>Armor: %2<br/>Seats: %3<br/>Max Speed: %4<br/><br/>%5", _capacity, _armor, _seats, _maxSpeed, _text];
+
+	(_this + ["CfgVehicles", _descrition]) call _getArticle;
+};
+
+
+_getUGV = {
+	private ["_name","_capacity","_armor","_hasDriver","_maxSpeed","_text","_descrition"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_capacity	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maximumLoad");
+	_armor		= getNumber	(configFile >> "CfgVehicles" >> _name >> "armor");
+	_hasDriver	= getNumber	(configFile >> "CfgVehicles" >> _name >> "hasDriver");
+	_maxSpeed	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maxSpeed");
+	_text		= getText	(configFile >> "CfgVehicles" >> _name >> "Library" >> "libTextDesc");
+	_descrition	= format["Capacity: %1<br/>Armor: %2<br/>Seats: %3<br/>Max Speed: %4<br/><br/>%5", _capacity, _armor, _hasDriver, _maxSpeed, _text];
+
+	(_this + ["CfgVehicles", _descrition]) call _getArticle;
+};
+
+_getUAV = {
+	private ["_name","_capacity","_armor","_maxSpeed","_text","_descrition"];
+	_name	= [_this, 1] call BIS_fnc_param;
+
+	_capacity	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maximumLoad");
+	_armor		= getNumber	(configFile >> "CfgVehicles" >> _name >> "armor");
+	_maxSpeed	= getNumber	(configFile >> "CfgVehicles" >> _name >> "maxSpeed");
+	_text		= getText	(configFile >> "CfgVehicles" >> _name >> "Armory" >> "description");
+	_descrition	= format["Capacity: %1<br/>Armor: %2<br/>Max Speed: %3<br/><br/>%4", _capacity, _armor, _maxSpeed, _text];
+
+	(_this + ["CfgVehicles", _descrition]) call _getArticle;
+};
 
 /*
 	WEAPONS format: [_id, _name, _maxAmount, _price]
@@ -135,48 +269,48 @@ TTC_SHOP_articles_weapons = (
 	AMMUNITION format: [_id, _name, _maxAmount, _price]
 */
 TTC_SHOP_articles_flashlight = [
-	[1100, "acc_flashlight",				TTC_SHOP_amountMin,	25] call _getWeapon		// Flashlight
+	[1100, "acc_flashlight",				TTC_SHOP_amountMin,	25] call _getItem	// Flashlight
 ];
 
 TTC_SHOP_articles_pointer = [
-	[1101, "acc_pointer_IR",				TTC_SHOP_amountMin,	50] call _getWeapon		// IR Laser Pointer
+	[1101, "acc_pointer_IR",				TTC_SHOP_amountMin,	50] call _getItem	// IR Laser Pointer
 ];
 
 TTC_SHOP_articles_scopes_pistols = [
-	[1110, "optic_MRD",						TTC_SHOP_amountMin,	75] call _getWeapon,	// Sound Suppressor (9 mm)
-	[1111, "optic_Yorris",					TTC_SHOP_amountMin,	75] call _getWeapon		// Sound Suppressor (9 mm)
+	[1110, "optic_MRD",						TTC_SHOP_amountMin,	75] call _getItem,	// Sound Suppressor (9 mm)
+	[1111, "optic_Yorris",					TTC_SHOP_amountMin,	75] call _getItem	// Sound Suppressor (9 mm)
 ];
 
 TTC_SHOP_articles_scopes_smgs = [
-	[1120, "optic_Aco_smg",					TTC_SHOP_amountMin,	100] call _getWeapon,	// ACO SMG (Red)
-	[1121, "optic_ACO_grn_smg",				TTC_SHOP_amountMin,	100] call _getWeapon,	// ACO SMG (Green)
-	[1122, "optic_Holosight_smg",			TTC_SHOP_amountMin,	125] call _getWeapon	// Mk17 Holosight SMG
+	[1120, "optic_Aco_smg",					TTC_SHOP_amountMin,	100] call _getItem,	// ACO SMG (Red)
+	[1121, "optic_ACO_grn_smg",				TTC_SHOP_amountMin,	100] call _getItem,	// ACO SMG (Green)
+	[1122, "optic_Holosight_smg",			TTC_SHOP_amountMin,	125] call _getItem	// Mk17 Holosight SMG
 ];
 
 TTC_SHOP_articles_scopes_rifles = [
-	[1130, "optic_Aco",						TTC_SHOP_amountMin,	100] call _getWeapon,	// ACO (Red)
-	[1131, "optic_ACO_grn",					TTC_SHOP_amountMin,	100] call _getWeapon,	// ACO (Green)
-	[1132, "optic_Holosight",				TTC_SHOP_amountMin,	125] call _getWeapon,	// MK17 Holosight
-	[1133, "optic_MRCO",					TTC_SHOP_amountMin,	200] call _getWeapon,	// MRCO
-	[1134, "optic_Hamr",					TTC_SHOP_amountMin,	300] call _getWeapon,	// RCO
-	[1135, "optic_Arco",					TTC_SHOP_amountMin,	300] call _getWeapon	// ARCO
+	[1130, "optic_Aco",						TTC_SHOP_amountMin,	100] call _getItem,	// ACO (Red)
+	[1131, "optic_ACO_grn",					TTC_SHOP_amountMin,	100] call _getItem,	// ACO (Green)
+	[1132, "optic_Holosight",				TTC_SHOP_amountMin,	125] call _getItem,	// MK17 Holosight
+	[1133, "optic_MRCO",					TTC_SHOP_amountMin,	200] call _getItem,	// MRCO
+	[1134, "optic_Hamr",					TTC_SHOP_amountMin,	300] call _getItem,	// RCO
+	[1135, "optic_Arco",					TTC_SHOP_amountMin,	300] call _getItem	// ARCO
 ];
 
 TTC_SHOP_articles_scopes_marksman = [
-	[1140, "optic_NVS",						TTC_SHOP_amountMin,	300] call _getWeapon,	// NVS
-	[1141, "optic_AMS",						TTC_SHOP_amountMin,	375] call _getWeapon,	// AMS (Black)
-	[1142, "optic_AMS_khk",					TTC_SHOP_amountMin,	375] call _getWeapon,	// AMS (Khaki)
-	[1143, "optic_AMS_snd",					TTC_SHOP_amountMin,	375] call _getWeapon,	// AMS (Sand)
-	[1144, "optic_KHS_blk",					TTC_SHOP_amountMin,	375] call _getWeapon,	// Kahlia (Black)
-	[1145, "optic_KHS_hex",					TTC_SHOP_amountMin,	375] call _getWeapon,	// Kahlia (Hex)
-	[1146, "optic_KHS_old",					TTC_SHOP_amountMin,	375] call _getWeapon,	// Kahlia (Old)
-	[1147, "optic_KHS_tan",					TTC_SHOP_amountMin,	375] call _getWeapon,	// Kahlia (Tan)
-	[1148, "optic_DMS",						TTC_SHOP_amountMin,	450] call _getWeapon	// DMS
+	[1140, "optic_NVS",						TTC_SHOP_amountMin,	300] call _getItem,	// NVS
+	[1141, "optic_AMS",						TTC_SHOP_amountMin,	375] call _getItem,	// AMS (Black)
+	[1142, "optic_AMS_khk",					TTC_SHOP_amountMin,	375] call _getItem,	// AMS (Khaki)
+	[1143, "optic_AMS_snd",					TTC_SHOP_amountMin,	375] call _getItem,	// AMS (Sand)
+	[1144, "optic_KHS_blk",					TTC_SHOP_amountMin,	375] call _getItem,	// Kahlia (Black)
+	[1145, "optic_KHS_hex",					TTC_SHOP_amountMin,	375] call _getItem,	// Kahlia (Hex)
+	[1146, "optic_KHS_old",					TTC_SHOP_amountMin,	375] call _getItem,	// Kahlia (Old)
+	[1147, "optic_KHS_tan",					TTC_SHOP_amountMin,	375] call _getItem,	// Kahlia (Tan)
+	[1148, "optic_DMS",						TTC_SHOP_amountMin,	450] call _getItem	// DMS
 ];
 
 TTC_SHOP_articles_scopes_sniper = [
-	[1150, "optic_LRPS",					TTC_SHOP_amountMin,	525] call _getWeapon,	// LRPS
-	[1151, "optic_SOS",						TTC_SHOP_amountMin,	750] call _getWeapon	// MOS
+	[1150, "optic_LRPS",					TTC_SHOP_amountMin,	525] call _getItem,	// LRPS
+	[1151, "optic_SOS",						TTC_SHOP_amountMin,	750] call _getItem	// MOS
 ];
 
 TTC_SHOP_articles_scopes = (
@@ -185,17 +319,17 @@ TTC_SHOP_articles_scopes = (
 );
 
 TTC_SHOP_articles_silencers = [
-	[1160, "muzzle_snds_L",					TTC_SHOP_amountMin,	120] call _getWeapon,	// Sound Suppressor (9 mm)
-	[1161, "muzzle_snds_acp",				TTC_SHOP_amountMin,	120] call _getWeapon,	// Sound Suppressor (.45 ACP)
-	[1162, "muzzle_snds_M",					TTC_SHOP_amountMin,	180] call _getWeapon,	// Sound Suppressor (5.56 mm)
-	[1163, "muzzle_snds_H",					TTC_SHOP_amountMin,	180] call _getWeapon,	// Sound Suppressor (6.5 mm)
-	[1164, "muzzle_snds_H_SW",				TTC_SHOP_amountMin,	180] call _getWeapon,	// Sound Suppressor LMG (6.5 mm)	// MX SW
-	[1165, "muzzle_snds_H_MG",				TTC_SHOP_amountMin,	180] call _getWeapon,	// Sound Suppressor LMG (6.5 mm)	// Mk 200
-	[1166, "muzzle_snds_B",					TTC_SHOP_amountMin,	270] call _getWeapon,	// Sound Suppressor (7.62 mm)
-	[1167, "muzzle_snds_338_black",			TTC_SHOP_amountMin,	405] call _getWeapon,	// Sound Suppressor (.338, Black)
-	[1168, "muzzle_snds_338_green",			TTC_SHOP_amountMin,	405] call _getWeapon,	// Sound Suppressor (.338, Green)
-	[1169, "muzzle_snds_93mmg",				TTC_SHOP_amountMin,	405] call _getWeapon,	// Sound Suppressor (9.3mm, Black)
-	[1170, "muzzle_snds_93mmg_tan",			TTC_SHOP_amountMin,	405] call _getWeapon	// Sound Suppressor (9.3mm, Tan)
+	[1160, "muzzle_snds_L",					TTC_SHOP_amountMin,	120] call _getItem,	// Sound Suppressor (9 mm)
+	[1161, "muzzle_snds_acp",				TTC_SHOP_amountMin,	120] call _getItem,	// Sound Suppressor (.45 ACP)
+	[1162, "muzzle_snds_M",					TTC_SHOP_amountMin,	180] call _getItem,	// Sound Suppressor (5.56 mm)
+	[1163, "muzzle_snds_H",					TTC_SHOP_amountMin,	180] call _getItem,	// Sound Suppressor (6.5 mm)
+	[1164, "muzzle_snds_H_SW",				TTC_SHOP_amountMin,	180] call _getItem,	// Sound Suppressor LMG (6.5 mm)	// MX SW
+	[1165, "muzzle_snds_H_MG",				TTC_SHOP_amountMin,	180] call _getItem,	// Sound Suppressor LMG (6.5 mm)	// Mk 200
+	[1166, "muzzle_snds_B",					TTC_SHOP_amountMin,	270] call _getItem,	// Sound Suppressor (7.62 mm)
+	[1167, "muzzle_snds_338_black",			TTC_SHOP_amountMin,	405] call _getItem,	// Sound Suppressor (.338, Black)
+	[1168, "muzzle_snds_338_green",			TTC_SHOP_amountMin,	405] call _getItem,	// Sound Suppressor (.338, Green)
+	[1169, "muzzle_snds_93mmg",				TTC_SHOP_amountMin,	405] call _getItem,	// Sound Suppressor (9.3mm, Black)
+	[1170, "muzzle_snds_93mmg_tan",			TTC_SHOP_amountMin,	405] call _getItem	// Sound Suppressor (9.3mm, Tan)
 ];
 
 TTC_SHOP_articles_attachments = TTC_SHOP_articles_flashlight + TTC_SHOP_articles_pointer + TTC_SHOP_articles_scopes + TTC_SHOP_articles_silencers;
@@ -376,11 +510,11 @@ TTC_SHOP_articles_headgear = TTC_SHOP_articles_goggles + TTC_SHOP_articles_banda
 	UNIFORMS format: [_id, _name, _maxAmount, _price]
 */
 TTC_SHOP_articles_uniforms_GhillieSuit_WEST = [
-	[1600, "U_B_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getWeapon	// Ghillie Suit [NATO]
+	[1600, "U_B_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getUniform	// Ghillie Suit [NATO]
 ];
 
 TTC_SHOP_articles_uniforms_GhillieSuit_GUER = [
-	[1601, "U_I_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getWeapon	// Ghillie Suit [AAF]
+	[1601, "U_I_GhillieSuit",			TTC_SHOP_amountMin,  800] call _getUniform	// Ghillie Suit [AAF]
 ];
 
 TTC_SHOP_articles_uniforms = TTC_SHOP_articles_uniforms_GhillieSuit_WEST + TTC_SHOP_articles_uniforms_GhillieSuit_GUER;
@@ -390,17 +524,17 @@ TTC_SHOP_articles_uniforms = TTC_SHOP_articles_uniforms_GhillieSuit_WEST + TTC_S
 	VESTS format: [_id, _name, _maxAmount, _price]
 */
 TTC_SHOP_articles_vests_WEST = [
-	[1700, "V_Rangemaster_belt",			TTC_SHOP_amountMin,  100] call _getWeapon,	// Rangemaster Belt
-	[1701, "V_Chestrig_rgr",				TTC_SHOP_amountMin,  200] call _getWeapon,	// Chest rig (Green)
-	[1702, "V_Chestrig_blk",				TTC_SHOP_amountMin,  200] call _getWeapon,	// Fighter Chestrig (Black)
-	[1703, "V_Chestrig_oli",				TTC_SHOP_amountMin,  200] call _getWeapon	// Fighter Chestrig (Olive)
+	[1700, "V_Rangemaster_belt",			TTC_SHOP_amountMin,  100] call _getVest,	// Rangemaster Belt
+	[1701, "V_Chestrig_rgr",				TTC_SHOP_amountMin,  200] call _getVest,	// Chest rig (Green)
+	[1702, "V_Chestrig_blk",				TTC_SHOP_amountMin,  200] call _getVest,	// Fighter Chestrig (Black)
+	[1703, "V_Chestrig_oli",				TTC_SHOP_amountMin,  200] call _getVest		// Fighter Chestrig (Olive)
 ];
 
 TTC_SHOP_articles_vests_GUER = [
-	[1710, "V_BandollierB_khk",				TTC_SHOP_amountMin,  200] call _getWeapon,	// Slash Bandolier (Khaki)
-	[1711, "V_BandollierB_cbr",				TTC_SHOP_amountMin,  200] call _getWeapon,	// Slash Bandolier (Coyote)
-	[1712, "V_BandollierB_blk",				TTC_SHOP_amountMin,  200] call _getWeapon,	// Slash Bandolier (Black)
-	[1713, "V_BandollierB_oli",				TTC_SHOP_amountMin,  200] call _getWeapon	// Slash Bandolier (Olive)
+	[1710, "V_BandollierB_khk",				TTC_SHOP_amountMin,  200] call _getVest,	// Slash Bandolier (Khaki)
+	[1711, "V_BandollierB_cbr",				TTC_SHOP_amountMin,  200] call _getVest,	// Slash Bandolier (Coyote)
+	[1712, "V_BandollierB_blk",				TTC_SHOP_amountMin,  200] call _getVest,	// Slash Bandolier (Black)
+	[1713, "V_BandollierB_oli",				TTC_SHOP_amountMin,  200] call _getVest		// Slash Bandolier (Olive)
 ];
 
 TTC_SHOP_articles_vests = TTC_SHOP_articles_vests_WEST + TTC_SHOP_articles_vests_GUER;
@@ -410,43 +544,43 @@ TTC_SHOP_articles_vests = TTC_SHOP_articles_vests_WEST + TTC_SHOP_articles_vests
 	BACKPACKS format: [_id, _name, _maxAmount, _price]
 */
 TTC_SHOP_articles_fieldPacks = [
-	[1800, "B_FieldPack_khk",				TTC_SHOP_amountMin,  200] call _getVehicle,	// Field Pack (Khaki)
-	[1801, "B_FieldPack_ocamo",				TTC_SHOP_amountMin,  200] call _getVehicle,	// Field Pack (Hex)
-	[1802, "B_FieldPack_oucamo",			TTC_SHOP_amountMin,  200] call _getVehicle,	// Field Pack (Urban)
-	[1803, "B_FieldPack_cbr",				TTC_SHOP_amountMin,  200] call _getVehicle,	// Field Pack (Coyote)
-	[1804, "B_FieldPack_blk",				TTC_SHOP_amountMin,  200] call _getVehicle	// Field Pack (Black)
+	[1800, "B_FieldPack_khk",				TTC_SHOP_amountMin,  200] call _getBackpack,	// Field Pack (Khaki)
+	[1801, "B_FieldPack_ocamo",				TTC_SHOP_amountMin,  200] call _getBackpack,	// Field Pack (Hex)
+	[1802, "B_FieldPack_oucamo",			TTC_SHOP_amountMin,  200] call _getBackpack,	// Field Pack (Urban)
+	[1803, "B_FieldPack_cbr",				TTC_SHOP_amountMin,  200] call _getBackpack,	// Field Pack (Coyote)
+	[1804, "B_FieldPack_blk",				TTC_SHOP_amountMin,  200] call _getBackpack		// Field Pack (Black)
 ];
 
 TTC_SHOP_articles_assaultPacks = [
-	[1810, "B_AssaultPack_khk",				TTC_SHOP_amountMin,  250] call _getVehicle,	// Assault Pack (Khaki)
-	[1811, "B_AssaultPack_dgtl",			TTC_SHOP_amountMin,  250] call _getVehicle,	// Assault Pack (Digi)
-	[1812, "B_AssaultPack_rgr",				TTC_SHOP_amountMin,  250] call _getVehicle,	// Assault Pack (Green)
-	[1813, "B_AssaultPack_blk",				TTC_SHOP_amountMin,  250] call _getVehicle,	// Assault Pack (Black)
-	[1814, "B_AssaultPack_cbr",				TTC_SHOP_amountMin,  250] call _getVehicle,	// Assault Pack (Coyote)
-	[1815, "B_AssaultPack_mcamo",			TTC_SHOP_amountMin,  250] call _getVehicle,	// Assault Pack (MTP)
-	[1816, "B_AssaultPack_ocamo",			TTC_SHOP_amountMin,  250] call _getVehicle	// Assault Pack (Hex)
+	[1810, "B_AssaultPack_khk",				TTC_SHOP_amountMin,  250] call _getBackpack,	// Assault Pack (Khaki)
+	[1811, "B_AssaultPack_dgtl",			TTC_SHOP_amountMin,  250] call _getBackpack,	// Assault Pack (Digi)
+	[1812, "B_AssaultPack_rgr",				TTC_SHOP_amountMin,  250] call _getBackpack,	// Assault Pack (Green)
+	[1813, "B_AssaultPack_blk",				TTC_SHOP_amountMin,  250] call _getBackpack,	// Assault Pack (Black)
+	[1814, "B_AssaultPack_cbr",				TTC_SHOP_amountMin,  250] call _getBackpack,	// Assault Pack (Coyote)
+	[1815, "B_AssaultPack_mcamo",			TTC_SHOP_amountMin,  250] call _getBackpack,	// Assault Pack (MTP)
+	[1816, "B_AssaultPack_ocamo",			TTC_SHOP_amountMin,  250] call _getBackpack		// Assault Pack (Hex)
 ];
 
 TTC_SHOP_articles_kitbags = [
-	[1820, "B_Kitbag_rgr",					TTC_SHOP_amountMin,  375] call _getVehicle,	// Kitbag (Green)
-	[1821, "B_Kitbag_mcamo",				TTC_SHOP_amountMin,  375] call _getVehicle,	// Kitbag (MTP)
-	[1822, "B_Kitbag_cbr",					TTC_SHOP_amountMin,  375] call _getVehicle	// Kitbag (Coyote)
+	[1820, "B_Kitbag_rgr",					TTC_SHOP_amountMin,  375] call _getBackpack,	// Kitbag (Green)
+	[1821, "B_Kitbag_mcamo",				TTC_SHOP_amountMin,  375] call _getBackpack,	// Kitbag (MTP)
+	[1822, "B_Kitbag_cbr",					TTC_SHOP_amountMin,  375] call _getBackpack		// Kitbag (Coyote)
 ];
 
 TTC_SHOP_articles_carryalls = [
-	[1830, "B_Carryall_ocamo",				TTC_SHOP_amountMin,  450] call _getVehicle,	// Carryall Backpack (Hex)
-	[1830, "B_Carryall_oucamo",				TTC_SHOP_amountMin,  450] call _getVehicle,	// Carryall Backpack (Urban)
-	[1830, "B_Carryall_mcamo",				TTC_SHOP_amountMin,  450] call _getVehicle,	// Carryall Backpack (MTP)
-	[1830, "B_Carryall_khk",				TTC_SHOP_amountMin,  450] call _getVehicle,	// Carryall Backpack (Khaki)
-	[1830, "B_Carryall_cbr",				TTC_SHOP_amountMin,  450] call _getVehicle	// Carryall Backpack (Coyote)
+	[1830, "B_Carryall_ocamo",				TTC_SHOP_amountMin,  450] call _getBackpack,	// Carryall Backpack (Hex)
+	[1831, "B_Carryall_oucamo",				TTC_SHOP_amountMin,  450] call _getBackpack,	// Carryall Backpack (Urban)
+	[1832, "B_Carryall_mcamo",				TTC_SHOP_amountMin,  450] call _getBackpack,	// Carryall Backpack (MTP)
+	[1833, "B_Carryall_khk",				TTC_SHOP_amountMin,  450] call _getBackpack,	// Carryall Backpack (Khaki)
+	[1834, "B_Carryall_cbr",				TTC_SHOP_amountMin,  450] call _getBackpack		// Carryall Backpack (Coyote)
 ];
 
 TTC_SHOP_articles_uavBackpack_WEST = [
-	[1840, "B_UAV_01_backpack_F",			TTC_SHOP_amountMin,  900] call _getVehicle	// UAV Backpack
+	[1840, "B_UAV_01_backpack_F",			TTC_SHOP_amountMin,  900] call _getBackpack	// UAV Backpack
 ];
 
 TTC_SHOP_articles_uavBackpack_GUER = [
-	[1841, "I_UAV_01_backpack_F",			TTC_SHOP_amountMin,  900] call _getVehicle	// UAV Backpack
+	[1841, "I_UAV_01_backpack_F",			TTC_SHOP_amountMin,  900] call _getBackpack	// UAV Backpack
 ];
 
 TTC_SHOP_articles_uavBackpacks = TTC_SHOP_articles_uavBackpack_WEST + TTC_SHOP_articles_uavBackpack_GUER;
@@ -560,33 +694,33 @@ TTC_SHOP_articles_helicopters = (
 /*
 	UAVs format: [_id, _name, _maxAmount, _price]
 */
-TTC_SHOP_articles_uavs_WEST = [
-	[2100, "B_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getVehicle,	// UGV Stomper
-	[2101, "B_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getVehicle	// UGV Stomper RCWS
+TTC_SHOP_articles_ugvs_WEST = [
+	[2100, "B_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getUGV,	// UGV Stomper
+	[2101, "B_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getUGV	// UGV Stomper RCWS
 ];
 
-TTC_SHOP_articles_uavs_GUER = [
-	[2110, "I_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getVehicle,	// UGV Stomper
-	[2111, "I_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getVehicle	// UGV Stomper RCWS
+TTC_SHOP_articles_ugvs_GUER = [
+	[2110, "I_UGV_01_F",					TTC_SHOP_amountMax,  600] call _getUGV,	// UGV Stomper
+	[2111, "I_UGV_01_rcws_F",				TTC_SHOP_amountMax,  1125] call _getUGV	// UGV Stomper RCWS
 ];
 
-TTC_SHOP_articles_uavs = TTC_SHOP_articles_uavs_WEST + TTC_SHOP_articles_uavs_GUER;
+TTC_SHOP_articles_ugvs = TTC_SHOP_articles_ugvs_WEST + TTC_SHOP_articles_ugvs_GUER;
 
 
 /*
 	UGVs format: [_id, _name, _maxAmount, _price]
 */
-TTC_SHOP_articles_ugvs_WEST = [
-	[2200, "B_UAV_02_F",					TTC_SHOP_amountMax,  6750] call _getVehicle,	// MQ4A Greyhawk
-	[2201, "B_UAV_02_CAS_F",				TTC_SHOP_amountMax,  6750] call _getVehicle		// MQ4A Greyhawk (CAS)
+TTC_SHOP_articles_uavs_WEST = [
+	[2200, "B_UAV_02_F",					TTC_SHOP_amountMax,  6750] call _getUAV,	// MQ4A Greyhawk
+	[2201, "B_UAV_02_CAS_F",				TTC_SHOP_amountMax,  6750] call _getUAV		// MQ4A Greyhawk (CAS)
 ];
 
-TTC_SHOP_articles_ugvs_GUER = [
-	[2210, "I_UAV_02_F",					TTC_SHOP_amountMax,  6750] call _getVehicle,	// K40 Ababil-3
-	[2211, "I_UAV_02_CAS_F",				TTC_SHOP_amountMax,  6750] call _getVehicle		// K40 Ababil-3 (CAS)
+TTC_SHOP_articles_uavs_GUER = [
+	[2210, "I_UAV_02_F",					TTC_SHOP_amountMax,  6750] call _getUAV,	// K40 Ababil-3
+	[2211, "I_UAV_02_CAS_F",				TTC_SHOP_amountMax,  6750] call _getUAV		// K40 Ababil-3 (CAS)
 ];
 
-TTC_SHOP_articles_ugvs = TTC_SHOP_articles_ugvs_WEST + TTC_SHOP_articles_ugvs_GUER;
+TTC_SHOP_articles_uavs = TTC_SHOP_articles_uavs_WEST + TTC_SHOP_articles_uavs_GUER;
 
 
 /*
