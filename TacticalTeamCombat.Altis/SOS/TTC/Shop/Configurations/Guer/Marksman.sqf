@@ -4,16 +4,16 @@
 
 TTC_SHOP_weapons		= (
 	// Pistols
-	[TTC_SHOP_articles_pistol_P07,
+	[TTC_SHOP_articles_pistol_ACPC2,
 	TTC_SHOP_articles_pistol_Rook40,
 	// Marksman rifles
 	TTC_SHOP_articles_marksmanRifle_MXM,
-	TTC_SHOP_articles_marksmanRifle_Mk18_ABR] +
-	TTC_SHOP_articles_marksmanRifle_Mk1_EMR +
+	TTC_SHOP_articles_marksmanRifle_Rahim] +
+	TTC_SHOP_articles_marksmanRifle_Cyrus +
 	TTC_SHOP_articles_marksmanRifle_Mk14 +
 	// Sniper rifles
-	[TTC_SHOP_articles_sniperRifle_GM6] +
-	TTC_SHOP_articles_sniperRifle_MAR10
+	[TTC_SHOP_articles_sniperRifle_M320] +
+	TTC_SHOP_articles_sniperRifle_ASP1_Kir
 );
 
 TTC_SHOP_attachments	= (
@@ -45,30 +45,29 @@ TTC_SHOP_headgear		= (
 );
 
 TTC_SHOP_uniforms		= [
-	TTC_SHOP_articles_uniforms_GhillieSuit_WEST
+	TTC_SHOP_articles_uniforms_GhillieSuit_GUER
 ];
 
-TTC_SHOP_vests			= TTC_SHOP_articles_vests_WEST;
+TTC_SHOP_vests			= TTC_SHOP_articles_vests_GUER;
 
 TTC_SHOP_backpacks		= (
 	[TTC_SHOP_articles_Parachute]
 );
 
 TTC_SHOP_vehicles		= (
-	[TTC_SHOP_articles_vehicle_quadbike_WEST] +
-	TTC_SHOP_articles_vehicle_offroads_WEST +
-	TTC_SHOP_articles_vehicles_hunter +
-	TTC_SHOP_articles_vehicles_hemtt + 
-	[TTC_SHOP_articles_vehicle_panther,
-	TTC_SHOP_articles_vehicle_bobcat,
-	TTC_SHOP_articles_vehicle_cheetah,
-	TTC_SHOP_articles_vehicle_marshall]
+	[TTC_SHOP_articles_vehicle_quadbike_GUER] +
+	TTC_SHOP_articles_vehicle_offroads_GUER +
+	TTC_SHOP_articles_vehicles_strider +
+	TTC_SHOP_articles_vehicles_zamak + 
+	[TTC_SHOP_articles_vehicle_mora,
+	TTC_SHOP_articles_vehicle_tigris,
+	TTC_SHOP_articles_vehicle_gorgon]
 );
 
 TTC_SHOP_helicopters	= [
-	TTC_SHOP_articles_helicopters_hummingbird
+	TTC_SHOP_articles_helicopters_hellcat
 ];
 
-TTC_SHOP_ugvs			= TTC_SHOP_articles_ugvs_WEST;
+TTC_SHOP_ugvs			= TTC_SHOP_articles_ugvs_GUER;
 
 TTC_SHOP_uavs			= [];

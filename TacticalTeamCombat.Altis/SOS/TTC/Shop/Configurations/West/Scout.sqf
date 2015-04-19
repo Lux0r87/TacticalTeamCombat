@@ -57,7 +57,14 @@ TTC_SHOP_uniforms		= [];
 
 TTC_SHOP_vests			= TTC_SHOP_articles_vests_WEST;
 
-TTC_SHOP_backpacks		= TTC_SHOP_articles_backpacks;
+TTC_SHOP_backpacks		= (
+	TTC_SHOP_articles_fieldPacks +
+	TTC_SHOP_articles_assaultPacks +
+	TTC_SHOP_articles_kitbags +
+	TTC_SHOP_articles_carryalls +
+	[TTC_SHOP_articles_uavBackpack_WEST,
+	TTC_SHOP_articles_Parachute]
+);
 
 TTC_SHOP_vehicles		= TTC_SHOP_articles_vehicles_WEST;
 

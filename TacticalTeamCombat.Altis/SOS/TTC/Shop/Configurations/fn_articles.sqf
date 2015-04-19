@@ -808,10 +808,18 @@ TTC_SHOP_articles_helicopters_hummingbird	 = [2000, "B_Heli_Light_01_F",	TTC_SHO
 
 TTC_SHOP_articles_helicopters_huron = [
 	[2010, "B_Heli_Transport_03_unarmed_F",			TTC_SHOP_amountMax,  1350] call _getVehicle,	// CH-67 Huron (Unarmed)
-	[2011, "B_Heli_Transport_03_unarmed_green_F",	TTC_SHOP_amountMax,  1350] call _getVehicle,	// CH-67 Huron Unarmed (Green)
+	[2011, "B_Heli_Transport_03_unarmed_green_F",	TTC_SHOP_amountMax,  1350] call _getVehicle		// CH-67 Huron Unarmed (Green)
+];
+
+TTC_SHOP_articles_helicopters_huron_armed = [
 	[2012, "B_Heli_Transport_03_F",					TTC_SHOP_amountMax,  1875] call _getVehicle,	// CH-67 Huron
 	[2013, "B_Heli_Transport_03_black_F",			TTC_SHOP_amountMax,  1875] call _getVehicle		// CH-67 Huron (Black)
 ];
+
+TTC_SHOP_articles_helicopters_hurons = (
+	TTC_SHOP_articles_helicopters_huron +
+	TTC_SHOP_articles_helicopters_huron_armed
+);
 
 TTC_SHOP_articles_helicopters_ghosthawk = [
 	[2020, "B_Heli_Transport_01_F",					TTC_SHOP_amountMax,  1875] call _getVehicle,	// UH-80 Ghost Hawk
@@ -867,7 +875,7 @@ TTC_SHOP_articles_helicopters = (
 	TTC_SHOP_articles_helicopters_hellcats +
 	[TTC_SHOP_articles_helicopters_Mohawk] + 
 	TTC_SHOP_articles_helicopters_orcas +
-	TTC_SHOP_articles_helicopters_huron +
+	TTC_SHOP_articles_helicopters_hurons +
 	TTC_SHOP_articles_helicopters_taru +
 	TTC_SHOP_articles_helicopters_taru_black
 );

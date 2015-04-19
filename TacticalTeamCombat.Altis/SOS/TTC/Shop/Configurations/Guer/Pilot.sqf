@@ -4,10 +4,10 @@
 
 TTC_SHOP_weapons		= (
 	// Pistols
-	[TTC_SHOP_articles_pistol_P07,
+	[TTC_SHOP_articles_pistol_ACPC2,
 	TTC_SHOP_articles_pistol_Rook40,
 	// SMGs
-	TTC_SHOP_articles_smg_Vermin,
+	TTC_SHOP_articles_smg_PDW2000,
 	TTC_SHOP_articles_smg_Sting]
 );
 
@@ -37,27 +37,28 @@ TTC_SHOP_headgear		= (
 
 TTC_SHOP_uniforms		= [];
 
-TTC_SHOP_vests			= TTC_SHOP_articles_vests_WEST;
+TTC_SHOP_vests			= TTC_SHOP_articles_vests_GUER;
 
 TTC_SHOP_backpacks		= (
 	[TTC_SHOP_articles_Parachute]
 );
 
 TTC_SHOP_vehicles		= (
-	[TTC_SHOP_articles_vehicle_quadbike_WEST] +
-	TTC_SHOP_articles_vehicle_offroads_WEST +
-	TTC_SHOP_articles_vehicles_hunter +
-	TTC_SHOP_articles_vehicles_hemtt
+	[TTC_SHOP_articles_vehicle_quadbike_GUER] +
+	TTC_SHOP_articles_vehicle_offroads_GUER +
+	TTC_SHOP_articles_vehicles_strider +
+	TTC_SHOP_articles_vehicles_zamak
 );
 
 TTC_SHOP_helicopters	= (
-	[TTC_SHOP_articles_helicopters_hummingbird] +
-	TTC_SHOP_articles_helicopters_hurons +
-	TTC_SHOP_articles_helicopters_ghosthawk +
+	[TTC_SHOP_articles_helicopters_hellcat,
+	TTC_SHOP_articles_helicopters_Mohawk] +
+	TTC_SHOP_articles_helicopters_taru +
+	TTC_SHOP_articles_helicopters_taru_black +
 	TTC_SHOP_articles_helicopters_orcas +
-	[TTC_SHOP_articles_helicopters_pawnee]
+	[TTC_SHOP_articles_helicopters_hellcat_armed]
 );
 
-TTC_SHOP_ugvs			= TTC_SHOP_articles_ugvs_WEST;
+TTC_SHOP_ugvs			= TTC_SHOP_articles_ugvs_GUER;
 
-TTC_SHOP_uavs			= TTC_SHOP_articles_uavs_WEST;
+TTC_SHOP_uavs			= TTC_SHOP_articles_uavs_GUER;

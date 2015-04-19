@@ -70,7 +70,16 @@ TTC_SHOP_backpacks		= (
 	[TTC_SHOP_articles_Parachute]
 );
 
-TTC_SHOP_vehicles		= TTC_SHOP_articles_vehicles_WEST;
+TTC_SHOP_vehicles		= (
+	[TTC_SHOP_articles_vehicle_quadbike_WEST] +
+	TTC_SHOP_articles_vehicle_offroads_WEST +
+	TTC_SHOP_articles_vehicles_hunter +
+	TTC_SHOP_articles_vehicles_hemtt + 
+	[TTC_SHOP_articles_vehicle_panther,
+	TTC_SHOP_articles_vehicle_bobcat,
+	TTC_SHOP_articles_vehicle_cheetah,
+	TTC_SHOP_articles_vehicle_marshall]
+);
 
 TTC_SHOP_helicopters	= [
 	TTC_SHOP_articles_helicopters_hummingbird
