@@ -8,7 +8,11 @@ TTC_SHOP_weapons		= (
 	TTC_SHOP_articles_pistol_Rook40,
 	// SMGs
 	TTC_SHOP_articles_smg_Vermin,
-	TTC_SHOP_articles_smg_Sting]
+	TTC_SHOP_articles_smg_Sting,
+	// Carbines
+	TTC_SHOP_articles_carbine_MXC,
+	TTC_SHOP_articles_carbine_Mk20C,
+	TTC_SHOP_articles_carbine_Katiba_C]
 );
 
 TTC_SHOP_attachments	= (
