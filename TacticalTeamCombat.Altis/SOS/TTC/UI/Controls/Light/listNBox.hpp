@@ -1,29 +1,28 @@
 /*
 	Created by BauerMitFackel
 */
+class TTC_UI_ListNBox_Light: TTC_UI_ListNBox {
 
-class TTC_UI_ListNBox_Light: TTC_UI_ListNBox_Dark {
+	arrowEmpty					= "#(argb,8,8,3)color(0,0,0,0.5)";
+	arrowFull					= "#(argb,8,8,3)color(0,0,0,0)";
+	
+	colorBackground[]			= TTC_UI_COLOR_WHITE_A75;	
+	colorSelect[]				= TTC_UI_COLOR_WHITE_A100;
+	colorSelect2[]				= TTC_UI_COLOR_WHITE_A75;
+	colorSelectBackground[]		= TTC_UI_COLOR_BLACK_A100;
+	colorSelectBackground2[]	= TTC_UI_COLOR_BLACK_A75;
+	colorText[]					= TTC_UI_COLOR_BLACK_A100;
+			
+	// Arma 3 only
+	class ListScrollBar: TTC_UI_ScrollBar_Light {	
 
-	colorText[]					= COLOR_BLACK_A100;			// Text and frame color
-	colorDisabled[]				= COLOR_BLACK_A25;			// Disabled text color
-	colorSelect[]				= COLOR_BLACK_A100;			// Text selection color
-	colorSelect2[]				= COLOR_BLACK_A75;			// Text selection color (oscillates between this and colorSelect)
-	colorSelectBackground[]		= COLOR_WHITE_A100;			// Selected item fill color
-	colorSelectBackground2[]	= COLOR_WHITE_A75;			// Selected item fill color (oscillates between this and colorSelectBackground)
-	colorShadow[] 				= COLOR_BLACK_A50;			// Text shadow color (used only when shadow is 1)
-	
-	colorPicture[]				= COLOR_WHITE_A100;
-	colorPictureSelected[]		= COLOR_WHITE_A100;
-	colorPictureDisabled[]		= COLOR_WHITE_A25;
-	
-	tooltip 			= "";					// Tooltip text
-	tooltipColorText[]	= COLOR_BLACK_A100;		// Tooltip text color
-	tooltipColorBox[]	= COLOR_WHITE_A75;		// Tooltip frame color
-	tooltipColorShade[]	= COLOR_WHITE_A75;		// Tooltip background color
-		
-	class ListScrollBar {
-				
-		color[] = COLOR_WHITE_A100;
-		autoScrollEnabled = 1;
+		shadow				= 0;
+		autoScrollEnabled	= 1;
 	};
+	
+	class ScrollBar: TTC_UI_ScrollBar_Light {};
+	
+	// Undocumented properties
+	colorDisabled[]	= TTC_UI_COLOR_BLACK_A25;	// Disabled text color
+	blinkingPeriod	= 0;
 };

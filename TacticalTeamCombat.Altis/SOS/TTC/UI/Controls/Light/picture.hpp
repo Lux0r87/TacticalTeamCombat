@@ -1,10 +1,10 @@
 /*
 	Created by BauerMitFackel
 */
-
-class TTC_UI_Picture_Light :TTC_UI_Picture_Dark {
+class TTC_UI_Picture_Light :TTC_UI_Picture {
 	
-	colorBackground[]	= COLOR_WHITE_A75;
-	colorShadow[]		= COLOR_TRANSPARENT;
-	colorText[]			= COLOR_WHITE_A100;
+	tooltip 			= "";
+	tooltipColorText[]	= TTC_UI_COLOR_BLACK_A100;
+	tooltipColorBox[]	= TTC_UI_COLOR_WHITE_A75;
+	tooltipColorShade[]	= TTC_UI_COLOR_WHITE_A75;
 };
