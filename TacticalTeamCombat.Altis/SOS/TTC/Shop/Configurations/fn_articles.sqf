@@ -443,28 +443,35 @@ TTC_SHOP_articles_magazines = [
 	[1202, "6Rnd_45ACP_Cylinder",				TTC_SHOP_amountMax,	 20] call _getMagazine,		// .45 ACP 6Rnd Cylinder
 	[1203, "9Rnd_45ACP_Mag",					TTC_SHOP_amountMax,  30] call _getMagazine,		// .45 ACP 9Rnd Mag
 	[1204, "11Rnd_45ACP_Mag",					TTC_SHOP_amountMax,  40] call _getMagazine,		// .45 ACP 11Rnd Mag
-	[1205, "30Rnd_45ACP_Mag_SMG_01",			TTC_SHOP_amountMax,  50] call _getMagazine,		// .45 ACP 30Rnd Vermin Mag
-	[1206, "30Rnd_45ACP_Mag_SMG_01_Tracer_Green",	TTC_SHOP_amountMax,  25] call _getMagazine,	// .// .45 30Rnd VerminTracers (Green) Mag
-	[1207, "30Rnd_556x45_Stanag",				TTC_SHOP_amountMax,  80] call _getMagazine,		// 5.56mm 30rnd STANAG Mag
-	[1208, "30Rnd_556x45_Stanag_Tracer_Yellow",	TTC_SHOP_amountMax,  40] call _getMagazine,		// 5.56mm 30rnd Tracer (Yellow) Mag
-	[1209, "30Rnd_65x39_caseless_mag",			TTC_SHOP_amountMax,  80] call _getMagazine,		// 6.5mm 30Rnd STANAG Mag
-	[1210, "30Rnd_65x39_caseless_mag_Tracer",	TTC_SHOP_amountMax,  40] call _getMagazine,		// 6.5mm 30Rnd Tracer (Red) Mag
-	[1211, "100Rnd_65x39_caseless_mag",			TTC_SHOP_amountMax,  120] call _getMagazine,	// 6.5mm 100Rnd Belt Case
-	[1212, "100Rnd_65x39_caseless_mag_Tracer",	TTC_SHOP_amountMax,  60] call _getMagazine,		// 6.5mm 100Rnd Tracer (Red) Belt Case
+	[1205, "30Rnd_45ACP_Mag_SMG_01",			TTC_SHOP_amountMax,  60] call _getMagazine,		// .45 ACP 30Rnd Vermin Mag
+	[1206, "30Rnd_45ACP_Mag_SMG_01_Tracer_Green",	TTC_SHOP_amountMax,  30] call _getMagazine,	// .45 30Rnd VerminTracers (Green) Mag
+	[1207, "30Rnd_556x45_Stanag",				TTC_SHOP_amountMax,  70] call _getMagazine,		// 5.56mm 30rnd STANAG Mag
+	[1208, "30Rnd_556x45_Stanag_Tracer_Yellow",	TTC_SHOP_amountMax,  35] call _getMagazine,		// 5.56mm 30rnd Tracer (Yellow) Mag
+	[1209, "30Rnd_65x39_caseless_mag",			TTC_SHOP_amountMax,  70] call _getMagazine,		// 6.5mm 30Rnd STANAG Mag
+	[1210, "30Rnd_65x39_caseless_mag_Tracer",	TTC_SHOP_amountMax,  35] call _getMagazine,		// 6.5mm 30Rnd Tracer (Red) Mag
+	[1211, "100Rnd_65x39_caseless_mag",			TTC_SHOP_amountMax,  90] call _getMagazine,		// 6.5mm 100Rnd Belt Case
+	[1212, "100Rnd_65x39_caseless_mag_Tracer",	TTC_SHOP_amountMax,  45] call _getMagazine,		// 6.5mm 100Rnd Tracer (Red) Belt Case
 	[1213, "200Rnd_65x39_cased_Box",			TTC_SHOP_amountMax,  180] call _getMagazine,	// 6.5mm 200Rnd Belt Case
 	[1214, "200Rnd_65x39_cased_Box_Tracer",		TTC_SHOP_amountMax,  90] call _getMagazine,		// 6.5mm 200Rnd Belt Case Tracer (Yellow)
-	[1215, "20Rnd_762x51_Mag",					TTC_SHOP_amountMax,  80] call _getMagazine,		// 7.62mm 20Rnd Mag
-	[1216, "5Rnd_127x108_Mag",					TTC_SHOP_amountMax,  120] call _getMagazine,	// 12.7mm 5Rnd Mag
-	[1217, "7Rnd_408_Mag",						TTC_SHOP_amountMax,  140] call _getMagazine		// .408 7Rnd LRR Mag
+	[1215, "20Rnd_762x51_Mag",					TTC_SHOP_amountMax,  70] call _getMagazine,		// 7.62mm 20Rnd Mag
+	[1216, "150Rnd_762x54_Box",					TTC_SHOP_amountMax,  150] call _getMagazine,	// 7.62mm 150Rnd Box
+	[1217, "150Rnd_762x54_Box_Tracer",			TTC_SHOP_amountMax,  75] call _getMagazine,		// 7.62mm 150Rnd Tracer (Green) Box
+	[1218, "10Rnd_338_Mag",						TTC_SHOP_amountMax,  80] call _getMagazine,		// .338 LM 10Rnd Mag
+	[1219, "130Rnd_338_Mag",					TTC_SHOP_amountMax,  160] call _getMagazine,	// .338 NM 130Rnd Belt
+	[1220, "10Rnd_93x64_DMR_05_Mag",			TTC_SHOP_amountMax,  80] call _getMagazine,		// 9.3mm 10Rnd Mag
+	[1221, "150Rnd_93x64_Mag",					TTC_SHOP_amountMax,  170] call _getMagazine,	// 9.3mm 150Rnd Belt
+	[1222, "7Rnd_408_Mag",						TTC_SHOP_amountMax,  140] call _getMagazine,	// .408 7Rnd LRR Mag
+	[1223, "5Rnd_127x108_Mag",					TTC_SHOP_amountMax,  105] call _getMagazine,	// 12.7mm 5Rnd Mag
+	[1224, "10Rnd_127x54_Mag",					TTC_SHOP_amountMax,  210] call _getMagazine		// 12.7mm 10Rnd Mag
 ];
 
 TTC_SHOP_articles_rockets = [
-	[1220, "RPG32_F",						TTC_SHOP_amountMax,  500] call _getMagazine,	// RPG-42 Rocket
-	[1221, "RPG32_HE_F",					TTC_SHOP_amountMax,  500] call _getMagazine,	// RPG-42 HE Rocket
-	[1222, "NLAW_F",						TTC_SHOP_amountMax,  1000] call _getMagazine,	// PCML Missile
-	[1223, "Titan_AA",						TTC_SHOP_amountMax,  2000] call _getMagazine,	// Titan AA Missile
-	[1224, "Titan_AP",						TTC_SHOP_amountMax,  2000] call _getMagazine,	// Titan AP Missile
-	[1225, "Titan_AT",						TTC_SHOP_amountMax,  2000] call _getMagazine	// Titan AT Missile
+	[1230, "RPG32_F",						TTC_SHOP_amountMax,  500] call _getMagazine,	// RPG-42 Rocket
+	[1231, "RPG32_HE_F",					TTC_SHOP_amountMax,  500] call _getMagazine,	// RPG-42 HE Rocket
+	[1232, "NLAW_F",						TTC_SHOP_amountMax,  1000] call _getMagazine,	// PCML Missile
+	[1233, "Titan_AA",						TTC_SHOP_amountMax,  1500] call _getMagazine,	// Titan AA Missile
+	[1234, "Titan_AP",						TTC_SHOP_amountMax,  1500] call _getMagazine,	// Titan AP Missile
+	[1235, "Titan_AT",						TTC_SHOP_amountMax,  1500] call _getMagazine	// Titan AT Missile
 ];
 
 TTC_SHOP_articles_ammunition = (
