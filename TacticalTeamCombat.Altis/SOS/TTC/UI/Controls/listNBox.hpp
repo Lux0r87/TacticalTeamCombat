@@ -14,6 +14,9 @@ class TTC_UI_ListNBox: TTC_UI_Control {
 	autoScrollDelay				= 5;
 	autoScrollRewind			= 0;
 	canDrag						= false;
+	colorPicture[] 				= TTC_UI_COLOR_WHITE_A100;
+	colorPictureSelected[] 		= TTC_UI_COLOR_BLACK_A100;
+	colorPictureDisabled[] 		= TTC_UI_COLOR_WHITE_A25;
 	colorSelect[]				= TTC_UI_COLOR_BLACK_A100;
 	colorSelect2[]				= TTC_UI_COLOR_BLACK_A100;
 	colorSelectBackground[]		= TTC_UI_COLOR_WHITE_A75;
@@ -24,7 +27,7 @@ class TTC_UI_ListNBox: TTC_UI_Control {
 	idcRight					= -1;
 	maxHistoryDelay				= 1;
 	period 						= 1;
-	rowHeight					= 0.05;
+	rowHeight					= 0;
 	soundSelect[]				= TTC_UI_SOUND_LISTBOX_SELECT;
 	
 	

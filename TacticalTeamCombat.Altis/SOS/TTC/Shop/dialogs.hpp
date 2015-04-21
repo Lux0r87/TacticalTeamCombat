@@ -1,1 +1,1 @@
-#include "Dialogs\ShopDialog.hpp"
+#include "Dialogs\shopDialog.hpp"

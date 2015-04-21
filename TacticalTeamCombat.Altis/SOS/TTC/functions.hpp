@@ -3,7 +3,7 @@
 #include "Core\functions.hpp"
 #include "CTI\functions.hpp"
 #include "Map\functions.hpp"
-#include "Shop\Functions.hpp"
+#include "Shop\functions.hpp"
 
 class TTC_Functions {
 	tag = "TTC";

@@ -6,7 +6,7 @@
 class TTC_UI_Control {
 
 	idc							= -1;
-	moving						= true;
+	moving						= false;
 	access						= TTC_UI_ACCESS_READ_WRITE;
 	type						= TTC_UI_TYPE_STATIC;
 	style						= TTC_UI_STYLE_LEFT;

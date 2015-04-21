@@ -2,237 +2,42 @@
     Created by BauerMitFackel
 */
 
-#include "shopDialog_Layout.hpp"
+#define __ROUND(number)					((round ((number) * 1000)) / 1000)
 
-#define TTC_SHOP_DIALOG_IDD 							50000
+#define TTC_SHOP_UI_SZ_W				__ROUND(safezoneW)
+#define TTC_SHOP_UI_SZ_H				__ROUND(safezoneH)
+#define TTC_SHOP_UI_SZ_X				__ROUND(safezoneX)
+#define TTC_SHOP_UI_SZ_Y				__ROUND(safezoneY)
 
-#define TTC_SHOP_DIALOG_CATEGORY_LIST_IDC				51001
-#define TTC_SHOP_DIALOG_ARTICLE_LIST_IDC				52001
-#define TTC_SHOP_DIALOG_ARTICLE_PICTURE_IDC				52002
-#define TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_IDC			52003
-#define TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_IDC			53001
-#define TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_IDC			53002
-#define TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_IDC			53003
-#define TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_IDC	53004
-#define TTC_SHOP_DIALOG_SHOPPING_CARD_COSTS_IDC			53005
-#define TTC_SHOP_DIALOG_CANCEL_IDC						53006
-#define TTC_SHOP_DIALOG_BUY_IDC							53007					
+#define TTC_SHOP_UI_DIALOG_W			__ROUND(0.750 * TTC_SHOP_UI_SZ_W)
+#define TTC_SHOP_UI_DIALOG_H			__ROUND(0.700 * TTC_SHOP_UI_SZ_H)
+#define TTC_SHOP_UI_COLUMN_HEADER_H		__ROUND(0.040 * TTC_SHOP_UI_SZ_H)
+#define TTC_SHOP_UI_SPACING				__ROUND(0.002 * ((TTC_SHOP_UI_SZ_H + TTC_SHOP_UI_SZ_W) / 2))
+#define TTC_SHOP_UI_COLUMN_LEFT_W		__ROUND(TTC_SHOP_UI_DIALOG_W * 0.2)
+#define TTC_SHOP_UI_COLUMN_LEFT_H		TTC_SHOP_UI_DIALOG_H
+#define TTC_SHOP_UI_COLUMN_MIDDLE_W		__ROUND(TTC_SHOP_UI_DIALOG_W * 0.45 - (TTC_SHOP_UI_SPACING * 2))
+#define TTC_SHOP_UI_COLUMN_MIDDLE_H		TTC_SHOP_UI_DIALOG_H
+#define TTC_SHOP_UI_COLUMN_RIGHT_W		__ROUND(TTC_SHOP_UI_DIALOG_W * 0.35)
+#define TTC_SHOP_UI_COLUMN_RIGHT_H		TTC_SHOP_UI_DIALOG_H
+#define TTC_SHOP_UI_COLUMN_LEFT_X		__ROUND((TTC_SHOP_UI_SZ_X + (TTC_SHOP_UI_SZ_W / 2)) - (TTC_SHOP_UI_DIALOG_W / 2))
+#define TTC_SHOP_UI_COLUMN_LEFT_Y		__ROUND((TTC_SHOP_UI_SZ_Y + (TTC_SHOP_UI_SZ_H / 2)) - (TTC_SHOP_UI_DIALOG_H / 2))
+#define TTC_SHOP_UI_COLUMN_MIDDLE_X		TTC_SHOP_UI_COLUMN_LEFT_X + TTC_SHOP_UI_COLUMN_LEFT_W + TTC_SHOP_UI_SPACING
+#define TTC_SHOP_UI_COLUMN_MIDDLE_Y		TTC_SHOP_UI_COLUMN_LEFT_Y
+#define TTC_SHOP_UI_COLUMN_RIGHT_X		TTC_SHOP_UI_COLUMN_MIDDLE_X + TTC_SHOP_UI_COLUMN_MIDDLE_W + TTC_SHOP_UI_SPACING
+#define TTC_SHOP_UI_COLUMN_RIGHT_Y		TTC_SHOP_UI_COLUMN_LEFT_Y
 
 
 class TTC_SHOP_ShopDialog {
 
-	idd				= TTC_SHOP_DIALOG_IDD;
-	movingenabled	= 0;
-	onLoad			= uiNamespace setVariable ["TTC_SHOP_shopDialog", _this select 0];
-	onUnLoad		= uiNamespace setVariable ["TTC_SHOP_shopDialog", nil];
-	
-	class ControlsBackground {
-		
-		class TTC_SHOP_CategoryList_Header: TTC_UI_Text {
-		
-			style		= ST_CENTER;
-			text		= "CATEGORIES";
-
-			x = TTC_SHOP_DIALOG_CATEGORY_LIST_HEADER_X;
-			y = TTC_SHOP_DIALOG_CATEGORY_LIST_HEADER_Y;
-			w = TTC_SHOP_DIALOG_CATEGORY_LIST_HEADER_W;
-			h = TTC_SHOP_DIALOG_CATEGORY_LIST_HEADER_H;
-		};
-		
-		class TTC_SHOP_CategoryList_Background: TTC_UI_Background {
-		
-			x = TTC_SHOP_DIALOG_CATEGORY_LIST_BACKGROUND_X;
-			y = TTC_SHOP_DIALOG_CATEGORY_LIST_BACKGROUND_Y;
-			w = TTC_SHOP_DIALOG_CATEGORY_LIST_BACKGROUND_W;
-			h = TTC_SHOP_DIALOG_CATEGORY_LIST_BACKGROUND_H;
-		};
-	
-		class TTC_SHOP_ArticleList_Header : TTC_UI_Text {
-		
-			style 		= ST_CENTER;
-			text		= "ARTICLES";
-
-			x = TTC_SHOP_DIALOG_ARTICLE_LIST_HEADER_X;
-			y = TTC_SHOP_DIALOG_ARTICLE_LIST_HEADER_Y;
-			w = TTC_SHOP_DIALOG_ARTICLE_LIST_HEADER_W;
-			h = TTC_SHOP_DIALOG_ARTICLE_LIST_HEADER_H;
-		};
-	
-		class TTC_SHOP_ArticleList_Background: TTC_UI_Background {
-		
-			x = TTC_SHOP_DIALOG_ARTICLE_LIST_BACKGROUND_X;
-			y = TTC_SHOP_DIALOG_ARTICLE_LIST_BACKGROUND_Y;
-			w = TTC_SHOP_DIALOG_ARTICLE_LIST_BACKGROUND_W;
-			h = TTC_SHOP_DIALOG_ARTICLE_LIST_BACKGROUND_H;
-		};
-		
-		class TTC_SHOP_ArticlePicture_Background: TTC_UI_Background_Light {
-		
-			x = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_X;
-			y = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_Y;
-			w = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_W;
-			h = TTC_SHOP_DIALOG_ARTICLE_PICTURE_BACKGROUND_H;
-		};
-		
-		class TTC_SHOP_ShoppingCard_Header : TTC_UI_Text {
-					
-			style		= ST_CENTER;
-			text		= "SHOPPING CARD";
-
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_HEADER_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_HEADER_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_HEADER_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_HEADER_H;
-		};
-		
-		class TTC_SHOP_ShoppingCard_ArticleList_Background: TTC_UI_Background {
-		
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_BACKGROUND_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_BACKGROUND_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_BACKGROUND_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_BACKGROUND_H;
-		};
-	};
-	
+	idd				= 5000;
+	onLoad			= "_this call TTC_SHOP_UI_fnc_onShopDialogLoad";
+	onUnLoad		= "_this call TTC_SHOP_UI_fnc_onShopDialogUnLoad";
 	
 	class Controls {
 		
-		class TTC_SHOP_CategoryList: TTC_UI_ListNBox {
-		
-			idc			= TTC_SHOP_DIALOG_CATEGORY_LIST_IDC;
-			rowHeight	= 0.06;
-			columns[]	= {-0.001};
-
-			x = TTC_SHOP_DIALOG_CATEGORY_LIST_X;
-			y = TTC_SHOP_DIALOG_CATEGORY_LIST_Y;
-			w = TTC_SHOP_DIALOG_CATEGORY_LIST_W;
-			h = TTC_SHOP_DIALOG_CATEGORY_LIST_H;
-			
-			onLBSelChanged = "_this spawn TTC_SHOP_fnc_onCategorySelected;";
-		};
-		
-		
-		class TTC_SHOP_ArticleList: TTC_UI_ListNBox {
-		
-			idc			= TTC_SHOP_DIALOG_ARTICLE_LIST_IDC;
-			rowHeight	= 0.06;
-			columns[]	= {-0.001, 0.75};
-			
-			x = TTC_SHOP_DIALOG_ARTICLE_LIST_X;
-			y = TTC_SHOP_DIALOG_ARTICLE_LIST_Y;
-			w = TTC_SHOP_DIALOG_ARTICLE_LIST_W;
-			h = TTC_SHOP_DIALOG_ARTICLE_LIST_H;
-			
-			onLBSelChanged			= "_this spawn TTC_SHOP_fnc_onArticleSelected;";
-			onMouseButtonDblClick	= "_this spawn TTC_SHOP_fnc_onArticleDoubleClick;";
-		};
-		
-		class TTC_SHOP_ArticlePicture: TTC_UI_Picture {
-		
-			idc 		= TTC_SHOP_DIALOG_ARTICLE_PICTURE_IDC;
-			
-			x = TTC_SHOP_DIALOG_ARTICLE_PICTURE_X;
-			y = TTC_SHOP_DIALOG_ARTICLE_PICTURE_Y;
-			w = TTC_SHOP_DIALOG_ARTICLE_PICTURE_W;
-			h = TTC_SHOP_DIALOG_ARTICLE_PICTURE_H;
-		};
-		
-		class TTC_SHOP_ArticleDescription: TTC_UI_StructuredText {
-		
-			idc 		= TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_IDC;
-			
-			x = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_X;
-			y = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_Y;
-			w = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_W;
-			h = TTC_SHOP_DIALOG_ARTICLE_DESCRIPTION_H;
-		};
-		
-		
-		class TTC_SHOP_ShoppingCard_Save: TTC_UI_Button {
-		
-			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_IDC;
-			text		= "Save"; //--- ToDo: Localize;
-			action		= "[] spawn TTC_SHOP_fnc_onSaveClicked";
-			
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_SAVE_H;
-		};
-		
-		class TTC_SHOP_ShoppingCard_Load: TTC_UI_Button {
-		
-			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_IDC;
-			text		= "Load"; //--- ToDo: Localize;
-			action		= "[] spawn TTC_SHOP_fnc_onLoadClicked";
-			
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_LOAD_H;
-		};
-		
-		class TTC_SHOP_ShoppingCard_Clear: TTC_UI_Button {
-		
-			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_IDC;
-			text		= "Clear"; //--- ToDo: Localize;
-			action		= "[] spawn TTC_SHOP_fnc_onClearClicked";
-			
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_CLEAR_H;
-		};
-		
-		class TTC_SHOP_ShoppingCard_ArticleList: TTC_UI_ListNBox {
-		
-			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_IDC;
-			rowHeight	= 0.06;
-			columns[]	= {-0.001, 0.15, 0.7};
-			
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_ARTICLE_LIST_H;
-		};
-		
-		class TTC_SHOP_ShoppingCard_Costs : TTC_UI_Text {
-		
-			idc			= TTC_SHOP_DIALOG_SHOPPING_CARD_COSTS_IDC;
-			text		= "3500 BTC";
-			sizeEx 		= "0.038 / (getResolution select 5)";
-			style 		= ST_RIGHT;
-
-			x = TTC_SHOP_DIALOG_SHOPPING_CARD_COSTS_X;
-			y = TTC_SHOP_DIALOG_SHOPPING_CARD_COSTS_Y;
-			w = TTC_SHOP_DIALOG_SHOPPING_CARD_COSTS_W;
-			h = TTC_SHOP_DIALOG_SHOPPING_CARD_COSTS_H;
-		};
-		
-		class TTC_SHOP_Cancel: TTC_UI_ButtonDanger {
-		
-			idc			= TTC_SHOP_DIALOG_CANCEL_IDC;
-			text		= "Cancel"; //--- ToDo: Localize;
-			action		= "closeDialog 0";
-			
-			x = TTC_SHOP_DIALOG_CANCEL_X;
-			y = TTC_SHOP_DIALOG_CANCEL_Y;
-			w = TTC_SHOP_DIALOG_CANCEL_W;
-			h = TTC_SHOP_DIALOG_CANCEL_H;
-		};
-		
-		class TTC_SHOP_Buy: TTC_UI_ButtonSuccess {
-		
-			idc			= TTC_SHOP_DIALOG_BUY_IDC;
-			text		= "Buy"; //--- ToDo: Localize;
-			sizeEx		= "0.038 / (getResolution select 5)";
-			action		= "[] spawn TTC_SHOP_fnc_onBuyClicked";
-			
-			x = TTC_SHOP_DIALOG_BUY_X;
-			y = TTC_SHOP_DIALOG_BUY_Y;
-			w = TTC_SHOP_DIALOG_BUY_W;
-			h = TTC_SHOP_DIALOG_BUY_H;
-		};
+		#include "shopDialog_columnLeft.hpp"
+		#include "shopDialog_columnMiddle.hpp"
+		#include "shopDialog_columnRight.hpp"
 	};
 };
 
