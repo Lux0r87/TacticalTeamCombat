@@ -13,6 +13,8 @@ TTC_disableThermal = ["DisableThermal", 1] call BIS_fnc_getParamValue;
 
 [] spawn TTC_CTI_fnc_init;
 
+[] spawn TTC_SHOP_fnc_init;
+
 // Server-side:
 if (isServer) then {
 	// Spawn a base for each side that is present in the current game.

@@ -41,6 +41,9 @@ _roleName = switch (_this) do {
 	case PILOT_ID: {
 		PILOT_NAME;
 	};
+	default {
+		"";
+	};
 };
 
 _roleName;
