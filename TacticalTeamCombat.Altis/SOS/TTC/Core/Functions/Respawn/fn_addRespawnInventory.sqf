@@ -25,8 +25,7 @@ if (hasInterface) then {
 				[player, format["%1_TL", _side]] call BIS_fnc_addRespawnInventory;
 			};
 			case MACHINE_GUNNER_ID: {
-				[player, format["%1_MG_Mk200", _side]] call BIS_fnc_addRespawnInventory;
-				[player, format["%1_MG_MXSW", _side]] call BIS_fnc_addRespawnInventory;
+				[player, format["%1_MG", _side]] call BIS_fnc_addRespawnInventory;
 			};
 			case MISSILE_SPECIALIST_ID: {
 				[player, format["%1_MS", _side]] call BIS_fnc_addRespawnInventory;

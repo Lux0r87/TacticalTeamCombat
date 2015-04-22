@@ -1,6 +1,5 @@
 // Independent:
-#include "GUER\Autorifleman_Mk200.hpp"
-#include "GUER\Autorifleman_MX_SW.hpp"
+#include "GUER\Autorifleman.hpp"
 #include "GUER\CombatEngineer.hpp"
 #include "GUER\Marksman.hpp"
 #include "GUER\Medic.hpp"
@@ -12,8 +11,7 @@
 #include "GUER\TeamLeader.hpp"
 
 // Bluefor:
-#include "WEST\Autorifleman_Mk200.hpp"
-#include "WEST\Autorifleman_MX_SW.hpp"
+#include "WEST\Autorifleman.hpp"
 #include "WEST\CombatEngineer.hpp"
 #include "WEST\Marksman.hpp"
 #include "WEST\Medic.hpp"

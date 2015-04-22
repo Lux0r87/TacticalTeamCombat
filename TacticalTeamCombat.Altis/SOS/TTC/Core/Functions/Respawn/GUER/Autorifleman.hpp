@@ -1,5 +1,5 @@
-class GUER_PMED {
-	displayName = "Paramedic";
+class GUER_MG {
+	displayName = "Autorifleman";
 	icon = "\A3\Ui_f\data\GUI\Cfg\Ranks\private_gs.paa";
 
 	weapons[] = {
