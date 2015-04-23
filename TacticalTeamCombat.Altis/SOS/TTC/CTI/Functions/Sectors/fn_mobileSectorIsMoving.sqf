@@ -19,9 +19,10 @@ _respawnPos	= [_this, 5, _sector getVariable ["TTC_CTI_sector_respawnPos", [0,0]
 
 _veh setVariable ["TTC_isMoving", true];
 
+/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 // Remove respawn position.
 _removed	= _respawnPos call BIS_fnc_removeRespawnPosition;
-_sector setVariable ["TTC_CTI_sector_respawnPos", []];
+_sector setVariable ["TTC_CTI_sector_respawnPos", []];*/
 
 // TimeOut
 while {TTC_CTI_mobileSector_timeOut > 0} do {
@@ -44,9 +45,10 @@ while {TTC_CTI_mobileSector_timeOut > 0} do {
 	}
 } forEach units _veh;
 
+/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 // Recreate respawn position.
 _respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
-_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];
+_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];*/
 
 _veh lock true;
 _veh setVariable ["TTC_isMoving", false];

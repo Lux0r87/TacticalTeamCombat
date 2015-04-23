@@ -95,6 +95,7 @@ if (isServer) then {
 		} forEach TTC_CTI_Sides;
 	} forEach TTC_CTI_sectors;
 
+	/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 	// Add respawn positions to the sectors, after the safety time is over.
 	[] spawn {
 		waitUntil {
@@ -103,7 +104,7 @@ if (isServer) then {
 		};
 
 		[] call TTC_CTI_fnc_addRespawnPositions;
-	};
+	};*/
 
 	// ---------------------- Game Loop ----------------------
 	while {_winner == sideUnknown} do {

@@ -74,11 +74,12 @@ if (_sectorSide != _side) then {
 		// Attackers get money.
 		["Attacked Sector", TTC_CTI_amountAttack] call _TTC_CTI_addBalanceChange;
 
+		/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 		// Remove respawn position, if dominance is too low.
 		if ((count _respawnPos > 0) && (_dominanceNew < TTC_CTI_dominanceSpawn)) then {
 			_removed = _respawnPos call BIS_fnc_removeRespawnPosition;
 			_sector setVariable ["TTC_CTI_sector_respawnPos", []];
-		};
+		};*/
 
 		// Sector captured by attacking side:
 		if (_dominanceNew == TTC_CTI_dominanceMin) then {
@@ -96,9 +97,10 @@ if (_sectorSide != _side) then {
 			// The attacker's team gets money (capture bonus).
 			[["Team Captured Sector", TTC_CTI_captureBonusTeam], "TTC_BTC_fnc_addBalanceChange", _side, false] call BIS_fnc_MP;
 
+			/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 			// Create respawn position, for the team that captured the sector.
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
-			_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];
+			_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];*/
 
 			// Create sector patrol.
 			_patrol = [_sector, nil, nil, nil, _side] call TTC_CTI_fnc_createSectorPatrol;
@@ -130,12 +132,13 @@ if (_sectorSide != _side) then {
 		// Defenders get money.
 		["Defended Sector", TTC_CTI_amountDefend] call _TTC_CTI_addBalanceChange;
 
+		/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 		// (Re)create respawn position for defenders, if dominance is high enough.
-		if ((count _respawnPos == 0) && (_dominanceNew >= TTC_CTI_dominanceSpawn)) then {
+			if ((count _respawnPos == 0) && (_dominanceNew >= TTC_CTI_dominanceSpawn)) then {
 			_marker		= _sector getVariable "TTC_CTI_sector_marker";
 			_respawnPos = [_sectorSide, _marker] call BIS_fnc_addRespawnPosition;
 			_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];
-		};
+		};*/
 
 		// Sector protected by defending side:
 		if (_dominanceNew == TTC_CTI_dominanceMax) then {
