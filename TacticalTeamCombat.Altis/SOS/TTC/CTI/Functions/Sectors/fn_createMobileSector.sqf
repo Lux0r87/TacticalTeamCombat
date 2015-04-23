@@ -3,16 +3,16 @@
 */
 
 
-private ["_sector","_dir","_side","_vehType","_speedLimit","_veh"];
+private ["_sector","_side","_dir","_vehType","_speedLimit","_veh"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
-_dir		= [_this, 1, _sector getVariable ["TTC_CTI_sector_direction", 0], [0]] call BIS_fnc_param;
-_side		= [_this, 2, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
+_side		= [_this, 1, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
+_dir		= [_this, 2, getDir _sector, [0]] call BIS_fnc_param;
 _vehType	= [_this, 3, "O_Truck_03_device_F", [""]] call BIS_fnc_param;
 _speedLimit	= [_this, 4, 30, [0]] call BIS_fnc_param;
 
 /*[_sector, "TTC_CTI_fnc_createMobileSector",
-	[["_vehType = %1", _vehType], ["_speedLimit = %1", _speedLimit]]
+	[["_side = %1", _side], ["_dir = %1", _dir], ["_vehType = %1", _vehType], ["_speedLimit = %1", _speedLimit]]
 ] call TTC_CTI_fnc_logSector;*/
 
 

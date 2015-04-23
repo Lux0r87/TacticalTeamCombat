@@ -30,7 +30,6 @@ private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance"
 	_sector setVariable ["TTC_CTI_sector_name", _name, true];
 	_sector setVariable ["TTC_CTI_sector_axisA", _xrad];
 	_sector setVariable ["TTC_CTI_sector_axisB", _yrad];
-	_sector setVariable ["TTC_CTI_sector_direction", _dir];
 	_sector setVariable ["TTC_CTI_sector_rectangle", _rectangle];
 	_sector setVariable ["TTC_CTI_sector_side", _side, true];
 	_sector setVariable ["TTC_CTI_sector_dominance", _dominance, true];

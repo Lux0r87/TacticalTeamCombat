@@ -42,7 +42,7 @@ if (isServer) then {
 	TTC_CTI_sectorAreaNo	= 0;
 
 	private [
-		"_winner","_location","_sectorPattern","_sector","_name","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_respawnDir","_isMobile",
+		"_winner","_location","_sectorPattern","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_isMobile",
 		"_shape","_mrk","_patrol","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"
 	];
 
@@ -68,7 +68,6 @@ if (isServer) then {
 		_name		= _sector getVariable "TTC_CTI_sector_name";
 		_xrad		= _sector getVariable "TTC_CTI_sector_axisA";
 		_yrad		= _sector getVariable "TTC_CTI_sector_axisB";
-		_dir		= _sector getVariable "TTC_CTI_sector_direction";
 		_rectangle	= _sector getVariable "TTC_CTI_sector_rectangle";
 		_side		= _sector getVariable "TTC_CTI_sector_side";
 		_dominance	= _sector getVariable "TTC_CTI_sector_dominance";
@@ -77,7 +76,7 @@ if (isServer) then {
 
 		// Create area marker
 		_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
-		_mrk = [_sector, _name, _xrad, _yrad, _dir, _side, _dominance, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
+		_mrk = [_sector, _name, _xrad, _yrad, _side, _dominance, getDir _sector, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
 
 		// Create marker
 		_mrk = [_sector, _name, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
@@ -87,7 +86,7 @@ if (isServer) then {
 
 		// Create vehicle for mobile sector(s).
 		if (_isMobile) then {
-			[_sector, _dir, _side] call TTC_CTI_fnc_createMobileSector;
+			[_sector, _side] call TTC_CTI_fnc_createMobileSector;
 		};
 
 		// Set the visibility of the sector for each side.
