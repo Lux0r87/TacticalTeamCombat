@@ -5,7 +5,7 @@
 
 #include "dominanceVariables.hpp"
 
-private ["_veh","_unit","_sector","_sectorSide","_marker","_respawnPos","_removed","_pos"];
+private ["_veh","_unit","_sector","_sectorSide","_marker","_respawnPos","_removed"];
 
 _veh		= [_this, 0] call BIS_fnc_param;
 _unit		= [_this, 1] call BIS_fnc_param;
@@ -29,9 +29,10 @@ while {TTC_CTI_mobileSector_timeOut > 0} do {
 	TTC_CTI_mobileSector_timeOut = TTC_CTI_mobileSector_timeOut - 1;
 	publicVariable "TTC_CTI_mobileSector_timeOut";
 
+	// Update the sector (trigger) position
+	_sector setPos (getPos _veh);
+
 	// Update markers
-	_pos = getPos _veh;
-	_sector setVariable ["TTC_CTI_sector_position", _pos];;
 	[_sector, TTC_CTI_dominanceMax] call TTC_CTI_fnc_updateSectorMarkers;
 
 	sleep 1;

@@ -3,16 +3,16 @@
 */
 
 
-private ["_sector","_pos","_axisA","_axisB","_side","_patrol","_unitTypes","_radius","_safePos","_grp","_prefix","_unitType","_unit"];
+private ["_sector","_axisA","_axisB","_side","_patrol","_unitTypes","_radius","_pos","_safePos","_grp","_prefix","_unitType","_unit"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
-_pos		= [_this, 1, _sector getVariable ["TTC_CTI_sector_position", [0,0]], [[]], [2, 3]] call BIS_fnc_param;
-_axisA		= [_this, 2, _sector getVariable ["TTC_CTI_sector_axisA", 50], [0]] call BIS_fnc_param;
-_axisB		= [_this, 3, _sector getVariable ["TTC_CTI_sector_axisB", 50], [0]] call BIS_fnc_param;
-_side		= [_this, 4, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
-_patrol		= [_this, 5, _sector getVariable ["TTC_CTI_sector_patrol", grpNull], [grpNull]] call BIS_fnc_param;
-_unitTypes	= [_this, 6, ["_Soldier_SL_F","_Soldier_AR_F","_Soldier_LAT_F","_soldier_M_F","_medic_F"], [[]]] call BIS_fnc_param;
+_axisA		= [_this, 1, _sector getVariable ["TTC_CTI_sector_axisA", 50], [0]] call BIS_fnc_param;
+_axisB		= [_this, 2, _sector getVariable ["TTC_CTI_sector_axisB", 50], [0]] call BIS_fnc_param;
+_side		= [_this, 3, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
+_patrol		= [_this, 4, _sector getVariable ["TTC_CTI_sector_patrol", grpNull], [grpNull]] call BIS_fnc_param;
+_unitTypes	= [_this, 5, ["_Soldier_SL_F","_Soldier_AR_F","_Soldier_LAT_F","_soldier_M_F","_medic_F"], [[]]] call BIS_fnc_param;
 
+_pos		= getPos _sector;
 _radius		= _axisA min _axisB;
 _safePos	= [_pos, 0, _radius, 0, 0, 1000, 0] call BIS_fnc_findSafePos;
 

@@ -28,7 +28,6 @@ private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance"
 
 	// Initialize all sector variables.
 	_sector setVariable ["TTC_CTI_sector_name", _name, true];
-	_sector setVariable ["TTC_CTI_sector_position", _pos];
 	_sector setVariable ["TTC_CTI_sector_axisA", _xrad];
 	_sector setVariable ["TTC_CTI_sector_axisB", _yrad];
 	_sector setVariable ["TTC_CTI_sector_direction", _dir];

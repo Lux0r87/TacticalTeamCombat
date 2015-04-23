@@ -5,8 +5,13 @@
 
 #include "Functions\Sectors\dominanceVariables.hpp"
 
-TTC_CTI_initDone	= false;
-TTC_CTI_sectors		= [];
+if (isNil "TTC_CTI_initDone") then {
+	TTC_CTI_initDone	= false;
+};
+
+if (isNil "TTC_CTI_sectors") then {
+	TTC_CTI_sectors		= [];
+};
 
 // Client-side scripts:
 if (hasInterface) then {
@@ -37,7 +42,7 @@ if (isServer) then {
 	TTC_CTI_sectorAreaNo	= 0;
 
 	private [
-		"_winner","_location","_sectorPattern","_sector","_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_respawnDir","_isMobile",
+		"_winner","_location","_sectorPattern","_sector","_name","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_respawnDir","_isMobile",
 		"_shape","_mrk","_patrol","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"
 	];
 
@@ -61,7 +66,6 @@ if (isServer) then {
 		private ["_visibility","_canSee"];
 		_sector		= _x;
 		_name		= _sector getVariable "TTC_CTI_sector_name";
-		_pos		= _sector getVariable "TTC_CTI_sector_position";
 		_xrad		= _sector getVariable "TTC_CTI_sector_axisA";
 		_yrad		= _sector getVariable "TTC_CTI_sector_axisB";
 		_dir		= _sector getVariable "TTC_CTI_sector_direction";
@@ -73,17 +77,17 @@ if (isServer) then {
 
 		// Create area marker
 		_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
-		_mrk = [_sector, _name, _pos, _xrad, _yrad, _dir, _side, _dominance, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
+		_mrk = [_sector, _name, _xrad, _yrad, _dir, _side, _dominance, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
 
 		// Create marker
-		_mrk = [_sector, _name, _pos, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
+		_mrk = [_sector, _name, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
 
 		// Create sector patrol.
-		_patrol = [_sector, _pos, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
+		_patrol = [_sector, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
 
 		// Create vehicle for mobile sector(s).
 		if (_isMobile) then {
-			[_sector, _pos, _dir, _side] call TTC_CTI_fnc_createMobileSector;
+			[_sector, _dir, _side] call TTC_CTI_fnc_createMobileSector;
 		};
 
 		// Set the visibility of the sector for each side.

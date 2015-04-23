@@ -9,9 +9,9 @@ private ["_unit","_side","_visibility","_find","_canSee","_mrkArea","_mrk"];
 _unit	= [_this, 0] call BIS_fnc_param;
 _side	= side _unit;
 
-[
+/*[
 	["Function: %1", "TTC_CTI_fnc_initSectorsLocal"], ["_unit = %1", _unit], ["_side = %1", _side]
-] call TTC_CORE_fnc_log;
+] call TTC_CORE_fnc_log;*/
 
 
 // Safety measure: Wait until the initialization of the sectors is done.

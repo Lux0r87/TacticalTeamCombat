@@ -4,17 +4,17 @@
 
 
 // Don't add "_sector" to private variables. This function modifies the original variable.
-private ["_dominanceMax","_recalculate","_target","_pos","_mrkArea","_mrk","_visibility","_isNull","_sides","_find","_canSee"];
+private ["_dominanceMax","_recalculate","_target","_mrkArea","_mrk","_visibility","_pos","_isNull","_sides","_find","_canSee"];
 
 _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
 _recalculate	= [_this, 2, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
 _target			= [_this, 3, ObjNull, [ObjNull]] call BIS_fnc_param;
 
-_pos		= _sector getVariable "TTC_CTI_sector_position";
 _mrkArea	= _sector getVariable "TTC_CTI_sector_markerArea";
 _mrk		= _sector getVariable "TTC_CTI_sector_marker";
 _visibility	= _sector getVariable "TTC_CTI_sector_visibility";
+_pos		= getPos _sector;
 
 _isNull		= isNull _target;
 _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_Sides};

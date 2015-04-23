@@ -17,7 +17,7 @@ _fncName	= [_this, 1, "", [""]] call BIS_fnc_param;
 _messages	= [_this, 2, [], [[]]] call BIS_fnc_param;
 
 _name		= _sector getVariable ["TTC_CTI_sector_name", UNDEFINED];
-_pos		= _sector getVariable ["TTC_CTI_sector_position", UNDEFINED];
+_pos		= getPos _sector;
 _xrad		= _sector getVariable ["TTC_CTI_sector_axisA", UNDEFINED];
 _yrad		= _sector getVariable ["TTC_CTI_sector_axisB", UNDEFINED];
 _dir		= _sector getVariable ["TTC_CTI_sector_direction", UNDEFINED];
