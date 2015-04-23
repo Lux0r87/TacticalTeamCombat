@@ -5,14 +5,15 @@
 
 #include "Functions\Sectors\dominanceVariables.hpp"
 
-TTC_CTI_sectors = [];
+TTC_CTI_initDone	= false;
+TTC_CTI_sectors		= [];
 
 // Client-side scripts:
 if (hasInterface) then {
 	waitUntil {!isNull player};
 
-	// Update all markers locally.
-	[[false, player], "TTC_CTI_fnc_updateSectors", false, false] call BIS_fnc_MP;
+	// Initialize the sectors (markers + task) locally.
+	[player] spawn TTC_CTI_fnc_initSectorsLocal;
 
 	"TTC_CTI_mobileSector_timeOut" addPublicVariableEventHandler {
 		_value = _this select 1;
@@ -106,6 +107,10 @@ if (isServer) then {
 		[] call TTC_CTI_fnc_addRespawnPositions;
 	};*/
 
+	TTC_CTI_initDone = true;
+	publicVariable "TTC_CTI_sectors";
+	publicVariable "TTC_CTI_initDone";
+
 	// ---------------------- Game Loop ----------------------
 	while {_winner == sideUnknown} do {
 		// Iterate over all sectors
@@ -159,7 +164,7 @@ if (isServer) then {
 						_diff	= abs (_max - _max2);
 
 						/*[
-							["TTC_CTI: init:"], ["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
+							["Function: %1", "TTC_CTI_init:"], ["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
 							["_sides = %1", _sides], ["_side = %1", _side], ["_max2 = %1", _max2], ["_diff = %1", _diff]
 						] call TTC_CORE_fnc_log;*/
 

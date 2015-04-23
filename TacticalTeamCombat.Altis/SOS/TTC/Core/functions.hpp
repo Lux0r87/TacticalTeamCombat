@@ -58,4 +58,10 @@ class TTC_Core_Functions {
 		class spawnHelicopter {};
 		class spawnVehicle {};
 	};
+
+	class Tasks {
+		file = "SOS\TTC\Core\Functions\Tasks";
+		class createSimpleTask{};
+		
+	};
 };

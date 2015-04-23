@@ -13,7 +13,7 @@ _altKey		= _this select 4;
 _handled	= false;
 
 /*[
-	["TTC_CORE: keyDown:"], ["_ctrl = %1", _ctrl], ["_dikCode = %1", _dikCode], ["_shiftKey = %1", _shiftKey], ["_ctrlKey = %1", _ctrlKey], ["_altKey = %1", _altKey]
+	["Function: %1", "TTC_CORE_keyDown:"], ["_ctrl = %1", _ctrl], ["_dikCode = %1", _dikCode], ["_shiftKey = %1", _shiftKey], ["_ctrlKey = %1", _ctrlKey], ["_altKey = %1", _altKey]
 ] call TTC_CORE_fnc_log;*/
 
 

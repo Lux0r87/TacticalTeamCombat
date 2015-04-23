@@ -23,7 +23,9 @@ class TTC_CTI_Functions {
 		class createSectorDisplay{};
 		class createSectorPatrol{};
 		class createSectors{};
+		class createSimpleTask{};
 		class getInMobileSector{};
+		class initSectorsLocal{};
 		class isSectorConnectedToBase{};
 		class logSector{};
 		class mobileSectorIsMoving{};

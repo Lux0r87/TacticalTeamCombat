@@ -16,7 +16,7 @@ _actRepeat	= [_this, 8, true, [true]] call BIS_fnc_param;
 _statements	= [_this, 9, ["this", "", ""], [[]]] call BIS_fnc_param;
 
 /*[
-	["TTC_CTI: setTriggerOptions:"], ["_trigger = %1", _trigger], ["_text = %1", _text], ["_xrad = %1", _xrad], ["_yrad = %1", _yrad], ["_dir = %1", _dir],
+	["Function: %1", "TTC_CTI_setTriggerOptions:"], ["_trigger = %1", _trigger], ["_text = %1", _text], ["_xrad = %1", _xrad], ["_yrad = %1", _yrad], ["_dir = %1", _dir],
 	["_rectangle = %1", _rectangle], ["_actBy = %1", _actBy], ["_actType = %1", _actType], ["_actRepeat = %1", _actRepeat], ["_statements = %1", _statements]
 ] call TTC_CORE_fnc_log;*/
 
