@@ -5,6 +5,7 @@ class TTC_Core_Functions {
 		file = "SOS\TTC\Core\Functions\Common";
 		class addToBlacklist{};
 		class addWaypoint{};
+		class createSimpleTask{};
 		class createTrigger{};
 		class endMission{};
 		class endMissionAll{};
@@ -57,11 +58,5 @@ class TTC_Core_Functions {
 		file = "SOS\TTC\Core\Functions\Spawn";
 		class spawnHelicopter {};
 		class spawnVehicle {};
-	};
-
-	class Tasks {
-		file = "SOS\TTC\Core\Functions\Tasks";
-		class createSimpleTask{};
-		
 	};
 };

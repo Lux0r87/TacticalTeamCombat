@@ -19,7 +19,7 @@ _dominanceMax	= [_this, 5, 100, [0]] call BIS_fnc_param;
 
 TTC_CTI_sectorNo = TTC_CTI_sectorNo + 1;
 _mrkName	= format ["mrk_Sector%1", TTC_CTI_sectorNo];
-_mrkText	= format["%1 - %2%3", _name, (_dominance/_dominanceMax)*100, "%"];
+_mrkText	= [_sector, _name, _dominance] call TTC_CTI_fnc_getSectorText;
 _mrkColor	= [_side, true] call BIS_fnc_sideColor;
 _mrk		= [_mrkName, getPos _sector, _mrkText, _mrkColor, 0.8, 0.8, _respawnDir, "ICON", "selector_selectedMission", 0] call TTC_CORE_fnc_createMarker;
 _sector setVariable ["TTC_CTI_sector_marker", _mrk];

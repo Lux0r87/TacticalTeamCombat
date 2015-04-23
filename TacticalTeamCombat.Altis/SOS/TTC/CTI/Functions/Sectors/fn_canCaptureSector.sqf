@@ -6,12 +6,14 @@
 */
 
 
+#include "sectorVariables.hpp"
+
 private ["_sector","_side","_neighbours","_canCapture","_base","_neighbourSide","_return","_connected"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
 
-_neighbours	= _sector getVariable "TTC_CTI_sector_neighbours";
+_neighbours	= TTC_CTI_sectorVariable_neighbours;
 _canCapture	= false;
 _base		= format["base%1", _side];
 
@@ -28,7 +30,7 @@ if (_base in _neighbours) exitWith {
 	scopeName "searchLoop";
 
 	// Skip bases (strings).
-	if (typeName _x == "SCALAR") then {
+	if (typeName _x != "STRING") then {
 		_neighbourSide	= _x getVariable "TTC_CTI_sector_side";
 
 		// Check if the given side controls this neighbour sector.

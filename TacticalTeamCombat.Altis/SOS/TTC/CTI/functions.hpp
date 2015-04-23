@@ -10,7 +10,6 @@ class TTC_CTI_Functions {
 		file = "SOS\TTC\CTI\Functions\Markers";
 		class createSectorAreaMarker{};
 		class createSectorMarker{};
-		class updateSectorMarkers{};
 		class updateSectorMarkersLocal{};
 	};
 
@@ -25,12 +24,17 @@ class TTC_CTI_Functions {
 		class createSectors{};
 		class createSimpleTask{};
 		class getInMobileSector{};
+		class getSectorText{};
+		class getTaskDescription{};
+		class getTaskState{};
 		class initSectorsLocal{};
 		class isSectorConnectedToBase{};
 		class logSector{};
 		class mobileSectorIsMoving{};
 		class sideCapturedAllSectors{};
 		class updateDominance{};
+		class updateSector{};
+		class updateSectorLocal{};
 		class updateSectors{};
 	};
 };

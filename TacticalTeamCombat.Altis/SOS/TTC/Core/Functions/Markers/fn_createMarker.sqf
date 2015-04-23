@@ -17,7 +17,7 @@ _mrkAlpha	= [_this, 9, 1, [0.0]] call BIS_fnc_param;
 _mrkBrush	= [_this, 10, "Solid", [""]] call BIS_fnc_param;
 
 /*[
-	["Function: %1", "TTC_CTI_createMarker:"], ["_mrkName = %1", _mrkName], ["_mrkPos = %1", _mrkPos], ["_mrkText = %1", _mrkText], ["_mrkColor = %1", _mrkColor],
+	["Function: %1", "TTC_CTI_createMarker"], ["_mrkName = %1", _mrkName], ["_mrkPos = %1", _mrkPos], ["_mrkText = %1", _mrkText], ["_mrkColor = %1", _mrkColor],
 	["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_dir = %1", _dir], ["_mrkShape = %1", _mrkShape], ["_mrkType = %1", _mrkType],
 	["_mrkAlpha = %1", _mrkAlpha], ["_mrkBrush = %1", _mrkBrush]
 ] call TTC_CORE_fnc_log;*/

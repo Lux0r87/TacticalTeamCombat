@@ -12,7 +12,7 @@ _unit	= [_this, 0] call BIS_fnc_param;
 _killer	= [_this, 1] call BIS_fnc_param;
 
 /*[
-	["Function: %1", "TTC_BTC_killed:"], ["_unit = %1", _unit], ["_killer = %1", _killer]
+	["Function: %1", "TTC_BTC_killed"], ["_unit = %1", _unit], ["_killer = %1", _killer]
 ] call TTC_CORE_fnc_log;*/
 
 

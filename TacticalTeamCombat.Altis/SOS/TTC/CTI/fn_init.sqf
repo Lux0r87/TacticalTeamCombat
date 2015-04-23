@@ -4,6 +4,7 @@
 
 
 #include "Functions\Sectors\dominanceVariables.hpp"
+#include "Functions\Sectors\sectorVariables.hpp"
 
 if (isNil "TTC_CTI_initDone") then {
 	TTC_CTI_initDone	= false;
@@ -65,14 +66,14 @@ if (isServer) then {
 	{
 		private ["_visibility","_canSee"];
 		_sector		= _x;
-		_name		= _sector getVariable "TTC_CTI_sector_name";
-		_xrad		= _sector getVariable "TTC_CTI_sector_axisA";
-		_yrad		= _sector getVariable "TTC_CTI_sector_axisB";
-		_rectangle	= _sector getVariable "TTC_CTI_sector_rectangle";
-		_side		= _sector getVariable "TTC_CTI_sector_side";
-		_dominance	= _sector getVariable "TTC_CTI_sector_dominance";
-		_respawnDir	= _sector getVariable "TTC_CTI_sector_respawnDir";
-		_isMobile	= _sector getVariable "TTC_CTI_sector_isMobile";
+		_name		= TTC_CTI_sectorVariable_name;
+		_xrad		= TTC_CTI_sectorVariable_axisA;
+		_yrad		= TTC_CTI_sectorVariable_axisB;
+		_rectangle	= TTC_CTI_sectorVariable_rectangle;
+		_side		= TTC_CTI_sectorVariable_side;
+		_dominance	= TTC_CTI_sectorVariable_dominance;
+		_respawnDir	= TTC_CTI_sectorVariable_respawnDir;
+		_isMobile	= TTC_CTI_sectorVariable_isMobile;
 
 		// Create area marker
 		_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
@@ -111,7 +112,6 @@ if (isServer) then {
 	};*/
 
 	TTC_CTI_initDone = true;
-	publicVariable "TTC_CTI_sectors";
 	publicVariable "TTC_CTI_initDone";
 
 	// ---------------------- Game Loop ----------------------
@@ -167,7 +167,7 @@ if (isServer) then {
 						_diff	= abs (_max - _max2);
 
 						/*[
-							["Function: %1", "TTC_CTI_init:"], ["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
+							["Function: %1", "TTC_CTI_init"], ["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
 							["_sides = %1", _sides], ["_side = %1", _side], ["_max2 = %1", _max2], ["_diff = %1", _diff]
 						] call TTC_CORE_fnc_log;*/
 

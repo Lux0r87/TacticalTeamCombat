@@ -15,7 +15,7 @@ _wpPlacementRadius	= [_this, 7, 0, [0]] call BIS_fnc_param;
 _wpCompletionRadius	= [_this, 8, 5, [0]] call BIS_fnc_param;
 
 /*[
-	["Function: %1", "TTC_Core_addWaypoint:"], ["_grp = %1", _grp], ["_wpPos = %1", _wpPos], ["_wpType = %1", _wpType], ["_wpBehaviour = %1", _wpBehaviour],
+	["Function: %1", "TTC_Core_addWaypoint"], ["_grp = %1", _grp], ["_wpPos = %1", _wpPos], ["_wpType = %1", _wpType], ["_wpBehaviour = %1", _wpBehaviour],
 	["_wpCombatMode = %1", _wpCombatMode], ["_wpSpeed = %1", _wpSpeed], ["_wpFormation = %1", _wpFormation], ["_wpPlacementRadius = %1", _wpPlacementRadius],
 	["_wpCompletionRadius = %1", _wpCompletionRadius]
 ] call TTC_CORE_fnc_log;*/

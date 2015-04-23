@@ -5,13 +5,15 @@
 */
 
 
+#include "sectorVariables.hpp"
+
 private ["_sector","_blacklist","_sectorSide","_neighbours","_base","_return","_neighbourSide"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _blacklist	= [_this, 1, [], [[]]] call BIS_fnc_param;
-_sectorSide	= [_this, 2, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
+_sectorSide	= [_this, 2, TTC_CTI_sectorVariable_side, [sideUnknown]] call BIS_fnc_param;
 
-_neighbours	= _sector getVariable "TTC_CTI_sector_neighbours";
+_neighbours	= TTC_CTI_sectorVariable_neighbours;
 
 /*[_sector, "TTC_CTI_fnc_isSectorConnectedTobase",
 	[["_blacklist = %1", _blacklist], ["_sectorSide = %1", _sectorSide], ["_neighbours = %1", _neighbours]]
@@ -34,7 +36,7 @@ if (_base in _neighbours) exitWith {
 	scopeName "searchLoop";
 
 	// Skip bases (strings) and already checked sectors.
-	if ((typeName _x == "SCALAR") && !(_x in _blacklist)) then {
+	if ((typeName _x != "STRING") && !(_x in _blacklist)) then {
 		_neighbourSide	= _x getVariable "TTC_CTI_sector_side";
 
 		// Check if the neighbour sector belong to the same side.

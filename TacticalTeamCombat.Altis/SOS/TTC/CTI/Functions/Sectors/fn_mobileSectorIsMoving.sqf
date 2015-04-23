@@ -3,15 +3,15 @@
 */
 
 
-#include "dominanceVariables.hpp"
+#include "sectorVariables.hpp"
 
 private ["_veh","_unit","_sector","_sectorSide","_marker","_respawnPos","_removed"];
 
 _veh		= [_this, 0] call BIS_fnc_param;
 _unit		= [_this, 1] call BIS_fnc_param;
 _sector		= [_this, 2] call BIS_fnc_param;
-_sectorSide	= [_this, 3, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
-_marker		= [_this, 4, _sector getVariable ["TTC_CTI_sector_marker", ""], [""]] call BIS_fnc_param;
+_sectorSide	= [_this, 3, TTC_CTI_sectorVariable_side, [sideUnknown]] call BIS_fnc_param;
+_marker		= [_this, 4, TTC_CTI_sectorVariable_marker, [""]] call BIS_fnc_param;
 _respawnPos	= [_this, 5, _sector getVariable ["TTC_CTI_sector_respawnPos", [0,0]], [[]], [2, 3]] call BIS_fnc_param;
 
 //[_sector, "TTC_CTI_fnc_mobileSectorIsMoving", [["_veh = %1", _veh], ["_unit = %1", _unit]]] call TTC_CTI_fnc_logSector;
@@ -32,8 +32,8 @@ while {TTC_CTI_mobileSector_timeOut > 0} do {
 	// Update the sector (trigger) position
 	_sector setPos (getPos _veh);
 
-	// Update markers
-	[_sector, TTC_CTI_dominanceMax] call TTC_CTI_fnc_updateSectorMarkers;
+	// Update the sector
+	[_sector] call TTC_CTI_fnc_updateSector;
 
 	sleep 1;
 };

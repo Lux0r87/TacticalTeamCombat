@@ -3,15 +3,17 @@
 */
 
 #include "dominanceVariables.hpp"
+#include "sectorVariables.hpp"
 
-private ["_side","_dominance","_mrk"];
+private ["_sector","_side","_dominance","_mrk"];
 
 
 // Iterate over all sectors
 {
-	_side		= _x getVariable "TTC_CTI_sector_side";
-	_dominance	= _x getVariable "TTC_CTI_sector_dominance";
-	_mrk		= _x getVariable "TTC_CTI_sector_marker";
+	_sector 	= _x;
+	_side		= TTC_CTI_sectorVariable_side;
+	_dominance	= TTC_CTI_sectorVariable_dominance;
+	_mrk		= TTC_CTI_sectorVariable_marker;
 
 	// Add respawn position, if dominance is high enough.
 	if (_dominance > TTC_CTI_dominanceSpawn) then {

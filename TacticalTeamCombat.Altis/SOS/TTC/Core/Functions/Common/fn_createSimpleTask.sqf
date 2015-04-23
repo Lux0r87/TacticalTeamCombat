@@ -15,7 +15,7 @@ _taskTitle	= [_this, 6, "", [""]] call BIS_fnc_param;
 _taskWpDesc	= [_this, 7, "", [""]] call BIS_fnc_param;
 
 /*[
-	["Function: %1", "TTC_CORE_createSimpleTask:"], ["_unit = %1", _unit], ["_taskName = %1", _taskName], ["_taskParent = %1", _taskParent], ["_taskState = %1", _taskState],
+	["Function: %1", "TTC_CORE_createSimpleTask"], ["_unit = %1", _unit], ["_taskName = %1", _taskName], ["_taskParent = %1", _taskParent], ["_taskState = %1", _taskState],
 	["_taskPos = %1", _taskPos], ["_taskDesc = %1", _taskDesc], ["_taskTitle = %1", _taskTitle], ["_taskWpDesc = %1", _taskWpDesc]
 ] call TTC_CORE_fnc_log;*/
 

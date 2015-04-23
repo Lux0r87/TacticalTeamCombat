@@ -6,13 +6,15 @@
 */
 
 
+#include "sectorVariables.hpp"
+
 private ["_sector","_side","_sectorSide","_neighbours","_canSee","_base","_neighbourSide"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
-_sectorSide	= [_this, 2, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
+_sectorSide	= [_this, 2, TTC_CTI_sectorVariable_side, [sideUnknown]] call BIS_fnc_param;
 
-_neighbours	= _sector getVariable "TTC_CTI_sector_neighbours";
+_neighbours	= TTC_CTI_sectorVariable_neighbours;
 _canSee		= false;
 _base		= format["base%1", _side];
 
@@ -29,7 +31,7 @@ if ((_side == _sectorSide) || (_base in _neighbours)) exitWith {
 	scopeName "searchLoop";
 
 	// Skip bases (strings).
-	if (typeName _x == "OBJECT") then {
+	if (typeName _x != "STRING") then {
 		_neighbourSide = _x getVariable "TTC_CTI_sector_side";
 
 		// Cancel searching, if the neighbour sector belong to the same side.

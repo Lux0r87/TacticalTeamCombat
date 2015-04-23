@@ -2,7 +2,6 @@
 	Created by Lux0r
 */
 
-#include "dominanceVariables.hpp"
 
 private ["_target","_recalculate"];
 
@@ -18,6 +17,6 @@ _target 		= [_this, 1, ObjNull, [ObjNull]] call BIS_fnc_param;
 waitUntil {TTC_CTI_initDone};
 
 {
-	// Update the sector markers.
-	[_x, TTC_CTI_dominanceMax, _recalculate, _target] call TTC_CTI_fnc_updateSectorMarkers;
+	// Update the sector.
+	[_x, _recalculate, _target] call TTC_CTI_fnc_updateSector;
 } forEach TTC_CTI_sectors;

@@ -10,5 +10,9 @@ private ["_mrk","_alpha"];
 _mrk	= [_this, 0] call BIS_fnc_param;
 _alpha	= [_this, 1] call BIS_fnc_param;
 
-diag_log format["TTC_CORE: setMarkerAlphaLocal: _mrk = %1, _alpha = %2", _mrk, _alpha];
+/*[
+	["Function: %1", "TTC_CORE_fnc_setMarkerAlphaLocal"], ["_mrk = %1", _mrk], ["_alpha = %1", _alpha]
+] call TTC_CORE_fnc_log;*/
+
+
 _mrk setMarkerAlphaLocal _alpha;
