@@ -61,6 +61,11 @@ _sectors = [_this, 0] call BIS_fnc_param;
 		[_sector, _side] call TTC_CTI_fnc_createMobileSector;
 	};
 
+	// Check if the sector is connected to the base.
+	_return		= [_sector] call TTC_CTI_fnc_isSectorConnectedToBase;
+	_connected	= _return select 0;
+	_sector setVariable ["TTC_CTI_sector_isConnectedToBase", _connected, true];
+
 	// Set the visibility of the sector for each side.
 	_visibility	= [];
 
@@ -69,5 +74,6 @@ _sectors = [_this, 0] call BIS_fnc_param;
 		_visibility pushBack _canSee;
 	} forEach TTC_CTI_sides;
 
+	// Broadcast the visibility of the sectors to all clients.
 	_sector setVariable ["TTC_CTI_sector_visibility", _visibility, true];
 } forEach _sectors;

@@ -41,16 +41,20 @@ _TTC_CTI_update = {
 	// Update the dominance variable.
 	_sector setVariable ["TTC_CTI_sector_dominance", _dominanceNew, true];
 
-	// Update the sector.
-	[_sector, _recalculate] call TTC_CTI_fnc_updateSector;
-
 	if (_recalculate) then {
 		_neighbours	= TTC_CTI_sectorVariable_neighbours;
 
-		// Update the neighbour sectors.
+		// Update all sectors.
 		{
-			[_x, _recalculate] call TTC_CTI_fnc_updateSector;
-		} forEach _neighbours;
+			if ((_x in _neighbours) || (_x == _sector)) then {
+				[_x, false, true, true] call TTC_CTI_fnc_updateSector;
+			} else {
+				[_x, false, true, false] call TTC_CTI_fnc_updateSector;
+			};
+		} forEach TTC_CTI_sectors;
+	} else {
+		// Update only the sector.
+		[_sector, false, false, false] call TTC_CTI_fnc_updateSector;
 	};
 };
 

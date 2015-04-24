@@ -20,3 +20,4 @@
 #define TTC_CTI_sectorVariable_visibility _sector getVariable ["TTC_CTI_sector_visibility", []]
 #define TTC_CTI_sectorVariable_vehicle _sector getVariable ["TTC_CTI_sector_vehicle", objNull]
 #define TTC_CTI_sectorVariable_task _sector getVariable ["TTC_CTI_sector_task", taskNull]
+#define TTC_CTI_sectorVariable_isConnectedToBase _sector getVariable ["TTC_CTI_sector_isConnectedToBase", false]

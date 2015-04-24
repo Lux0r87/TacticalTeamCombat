@@ -5,27 +5,49 @@
 
 #include "sectorVariables.hpp"
 
-private ["_sector","_recalculate","_target","_mrkArea","_mrk","_visibility","_pos","_isNull","_sides","_find","_canSee"];
+private [
+	"_sector","_update_position","_update_isConnected","_update_canSee","_target","_mrkArea","_mrk","_visibilityOld","_connectedOld","_pos",
+	"_visibility","_isNull","_sides","_return","_connected","_find","_canSee"
+];
 
-_sector			= [_this, 0] call BIS_fnc_param;
-_recalculate	= [_this, 1, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
-_target			= [_this, 2, ObjNull, [ObjNull]] call BIS_fnc_param;
+_sector				= [_this, 0] call BIS_fnc_param;
+_update_position	= [_this, 1, false, [false]] call BIS_fnc_param;		// Reset the position of the sector.
+_update_isConnected	= [_this, 2, false, [false]] call BIS_fnc_param;		// Recalculate "isConnectedToBase".
+_update_canSee		= [_this, 3, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
+_target				= [_this, 4, ObjNull, [ObjNull]] call BIS_fnc_param;
 
-_mrkArea	= TTC_CTI_sectorVariable_markerArea;
-_mrk		= TTC_CTI_sectorVariable_marker;
-_visibility	= TTC_CTI_sectorVariable_visibility;
-_pos		= getPos _sector;
+_mrkArea		= TTC_CTI_sectorVariable_markerArea;
+_mrk			= TTC_CTI_sectorVariable_marker;
+_visibilityOld	= TTC_CTI_sectorVariable_visibility;
+_connectedOld	= TTC_CTI_sectorVariable_isConnectedToBase;
+_pos			= getPos _sector;
 
+_visibility	= _visibilityOld;
 _isNull		= isNull _target;
 _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_sides};
 
 /*[_sector, "TTC_CTI_fnc_updateSector",
-	[["_recalculate = %1", _recalculate], ["_target = %1", _target], ["_visibility = %1", _visibility], ["_isNull = %1", _isNull], ["_sides = %1", _sides]]
+	[["_update_position = %1", _update_position], ["_update_isConnected = %1", _update_isConnected], ["_update_canSee = %1", _update_canSee], ["_target = %1", _target],
+	["_isNull = %1", _isNull], ["_sides = %1", _sides]]
 ] call TTC_CTI_fnc_logSector;*/
 
 
-_mrkArea setMarkerPos _pos;
-_mrk setMarkerPos _pos;
+// Update the marker positions.
+if (_update_position) then {
+	_mrkArea setMarkerPos _pos;
+	_mrk setMarkerPos _pos;
+};
+
+// Check if the sector is connected to the base.
+if (_update_isConnected) then {
+	_return		= [_sector] call TTC_CTI_fnc_isSectorConnectedToBase;
+	_connected	= _return select 0;
+
+	// Only update the variable, if it changed.
+	if (_connected != _connectedOld) then {
+		_sector setVariable ["TTC_CTI_sector_isConnectedToBase", _connected, true];
+	};
+};
 
 {
 	if (_isNull) then {
@@ -34,7 +56,7 @@ _mrk setMarkerPos _pos;
 
 	_find = ([TTC_CTI_sides, _x] call BIS_fnc_arrayFindDeep) select 0;
 
-	if (_recalculate) then {
+	if (_update_canSee) then {
 		_canSee = [_sector, _x] call TTC_CTI_fnc_canSeeSector;
 		_visibility set [_find, _canSee];
 	} else {
@@ -44,4 +66,7 @@ _mrk setMarkerPos _pos;
 	[[_sector, _canSee, _mrkArea, _mrk], "TTC_CTI_fnc_updateSectorLocal", _target, false] call BIS_fnc_MP;
 } forEach _sides;
 
-_sector setVariable ["TTC_CTI_sector_visibility", _visibility, true];
+// Only update the variable, if it changed.
+if !(_visibility isEqualTo _visibilityOld) then {
+	_sector setVariable ["TTC_CTI_sector_visibility", _visibility, true];
+};

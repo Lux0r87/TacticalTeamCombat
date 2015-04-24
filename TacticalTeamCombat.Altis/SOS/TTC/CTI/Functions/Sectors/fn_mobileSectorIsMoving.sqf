@@ -33,7 +33,7 @@ while {TTC_CTI_mobileSector_timeOut > 0} do {
 	_sector setPos (getPos _veh);
 
 	// Update the sector
-	[_sector] call TTC_CTI_fnc_updateSector;
+	[_sector, true] call TTC_CTI_fnc_updateSector;
 
 	sleep 1;
 };
