@@ -8,6 +8,4 @@ disableSerialization;
 
 // Create the dialog
 _dialog = createDialog "TTC_TP_TeleportDialog";
-
-// TODO: Setup sector list
-[] call TTC_TP_UI_fnc_updateSectorList;
+TTC_CTI_sectors call TTC_TP_UI_fnc_updateSectorList;

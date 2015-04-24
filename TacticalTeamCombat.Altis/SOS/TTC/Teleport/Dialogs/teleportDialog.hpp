@@ -9,8 +9,8 @@
 #define TTC_TP_UI_SZ_X						__TTC_TP_UI_ROUND(safezoneX)
 #define TTC_TP_UI_SZ_Y						__TTC_TP_UI_ROUND(safezoneY)
 
-#define TTC_TP_UI_DIALOG_W					__TTC_TP_UI_ROUND(0.300 * TTC_TP_UI_SZ_W)
-#define TTC_TP_UI_DIALOG_H					__TTC_TP_UI_ROUND(0.600 * TTC_TP_UI_SZ_H)
+#define TTC_TP_UI_DIALOG_W					__TTC_TP_UI_ROUND(0.250 * TTC_TP_UI_SZ_W)
+#define TTC_TP_UI_DIALOG_H					__TTC_TP_UI_ROUND(0.500 * TTC_TP_UI_SZ_H)
 #define TTC_TP_UI_SPACING					__TTC_TP_UI_ROUND(0.002 * ((TTC_TP_UI_SZ_H + TTC_TP_UI_SZ_W) / 2))
 
 #define TTC_TP_UI_SECTOR_LIST_HEADER_W 		TTC_TP_UI_DIALOG_W
@@ -70,7 +70,7 @@ class TTC_TP_TeleportDialog {
 
 			idc				= 60003;
 			rowHeight		= 0.07;
-			columns[]		= {-0.001, 0.7};
+			columns[]		= {-0.001, 0.75};
 			x 				= TTC_TP_UI_SECTOR_LIST_X;
 			y 				= TTC_TP_UI_SECTOR_LIST_Y;
 			w 				= TTC_TP_UI_SECTOR_LIST_W;
