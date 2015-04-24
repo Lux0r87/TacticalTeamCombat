@@ -3,13 +3,26 @@
 */
 
 class TTC_Shop {
-
 	tag = "TTC_SHOP";
 
+	class Init {
+		file = "SOS\TTC\Shop";
+
+		class init{};
+	};
+
+	class TTC_ShopConfigurations {	
+		file = "SOS\TTC\Shop\Configurations";
+
+		class articles {
+			preInit = 1;
+		};
+	};
+
 	class TTC_ShopFunctions {	
-	
 		file = "SOS\TTC\Shop\Functions";
-		
+
+		class addArticlesForRole {};
 		class addArticleToShoppingCart {};
 		class getArticleById {};
 		class getArticles {};
@@ -17,21 +30,15 @@ class TTC_Shop {
 		class getCategoryByArticleId {};
 		class getCategoryById {};
 		class getShoppingCart {};
-		
-		class init {
-			preInit = 1;
-		};
 	};
 };
 
 class TTC_Shop_UI {
-
 	tag = "TTC_SHOP_UI";
-	
-	class TTC_Shop_Dialog_Functions {
-	
+
+	class TTC_Shop_Dialog_Functions {	
 		file = "SOS\TTC\Shop\Functions\UI";
-		
+
 		class createShopDialog {};
 		class onArticleDoubleClicked {};
 		class onArticleSelected {};
