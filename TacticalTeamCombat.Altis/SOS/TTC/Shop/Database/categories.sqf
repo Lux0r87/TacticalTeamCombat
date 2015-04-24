@@ -29,8 +29,8 @@ TTC_SHOP_categories = [
   [14, "Backpacks", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa", TTC_SHOP_backpacks],
   [15, "Vehicles", "\A3\ui_f\data\gui\Rsc\RscDisplayGarage\car_ca.paa", TTC_SHOP_vehicles],
   [16, "Helicopters", "\A3\ui_f\data\gui\Rsc\RscDisplayGarage\helicopter_ca.paa", TTC_SHOP_helicopters],
-  [17, "UGVs", "\A3\ui_f\data\gui\cfg\Hints\uavtypes_ca.paa", TTC_SHOP_ugvs],
-  [18, "UAVs", "\A3\ui_f\data\gui\cfg\Hints\uavtypes_ca.paa", TTC_SHOP_uavs],
+  [17, "UGVs", "SOS\TTC\Shop\Icons\uav.paa", TTC_SHOP_ugvs],
+  [18, "UAVs", "SOS\TTC\Shop\Icons\uav.paa", TTC_SHOP_uavs],
   [19, "Boats", "\A3\ui_f\data\gui\Rsc\RscDisplayGarage\naval_ca.paa", TTC_SHOP_boats],
   [20, "Jets", "\A3\ui_f\data\gui\Rsc\RscDisplayGarage\plane_ca.paa", TTC_SHOP_jets]
 ];
