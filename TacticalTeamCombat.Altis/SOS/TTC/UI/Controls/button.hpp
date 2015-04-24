@@ -9,7 +9,8 @@ class TTC_UI_Button: TTC_UI_Control {
 	style						= TTC_UI_STYLE_CENTER;
 		
 	borderSize					= 0;
-	colorBackgroundActive[]		= TTC_UI_COLOR_WHITE_A75;
+	colorBackground[]			= TTC_UI_COLOR_WHITE_A25;
+	colorBackgroundActive[]		= TTC_UI_COLOR_WHITE_A50;
 	colorBackgroundDisabled[]	= TTC_UI_COLOR_BLACK_A25;
 	colorBorder[] 				= TTC_UI_COLOR_BLACK_A100;
 	colorDisabled[]				= TTC_UI_COLOR_WHITE_A25;
