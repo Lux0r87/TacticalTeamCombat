@@ -135,6 +135,7 @@ class TTC_RscStructuredText_AlignCenter {
         color  = "#ffffff";
         align  = "center";
         valign = "middle";
+		size   = "0.8";
     };
 };
 
