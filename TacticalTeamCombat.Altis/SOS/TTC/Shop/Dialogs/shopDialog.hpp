@@ -30,8 +30,8 @@
 class TTC_SHOP_ShopDialog {
 
 	idd				= 5000;
-	onLoad			= "_this call TTC_SHOP_UI_fnc_onShopDialogLoad";
-	onUnLoad		= "_this call TTC_SHOP_UI_fnc_onShopDialogUnLoad";
+	onLoad			= "_this call TTC_SHOP_UI_fnc_onDialogLoad";
+	onUnLoad		= "_this call TTC_SHOP_UI_fnc_onDialogUnLoad";
 	
 	class Controls {
 		
