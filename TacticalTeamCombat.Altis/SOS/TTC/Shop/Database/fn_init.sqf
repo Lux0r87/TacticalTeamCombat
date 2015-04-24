@@ -22,16 +22,18 @@ _initializeShoppingCart = {
 
 // Client-side:
 if (hasInterface) then {
+	
 	systemChat "Initializing TTC Shop";
-
-	_addArticlesForRole = [] spawn TTC_SHOP_fnc_addArticlesForRole;
-
-	waitUntil {
-		scriptDone _addArticlesForRole;
-	};
-
-	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Configurations\categories.sqf";
-
+	
+	waitUntil {!(IsNull player) && (time > 0.0)};
+	
+	_side		= side player;
+	_roleId		= player getVariable "TTC_roleId";
+	_roleName	= _roleId call TTC_CORE_fnc_getRoleNameById;
+	
+	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Database\articles.sqf";
+	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Database\West\Combat Engineer.sqf";
+	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Database\categories.sqf";
 	[] call _initializeShoppingCart;
 
 	systemChat "TTC Shop initialized";
