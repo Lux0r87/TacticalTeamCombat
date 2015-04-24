@@ -8,7 +8,7 @@ private ["_unit","_taskName","_taskParent","_taskState","_taskPos","_taskDesc","
 _unit		= [_this, 0] call BIS_fnc_param;
 _taskName	= [_this, 1, "", [""]] call BIS_fnc_param;
 _taskParent	= [_this, 2, taskNull, [taskNull]] call BIS_fnc_param;
-_taskState	= [_this, 3, "Assigned", [""]] call BIS_fnc_param;
+_taskState	= [_this, 3, "Created", [""]] call BIS_fnc_param;
 _taskPos	= [_this, 4, [0, 0], [[]], [2, 3]] call BIS_fnc_param;
 _taskDesc	= [_this, 5, "", [""]] call BIS_fnc_param;
 _taskTitle	= [_this, 6, "", [""]] call BIS_fnc_param;

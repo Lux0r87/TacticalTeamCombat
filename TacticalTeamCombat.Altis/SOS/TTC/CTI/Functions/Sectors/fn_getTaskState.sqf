@@ -18,7 +18,7 @@ _sector	= [_this, 1] call BIS_fnc_param;
 _taskState = if (TTC_CTI_unitDominatesSector) then {
 	"Succeeded";
 } else {
-	"Assigned";
+	"Created";
 };
 
 _taskState
