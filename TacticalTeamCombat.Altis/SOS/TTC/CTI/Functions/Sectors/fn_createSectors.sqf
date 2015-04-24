@@ -5,8 +5,10 @@
 
 #define TTC_CTI_sector_statements ["this", "[thisTrigger] spawn TTC_CTI_fnc_createSectorDisplay;", "1004 cutFadeOut 0.5"]
 
-private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_neighbours","_respawnDir","_isMobile","_sector"];
+private ["_sectors","_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance","_neighbours","_respawnDir","_isMobile","_sector"];
 
+
+_sectors = [];
 
 // Iterate over all sector definitions:
 {
@@ -44,20 +46,4 @@ private ["_name","_pos","_xrad","_yrad","_dir","_rectangle","_side","_dominance"
 	] call TTC_CORE_fnc_log;*/
 } forEach TTC_CTI_sectorDefinitions;
 
-// Iterate over all sectors:
-{
-	_neighbours	= _x getVariable ["TTC_CTI_sector_neighbours", []];
-
-	// Replace neighbour IDs with sector objects (triggers).
-	{
-		if (typeName _x == "SCALAR") then {
-			_neighbour = TTC_CTI_sectors select _x;
-			_neighbours set [_forEachIndex, _neighbour];
-		};
-	} forEach _neighbours;
-
-	_x setVariable ["TTC_CTI_sector_neighbours", _neighbours];
-} forEach TTC_CTI_sectors;
-
-// Broadcast the sectors to all clients.
-publicVariable "TTC_CTI_sectors";
+_sectors

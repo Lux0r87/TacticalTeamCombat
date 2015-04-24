@@ -27,6 +27,7 @@ class TTC_CTI_Functions {
 		class getSectorText{};
 		class getTaskDescription{};
 		class getTaskState{};
+		class initSectors{};
 		class initSectorsLocal{};
 		class isSectorConnectedToBase{};
 		class logSector{};

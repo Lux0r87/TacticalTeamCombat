@@ -39,10 +39,7 @@ if (isServer) then {
 	#define TTC_CTI_timer 10
 	#define TTC_CTI_allSides [resistance, west, east]
 
-	private [
-		"_winner","_location","_sectorPattern","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_isMobile",
-		"_shape","_mrk","_patrol","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"
-	];
+	private ["_winner","_location","_sectorPattern","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"];
 
 	_winner = sideUnknown;
 
@@ -53,51 +50,18 @@ if (isServer) then {
 	// Get sector pattern string
 	_sectorPattern = [] call TTC_CORE_fnc_getSectorPattern;
 
-	// Compile configuration file
+	// Compile configuration file and broadcast the sides variable to all clients.
 	[] call compile preprocessFileLineNumbers format["SOS\TTC\CTI\Locations\%1\%2.sqf", _sectorPattern, _location];
 	publicVariable "TTC_CTI_sides";
 
-	// Create all sectors and initialize the variables.
-	[] call TTC_CTI_fnc_createSectors;
+	// Create all sectors defined in the location configuration.
+	TTC_CTI_sectors = [] call TTC_CTI_fnc_createSectors;
 
-	// Iterate over all sectors:
-	{
-		private ["_visibility","_canSee"];
-		_sector		= _x;
-		_name		= TTC_CTI_sectorVariable_name;
-		_xrad		= TTC_CTI_sectorVariable_axisA;
-		_yrad		= TTC_CTI_sectorVariable_axisB;
-		_rectangle	= TTC_CTI_sectorVariable_rectangle;
-		_side		= TTC_CTI_sectorVariable_side;
-		_dominance	= TTC_CTI_sectorVariable_dominance;
-		_respawnDir	= TTC_CTI_sectorVariable_respawnDir;
-		_isMobile	= TTC_CTI_sectorVariable_isMobile;
+	// Broadcast the sectors to all clients.
+	publicVariable "TTC_CTI_sectors";
 
-		// Create area marker
-		_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
-		_mrk = [_sector, _forEachIndex, _name, _xrad, _yrad, _side, _dominance, getDir _sector, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
-
-		// Create marker
-		_mrk = [_sector, _forEachIndex, _name, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
-
-		// Create sector patrol.
-		_patrol = [_sector, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
-
-		// Create vehicle for mobile sector(s).
-		if (_isMobile) then {
-			[_sector, _side] call TTC_CTI_fnc_createMobileSector;
-		};
-
-		// Set the visibility of the sector for each side.
-		_visibility	= [];
-
-		{
-			_canSee = [_sector, _x, _side] call TTC_CTI_fnc_canSeeSector;
-			_visibility pushBack _canSee;
-		} forEach TTC_CTI_sides;
-
-		_sector setVariable ["TTC_CTI_sector_visibility", _visibility, true];
-	} forEach TTC_CTI_sectors;
+	// Initialize the sectors.
+	[TTC_CTI_sectors] call TTC_CTI_fnc_initSectors;
 
 	/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
 	// Add respawn positions to the sectors, after the safety time is over.

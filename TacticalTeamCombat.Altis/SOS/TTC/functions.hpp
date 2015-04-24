@@ -4,6 +4,7 @@
 #include "CTI\functions.hpp"
 #include "Map\functions.hpp"
 #include "Shop\functions.hpp"
+#include "Teleport\functions.hpp"
 
 class TTC_Functions {
 	tag = "TTC";
