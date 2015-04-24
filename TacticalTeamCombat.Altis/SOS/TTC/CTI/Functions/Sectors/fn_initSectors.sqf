@@ -3,16 +3,17 @@
 */
 
 
-#include "Functions\Sectors\sectorVariables.hpp"
+#include "dominanceVariables.hpp"
+#include "sectorVariables.hpp"
 
 private ["_sectors","_neighbours","_neighbour","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_isMobile","_shape","_mrk","_patrol","_visibility","_canSee"];
 
 
 _sectors = [_this, 0] call BIS_fnc_param;
 
-[
+/*[
 	["Function: %1", "TTC_CTI_initSectors"], ["_sectors = %1", _sectors]
-] call TTC_CORE_fnc_log;
+] call TTC_CORE_fnc_log;*/
 
 
 /*

@@ -26,7 +26,7 @@ _sectors = [];
 
 	// Create a trigger, which represents the sector.
 	_sector = [_name, _pos, _xrad, _yrad, _dir, _rectangle, TTC_CTI_sector_statements] call TTC_CORE_fnc_createTrigger;
-	TTC_CTI_sectors pushBack _sector;
+	_sectors pushBack _sector;
 
 	// Initialize all sector variables.
 	_sector setVariable ["TTC_CTI_sector_name", _name, true];

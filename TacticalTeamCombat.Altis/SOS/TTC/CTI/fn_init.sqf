@@ -3,9 +3,6 @@
 */
 
 
-#include "Functions\Sectors\dominanceVariables.hpp"
-#include "Functions\Sectors\sectorVariables.hpp"
-
 if (isNil "TTC_CTI_initDone") then {
 	TTC_CTI_initDone	= false;
 };
