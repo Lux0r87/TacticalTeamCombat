@@ -17,7 +17,7 @@ _visibility	= TTC_CTI_sectorVariable_visibility;
 _pos		= getPos _sector;
 
 _isNull		= isNull _target;
-_sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_Sides};
+_sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_sides};
 
 /*[_sector, "TTC_CTI_fnc_updateSector",
 	[["_recalculate = %1", _recalculate], ["_target = %1", _target], ["_visibility = %1", _visibility], ["_isNull = %1", _isNull], ["_sides = %1", _sides]]
@@ -32,15 +32,16 @@ _mrk setMarkerPos _pos;
 		_target = _x;
 	};
 
-	_find = ([TTC_CTI_Sides, _x] call BIS_fnc_arrayFindDeep) select 0;
+	_find = ([TTC_CTI_sides, _x] call BIS_fnc_arrayFindDeep) select 0;
 
 	if (_recalculate) then {
 		_canSee = [_sector, _x] call TTC_CTI_fnc_canSeeSector;
 		_visibility set [_find, _canSee];
-		_sector setVariable ["TTC_CTI_sector_visibility", _visibility];
 	} else {
 		_canSee = _visibility select _find;
 	};
 
 	[[_sector, _canSee, _mrkArea, _mrk], "TTC_CTI_fnc_updateSectorLocal", _target, false] call BIS_fnc_MP;
 } forEach _sides;
+
+_sector setVariable ["TTC_CTI_sector_visibility", _visibility, true];

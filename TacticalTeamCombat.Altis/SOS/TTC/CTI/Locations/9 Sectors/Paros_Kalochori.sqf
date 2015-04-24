@@ -8,7 +8,7 @@
 	#include "sectorPattern.hpp"
 #endif
 
-TTC_CTI_Sides = [west, resistance];
+TTC_CTI_sides = [west, resistance];
 
 TTC_CTI_sectorDefinitions = [
 	["A",			[20681,16202], 40,	40,	0,		false, west,		100, TTC_CTI_neighbours_sectorA, 25, false],

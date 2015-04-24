@@ -7,21 +7,20 @@
 #define TTC_CTI_sectorMarkerAlpha 1
 #define TTC_CTI_sectorAreaMarkerAlpha 0.3
 
-private ["_sector","_dominanceMax","_name","_side","_dominance","_mrkArea","_mrk","_color"];
+private ["_sector","_dominanceMax","_mrkArea","_mrk","_name","_side","_dominance","_color"];
 
 _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
+_mrkArea		= [_this, 2, _sector getVariable ["TTC_CTI_sector_markerArea", ""], [""]] call BIS_fnc_param;
+_mrk			= [_this, 3, _sector getVariable ["TTC_CTI_sector_marker", ""], [""]] call BIS_fnc_param;
 
-_name		= _sector getVariable "TTC_CTI_sector_name";
-_side		= _sector getVariable "TTC_CTI_sector_side";
-_dominance	= _sector getVariable "TTC_CTI_sector_dominance";
-_mrkArea	= _sector getVariable "TTC_CTI_sector_markerArea";
-_mrk		= _sector getVariable "TTC_CTI_sector_marker";
+_name		= _sector getVariable ["TTC_CTI_sector_name", ""];
+_side		= _sector getVariable ["TTC_CTI_sector_side", sideUnknown];
+_dominance	= _sector getVariable ["TTC_CTI_sector_dominance", 0];
 _color		= [_side, true] call BIS_fnc_sideColor;
 
 /*[_sector, "TTC_CTI_fnc_updateSectorMarkersLocal", 
-	[["_dominanceMax = %1", _dominanceMax], ["_name = %1", _name], ["_side = %1", _side], ["_dominance = %1", _dominance],
-	["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_color = %1", _color]]
+	[["_dominanceMax = %1", _dominanceMax], ["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk]]
 ] call TTC_CTI_fnc_logSector;*/
 
 

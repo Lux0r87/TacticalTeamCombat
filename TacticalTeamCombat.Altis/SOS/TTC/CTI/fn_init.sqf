@@ -39,9 +39,6 @@ if (isServer) then {
 	#define TTC_CTI_timer 10
 	#define TTC_CTI_allSides [resistance, west, east]
 
-	TTC_CTI_sectorNo		= 0;
-	TTC_CTI_sectorAreaNo	= 0;
-
 	private [
 		"_winner","_location","_sectorPattern","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_isMobile",
 		"_shape","_mrk","_patrol","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"
@@ -58,6 +55,7 @@ if (isServer) then {
 
 	// Compile configuration file
 	[] call compile preprocessFileLineNumbers format["SOS\TTC\CTI\Locations\%1\%2.sqf", _sectorPattern, _location];
+	publicVariable "TTC_CTI_sides";
 
 	// Create all sectors and initialize the variables.
 	[] call TTC_CTI_fnc_createSectors;
@@ -77,10 +75,10 @@ if (isServer) then {
 
 		// Create area marker
 		_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
-		_mrk = [_sector, _name, _xrad, _yrad, _side, _dominance, getDir _sector, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
+		_mrk = [_sector, _forEachIndex, _name, _xrad, _yrad, _side, _dominance, getDir _sector, _shape] call TTC_CTI_fnc_createSectorAreaMarker;
 
 		// Create marker
-		_mrk = [_sector, _name, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
+		_mrk = [_sector, _forEachIndex, _name, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
 
 		// Create sector patrol.
 		_patrol = [_sector, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
@@ -96,8 +94,9 @@ if (isServer) then {
 		{
 			_canSee = [_sector, _x, _side] call TTC_CTI_fnc_canSeeSector;
 			_visibility pushBack _canSee;
-			_sector setVariable ["TTC_CTI_sector_visibility", _visibility];
-		} forEach TTC_CTI_Sides;
+		} forEach TTC_CTI_sides;
+
+		_sector setVariable ["TTC_CTI_sector_visibility", _visibility, true];
 	} forEach TTC_CTI_sectors;
 
 	/* DEPRECATED: https://github.com/Lux0r87/TacticalTeamCombat/issues/87
@@ -198,5 +197,5 @@ if (isServer) then {
 
 	// End the mission for all players after 10 seconds.
 	sleep 10;
-	[TTC_CTI_Sides, _winner] call TTC_CORE_fnc_endMissionAll;
+	[TTC_CTI_sides, _winner] call TTC_CORE_fnc_endMissionAll;
 };

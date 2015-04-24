@@ -20,7 +20,7 @@ _task			= [_this, 4, TTC_CTI_sectorVariable_task, [taskNull]] call BIS_fnc_param
 
 
 if (_canSee) then {
-	[_sector, TTC_CTI_dominanceMax] call TTC_CTI_fnc_updateSectorMarkersLocal;
+	[_sector, TTC_CTI_dominanceMax, _mrkArea, _mrk] call TTC_CTI_fnc_updateSectorMarkersLocal;
 
 	// Safety measure: Create a task, if none exists.
 	if (isNull _task) then {
