@@ -3,8 +3,8 @@
 */
 
 
-#define TTC_CORE_penalty_teamkillAI -1500
-#define TTC_CORE_penalty_teamkillPlayer -3000
+#define TTC_CORE_penalty_teamkillAI -500
+#define TTC_CORE_penalty_teamkillPlayer -1000
 
 private ["_unit","_killer"];
 

@@ -7,9 +7,9 @@
 
 #define TTC_CTI_multiplier 10
 #define TTC_CTI_captureBonus 1000
-#define TTC_CTI_captureBonusTeam 500
+#define TTC_CTI_captureBonusTeam (TTC_CTI_captureBonus / 2)
 #define TTC_CTI_defendBonus 500
-#define TTC_CTI_defendBonusTeam 250
+#define TTC_CTI_defendBonusTeam (TTC_CTI_defendBonus / 2)
 #define TTC_CTI_dominanceDiff (TTC_CTI_dominanceMax - _dominance)
 #define TTC_CTI_amountAttack ((_diff min _dominance) * TTC_CTI_multiplier)
 #define TTC_CTI_amountDefend ((_diff min TTC_CTI_dominanceDiff) * TTC_CTI_multiplier)

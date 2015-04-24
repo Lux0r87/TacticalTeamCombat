@@ -4,7 +4,7 @@
 
 
 #define TTC_BTC_basicIncome 500
-#define TTC_BTC_basicIncomeTimer 180
+#define TTC_BTC_basicIncomeTimer 300
 
 
 // Add the latest change at the end of the array.
