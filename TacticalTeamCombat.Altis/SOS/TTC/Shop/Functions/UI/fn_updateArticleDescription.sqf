@@ -27,19 +27,26 @@ if (!isNil {_control}) then {
 		
 		_control ctrlSetStructuredText parseText _text;
 		
-		/*
+		_position = uiNamespace getVariable "TTC_SHOP_UI_articleDescription_position";
 		_letterCount = count (toArray _text);
-		if (_letterCount > 75) then {
+		
+		systemChat format["LETTER COUNT = %1", _letterCount];
+		
+		if (_letterCount > 150) then {
 			
-			_position = ctrlPosition _control;
-			_height = _position select 3;
-			_height = _height * 2;
+			_x = _position select 0;
+			_y = _position select 1;
+			_w = _position select 2;
+			_h = _position select 3;
 			
-			_position set [3, _height];
+			_control ctrlSetPosition [_x, _y, _w, _h * 1.4];
+			_control ctrlCommit 0;
+			
+		} else {
 			_control ctrlSetPosition _position;
 			_control ctrlCommit 0;
 		};
-		*/
+		
 	};
 } else {
 	["Variable TTC_SHOP_UI_articleDescription not defined"] call BIS_fnc_error;
