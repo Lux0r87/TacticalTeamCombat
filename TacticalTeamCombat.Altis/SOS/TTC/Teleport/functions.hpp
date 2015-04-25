@@ -1,5 +1,6 @@
 /*
     Created by BauerMitFackel
+    Edited by Lux0r
 */
 
 class TTC_Teleport {
@@ -9,6 +10,7 @@ class TTC_Teleport {
 		file = "SOS\TTC\Teleport\Functions";
 
 		class getSectorState {};
+		class teleport {};
 	};
 };
 

@@ -52,11 +52,11 @@ switch (_state) do {
 _teleport	= uiNamespace getVariable ["TTC_TP_UI_teleport", nil];
 
 // Get the price for the teleport and current balance of the player.
-_price		= _control lnbText [_index, 1];
+_price		= _control lnbValue [_index, 1];
 _balance	= missionNamespace getVariable ["TTC_BTC_balance", 0];
 
 // Check if the player has enough money
-if (_balance >= (parseNumber _price)) then {
+if (_balance >= _price) then {
 	_teleport ctrlSetTooltip TTC_TP_UI_tooltipTeleport_enoughMoney(_name, _price);
 } else {
 	_teleport ctrlSetTooltip TTC_TP_UI_tooltipTeleport_notEnoughMoney(_name, _price);

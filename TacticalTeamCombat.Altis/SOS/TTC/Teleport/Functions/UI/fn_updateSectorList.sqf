@@ -80,7 +80,10 @@ _addSectorToList = {
 	// Add a new row: set name, picture and value.
 	_index	= _control lnbAddRow [_displayName, format["%1 BTC", _price]];
 	_control lnbSetPicture [[_index, 0], _icon];
+	
+	// Save additional values.
 	_control lnbSetValue [[_index, 0], _id];
+	_control lnbSetValue [[_index, 1], _price];
 };
 
 
@@ -92,7 +95,7 @@ private["_control","_side","_sectorSide","_teleport"];
 _control = uiNamespace getVariable ["TTC_TP_UI_sectorList", nil];
 
 /*[
-	["Function: %1", "TTC_TP_UI_updateSectorList"], ["_control = %1", _control], ["_this = %1", _this]
+	["Function: %1", "TTC_TP_UI_fnc_updateSectorList"], ["_control = %1", _control], ["_this = %1", _this]
 ] call TTC_CORE_fnc_log;*/
 
 if (!isNil {_control}) then {
