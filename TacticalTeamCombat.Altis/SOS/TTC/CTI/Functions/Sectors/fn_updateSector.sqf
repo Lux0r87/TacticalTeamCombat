@@ -44,7 +44,7 @@ if (_update_isConnected) then {
 	_connected	= _return select 0;
 
 	// Only update the variable, if it changed.
-	if (_connected != _connectedOld) then {
+	if !(_connected isEqualTo _connectedOld) then {
 		_sector setVariable ["TTC_CTI_sector_isConnectedToBase", _connected, true];
 	};
 };
