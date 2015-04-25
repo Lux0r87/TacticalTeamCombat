@@ -11,53 +11,39 @@
 
 disableSerialization;
 
-#define TTC_TP_UI_tooltip_dominate "Your team dominates this sector.It should be safe to spawn here."
-#define TTC_TP_UI_tooltip_control "This is sector is not completely under your control. Maybe it is not safe to spawn here."
-#define TTC_TP_UI_tooltip_weak "You can't spawn here, because the enemy is already too strong in the area!"
-#define TTC_TP_UI_tooltip_cutOff "You can't spawn here, because this sector is cut off from your base!"
+#include "sectorStates.hpp"
 
+#define TTC_TP_UI_tooltip_safe(NAME) "Your team dominates '" +NAME +"'. It should be safe to spawn here."
+#define TTC_TP_UI_tooltip_warning(NAME) "'" +NAME +"' is not completely under your control. Maybe it is not safe to spawn here."
+#define TTC_TP_UI_tooltip_danger(NAME) "You can't spawn at '" +NAME +"', because the enemy is already too strong in the area!"
+#define TTC_TP_UI_tooltip_cutOff(NAME) "You can't spawn at '" +NAME +"', because this sector is cut off from your base!"
 
-/*
-	Returns the icon for the sector.
-	Parameter(s):
-		0: Trigger	- the sector/trigger object
-*/
-_getSectorTooltip = {
-	private["_sector","_dominance","_isConnected","_tooltip"];
-
-	_sector		= [_this, 0] call BIS_fnc_param;
-
-	_dominance		= _sector getVariable ["TTC_CTI_sector_dominance", 0];
-	_isConnected	= _sector getVariable ["TTC_CTI_sector_isConnectedToBase", false];
-
-	// Get the display name for the sector.
-	_tooltip = if (_isConnected) then {
-		switch (true) do {
-			case (_dominance == 100): {
-				TTC_TP_UI_tooltip_dominate;
-			};
-			case (_dominance >= 75): {
-				TTC_TP_UI_tooltip_control;
-			};
-			default {
-				TTC_TP_UI_tooltip_weak;
-			};
-		};
-	} else {
-		TTC_TP_UI_tooltip_cutOff;
-	};
-
-	_tooltip;
-};
-
-
-private["_control","_index","_id","_sector"];
+private["_control","_index","_id","_sector","_name","_state"];
 
 _control	= [_this, 0] call BIS_fnc_param;
 _index		= [_this, 1] call BIS_fnc_param;
 
 
+// Get the sector.
 _id			= _control lnbValue [_index, 0];
 _sector		= TTC_CTI_sectors select _id;
-_tooltip	= [_sector] call _getSectorTooltip;
-_control ctrlSetTooltip _tooltip;
+_name		= _sector getVariable ["TTC_CTI_sector_name", ""];
+
+// Get the state of the sector.
+_state = [_sector] call TTC_TP_fnc_getSectorState;
+
+// Set tooltip according to the sector's state.
+switch (_state) do {
+	case TTC_TP_UI_sectorState_safe: {
+		_control ctrlSetTooltip TTC_TP_UI_tooltip_safe(_name);
+	};
+	case TTC_TP_UI_sectorState_warning: {
+		_control ctrlSetTooltip TTC_TP_UI_tooltip_warning(_name);
+	};
+	case TTC_TP_UI_sectorState_danger: {
+		_control ctrlSetTooltip TTC_TP_UI_tooltip_danger(_name);
+	};
+	case TTC_TP_UI_sectorState_cutOff: {
+		_control ctrlSetTooltip TTC_TP_UI_tooltip_cutOff(_name);
+	};
+};

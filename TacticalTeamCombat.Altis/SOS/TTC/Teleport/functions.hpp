@@ -7,6 +7,8 @@ class TTC_Teleport {
 
 	class TTC_Teleport_Functions {
 		file = "SOS\TTC\Teleport\Functions";
+
+		class getSectorState {};
 	};
 };
 

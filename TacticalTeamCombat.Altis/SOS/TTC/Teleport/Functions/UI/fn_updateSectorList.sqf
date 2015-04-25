@@ -11,6 +11,8 @@
 
 disableSerialization;
 
+#include "sectorStates.hpp"
+
 #define TTC_TP_UI_basicPrice 250
 #define TTC_TP_UI_distancePrice 20
 
@@ -21,28 +23,27 @@ disableSerialization;
 		0: Trigger	- the sector/trigger object
 */
 _getSectorIcon = {
-	private["_sector","_dominance","_isConnected","_icon"];
+	private["_sector","_state","_icon"];
 
 	_sector		= [_this, 0] call BIS_fnc_param;
 
-	_dominance		= _sector getVariable ["TTC_CTI_sector_dominance", 0];
-	_isConnected	= _sector getVariable ["TTC_CTI_sector_isConnectedToBase", false];
+	// Get the sector state.
+	_state = [_sector] call TTC_TP_fnc_getSectorState;
 
-	// Get the display name for the sector.
-	_icon = if (_isConnected) then {
-		switch (true) do {
-			case (_dominance == 100): {
-				"SOS\TTC\Teleport\Icons\sector_icon_success.paa";
-			};
-			case (_dominance >= 75): {
-				"SOS\TTC\Teleport\Icons\sector_icon_warning.paa";
-			};
-			default {
-				"SOS\TTC\Teleport\Icons\sector_icon_danger.paa";
-			};
+	// Get the icon according to the sector's state.
+	_icon = switch (_state) do {
+		case TTC_TP_UI_sectorState_safe: {
+			"SOS\TTC\Teleport\Icons\sector_icon_safe.paa";
 		};
-	} else {
-		"SOS\TTC\Teleport\Icons\sector_icon_not_connected.paa";
+		case TTC_TP_UI_sectorState_warning: {
+			"SOS\TTC\Teleport\Icons\sector_icon_warning.paa";
+		};
+		case TTC_TP_UI_sectorState_danger: {
+			"SOS\TTC\Teleport\Icons\sector_icon_danger.paa";
+		};
+		case TTC_TP_UI_sectorState_cutOff: {
+			"SOS\TTC\Teleport\Icons\sector_icon_cutOff.paa";
+		};
 	};
 
 	_icon;
@@ -72,7 +73,7 @@ _addSectorToList = {
 	_distPrice	= (floor (_distance / 100)) * TTC_TP_UI_distancePrice;
 	_price		= TTC_TP_UI_basicPrice + _distPrice;
 
-	// Get the icon for the sector
+	// Get the icon for the sector.
 	_icon	= [_sector] call _getSectorIcon;
 
 	// Add a new row: set name, picture and value.
