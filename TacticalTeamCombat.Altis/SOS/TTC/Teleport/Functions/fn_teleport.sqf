@@ -31,7 +31,7 @@ sleep TTC_TP_sleep_blackOut;
 player playMove "AmovPknlMstpSrasWpstDnon_AmovPknlMstpSrasWrflDnon_end";
 
 // Find a safe position near to the sector and "teleport" the player.
-_safePos = [_pos, 0, TTC_TP_radius, 2, 0, 1000, 0, [], [_pos, _pos]] call BIS_fnc_findSafePos;
+_safePos = [_pos, 0, TTC_TP_radius, 1, 0, 1000, 0, [], [_pos, _pos]] call BIS_fnc_findSafePos;
 player setPos _safePos;
 
 // Display text and fade in.

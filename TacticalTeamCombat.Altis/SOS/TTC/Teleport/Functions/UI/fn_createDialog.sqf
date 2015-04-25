@@ -8,4 +8,8 @@ disableSerialization;
 
 // Create the dialog
 _dialog = createDialog "TTC_TP_TeleportDialog";
-TTC_CTI_sectors call TTC_TP_UI_fnc_updateSectorList;
+
+// Update the sector list.
+if (!isNil "TTC_CTI_sectors") then {
+	TTC_CTI_sectors spawn TTC_TP_UI_fnc_updateSectorList;
+};

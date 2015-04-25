@@ -19,6 +19,11 @@ _task			= [_this, 4, TTC_CTI_sectorVariable_task, [taskNull]] call BIS_fnc_param
 ] call TTC_CTI_fnc_logSector;*/
 
 
+// Update the sector list.
+if (!isNil "TTC_CTI_sectors") then {
+	TTC_CTI_sectors spawn TTC_TP_UI_fnc_updateSectorList;
+};
+
 if (_canSee) then {
 	[_sector, TTC_CTI_dominanceMax, _mrkArea, _mrk] call TTC_CTI_fnc_updateSectorMarkersLocal;
 

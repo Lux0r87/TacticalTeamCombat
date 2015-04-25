@@ -12,6 +12,11 @@
 private ["_change","_message","_amount","_display","_control","_color","_sign","_text"];
 
 
+// Update the sector list.
+if (!isNil "TTC_CTI_sectors") then {
+	TTC_CTI_sectors spawn TTC_TP_UI_fnc_updateSectorList;
+};
+
 // Safety measure: Initialize balances changes array, if it doesn't exist.
 if (isNil "TTC_BTC_balanceChanges") then {
 	TTC_BTC_balanceChanges = [];
