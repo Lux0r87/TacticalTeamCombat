@@ -105,10 +105,8 @@ class _TTC_SHOP_ShopDialog_ShoppingCart_ArticleList_Minus: TTC_UI_Button {
 
 	idc		= 53006;
 	text	= "-";
-	sizeEx	= TTC_UI_TEXT_SIZE_XL;
-	font	= TTC_UI_FONT_SEMIBOLD;
-	colorBackground[] = TTC_UI_COLOR_CLOUDS_A100;
-	colorText[] = TTC_UI_COLOR_POMEGRANATE_A100;
+	colorBackground[] = TTC_UI_COLOR_WHITE_A100;
+	colorText[] = TTC_UI_COLOR_BLACK_A100;
 	
 	action	= "[] spawn TTC_SHOP_UI_fnc_onMinusClicked;";
 };
@@ -117,10 +115,8 @@ class _TTC_SHOP_ShopDialog_ShoppingCart_ArticleList_Plus: TTC_UI_Button {
 
 	idc		= 53007;
 	text	= "+";
-	sizeEx	= TTC_UI_TEXT_SIZE_XL;
-	font	= TTC_UI_FONT_SEMIBOLD;
-	colorBackground[] = TTC_UI_COLOR_CLOUDS_A100;
-	colorText[] = TTC_UI_COLOR_NEPHRITIS_A100;
+	colorBackground[] = TTC_UI_COLOR_WHITE_A100;
+	colorText[] = TTC_UI_COLOR_BLACK_A100;
 	
 	action	= "[] spawn TTC_SHOP_UI_fnc_onPlusClicked;";
 };
