@@ -8,6 +8,7 @@
 #define TTC_UI_ACCESS_READ_VERIFIED		3
 #define TTC_UI_FONT_DEFAULT				"PuristaMedium"
 #define TTC_UI_FONT_SEMIBOLD			"PuristaSemiBold"
+#define TTC_UI_FONT_BOLD				"PuristaBold"
 #define TTC_UI_TEXT_SIZE_XXS			(0.010 / (getResolution select 5))
 #define TTC_UI_TEXT_SIZE_XS				(0.014 / (getResolution select 5))
 #define TTC_UI_TEXT_SIZE_S				(0.018 / (getResolution select 5))
