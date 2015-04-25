@@ -28,7 +28,7 @@ _sector		= TTC_CTI_sectors select _id;
 _name		= _sector getVariable ["TTC_CTI_sector_name", ""];
 
 // Get the state of the sector.
-_state = [_sector] call TTC_TP_fnc_getSectorState;
+_state = _sector getVariable ["TTC_TP_sectorState", TTC_TP_UI_sectorState_danger];
 
 // Set sector tooltip, according to the state.
 switch (_state) do {

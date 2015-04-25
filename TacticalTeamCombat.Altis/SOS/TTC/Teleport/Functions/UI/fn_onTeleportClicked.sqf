@@ -10,7 +10,7 @@ disableSerialization;
 #define IDC_OK		1 //emulate "Ok" button
 #define IDC_CANCEL	2 //emulate "Cancel" button
 
-private["_control","_index","_dialog","_id","_sector","_pos","_price"];
+private["_control","_index","_list","_id","_sector","_pos","_price"];
 
 _control	= [_this, 0] call BIS_fnc_param;
 _index		= [_this, 1] call BIS_fnc_param;
