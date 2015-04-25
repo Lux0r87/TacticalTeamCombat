@@ -12,6 +12,7 @@
 disableSerialization;
 
 #include "sectorStates.hpp"
+#include "tooltipsTeleport.hpp"
 
 #define TTC_TP_UI_basicPrice 250
 #define TTC_TP_UI_distancePrice 20
@@ -86,7 +87,7 @@ _addSectorToList = {
 //////////
 
 
-private["_control","_side","_sectorSide"];
+private["_control","_side","_sectorSide","_teleport"];
 
 _control = uiNamespace getVariable ["TTC_TP_UI_sectorList", nil];
 
@@ -112,7 +113,19 @@ if (!isNil {_control}) then {
 		} forEach _this;
 
 		// Select first row
-		_control lnbSetCurSelRow 0;
+		//_control lnbSetCurSelRow 0;
+
+		// Check if no row is selected.
+		if ((lnbCurSelRow _control) < 0) then {
+			// Get the control of the 'Teleport' button.
+			_teleport = uiNamespace getVariable ["TTC_TP_UI_teleport", nil];
+
+			// Disable the 'Teleport' button
+			if (!isNil "_teleport") then {
+				_teleport ctrlEnable false;
+				_teleport ctrlSetTooltip TTC_TP_UI_tooltipTeleport_selectSector;
+			};
+		};
 	};
 } else {
 	["Variable TTC_TP_UI_sectorList not defined"] call BIS_fnc_error;
