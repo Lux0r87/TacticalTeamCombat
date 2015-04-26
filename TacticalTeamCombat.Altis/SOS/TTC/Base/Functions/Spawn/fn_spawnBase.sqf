@@ -10,9 +10,11 @@ private ["_side","_prefix","_location","_basePos","_mrk","_respawnPos","_mrkName
 
 _side	= [_this, 0] call BIS_fnc_param;
 
-
 _prefix		= [_side] call TTC_CORE_fnc_getPrefix;
 _location	= [] call TTC_CORE_fnc_getLocation;
+
+[["Function: %1", "TTC_Base_fnc_spawnBase"], ["_side = %1", _side], ["_prefix = %1", _prefix], ["_location = %1", _location]] call TTC_CORE_fnc_log;
+
 
 // Compile configuration file
 [] call compile preprocessFileLineNumbers format["SOS\TTC\Base\Locations\%1.sqf", _location];
@@ -38,6 +40,11 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	_dome setVectorUp (surfaceNormal _domePos);
 	_dome setPos [_domePos select 0, _domePos select 1, -0.3];
 	_dome allowDamage false;
+
+	// Spawn teleporter.
+	_teleporterPos = [((_basePos select 0) - (cos(_dir - 45) * 10)), ((_basePos select 1) + (sin(_dir - 45) * 10)), 0];
+	_teleporterDir = _dir - 135;
+	[_side, _teleporterPos, _teleporterDir] call TTC_BASE_fnc_spawnTeleporter;
 
 	// Only for test purpose! Easier to find the centre of the dome for a good position
 	/*_pole	= createVehicle ["Metal_Pole_F", _basePos, [], 0, "CAN_COLLIDE"];

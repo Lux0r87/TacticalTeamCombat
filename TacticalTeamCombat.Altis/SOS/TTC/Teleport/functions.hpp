@@ -6,18 +6,24 @@
 class TTC_Teleport {
 	tag = "TTC_TP";
 
-	class TTC_Teleport_Functions {
+	class Functions {
 		file = "SOS\TTC\Teleport\Functions";
 
 		class getSectorState {};
 		class teleport {};
+	};
+
+	class Actions {
+		file = "SOS\TTC\Teleport\Functions\Actions";
+
+		class addAction{};
 	};
 };
 
 class TTC_Teleport_UI {
 	tag = "TTC_TP_UI";
 
-	class TTC_Teleport_UI_Functions {	
+	class Functions {	
 		file = "SOS\TTC\Teleport\Functions\UI";
 
 		class createDialog {};
