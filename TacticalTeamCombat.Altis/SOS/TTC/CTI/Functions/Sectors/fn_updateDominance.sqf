@@ -14,7 +14,7 @@
 #define TTC_CTI_amountAttack ((_diff min _dominance) * TTC_CTI_multiplier)
 #define TTC_CTI_amountDefend ((_diff min TTC_CTI_dominanceDiff) * TTC_CTI_multiplier)
 
-private ["_sector","_side","_diff","_list","_sectorSide","_dominance","_recalculate","_dominanceNew","_respawnPos","_removed","_sectorName","_marker","_patrol","_veh","_message"];
+private ["_sector","_side","_diff","_list","_sectorSide","_dominance","_sectorCaptured","_dominanceNew","_respawnPos","_removed","_sectorName","_marker","_patrol","_veh","_message"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
@@ -29,32 +29,41 @@ _dominance	= [_this, 5, TTC_CTI_sectorVariable_dominance, [0]] call BIS_fnc_para
 
 
 _TTC_CTI_update = {
-	private ["_sector","_dominanceNew","_recalculate","_neighbours"];
+	private ["_sector","_dominanceNew","_sectorCaptured","_neighbours"];
 	_sector			= _this select 0;
 	_dominanceNew	= _this select 1;
-	_recalculate	= _this select 2;
+	_sectorCaptured	= _this select 2;
 
 	/*[_sector, "TTC_CTI_fnc_updateDominance - _TTC_CTI_update", 
-		[["_dominanceNew = %1", _dominanceNew], ["_recalculate = %1", _recalculate]]
+		[["_dominanceNew = %1", _dominanceNew], ["_sectorCaptured = %1", _sectorCaptured]]
 	] call TTC_CTI_fnc_logSector;*/
 
 	// Update the dominance variable.
 	_sector setVariable ["TTC_CTI_sector_dominance", _dominanceNew, true];
 
-	if (_recalculate) then {
+	// Update all sectors, if the sector was captured. Otherwise update only the sector itself.
+	if (_sectorCaptured) then {
 		_neighbours	= TTC_CTI_sectorVariable_neighbours;
 
-		// Update all sectors.
 		{
-			if ((_x in _neighbours) || (_x == _sector)) then {
-				[_x, false, true, true] call TTC_CTI_fnc_updateSector;
-			} else {
-				[_x, false, true, false] call TTC_CTI_fnc_updateSector;
+			switch (true) do {
+				case (_x == _sector): {
+					// Update sector: isConnectedToBase, canSee and teleport UI.
+					[_x, false, true, true, true] call TTC_CTI_fnc_updateSector;
+				};
+				case (_x in _neighbours): {
+					// Update neighbour: isConnectedToBase and canSee.
+					[_x, false, true, true, false] call TTC_CTI_fnc_updateSector;
+				};
+				default {
+					// Update other sector: isConnectedToBase.
+					[_x, false, true, false, false] call TTC_CTI_fnc_updateSector;
+				};
 			};
 		} forEach TTC_CTI_sectors;
 	} else {
-		// Update only the sector.
-		[_sector, false, false, false] call TTC_CTI_fnc_updateSector;
+		// Update sector: teleport UI.
+		[_sector, false, false, false, true] call TTC_CTI_fnc_updateSector;
 	};
 };
 
@@ -79,7 +88,7 @@ _TTC_CTI_addBalanceChange = {
 if (_sectorSide != _side) then {
 	// Check if the attacking side can capture this sector.
 	if ([_sector, _side] call TTC_CTI_fnc_canCaptureSector) then {
-		_recalculate	= false;
+		_sectorCaptured	= false;
 		_dominanceNew	= ((_dominance - _diff) max TTC_CTI_dominanceMin);
 		//_respawnPos		= _sector getVariable "TTC_CTI_sector_respawnPos";
 
@@ -95,7 +104,7 @@ if (_sectorSide != _side) then {
 
 		// Sector captured by attacking side:
 		if (_dominanceNew == TTC_CTI_dominanceMin) then {
-			_recalculate	= true;
+			_sectorCaptured	= true;
 			_sectorName		= TTC_CTI_sectorVariable_name;
 			_marker			= TTC_CTI_sectorVariable_marker;
 
@@ -133,7 +142,7 @@ if (_sectorSide != _side) then {
 		};
 
 		// Update the sector.
-		[_sector, _dominanceNew, _recalculate] call _TTC_CTI_update;
+		[_sector, _dominanceNew, _sectorCaptured] call _TTC_CTI_update;
 	};
 } else {	// The current side is defending the sector:
 	// Check if dominance is not at maximum already.

@@ -28,6 +28,7 @@ _control = uiNamespace getVariable ["TTC_TP_UI_sectorList", nil];
 
 
 if (!isNil {_control}) then {
+	// Safety measure: Skip function, if the sector list is already updating.
 	if !(missionNamespace getVariable ["TTC_TP_UI_isSectorListUpdating", false]) then {
 		if (_this isEqualTo []) then {
 			["Sector array is empty"] call BIS_fnc_log;

@@ -6,15 +6,16 @@
 #include "sectorVariables.hpp"
 
 private [
-	"_sector","_update_position","_update_isConnected","_update_canSee","_target","_mrkArea","_mrk","_visibilityOld","_connectedOld","_pos",
+	"_sector","_update_position","_update_isConnected","_update_canSee","_update_teleportUI","_target","_mrkArea","_mrk","_visibilityOld","_connectedOld","_pos",
 	"_visibility","_isNull","_sides","_return","_connected","_find","_canSee"
 ];
 
 _sector				= [_this, 0] call BIS_fnc_param;
-_update_position	= [_this, 1, false, [false]] call BIS_fnc_param;		// Reset the position of the sector.
+_update_position	= [_this, 1, false, [false]] call BIS_fnc_param;		// Update the marker positions.
 _update_isConnected	= [_this, 2, false, [false]] call BIS_fnc_param;		// Recalculate "isConnectedToBase".
 _update_canSee		= [_this, 3, false, [false]] call BIS_fnc_param;		// Recalculate "canSee", otherwise use stored value.
-_target				= [_this, 4, ObjNull, [ObjNull]] call BIS_fnc_param;
+_update_teleportUI	= [_this, 4, false, [false]] call BIS_fnc_param;		// Refresh the teleport UI, if it's open.
+_target				= [_this, 5, ObjNull, [ObjNull]] call BIS_fnc_param;
 
 _mrkArea		= TTC_CTI_sectorVariable_markerArea;
 _mrk			= TTC_CTI_sectorVariable_marker;
@@ -27,8 +28,8 @@ _isNull		= isNull _target;
 _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_sides};
 
 /*[_sector, "TTC_CTI_fnc_updateSector",
-	[["_update_position = %1", _update_position], ["_update_isConnected = %1", _update_isConnected], ["_update_canSee = %1", _update_canSee], ["_target = %1", _target],
-	["_isNull = %1", _isNull], ["_sides = %1", _sides]]
+	[["_update_position = %1", _update_position], ["_update_isConnected = %1", _update_isConnected], ["_update_canSee = %1", _update_canSee],
+	["_update_teleportUI = %1", _update_teleportUI], ["_target = %1", _target], ["_isNull = %1", _isNull], ["_sides = %1", _sides]]
 ] call TTC_CTI_fnc_logSector;*/
 
 
@@ -63,7 +64,7 @@ if (_update_isConnected) then {
 		_canSee = _visibility select _find;
 	};
 
-	[[_sector, _canSee, _mrkArea, _mrk], "TTC_CTI_fnc_updateSectorLocal", _target, false] call BIS_fnc_MP;
+	[[_sector, _canSee, _mrkArea, _mrk, _update_teleportUI], "TTC_CTI_fnc_updateSectorLocal", _target, false] call BIS_fnc_MP;
 } forEach _sides;
 
 // Only update the variable, if it changed.

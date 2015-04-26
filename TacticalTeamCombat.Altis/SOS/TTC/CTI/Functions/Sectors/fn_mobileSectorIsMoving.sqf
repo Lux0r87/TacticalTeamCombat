@@ -29,11 +29,11 @@ while {TTC_CTI_mobileSector_timeOut > 0} do {
 	TTC_CTI_mobileSector_timeOut = TTC_CTI_mobileSector_timeOut - 1;
 	publicVariable "TTC_CTI_mobileSector_timeOut";
 
-	// Update the sector (trigger) position
+	// Update the sector (trigger) position.
 	_sector setPos (getPos _veh);
 
-	// Update the sector
-	[_sector, true] call TTC_CTI_fnc_updateSector;
+	// Update sector: marker position and teleport UI.
+	[_sector, true, false, false, true] call TTC_CTI_fnc_updateSector;
 
 	sleep 1;
 };
