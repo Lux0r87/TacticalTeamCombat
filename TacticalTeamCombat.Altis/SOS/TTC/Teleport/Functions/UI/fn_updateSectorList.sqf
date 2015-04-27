@@ -36,7 +36,7 @@ if (!isNil {_control}) then {
 			TTC_TP_UI_isSectorListUpdating = true;
 
 			_side		= side player;
-			_basePos	= missionNamespace getVariable [format["TTC_BASE_%1", _side], [0, 0]];
+			_basePos	= getMarkerPos format ["mrk_Base_%1", _side];
 			_safe		= [];
 			_warning	= [];
 			_danger		= [];

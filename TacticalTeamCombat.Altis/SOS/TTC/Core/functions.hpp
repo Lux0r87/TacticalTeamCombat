@@ -9,6 +9,7 @@ class TTC_Core_Functions {
 		class clearAmmoBox{};
 		class createSimpleTask{};
 		class createTrigger{};
+		class createVehicle{};
 		class endMission{};
 		class endMissionAll{};
 		class getAmmoBoxType{};
