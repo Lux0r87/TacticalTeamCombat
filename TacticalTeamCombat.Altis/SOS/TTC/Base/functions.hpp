@@ -3,7 +3,7 @@ class TTC_Base_Functions {
 
 	class Actions {
 		file = "SOS\TTC\Base\Functions\Actions";
-		class addActions{};
+		class addTeleportActions{};
 	};
 
 	class Spawn {

@@ -1,5 +1,5 @@
 /*
-	Add actions to the given unit.
+	Add actions to the given object.
 
 	Created by Lux0r
 */

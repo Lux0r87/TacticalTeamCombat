@@ -95,6 +95,6 @@ _rack		= createVehicle ["Land_Metal_rack_F", _rackPos, [], 0, "CAN_COLLIDE"];
 _rack setDir (_dir + 180);
 
 // Add the 'Teleport' action for all players of this side (including JIP).
-[[[_laptop1, _laptop2]], "TTC_BASE_fnc_addActions", _side, true] call BIS_fnc_MP;
+[[[_laptop1, _laptop2]], "TTC_BASE_fnc_addTeleportActions", _side, true] call BIS_fnc_MP;
 
 _teleporter
