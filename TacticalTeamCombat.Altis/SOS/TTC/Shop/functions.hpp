@@ -5,7 +5,7 @@
 class TTC_Shop {
 	tag = "TTC_SHOP";
 
-	class TTC_Shop_Database {	
+	class Database {	
 		file = "SOS\TTC\Shop\Database";
 
 		class init {
@@ -13,7 +13,7 @@ class TTC_Shop {
 		};
 	};
 
-	class TTC_Shop_Functions {	
+	class Functions {	
 		file = "SOS\TTC\Shop\Functions";
 
 		class addArticleToShoppingCart {};
@@ -24,12 +24,18 @@ class TTC_Shop {
 		class getCategoryById {};
 		class getShoppingCart {};
 	};
+
+	class Actions {
+		file = "SOS\TTC\Shop\Functions\Actions";
+
+		class addAction{};
+	};
 };
 
 class TTC_Shop_UI {
 	tag = "TTC_SHOP_UI";
 
-	class TTC_Shop_UI_Functions {	
+	class TFunctions {	
 		file = "SOS\TTC\Shop\Functions\UI";
 
 		class createDialog {};

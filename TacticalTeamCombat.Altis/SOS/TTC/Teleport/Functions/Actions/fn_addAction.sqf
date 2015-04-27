@@ -15,7 +15,7 @@ _object addAction [
 	"<t color='#2200FF'>Teleport</t>",
 	TTC_TP_UI_fnc_createDialog,
 	[],
-	6,
+	10,
 	true,
 	true,
 	"",
