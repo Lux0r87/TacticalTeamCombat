@@ -5,6 +5,7 @@ class TTC_Core_Functions {
 		file = "SOS\TTC\Core\Functions\Common";
 		class addToBlacklist{};
 		class addWaypoint{};
+		class attachObjectsTo{};
 		class clearAmmoBox{};
 		class createSimpleTask{};
 		class createTrigger{};
