@@ -4,7 +4,7 @@
 
 
 private [
-	"_side","_pos","_dir","_teleporter","_tablePos","_table","_laptop1","_bottle","_phone","_notepad","_pen","_chairPos","_chair","_laptop2","_can",
+	"_side","_pos","_dir","_teleporter","_table","_laptop1","_bottle","_phone","_notepad","_pen","_chairPos","_chair","_laptop2","_can",
 	"_suitcasePos","_suitcase","_barrelPos","_barrel","_rackPos","_rack"
 ];
 
@@ -12,16 +12,15 @@ _side	= [_this, 0] call BIS_fnc_param;
 _pos	= [_this, 1] call BIS_fnc_param;
 _dir	= [_this, 2] call BIS_fnc_param;
 
-[["Function: %1", "TTC_Base_fnc_spawnTeleporter"], ["_pos = %1", _pos], ["_dir = %1", _dir]] call TTC_CORE_fnc_log;
+[["Function: %1", "TTC_Base_fnc_spawnTeleporter"], ["_side = %1", _side], ["_pos = %1", _pos], ["_dir = %1", _dir]] call TTC_CORE_fnc_log;
 
 
-// Spawn large bunker
+// Spawn research house.
 _teleporter	= createVehicle ["Land_Research_house_V1_F", _pos, [], 0, "CAN_COLLIDE"];
 _teleporter setDir _dir;
 
-// Spawn 1. table
-_tablePos	= [((_pos select 0) - (cos(_dir + 45) * 2.2)), ((_pos select 1) + (sin(_dir + 45) * 3.8)), 0.4];
-_table		= createVehicle ["Land_CampingTable_F", _tablePos, [], 0, "CAN_COLLIDE"];
+// Spawn 1. table.
+_table		= createVehicle ["Land_CampingTable_F", _pos, [], 0, "CAN_COLLIDE"];
 _table attachTo [_teleporter, [-1.5, 3.7, 0.45]];
 
 _laptop1		= createVehicle ["Land_laptop_unfolded_F", _pos, [], 0, "CAN_COLLIDE"];
@@ -42,13 +41,12 @@ _notepad setVectorDirAndUp [[-1,0,0],[0,0,1]];
 _pen		= createVehicle ["Land_PenBlack_F", _pos, [], 0, "CAN_COLLIDE"];
 _pen attachTo [_table, [0.2, -0.1, 0.415]];
 
-_chairPos	= [((_pos select 0) - (cos(_dir + 45) * 3)), ((_pos select 1) + (sin(_dir + 45) * 2.5)), 0.4];
+_chairPos	= [((_pos select 0) - (cos(_dir + 40) * 2.7)), ((_pos select 1) + (sin(_dir + 40) * 2.7)), 0.4];
 _chair		= createVehicle ["Land_CampingChair_V2_F", _chairPos, [], 0, "CAN_COLLIDE"];
 _chair setDir (_dir + 200);
 
-// Spawn 2. table
-_tablePos	= [((_pos select 0) - (cos(_dir + 135) * 2)), ((_pos select 1) + (sin(_dir + 135) * 3.6)), 0.4];
-_table		= createVehicle ["Land_CampingTable_F", _tablePos, [], 0, "CAN_COLLIDE"];
+// Spawn 2. table.
+_table		= createVehicle ["Land_CampingTable_F", _pos, [], 0, "CAN_COLLIDE"];
 _table attachTo [_teleporter, [1.5, 3.7, 0.45]];
 
 _laptop2		= createVehicle ["Land_laptop_unfolded_F", _pos, [], 0, "CAN_COLLIDE"];
@@ -78,12 +76,12 @@ _can attachTo [_table, [-0.4, 0.25, 0.44]];
 _can		= createVehicle ["Land_Can_Dented_F", _pos, [], 0, "CAN_COLLIDE"];
 _can attachTo [_table, [0.65, 0, 0.43]];
 
-_chairPos	= [((_pos select 0) - (cos(_dir + 135) * 2.4)), ((_pos select 1) + (sin(_dir + 135) * 2.7)), 0.4];
+_chairPos	= [((_pos select 0) - (cos(_dir + 132) * 2.6)), ((_pos select 1) + (sin(_dir + 132) * 2.6)), 0.4];
 _chair		= createVehicle ["Land_CampingChair_V2_F", _chairPos, [], 0, "CAN_COLLIDE"];
 _chair setDir (_dir + 180);
 
 // Create suitcase.
-_suitcasePos	= [((_pos select 0) - (cos(_dir + 80) * 2.7)), ((_pos select 1) + (sin(_dir + 80) * 2.8)), 0.4];
+_suitcasePos	= [((_pos select 0) - (cos(_dir + 80) * 2.7)), ((_pos select 1) + (sin(_dir + 80) * 2.7)), 0.4];
 _suitcase		= createVehicle ["Land_Suitcase_F", _suitcasePos, [], 0, "CAN_COLLIDE"];
 _suitcase setDir (_dir + 90);
 

@@ -5,10 +5,12 @@ class TTC_Core_Functions {
 		file = "SOS\TTC\Core\Functions\Common";
 		class addToBlacklist{};
 		class addWaypoint{};
+		class clearAmmoBox{};
 		class createSimpleTask{};
 		class createTrigger{};
 		class endMission{};
 		class endMissionAll{};
+		class getAmmoBoxType{};
 		class getLocation{};
 		class getMrkTypePrefix{};
 		class getPrefix{};
