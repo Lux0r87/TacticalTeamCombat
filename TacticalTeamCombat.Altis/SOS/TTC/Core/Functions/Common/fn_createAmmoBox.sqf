@@ -18,5 +18,6 @@ _allowDamage	= [_this, 3, false, [false]] call BIS_fnc_param;
 
 _ammo	= [_pos, _className, _dir, _allowDamage] call TTC_CORE_fnc_createVehicle;
 [_ammo] call TTC_CORE_fnc_clearAmmoBox;
+_ammo setVectorUp (surfaceNormal _pos);
 
 _ammo
