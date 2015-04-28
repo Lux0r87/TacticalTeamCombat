@@ -7,6 +7,7 @@ class TTC_Core_Functions {
 		class addWaypoint{};
 		class attachObjectsTo{};
 		class clearAmmoBox{};
+		class createAmmoBox{};
 		class createSimpleTask{};
 		class createTrigger{};
 		class createVehicle{};
