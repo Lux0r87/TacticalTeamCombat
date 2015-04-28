@@ -4,10 +4,10 @@
 
 
 private [
-	"_side","_pos","_dir","_prefix","_type","_lmg_mk200","_lmg_zafir","_lmg_navid","_srifle_mk14","_pistol","_pistol_snds","_pistolOfficer",
-	"_pistolOfficer_scope","_pistolOfficer_snds","_rifle","_rifleGL","_marksmanRifle","_sniperRifle","_sniperRifle_DLC","_deskPos","_desk",
-	"_cashDeskPos1","_cashDesk","_cashDeskPos2","_shelvesPos","_shelves","_reference","_positions","_rackPos","_rack","_ammoPos","_ammo",
-	"_className","_palletPos","_pallet","_barrelPos","_barrel","_salesman1","_salesman2"
+	"_side","_pos","_dir","_prefix","_type","_lmg_mk200","_lmg_zafir","_lmg_navid","_srifle_mk14","_helmetOffset","_helmet","_uniform","_pistol","_pistol_snds",
+	"_pistolOfficer","_pistolOfficer_scope","_pistolOfficer_snds","_rifle","_rifleGL","_marksmanRifle","_sniperRifle","_sniperRifle_DLC",
+	"_deskPos","_desk","_cashDeskPos1","_cashDesk","_cashDeskPos2","_shelvesPos","_shelves","_reference","_positions","_rackPos","_rack",
+	"_ammoPos","_ammo","_className","_palletPos","_pallet","_barrelPos","_barrel","_salesman1","_salesman2"
 ];
 
 _side	= [_this, 0] call BIS_fnc_param;
@@ -23,19 +23,55 @@ _type	= [_side] call TTC_CORE_fnc_getAmmoBoxType;
 ] call TTC_CORE_fnc_log;*/
 
 
-_createWeapons = {
-	private ["_pos","_object","_settings","_weaponHolder"];	
+_createItem = {
+	private ["_pos","_object","_attach","_className","_lock","_weaponHolder"];	
+	_pos		= _this select 0;
+	_object		= _this select 1;
+	_attach		= _this select 2;
+	_className	= _this select 3;
+	_lock		= _this select 4;
+
+	_weaponHolder = createVehicle ["Library_WeaponHolder", _pos, [], 0, "CAN_COLLIDE"];
+	_weaponHolder addItemCargoGlobal [_className, 1];
+	_weaponHolder attachTo [_object, (_attach select 0)];
+	_weaponHolder setVectorDirAndUp (_attach select 1);
+
+	if (_lock) then {
+		_weaponHolder setVariable ["TTC_isShopItem", true, true];
+		//_weaponHolder enableSimulationGlobal false;
+	};
+};
+
+_createItems = {
+	private ["_pos","_object","_settings","_className","_lock"];	
 	_pos		= _this select 0;
 	_object		= _this select 1;
 	_settings	= _this select 2;
+	_className	= _this select 3;
+	_lock		= _this select 4;
+
+	{
+		[_pos, _object, _x, _className, _lock] call _createItem;
+	} forEach _settings;
+};
+
+_createWeapons = {
+	private ["_pos","_object","_settings","_weaponHolder","_lock"];	
+	_pos		= _this select 0;
+	_object		= _this select 1;
+	_settings	= _this select 2;
+	_lock		= _this select 3;
 
 	{
 		_weaponHolder = createVehicle ["Library_WeaponHolder", _pos, [], 0, "CAN_COLLIDE"];
 		_weaponHolder addWeaponCargoGlobal [(_x select 0), 1];
 		_weaponHolder attachTo [_object, (_x select 1)];
 		_weaponHolder setVectorDirAndUp (_x select 2);
-		_weaponHolder setVariable ["TTC_isShopItem", true, true];
-		//_weaponHolder enableSimulationGlobal false;
+
+		if (_lock) then {
+			_weaponHolder setVariable ["TTC_isShopItem", true, true];
+			//_weaponHolder enableSimulationGlobal false;
+		};
 	} forEach _settings;
 };
 
@@ -45,17 +81,32 @@ _createRack = {
 
 	_rack	= [_pos, "Land_Metal_rack_F", _dir] call TTC_CORE_fnc_createVehicle;
 
-	// Create land survival radios (2. + 3. row)
+	// Create land survival radios (1. row)
 	_positions = [
-		[-0.3, 0, -0.25],
-		[0, 0, -0.25],
-		[0.3, 0, -0.25],
-		[-0.3, 0, 0.2],
-		[0, 0, 0.2],
-		[0.3, 0, 0.2]
+		[-0.3, 0, -0.70],
+		[0, 0, -0.70],
+		[0.3, 0, -0.70]
 	];
 
 	["Land_SurvivalRadio_F", _pos, _rack, _positions, [[0,-1,0],[0,0,1]]] call TTC_CORE_fnc_attachObjectsTo;
+
+	// Create land survival radios (2. row)
+	_settings = [
+		[[-0.45, 0.02, 0.31],	[[0,1,0],[0,0,1]]],
+		[[-0.10, 0.02, 0.31],	[[0,1,0],[0,0,1]]],
+		[[0.25, 0.02, 0.31],	[[0,1,0],[0,0,1]]]
+	];
+
+	[_pos, _rack, _settings, _uniform, false] call _createItems;
+
+	// Create helmets (3. row)	
+	_settings = [
+		[[-0.25, 0.35 + _helmetOffset, -0.67 + _helmetOffset],	[[0,0.3,1],[0,1,0]]],
+		[[0.10, 0.35 + _helmetOffset, -0.67 + _helmetOffset],	[[0,0.3,1],[0,1,0]]],
+		[[0.45, 0.35 + _helmetOffset, -0.67 + _helmetOffset],	[[0,0.3,1],[0,1,0]]]
+	];
+
+	[_pos, _rack, _settings, _helmet, false] call _createItems;
 
 	// Create radios (4. row)
 	_positions = [
@@ -113,6 +164,9 @@ switch (_side) do {
 	_srifle_mk14	= ["srifle_DMR_06_camo_F","srifle_DMR_06_olive_F","srifle_DMR_06_camo_khs_F"] call BIS_fnc_selectRandom;
 
 	case west: {
+		_helmetOffset			= 0;
+		_helmet					= "H_HelmetB_camo";
+		_uniform				= "U_B_CombatUniform_mcam";
 		_pistol					= "hgun_P07_F";
 		_pistol_snds			= "hgun_P07_snds_F";
 		_pistolOfficer			= "hgun_Pistol_heavy_01_F";
@@ -125,6 +179,9 @@ switch (_side) do {
 		_sniperRifle_DLC		= ["srifle_DMR_02_F","srifle_DMR_02_camo_F","srifle_DMR_02_sniper_F","srifle_DMR_02_ACO_F","srifle_DMR_02_MRCO_F","srifle_DMR_02_SOS_F","srifle_DMR_02_DMS_F","srifle_DMR_02_sniper_AMS_LP_S_F","srifle_DMR_02_camo_AMS_LP_F","srifle_DMR_02_ARCO_F"] call BIS_fnc_selectRandom;
 	};
 	case resistance: {
+		_helmetOffset			= -0.02;
+		_helmet					= "H_HelmetIA";
+		_uniform				= "U_BG_leader";
 		_pistol					= "hgun_ACPC2_F";
 		_pistol_snds			= "hgun_ACPC2_snds_F";
 		_pistolOfficer			= "hgun_Pistol_heavy_02_F";
@@ -160,7 +217,7 @@ _settings = [
 	[_pistolOfficer_snds,	[0.45, -0.20, 1.08],	[[0,1,0],[0,0,1]]]
 ];
 
-[_deskPos, _desk, _settings] call _createWeapons;
+[_deskPos, _desk, _settings, false] call _createWeapons;
 
 // Spawn cash desks.
 _cashDeskPos1	= [((_deskPos select 0) - (cos(_dir) * 1.75)), ((_deskPos select 1) + (sin(_dir) * 1.75)), 0];
@@ -181,7 +238,7 @@ _settings = [
 	[_srifle_mk14,		[0.15, -0.31, 1.05],	[[0,1,0],[0,0,1]]]
 ];
 
-[_deskPos, _desk, _settings] call _createWeapons;
+[_deskPos, _desk, _settings, false] call _createWeapons;
 
 // Spawn desk.
 _deskPos	= [((_cashDeskPos2 select 0) - (cos(_dir + 157) * 1.35)), ((_cashDeskPos2 select 1) + (sin(_dir + 157) * 1.35)), 0];
@@ -189,13 +246,13 @@ _desk		= [_deskPos, "Land_TableDesk_F", (_dir - 90)] call TTC_CORE_fnc_createVeh
 
 // Create Weapons
 _settings = [
-	[_lmg_mk200,		[-0.60, 0.20, 1.05],	[[0,1,0],[0,0,1]]],
-	["arifle_MX_SW_F",	[-0.55, -0.15, 1.05],	[[0,1,0],[0,0,1]]],
-	[_lmg_navid,		[0.20, 0.09, 1.05],		[[0,1,0],[0,0,1]]],
-	[_lmg_zafir,		[0.28, -0.31, 1.05],	[[0,1,0],[0,0,1]]]
+	[_lmg_mk200,		[-0.55, -0.32, 0.49],	[[0,0,1],[0,-1,0]]],
+	["arifle_MX_SW_F",	[-0.55, -0.15, 1.06],	[[0,1,0],[-0.05,0,1]]],
+	[_lmg_zafir,		[0.25, -0.85, 0.48],	[[0,0,1],[0,-1,0]]],
+	[_lmg_navid,		[0.28, -0.40, 0.55],	[[-0.10,0,1],[0,-1,0]]]
 ];
 
-[_deskPos, _desk, _settings] call _createWeapons;
+[_deskPos, _desk, _settings, false] call _createWeapons;
 
 // Create shelves (metal).
 _shelvesPos	= [((_pos select 0) - (cos(_dir + 90) * 1.5)), ((_pos select 1) + (sin(_dir + 90) * 1.5)), 0];
@@ -204,7 +261,7 @@ _shelves	= [_shelvesPos, "Land_ShelvesMetal_F", _dir] call TTC_CORE_fnc_createVe
 // Create a reference point at the shelves location.
 _reference	= _shelvesPos;
 
-// Create rounds (right side; 1. row)
+// Create ammo boxes (right side; 1. row)
 _positions = [
 	[0.19, -0.8, 0.30],
 	[0.19, -0.6, 0.30],
@@ -219,7 +276,7 @@ _positions = [
 
 ["Land_Ammobox_rounds_F", _reference, _shelves, _positions] call TTC_CORE_fnc_attachObjectsTo;
 
-// Create rounds (right side; 2. row)
+// Create ammo boxes (right side; 2. row)
 _positions = [
 	[0.19, -0.4, 0.66],
 	[0.19, -0.2, 0.66],
@@ -232,70 +289,117 @@ _positions = [
 
 ["Land_Ammobox_rounds_F", _reference, _shelves, _positions] call TTC_CORE_fnc_attachObjectsTo;
 
-// Create rounds (right side; 3. row)
+// Create magazines (right side; 3. row)
 _positions = [
+	[0.18, -0.90, 0.91],
 	[0.18, -0.75, 0.91],
-	[0.18, -0.6, 0.91],
+	[0.18, -0.60, 0.91],
 	[0.18, -0.45, 0.91],
-	[0.18, -0.3, 0.91],
+	[0.18, -0.30, 0.91],
 	[0.18, -0.15, 0.91],
 	[0.18, 0, 0.91],
 	[0.18, 0.15, 0.91],
-	[0.18, 0.3, 0.91],
+	[0.18, 0.30, 0.91],
 	[0.18, 0.45, 0.91],
-	[0.18, 0.6, 0.91],
-	[0.18, 0.75, 0.91]
+	[0.18, 0.60, 0.91],
+	[0.18, 0.75, 0.91],
+	[0.18, 0.90, 0.91]
 ];
 
 ["Land_Magazine_rifle_F", _reference, _shelves, _positions, [[-1,0,0],[0,0,1]]] call TTC_CORE_fnc_attachObjectsTo;
 
-// Create rounds (right side; 4. row)
+// Create magazines (right side; 4. row)
 _positions = [
+	[0.18, -0.90, 1.26],
 	[0.18, -0.75, 1.26],
-	[0.18, -0.6, 1.26],
+	[0.18, -0.60, 1.26],
 	[0.18, -0.45, 1.26],
-	[0.18, -0.3, 1.26],
+	[0.18, -0.30, 1.26],
 	[0.18, -0.15, 1.26],
 	[0.18, 0, 1.26],
 	[0.18, 0.15, 1.26],
-	[0.18, 0.3, 1.26],
+	[0.18, 0.30, 1.26],
 	[0.18, 0.45, 1.26],
-	[0.18, 0.6, 1.26],
-	[0.18, 0.75, 1.26]
+	[0.18, 0.60, 1.26],
+	[0.18, 0.75, 1.26],
+	[0.18, 0.90, 1.26]
 ];
 
 ["Land_Magazine_rifle_F", _reference, _shelves, _positions, [[-1,0,0],[0,0,1]]] call TTC_CORE_fnc_attachObjectsTo;
 
-// Create rounds (left side; 3. row)
+// Create tool kits (left side; 1. row)
+_settings = [
+	[[-0.80, 1.05, 0.20],	[[0,0,1],[-1,0,0]]],
+	[[-0.80, 0.75, 0.20],	[[0,0,1],[-1,0,0]]],
+	[[-0.80, 0.45, 0.20],	[[0,0,1],[-1,0,0]]]
+];
+
+[_reference, _shelves, _settings, "ToolKit", false] call _createItems;
+
+// Create medi kits (left side; 1. row)
+_settings = [
+	[[-0.80, 0.15, 0.20],	[[0,0,1],[-1,0,0]]],
+	[[-0.80, -0.15, 0.20],	[[0,0,1],[-1,0,0]]],
+	[[-0.80, -0.45, 0.20],	[[0,0,1],[-1,0,0]]],
+	[[-0.80, -0.75, 0.20],	[[0,0,1],[-1,0,0]]]
+];
+
+[_reference, _shelves, _settings, "Medikit", false] call _createItems;
+
+// Create FAKs (left side; 2. row)
+_settings = [
+	[[-0.15, 0.90, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, 0.75, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, 0.60, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, 0.45, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, 0.30, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, 0.15, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, 0.00, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -0.15, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -0.30, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -0.45, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -0.60, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -0.75, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -0.90, 0.02],	[[1,0,0],[0,0,-1]]],
+	[[-0.15, -1.05, 0.02],	[[1,0,0],[0,0,-1]]]
+];
+
+[_reference, _shelves, _settings, "FirstAidKit", false] call _createItems;
+
+// Create magazines (left side; 3. row)
 _positions = [
+	[-0.18, -0.90, 0.91],
 	[-0.18, -0.75, 0.91],
-	[-0.18, -0.6, 0.91],
+	[-0.18, -0.60, 0.91],
 	[-0.18, -0.45, 0.91],
-	[-0.18, -0.3, 0.91],
+	[-0.18, -0.30, 0.91],
 	[-0.18, -0.15, 0.91],
 	[-0.18, 0, 0.91],
 	[-0.18, 0.15, 0.91],
-	[-0.18, 0.3, 0.91],
+	[-0.18, 0.30, 0.91],
 	[-0.18, 0.45, 0.91],
-	[-0.18, 0.6, 0.91],
-	[-0.18, 0.75, 0.91]
+	[-0.18, 0.60, 0.91],
+	[-0.18, 0.75, 0.91],
+	[-0.18, 0.90, 0.91]
 ];
 
 ["Land_Magazine_rifle_F", _reference, _shelves, _positions, [[1,0,0],[0,0,1]]] call TTC_CORE_fnc_attachObjectsTo;
 
-// Create rounds (left side; 4. row)
+// Create magazines (left side; 4. row)
 _positions = [
+	[-0.18, -0.90, 1.26],
 	[-0.18, -0.75, 1.26],
-	[-0.18, -0.6, 1.26],
+	[-0.18, -0.60, 1.26],
 	[-0.18, -0.45, 1.26],
-	[-0.18, -0.3, 1.26],
+	[-0.18, -0.30, 1.26],
 	[-0.18, -0.15, 1.26],
 	[-0.18, 0, 1.26],
 	[-0.18, 0.15, 1.26],
-	[-0.18, 0.3, 1.26],
+	[-0.18, 0.30, 1.26],
 	[-0.18, 0.45, 1.26],
-	[-0.18, 0.6, 1.26],
-	[-0.18, 0.75, 1.26]
+	[-0.18, 0.60, 1.26],
+	[-0.18, 0.75, 1.26],
+	[-0.18, 0.90, 1.26]
 ];
 
 ["Land_Magazine_rifle_F", _reference, _shelves, _positions, [[1,0,0],[0,0,1]]] call TTC_CORE_fnc_attachObjectsTo;
@@ -309,24 +413,24 @@ _reference	= _shelvesPos;
 
 // Create backpacks (1. row)
 _settings = [
-	["B_Carryall_ocamo",	[0.7, -0.4, 0.45],	[[0,1,0],[1,0,0]]],
-	["B_Carryall_oucamo",	[0.7, 0.2, 0.45],	[[0,1,0],[1,0,0]]],
-	["B_Carryall_mcamo",	[0.7, 0.8, 0.45],	[[0,1,0],[1,0,0]]],
-	["B_Carryall_khk",		[-0.7, -0.4, 0.27],	[[0,1,0],[-1,0,0]]],
-	["B_Carryall_oucamo",	[-0.7, 0.2, 0.27],	[[0,1,0],[-1,0,0]]],
-	["B_Carryall_cbr",		[-0.7, 0.8, 0.27],	[[0,1,0],[-1,0,0]]]
+	["B_Carryall_ocamo",	[0.7, -0.3, 0.45],	[[0,1,0],[1,0,0]]],
+	["B_Carryall_oucamo",	[0.7, 0.3, 0.45],	[[0,1,0],[1,0,0]]],
+	["B_Carryall_mcamo",	[0.7, 0.9, 0.45],	[[0,1,0],[1,0,0]]],
+	["B_Carryall_khk",		[-0.7, -0.3, 0.25],	[[0,1,0],[-1,0,0]]],
+	["B_Carryall_oucamo",	[-0.7, 0.3, 0.25],	[[0,1,0],[-1,0,0]]],
+	["B_Carryall_cbr",		[-0.7, 0.9, 0.25],	[[0,1,0],[-1,0,0]]]
 ];
 
 [_reference, _shelves, _settings] call _createBackpacks;
 
 // Create backpacks (2. row)
 _settings = [
-	["B_FieldPack_khk",		[0.7, -0.3, 0.80],	[[0,1,0],[1,0,0]]],
-	["B_FieldPack_ocamo",	[0.7, 0.3, 0.80],	[[0,1,0],[1,0,0]]],
-	["B_FieldPack_oucamo",	[0.7, 0.9, 0.80],	[[0,1,0],[1,0,0]]],
-	["B_FieldPack_cbr",		[-0.7, -0.3, 0.62],	[[0,1,0],[-1,0,0]]],
-	["B_FieldPack_blk",		[-0.7, 0.3, 0.62],	[[0,1,0],[-1,0,0]]],
-	["B_FieldPack_khk",		[-0.7, 0.9, 0.62],	[[0,1,0],[-1,0,0]]]
+	["B_FieldPack_khk",		[0.75, -0.3, 0.80],	[[0,1,0],[1,0,0]]],
+	["B_FieldPack_ocamo",	[0.75, 0.3, 0.80],	[[0,1,0],[1,0,0]]],
+	["B_FieldPack_oucamo",	[0.75, 0.9, 0.80],	[[0,1,0],[1,0,0]]],
+	["B_FieldPack_cbr",		[-0.75, -0.3, 0.62],	[[0,1,0],[-1,0,0]]],
+	["B_FieldPack_blk",		[-0.75, 0.3, 0.62],	[[0,1,0],[-1,0,0]]],
+	["B_FieldPack_khk",		[-0.75, 0.9, 0.62],	[[0,1,0],[-1,0,0]]]
 ];
 
 [_reference, _shelves, _settings] call _createBackpacks;
