@@ -23,9 +23,6 @@ if (hasInterface) then {
 
 	// Initialize Virtual Arsenal.
 	//[] execVM "SOS\VirtualArsenal\initVirtualArsenal.sqf";
-	
-	// Firing in base protection.
-	[] execVM "SOS\MiscScripts\noFireZone.sqf";
 
 	// Aircraft resupply zones.
 	[] execVM "SOS\MiscScripts\aircraftResupplyZone.sqf";

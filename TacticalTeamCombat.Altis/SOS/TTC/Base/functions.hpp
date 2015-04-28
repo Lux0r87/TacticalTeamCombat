@@ -7,6 +7,11 @@ class TTC_Base_Functions {
 		class addShopActions{};
 	};
 
+	class Protection {
+		file = "SOS\TTC\Base\Functions\Protection";
+		class noFireZone{};
+	};
+
 	class Spawn {
 		file = "SOS\TTC\Base\Functions\Spawn";
 		class spawnBase {};
