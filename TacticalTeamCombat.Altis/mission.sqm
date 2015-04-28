@@ -195,7 +195,7 @@ class Mission
 						items=1;
 						class Item0
 						{
-							value="1";
+							value="0";
 							parentCls="ModuleZoneProtection_F";
 							typeName="Show";
 						};
@@ -239,7 +239,7 @@ class Mission
 						items=1;
 						class Item0
 						{
-							value="1";
+							value="0";
 							parentCls="ModuleZoneProtection_F";
 							typeName="Show";
 						};

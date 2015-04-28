@@ -3,33 +3,35 @@
 */
 
 
+// Get the mission parameters.
 if (isNil "TTC_safetyTime") then {
 	TTC_safetyTime = ["TTC_CORE_safetyTime", 300] call BIS_fnc_getParamValue;
 };
 
 TTC_disableThermal = ["DisableThermal", 1] call BIS_fnc_getParamValue;
 
+
+// Initialize TTC Base module.
+[] call TTC_BASE_fnc_init;
+
+// Initialize TTC BTC (Bitcoin) module.
 [] call TTC_BTC_fnc_init;
 
+// Initialize TTC CTI (Capture the Island) module.
 [] spawn TTC_CTI_fnc_init;
 
-//[] spawn TTC_SHOP_fnc_init;
 
 // Server-side:
 if (isServer) then {
-	// Spawn a base for each side that is present in the current game.
-	{
-		[_x] spawn TTC_BASE_fnc_spawnBase;
-	} forEach [west, east, resistance];
-
 	[] spawn TTC_CORE_fnc_runTimer;
 };
+
 
 // Client-side:
 if (hasInterface) then {
 	// Add the respawn inventory.
 	[] spawn TTC_CORE_fnc_addRespawnInventory;
-	
+
 	// Handle the fatigue.
 	[player] call TTC_CORE_fnc_handleFatigue;
 
