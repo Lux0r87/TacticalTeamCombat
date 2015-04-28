@@ -4,7 +4,7 @@
 
 
 #define TTC_CORE_isLocked (_locked > 1 || _isLocked)
-#define TTC_CORE_isOwner (_unit == _container getVariable ["TTC_isOwner", ObjNull])
+#define TTC_CORE_isOwner (_unit == _container getVariable ["TTC_isOwner", objNull])
 #define TTC_CORE_displayName (getText (configFile >> "CfgVehicles" >> format["%1", typeOf _container] >> "displayName"))
 
 private ["_unit","_container","_result","_locked","_isLocked"];
@@ -17,6 +17,12 @@ _locked		= locked _container;
 _isLocked	= _container getVariable ["TTC_isLocked", false];
 
 switch (true) do {
+	// Check if container is a shop item.
+	case ((_container isKindOf "Library_WeaponHolder") && (_container getVariable ["TTC_isShopItem", false])): {
+		hintC "Nice try, but it's not allowed to steal in the shop.\nShame on you!";
+		[format["%1 tried to steal in the shop!", name _unit], "TTC_CORE_fnc_systemChat", side _unit, false] call BIS_fnc_MP;
+		_result = true;
+	};
 	// Check if container is a backpack.
 	case (_container isKindOf "Bag_Base"): {
 		hintSilent format["The %1 is locked!", TTC_CORE_displayName];
