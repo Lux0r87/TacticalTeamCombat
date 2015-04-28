@@ -12,7 +12,7 @@
 
 
 // Run this script only on client-side.
-if (!isDedicated) then {
+if (hasInterface) then {
 	waitUntil {!isNull player};
 
 	player addEventHandler ["Fired", {

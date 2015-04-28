@@ -10,3 +10,9 @@ if (isServer) then {
 		[_x] spawn TTC_BASE_fnc_spawnBase;
 	} forEach [west, east, resistance];
 };
+
+// Client-side:
+if (hasInterface) then {	
+	// Firing in base protection.
+	[] call TTC_BASE_fnc_noFireZone;
+};
