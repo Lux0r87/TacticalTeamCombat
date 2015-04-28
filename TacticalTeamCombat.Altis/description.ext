@@ -78,7 +78,6 @@ class CfgRespawnInventory {
 class CfgFunctions
 {
 	#include "CHVD\CfgFunctions.hpp"
-	#include "SOS\Clear\functions.hpp"
 	#include "SOS\TTC\functions.hpp"
 };
 

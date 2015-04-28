@@ -14,9 +14,6 @@ if (isServer) then {
 
 	// Set overcast, fog and rain (chosen in the mission parameters).
 	[] execVM "SOS\Weather\setWeather.sqf";
-
-	// Begin script that keeps the base clear of dropped items/weapons and destroyed vehicles.
-	[] execVM "SOS\Clear\initClear.sqf";
 };
 
 // Client-side scripts:
