@@ -16,7 +16,7 @@ class TTC_CORE_sectorPatterns {
 	title		= "Tactical Team Combat: Pattern for the sectors (number, connections).";
 	values[]	= {-1, 0, 1};
 	texts[]		= {"Random (Default)", "7 Sectors", "9 Sectors"};
-	default		= -1;
+	default		= 1;
 };
 
 class TTC_CORE_fatigue {
