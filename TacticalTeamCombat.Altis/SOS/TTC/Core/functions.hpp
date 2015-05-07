@@ -64,4 +64,10 @@ class TTC_Core_Functions {
 		class spawnHelicopter {};
 		class spawnVehicle {};
 	};
+
+	class Vectors {
+		file = "SOS\TTC\Core\Functions\Vectors";
+		class getOrthogonalVector {};
+		class getOrthogonalVectorSimplified {};
+	};
 };
