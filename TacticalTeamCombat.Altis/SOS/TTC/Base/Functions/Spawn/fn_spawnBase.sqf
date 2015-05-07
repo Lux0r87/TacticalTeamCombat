@@ -4,11 +4,11 @@
 	Created by Lux0r
 */
 
-#define TTC_BASE_safetyDistance 1200
+#define TTC_BASE_safetyDistance 500
 
 private [
 	"_side","_prefix","_location","_basePos","_mrk","_mrkTypePrefix","_mrkName","_mrkColor","_mrkText","_respawnPos","_dome","_dir","_domePos",
-	"_commandPos","_infoPos","_shopPos","_teleporterPos"	
+	"_commandPos","_infoPos","_shopPos","_teleporterPos"
 ];
 
 _side	= [_this, 0] call BIS_fnc_param;

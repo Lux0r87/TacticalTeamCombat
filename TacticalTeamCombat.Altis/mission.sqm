@@ -34,7 +34,6 @@ class Mission
 		"A3_Modules_F",
 		"A3_Characters_F_INDEP",
 		"A3_Structures_F_Mil_Helipads",
-		"A3_Structures_F_Mil_Flags",
 		"A3_Signs_F",
 		"a3_map_altis"
 	};
@@ -837,7 +836,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=7;
+		items=3;
 		class Item0
 		{
 			position[]={19309.293,18.777187,15347.849};
@@ -860,53 +859,9 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={19356.582,18.13435,15302.402};
-			azimut=315;
-			id=44;
-			side="EMPTY";
-			vehicle="Flag_NATO_F";
-			leader=1;
-			skill=0.60000002;
-			init="this allowDamage false;";
-		};
-		class Item3
-		{
-			position[]={19354.129,18.139999,15299.832};
-			azimut=315;
-			id=45;
-			side="EMPTY";
-			vehicle="FlagPole_F";
-			leader=1;
-			skill=0.60000002;
-			init="this allowDamage false; this setFlagTexture ""SOS\Pictures\SOS_flag.jpg"";";
-		};
-		class Item4
-		{
-			position[]={22666.377,14.378081,18961.654};
-			azimut=290.17447;
-			id=46;
-			side="EMPTY";
-			vehicle="Flag_AAF_F";
-			leader=1;
-			skill=0.60000002;
-			init="this allowDamage false;";
-		};
-		class Item5
-		{
-			position[]={22665.217,14.413906,18959.133};
-			azimut=290.17447;
-			id=47;
-			side="EMPTY";
-			vehicle="FlagPole_F";
-			leader=1;
-			skill=0.60000002;
-			init="this allowDamage false; this setFlagTexture ""SOS\Pictures\SOS_flag.jpg"";";
-		};
-		class Item6
-		{
 			position[]={22977.436,2.8512011,15783.865};
 			azimut=244;
-			id=48;
+			id=44;
 			side="EMPTY";
 			vehicle="ArrowMarker_R_F";
 			skill=0.60000002;
@@ -936,7 +891,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=6;
+		items=15;
 		class Item0
 		{
 			position[]={19309.457,18.779795,15347.792};
@@ -972,8 +927,8 @@ class Mission
 		class Item2
 		{
 			position[]={19340.652,18.307947,15312.729};
-			a=1200;
-			b=1200;
+			a=500;
+			b=500;
 			activationBy="GUER";
 			interruptable=1;
 			age="UNKNOWN";
@@ -987,8 +942,8 @@ class Mission
 		class Item3
 		{
 			position[]={22647.477,14.753351,18970.264};
-			a=1200;
-			b=1200;
+			a=500;
+			b=500;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
@@ -1030,6 +985,110 @@ class Mission
 			};
 			synchronizations[]={9};
 			syncId=14;
+		};
+		class Item6
+		{
+			position[]={4764.2622,83.59198,11699.553};
+			a=40;
+			b=40;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_A";
+			class Effects
+			{
+			};
+		};
+		class Item7
+		{
+			position[]={5388.8149,65.580704,10917.573};
+			a=40;
+			b=40;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_I";
+			class Effects
+			{
+			};
+		};
+		class Item8
+		{
+			position[]={5074.0542,50.495991,11245.399};
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_E";
+			class Effects
+			{
+			};
+		};
+		class Item9
+		{
+			position[]={4999.1714,56.987778,11378.271};
+			a=40;
+			b=40;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_B";
+			class Effects
+			{
+			};
+		};
+		class Item10
+		{
+			position[]={5189.9199,52.683128,11139.396};
+			a=40;
+			b=40;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_H";
+			class Effects
+			{
+			};
+		};
+		class Item11
+		{
+			position[]={5152.9014,57.340874,11337.425};
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_D";
+			class Effects
+			{
+			};
+		};
+		class Item12
+		{
+			position[]={4895.9419,43.075382,11314.917};
+			a=40;
+			b=40;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_C";
+			class Effects
+			{
+			};
+		};
+		class Item13
+		{
+			position[]={5070.5981,40.060177,11085.7};
+			a=40;
+			b=40;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_G";
+			class Effects
+			{
+			};
+		};
+		class Item14
+		{
+			position[]={4878.8394,27.385321,11124.229};
+			a=70;
+			b=70;
+			interruptable=1;
+			age="UNKNOWN";
+			name="TestTrigger_F";
+			class Effects
+			{
+			};
 		};
 	};
 };
