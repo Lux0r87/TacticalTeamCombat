@@ -36,3 +36,5 @@
 #define TTC_UI_TYPE_MAP              	100
 #define TTC_UI_TYPE_MAP_MAIN         	101
 #define TTC_UI_TYPE_LISTNBOX         	102
+#define TTC_UI_TYPE_ITEMSLOT         	103
+#define TTC_UI_TYPE_LISTNBOX_HEADER    	105
