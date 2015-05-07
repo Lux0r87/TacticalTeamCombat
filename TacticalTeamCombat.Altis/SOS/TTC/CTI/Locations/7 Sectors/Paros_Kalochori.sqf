@@ -10,6 +10,7 @@
 
 TTC_CTI_sides = [west, resistance];
 
+// Sector: [<name>, <position>, <axisA>, <axisB>, <direction>, <isRectangle>, <side>, <dominance>, <neighbours>, <spawnDir>, <isMobile>]
 TTC_CTI_sectorDefinitions = [
 	["A",			[20681,16202], 40,	40,	0,		false, west,		100, TTC_CTI_neighbours_sectorA, 25, false],
 	["B",			[20887,16894], 30,	30,	0,		false, east,		100, TTC_CTI_neighbours_sectorB, 90, false],

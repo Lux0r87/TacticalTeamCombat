@@ -11,6 +11,7 @@ class TTC_Core_Functions {
 		class createSimpleTask{};
 		class createTrigger{};
 		class createVehicle{};
+		class createZoneProtection{};
 		class endMission{};
 		class endMissionAll{};
 		class getAmmoBoxType{};

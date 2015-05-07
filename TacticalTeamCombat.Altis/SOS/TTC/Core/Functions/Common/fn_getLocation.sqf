@@ -5,7 +5,7 @@
 */
 
 
-#define TTC_CORE_availableLocations ["Paros_Kalochori"]
+#define TTC_CORE_availableLocations ["Paros_Kalochori", "Panochori"]
 
 private ["_index"];
 
@@ -15,7 +15,7 @@ if (isNil "TTC_CORE_location") then {
 	// Get the selected location from the mission parameter. -1 = random.
 	_index = ["TTC_CORE_locations", -1] call BIS_fnc_getParamValue;
 
-	// Select a random location, if chosen in the mission parameter
+	// Select a random location, if chosen in the mission parameter.
 	TTC_CORE_location = if (_index < 0) then {
 		TTC_CORE_availableLocations call BIS_fnc_selectRandom;
 	} else {
