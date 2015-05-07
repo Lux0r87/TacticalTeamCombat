@@ -34,7 +34,7 @@ if (CFG_AdminCmds == 1) then {
 	
 	if (_isAdmin) then {
 		
-	player exec "camera.sqs";
+	player call BIS_fnc_cameraOld;
 	hint parseText "WASD to move camera<br/>Numpad to look around<br/>Numpad 0 to exit";
 		
 	}else {
