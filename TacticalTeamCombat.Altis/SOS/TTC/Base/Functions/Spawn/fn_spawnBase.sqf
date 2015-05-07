@@ -8,7 +8,7 @@
 
 private [
 	"_side","_prefix","_location","_basePos","_mrk","_mrkTypePrefix","_mrkName","_mrkColor","_mrkText","_respawnPos","_dome","_dir","_domePos",
-	"_commandPos","_infoPos","_shopPos","_teleporterPos"
+	"_infoPos","_shopPos","_teleporterPos"
 ];
 
 _side	= [_this, 0] call BIS_fnc_param;
@@ -57,10 +57,6 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	// Lock the doors of the dome.
 	_dome setVariable ['bis_disabled_Door_1',1,true];
 	_dome setVariable ['bis_disabled_Door_2',1,true];
-
-	// Spawn command centre.
-	_commandPos = [((_basePos select 0) - (cos(_dir + 225) * 10)), ((_basePos select 1) + (sin(_dir + 225) * 10)), 0];
-	[_side, _commandPos, (_dir + 135)] call TTC_BASE_fnc_spawnCommandCentre;
 
 	// Spawn info area.
 	_infoPos = [((_basePos select 0) - (cos(_dir + 135) * 10)), ((_basePos select 1) + (sin(_dir + 135) * 10)), 0];
