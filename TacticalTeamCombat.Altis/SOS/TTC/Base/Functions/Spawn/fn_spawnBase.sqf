@@ -10,14 +10,14 @@
 private [
 	"_side","_basePos","_sides","_return","_mrkTypePrefix","_mrkName","_mrkColor","_mrkText","_mrkType","_mrk","_respawnPos","_vehSpawnPos","_vehSpawnDir",
 	"_dir","_signPos","_sign","_heliSpawnPos","_heliSpawnDir","_helipad","_maintenancePos","_maintenanceDir","_prefix","_trigger","_className","_baseDir",
-	"_cargoHq","_cargoHqPos","_infoPos","_shopPos","_teleporterPos","_teleporterDir","_teleporter"
+	"_cargoHq","_cargoHqPos","_infoPos","_teleporterPos","_teleporterDir","_teleporter","_tower"
 ];
 
 _side		= [_this, 0] call BIS_fnc_param;
 _basePos	= missionNamespace getVariable [format["TTC_BASE_%1_Pos", _side], [0,0]];
 
 
-//[["Function: %1", "TTC_Base_fnc_spawnBase"], ["_side = %1", _side], ["_basePos = %1", _basePos]] call TTC_CORE_fnc_log;
+//[["Function: %1", "TTC_BASE_fnc_spawnBase"], ["_side = %1", _side], ["_basePos = %1", _basePos]] call TTC_CORE_fnc_log;
 
 
 if (format ["%1", _basePos] != "[0,0]") then {
@@ -101,8 +101,6 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	_cargoHq	= createVehicle [_className, _basePos, [], 0, "CAN_COLLIDE"];
 	_cargoHq setDir _baseDir;
 	_cargoHqPos = getPos _cargoHq;
-	_cargoHq setVectorUp (surfaceNormal _cargoHqPos);
-	_cargoHq setPos [_cargoHqPos select 0, _cargoHqPos select 1, -0.3];
 	_cargoHq allowDamage false;
 
 	// Lock the doors of the cargo HQ.
@@ -114,8 +112,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	//[_side, _infoPos, (_baseDir + 45)] call TTC_BASE_fnc_spawnInfoArea;
 
 	// --------------- Shop ---------------
-	_shopPos = [((_basePos select 0) - (cos(_baseDir + 45) * 10)), ((_basePos select 1) + (sin(_baseDir + 45) * 10)), 0];
-	//[_side, _shopPos, (_baseDir + 315)] call TTC_BASE_fnc_spawnShop;
+	[_side, _cargoHq, _baseDir, -3.28] call TTC_BASE_fnc_spawnShop;
 
 	// --------------- Teleporter ---------------
 	_teleporterPos	= missionNamespace getVariable [format["TTC_BASE_%1_TeleportPos1", _side], [0,0]];
