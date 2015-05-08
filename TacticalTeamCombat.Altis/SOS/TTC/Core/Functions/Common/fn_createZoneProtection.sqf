@@ -3,7 +3,7 @@
 */
 
 
-private ["_text","_pos","_xrad","_yrad","_dir","_rectangle","_actBy","_trigger"];
+private ["_text","_pos","_xrad","_yrad","_dir","_rectangle","_actBy","_actType","_trigger"];
 
 _text		= [_this, 0, "", [""]] call BIS_fnc_param;
 _pos		= [_this, 1, [0, 0], [[]], [2, 3]] call BIS_fnc_param;

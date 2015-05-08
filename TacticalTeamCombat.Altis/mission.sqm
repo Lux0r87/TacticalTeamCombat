@@ -6,7 +6,6 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f",
 		"a3_map_altis",
-		"A3_Structures_F_Mil_Helipads",
 		"A3_Structures_F_Civ_InfoBoards",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Characters_F_INDEP",
@@ -29,7 +28,6 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f",
 		"A3_Characters_F_INDEP",
-		"A3_Structures_F_Mil_Helipads",
 		"A3_Signs_F",
 		"a3_map_altis"
 	};
@@ -658,57 +656,15 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=3;
+		items=1;
 		class Item0
-		{
-			position[]={14177.012,19.557013,16284.448};
-			azimut=44.702885;
-			id=34;
-			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
-			skill=0.60000002;
-			text="B_Maintenance_Helipad";
-		};
-		class Item1
-		{
-			position[]={15183.086,17.916845,17300.451};
-			azimut=227;
-			id=35;
-			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
-			skill=0.60000002;
-			text="I_Maintenance_Helipad";
-		};
-		class Item2
 		{
 			position[]={22977.436,2.8512011,15783.865};
 			azimut=244;
-			id=36;
+			id=34;
 			side="EMPTY";
 			vehicle="ArrowMarker_R_F";
 			skill=0.60000002;
-		};
-	};
-	class Markers
-	{
-		items=2;
-		class Item0
-		{
-			position[]={14177.207,19.556597,16284.51};
-			name="B_Maintenance_Marker";
-			text="Maintenance";
-			type="b_maint";
-			colorName="ColorWEST";
-			angle=174.83687;
-		};
-		class Item1
-		{
-			position[]={15183.23,17.916653,17300.742};
-			name="I_Maintenance_Marker";
-			text="Maintenance";
-			type="b_maint";
-			colorName="ColorGUER";
-			angle=180.134;
 		};
 	};
 	class Sensors

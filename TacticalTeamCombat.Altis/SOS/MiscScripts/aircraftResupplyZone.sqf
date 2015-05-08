@@ -157,7 +157,7 @@ while {true} do {
 					playSound "warning1";
 				};
 				
-				waitUntil{!((_veh in list B_Maintenance_Trigger) or (_veh in list I_Maintenance_Trigger) or (_veh in list trg_JetSupply))};
+				waitUntil{!((_veh in list B_Maintenance_Trigger) or (_veh in list I_Maintenance_Trigger))};
 			};
 		};
 	};
