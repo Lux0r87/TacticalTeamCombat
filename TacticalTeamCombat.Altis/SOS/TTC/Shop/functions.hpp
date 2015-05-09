@@ -8,6 +8,7 @@ class TTC_Shop {
 	class Database {	
 		file = "SOS\TTC\Shop\Database";
 
+		class init {};
 	};
 
 	class Functions {	
@@ -20,6 +21,7 @@ class TTC_Shop {
 		class getCategoryByArticleId {};
 		class getCategoryById {};
 		class getShoppingCart {};
+		class removeArticleFromShoppingCart {};
 	};
 
 	class Actions {
