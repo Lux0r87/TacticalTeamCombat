@@ -20,17 +20,17 @@ TTC_CTI_sides = [west, resistance];
 	<side>,			// Side:	The side which controls the sector at the beginning of the mission.
 	<dominance>,	// Integer:	Defines how dominant the current side is at this sector.
 	<neighbours>,	// Array:	Predefined array with the neighbour sectors, according to the pattern.
-	<spawnDir>,		// Integer:	
-	<type>			// Integer:	Select the type of the sector: 0 = sandbags, 1 = bag bunker, 2 = mobile
+	<spawnDir>,		// Array:	Respawn directions for the different teams. Must be the same order as 'TTC_CTI_sides'!
+	<type>,			// Integer:	Select the type of the sector: 0 = sandbags, 1 = bag bunker, 2 = mobile
 	<objectDir>		// Integer:	Direction to spawn the vehicle or the bunker/sandbags (depending on chosen type).
 ]*/
 
 TTC_CTI_sectorDefinitions = [
-	["A",	[4764,11699],	0,	40,	40,	false, west,		100, TTC_CTI_neighbours_sectorA, 25,	1,	0],
-	["B",	[4999,11378],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorB, 90,	0,	0],
-	["C",	[4895,11314],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorC, 65,	0,	0],
-	["D",	[5074,11245],	0,	70,	70,	false, east,		100, TTC_CTI_neighbours_sectorD, 320,	0,	0],
-	["E",	[5070,11085],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorE, 220,	0,	0],
-	["F",	[5189,11139],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorF, 245,	0,	0],
-	["G",	[5388,10917],	0,	40,	40,	false, resistance,	100, TTC_CTI_neighbours_sectorG, 230,	1,	0]
+	["A",	[4764,11699],	0,	40,	40,	false, west,		100, TTC_CTI_neighbours_sectorA, [0, 0],	1,	0],
+	["B",	[4999,11378],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorB, [0, 0],	0,	0],
+	["C",	[4895,11314],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorC, [0, 0],	0,	0],
+	["D",	[5074,11245],	0,	70,	70,	false, east,		100, TTC_CTI_neighbours_sectorD, [0, 0],	0,	0],
+	["E",	[5070,11085],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorE, [0, 0],	0,	0],
+	["F",	[5189,11139],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorF, [0, 0],	0,	0],
+	["G",	[5388,10917],	0,	40,	40,	false, resistance,	100, TTC_CTI_neighbours_sectorG, [0, 0],	1,	0]
 ];

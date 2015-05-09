@@ -30,14 +30,14 @@ _sectors = [];
 	_sectors pushBack _sector;
 
 	// Initialize all sector variables.
-	_sector setVariable ["TTC_CTI_sector_name",			_name, true];
+	_sector setVariable ["TTC_CTI_sector_name",			_name,			true];	// Broadcast sector name to all clients.
 	_sector setVariable ["TTC_CTI_sector_axisA",		_xrad];
 	_sector setVariable ["TTC_CTI_sector_axisB",		_yrad];
 	_sector setVariable ["TTC_CTI_sector_rectangle",	_rectangle];
-	_sector setVariable ["TTC_CTI_sector_side",			_side, true];
-	_sector setVariable ["TTC_CTI_sector_dominance",	_dominance, true];
+	_sector setVariable ["TTC_CTI_sector_side",			_side,			true];	// Broadcast sector side to all clients.
+	_sector setVariable ["TTC_CTI_sector_dominance",	_dominance,		true];	// Broadcast sector dominance to all clients.
 	_sector setVariable ["TTC_CTI_sector_neighbours",	_neighbours];
-	_sector setVariable ["TTC_CTI_sector_respawnDir",	_respawnDir];
+	_sector setVariable ["TTC_CTI_sector_respawnDir",	_respawnDir,	true];	// Broadcast respawn positions to all clients.
 	_sector setVariable ["TTC_CTI_sector_type",			_type];
 	_sector setVariable ["TTC_CTI_sector_objectDir",	_objectDir];
 

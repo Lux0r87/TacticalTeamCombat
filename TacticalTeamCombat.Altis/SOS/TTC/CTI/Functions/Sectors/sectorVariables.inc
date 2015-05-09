@@ -13,7 +13,7 @@
 #define TTC_CTI_sectorVariable_marker(SECTOR)				SECTOR getVariable ["TTC_CTI_sector_marker", ""]
 #define TTC_CTI_sectorVariable_side(SECTOR)					SECTOR getVariable ["TTC_CTI_sector_side", sideUnknown]
 #define TTC_CTI_sectorVariable_dominance(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_dominance", 0]
-#define TTC_CTI_sectorVariable_respawnDir(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_respawnDir", 0]
+#define TTC_CTI_sectorVariable_respawnDir(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_respawnDir", []]
 #define TTC_CTI_sectorVariable_type(SECTOR)					SECTOR getVariable ["TTC_CTI_sector_type", 0]
 #define TTC_CTI_sectorVariable_objectDir(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_objectDir", 0]
 #define TTC_CTI_sectorVariable_flag(SECTOR)					SECTOR getVariable ["TTC_CTI_sector_flag", objNull]
