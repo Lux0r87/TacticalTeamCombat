@@ -21,6 +21,7 @@ class TTC_Shop {
 		class getCategoryByArticleId {};
 		class getCategoryById {};
 		class getShoppingCart {};
+		class getShoppingCartCosts {};
 		class removeArticleFromShoppingCart {};
 	};
 
@@ -54,5 +55,6 @@ class TTC_Shop_UI {
 		class updateArticlePicture {};
 		class updateCategoryList {};
 		class updateShoppingCart {};
+		class updateShoppingCartCosts {};
 	};
 };

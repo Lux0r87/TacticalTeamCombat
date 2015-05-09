@@ -37,10 +37,11 @@ _addArticleEntryToList = {
 
 //////////
 
-_articleList = uiNamespace getVariable ["TTC_SHOP_UI_shoppingCart_articleList", nil];
-lnbClear _articleList;
 
 _shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
+
+_articleList = uiNamespace getVariable ["TTC_SHOP_UI_shoppingCart_articleList", nil];
+lnbClear _articleList;
 
 {
 	_articleEntries = _x select 1;
@@ -48,3 +49,8 @@ _shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
 		[_articleList, _x] call _addArticleEntryToList;
 	} forEach _articleEntries;
 } forEach _shoppingCart;
+
+_shoppingCartCosts = [] call TTC_SHOP_fnc_getShoppingCartCosts;
+_shoppingCartCosts call TTC_SHOP_UI_fnc_updateShoppingCartCosts;
+
+[] call TTC_SHOP_UI_fnc_updateBuy;

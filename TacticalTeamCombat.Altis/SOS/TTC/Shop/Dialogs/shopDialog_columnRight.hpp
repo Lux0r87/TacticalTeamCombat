@@ -141,7 +141,7 @@ class TTC_SHOP_ShopDialog_ShoppingCart_Costs : TTC_UI_StructuredText {
 	idc					= 53009;
 	colorBackground[]	= TTC_UI_COLOR_BLACK_A100;
 	text				= "";
-	sizeEx 				= TTC_UI_TEXT_SIZE_XL;
+	sizeEx 				= TTC_UI_TEXT_SIZE_XXL;
 	style 				= TTC_UI_STYLE_RIGHT;
 	x 					= TTC_SHOP_UI_SHOPPING_CART_COSTS_X;
 	y 					= TTC_SHOP_UI_SHOPPING_CART_COSTS_Y;
