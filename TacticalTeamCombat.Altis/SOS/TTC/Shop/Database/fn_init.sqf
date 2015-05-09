@@ -7,9 +7,7 @@
 	Initializes the shop database.
 */
 _initializeDatabase = {
-	
-	diag_log "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX > _initializeDatabase";
-	
+		
 	waitUntil {!(IsNull player) && (time > 0.0)};
 	
 	_side		= side player;
@@ -24,9 +22,7 @@ _initializeDatabase = {
 	Initializes the shopping cart.
 */
 _initializeShoppingCart = {
-		
-	diag_log "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX > _initializeShoppingCart";
-		
+				
 	_shoppingCart = [];
 	_categories = [] call TTC_SHOP_fnc_getCategories;
 	
@@ -38,7 +34,6 @@ _initializeShoppingCart = {
 	TTC_SHOP_shoppingCart = _shoppingCart;
 };
 
-diag_log "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX > Initialize shop database";
 
 // Client-side:
 if (hasInterface) then {

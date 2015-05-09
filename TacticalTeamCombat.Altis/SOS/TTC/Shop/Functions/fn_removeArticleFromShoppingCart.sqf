@@ -17,13 +17,10 @@ _shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
 _path = [_shoppingCart, _articleId] call BIS_fnc_findNestedElement;
 if (_path isEqualTo []) then {
 	
-	systemChat "Article not found";
 	// Do nothing. Article is not in shopping cart
 	
 } else {
-	
-	systemChat "Article found";
-	
+		
 	_categoryIndex = _path select 0;
 	_entryIndex = _path select 2;
 	
@@ -31,7 +28,6 @@ if (_path isEqualTo []) then {
 	_entry = _entries select _entryIndex;
 	
 	_amount = (_entry select 1) - 1;
-	systemChat format["New amount = %1", _amount];
 	
 	if (_amount > 0) then {
 		_entry set [1, _amount];
