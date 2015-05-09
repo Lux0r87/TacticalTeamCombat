@@ -4,4 +4,7 @@
     Created by BauerMitFackel
 */
 
+
 systemChat "Buy button clicked";
+[] call TTC_SHOP_fnc_buy;
+// TODO: Reset shopping cart

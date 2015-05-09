@@ -15,6 +15,7 @@ class TTC_Shop {
 		file = "SOS\TTC\Shop\Functions";
 
 		class addArticleToShoppingCart {};
+		class buy {};
 		class canBuy {};
 		class getArticleById {};
 		class getArticles {};
