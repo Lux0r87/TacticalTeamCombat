@@ -2,10 +2,10 @@
 	Created by Lux0r
 */
 
-#include "dominanceVariables.hpp"
-#include "sectorVariables.hpp"
+#include "dominanceVariables.inc"
+#include "sectorVariables.inc"
 
-private ["_unit","_side","_sector","_visibility","_find","_canSee","_mrkArea","_mrk"];
+private ["_unit","_side","_visibility","_find","_canSee","_mrkArea","_mrk"];
 
 _unit	= [_this, 0] call BIS_fnc_param;
 _side	= side _unit;
@@ -19,8 +19,7 @@ _side	= side _unit;
 waitUntil {TTC_CTI_initDone && !isNil "TTC_CTI_sides"};
 
 {
-	_sector		= _x;
-	_visibility	= TTC_CTI_sectorVariable_visibility;
+	_visibility	= TTC_CTI_sectorVariable_visibility(_x);
 	_find		= ([TTC_CTI_sides, _side] call BIS_fnc_arrayFindDeep) select 0;
 	_canSee		= _visibility select _find;
 	_mrkArea	= format["mrk_SectorArea%1", _forEachIndex];
@@ -28,11 +27,11 @@ waitUntil {TTC_CTI_initDone && !isNil "TTC_CTI_sides"};
 
 	if (_canSee) then {
 		// Update the sector markers.
-		[_sector, TTC_CTI_dominanceMax, _mrkArea, _mrk] call TTC_CTI_fnc_updateSectorMarkersLocal;
+		[_x, TTC_CTI_dominanceMax, _mrkArea, _mrk] call TTC_CTI_fnc_updateSectorMarkersLocal;
 
 		// Create task
-		_task = [_unit, _sector] call TTC_CTI_fnc_createSimpleTask;
-		_sector setVariable ["TTC_CTI_sector_task", _task];
+		_task = [_unit, _x] call TTC_CTI_fnc_createSimpleTask;
+		_x setVariable ["TTC_CTI_sector_task", _task];
 	} else {
 		// Hide the sector markers.
 		_mrkArea setMarkerAlphaLocal 0;

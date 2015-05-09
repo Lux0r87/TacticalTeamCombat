@@ -1,5 +1,6 @@
 /*
 	Defines the neighbours for all sectors, according to the following concept:
+	https://cloud.githubusercontent.com/assets/11304010/7549440/c46b5956-f634-11e4-825d-0655790b6f41.png
 
 	- The numbers for the neighbours represent the index in the TTC_CTI_sectorDefinitions array.
 	- A string is used for each base: "base" + <side>, e.g.: "baseWEST"

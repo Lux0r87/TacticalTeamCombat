@@ -6,15 +6,15 @@
 */
 
 
-#include "sectorVariables.hpp"
+#include "sectorVariables.inc"
 
 private ["_sector","_side","_sectorSide","_neighbours","_canSee","_base","_neighbourSide"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
-_sectorSide	= [_this, 2, TTC_CTI_sectorVariable_side, [sideUnknown]] call BIS_fnc_param;
+_sectorSide	= [_this, 2, TTC_CTI_sectorVariable_side(_sector), [sideUnknown]] call BIS_fnc_param;
 
-_neighbours	= TTC_CTI_sectorVariable_neighbours;
+_neighbours	= TTC_CTI_sectorVariable_neighbours(_sector);
 _canSee		= false;
 _base		= format["base%1", _side];
 

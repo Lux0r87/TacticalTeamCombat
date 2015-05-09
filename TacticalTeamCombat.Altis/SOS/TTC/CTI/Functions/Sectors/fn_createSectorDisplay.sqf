@@ -5,7 +5,7 @@
 
 disableSerialization;
 
-#include "sectorVariables.hpp"
+#include "sectorVariables.inc"
 
 #define TTC_CTI_sectorDisplay_isNull isNull (uiNamespace getVariable ["TTC_CTI_sectorDisplay", displayNull])
 
@@ -27,7 +27,7 @@ if (TTC_CTI_sectorDisplay_isNull) then {
 
 	while {!TTC_CTI_sectorDisplay_isNull} do {
 		// Set the text for the sector display.
-		_side	= TTC_CTI_sectorVariable_side;
+		_side	= TTC_CTI_sectorVariable_side(_sector);
 		_color	= [_side, false] call BIS_fnc_sideColor;
 		_control ctrlSetTextColor _color;
 

@@ -3,8 +3,8 @@
 */
 
 
-#include "sectorChecks.hpp"
-#include "taskDescriptions.hpp"
+#include "sectorChecks.inc"
+#include "taskDescriptions.inc"
 
 private ["_unit","_sector","_taskDesc"];
 
@@ -17,13 +17,13 @@ _sector	= [_this, 1] call BIS_fnc_param;
 
 
 _taskDesc = switch (true) do {
-	case (TTC_CTI_unitDominatesSector): {
+	case (TTC_CTI_unitDominatesSector(_sector, _unit)): {
 		TTC_CTI_taskDescription_unitDominatesSector;
 	};
-	case (TTC_CTI_unitControlsSector): {
+	case (TTC_CTI_unitControlsSector(_sector, _unit)): {
 		TTC_CTI_taskDescription_unitControlsSector;
 	};
-	case (TTC_CTI_enemyControlsSector): {
+	case (TTC_CTI_enemyControlsSector(_sector, _unit)): {
 		TTC_taskDescription_enemyControlsSector;
 	};
 	default {

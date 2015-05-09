@@ -3,7 +3,7 @@
 */
 
 
-#include "sectorChecks.hpp"
+#include "sectorChecks.inc"
 
 private ["_unit","_sector","_taskParent","_pos","_taskState","_taskName","_taskDesc","_task"];
 

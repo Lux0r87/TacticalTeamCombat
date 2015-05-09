@@ -3,17 +3,17 @@
 */
 
 
-#include "dominanceVariables.hpp"
-#include "sectorVariables.hpp"
+#include "dominanceVariables.inc"
+#include "sectorVariables.inc"
 
 private ["_sector","_canSee","_mrkArea","_mrk","_update_teleportUI","_task","_taskState","_taskDesc","_taskTitle"];
 
 _sector				= [_this, 0] call BIS_fnc_param;
 _canSee				= [_this, 1, false, [false]] call BIS_fnc_param;
-_mrkArea			= [_this, 2, TTC_CTI_sectorVariable_markerArea, [""]] call BIS_fnc_param;
-_mrk				= [_this, 3, TTC_CTI_sectorVariable_marker, [""]] call BIS_fnc_param;
+_mrkArea			= [_this, 2, TTC_CTI_sectorVariable_markerArea(_sector), [""]] call BIS_fnc_param;
+_mrk				= [_this, 3, TTC_CTI_sectorVariable_marker(_sector), [""]] call BIS_fnc_param;
 _update_teleportUI	= [_this, 4, false, [false]] call BIS_fnc_param;		// Refresh the teleport UI, if it's open.
-_task				= [_this, 5, TTC_CTI_sectorVariable_task, [taskNull]] call BIS_fnc_param;
+_task				= [_this, 5, TTC_CTI_sectorVariable_task(_sector), [taskNull]] call BIS_fnc_param;
 
 /*[_sector, "TTC_CTI_fnc_updateSectorLocal",
 	[["_canSee = %1", _canSee], ["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_update_teleportUI = %1", _update_teleportUI], ["_task = %1", _task]]

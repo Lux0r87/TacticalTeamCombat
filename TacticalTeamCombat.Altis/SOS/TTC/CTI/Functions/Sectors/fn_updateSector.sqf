@@ -3,7 +3,7 @@
 */
 
 
-#include "sectorVariables.hpp"
+#include "sectorVariables.inc"
 
 private [
 	"_sector","_update_position","_update_isConnected","_update_canSee","_update_teleportUI","_target","_mrkArea","_mrk","_visibilityOld","_connectedOld","_pos",
@@ -17,10 +17,10 @@ _update_canSee		= [_this, 3, false, [false]] call BIS_fnc_param;		// Recalculate
 _update_teleportUI	= [_this, 4, false, [false]] call BIS_fnc_param;		// Refresh the teleport UI, if it's open.
 _target				= [_this, 5, ObjNull, [ObjNull]] call BIS_fnc_param;
 
-_mrkArea		= TTC_CTI_sectorVariable_markerArea;
-_mrk			= TTC_CTI_sectorVariable_marker;
-_visibilityOld	= TTC_CTI_sectorVariable_visibility;
-_connectedOld	= TTC_CTI_sectorVariable_isConnectedToBase;
+_mrkArea		= TTC_CTI_sectorVariable_markerArea(_sector);
+_mrk			= TTC_CTI_sectorVariable_marker(_sector);
+_visibilityOld	= TTC_CTI_sectorVariable_visibility(_sector);
+_connectedOld	= TTC_CTI_sectorVariable_isConnectedToBase(_sector);
 _pos			= getPos _sector;
 
 _visibility	= _visibilityOld;

@@ -3,7 +3,7 @@
 */
 
 
-#include "sectorVariables.hpp"
+#include "sectorVariables.inc"
 
 #define TTC_timeOut 30
 
@@ -22,7 +22,7 @@ _sector		= _veh getVariable ["TTC_sector", objNull];
 
 
 if (!isNull _sector) then {
-	_sectorSide	= TTC_CTI_sectorVariable_side;
+	_sectorSide	= TTC_CTI_sectorVariable_side(_sector);
 	_side		= side _unit;
 
 	// Move out from vehicle, if the unit is not from the side which controls the mobile sector.

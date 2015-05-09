@@ -3,15 +3,15 @@
 */
 
 
-#include "sectorVariables.hpp"
+#include "sectorVariables.inc"
 
 private ["_sector","_axisA","_axisB","_side","_patrol","_unitTypes","_radius","_pos","_safePos","_grp","_prefix","_unitType","_unit"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
-_axisA		= [_this, 1, TTC_CTI_sectorVariable_axisA, [0]] call BIS_fnc_param;
-_axisB		= [_this, 2, TTC_CTI_sectorVariable_axisB, [0]] call BIS_fnc_param;
-_side		= [_this, 3, TTC_CTI_sectorVariable_side, [sideUnknown]] call BIS_fnc_param;
-_patrol		= [_this, 4, TTC_CTI_sectorVariable_patrol, [grpNull]] call BIS_fnc_param;
+_axisA		= [_this, 1, TTC_CTI_sectorVariable_axisA(_sector), [0]] call BIS_fnc_param;
+_axisB		= [_this, 2, TTC_CTI_sectorVariable_axisB(_sector), [0]] call BIS_fnc_param;
+_side		= [_this, 3, TTC_CTI_sectorVariable_side(_sector), [sideUnknown]] call BIS_fnc_param;
+_patrol		= [_this, 4, TTC_CTI_sectorVariable_patrol(_sector), [grpNull]] call BIS_fnc_param;
 _unitTypes	= [_this, 5, ["_Soldier_SL_F","_Soldier_AR_F","_Soldier_LAT_F","_soldier_M_F","_medic_F"], [[]]] call BIS_fnc_param;
 
 _pos		= getPos _sector;

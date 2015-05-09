@@ -3,8 +3,8 @@
 */
 
 
-#include "dominanceVariables.hpp"
-#include "sectorVariables.hpp"
+#include "dominanceVariables.inc"
+#include "sectorVariables.inc"
 
 private ["_sectors","_neighbours","_neighbour","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_isMobile","_shape","_mrk","_patrol","_visibility","_canSee"];
 
@@ -37,14 +37,14 @@ _sectors = [_this, 0] call BIS_fnc_param;
 // Iterate over all sectors:
 {
 	_sector		= _x;
-	_name		= TTC_CTI_sectorVariable_name;
-	_xrad		= TTC_CTI_sectorVariable_axisA;
-	_yrad		= TTC_CTI_sectorVariable_axisB;
-	_rectangle	= TTC_CTI_sectorVariable_rectangle;
-	_side		= TTC_CTI_sectorVariable_side;
-	_dominance	= TTC_CTI_sectorVariable_dominance;
-	_respawnDir	= TTC_CTI_sectorVariable_respawnDir;
-	_isMobile	= TTC_CTI_sectorVariable_isMobile;
+	_name		= TTC_CTI_sectorVariable_name(_sector);
+	_xrad		= TTC_CTI_sectorVariable_axisA(_sector);
+	_yrad		= TTC_CTI_sectorVariable_axisB(_sector);
+	_rectangle	= TTC_CTI_sectorVariable_rectangle(_sector);
+	_side		= TTC_CTI_sectorVariable_side(_sector);
+	_dominance	= TTC_CTI_sectorVariable_dominance(_sector);
+	_respawnDir	= TTC_CTI_sectorVariable_respawnDir(_sector);
+	_isMobile	= TTC_CTI_sectorVariable_isMobile(_sector);
 
 	// Create area marker
 	_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};

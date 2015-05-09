@@ -11,9 +11,9 @@
 
 disableSerialization;
 
-#include "sectorStates.hpp"
-#include "tooltipsSector.hpp"
-#include "tooltipsTeleport.hpp"
+#include "sectorStates.inc"
+#include "tooltipsSector.inc"
+#include "tooltipsTeleport.inc"
 
 private["_control","_index","_enable","_id","_sector","_name","_state","_teleport","_price","_balance"];
 

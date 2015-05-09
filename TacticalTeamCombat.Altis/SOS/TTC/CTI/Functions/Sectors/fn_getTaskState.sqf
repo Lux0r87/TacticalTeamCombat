@@ -3,7 +3,7 @@
 */
 
 
-#include "sectorChecks.hpp"
+#include "sectorChecks.inc"
 
 private ["_unit","_sector","_taskState"];
 
@@ -15,7 +15,7 @@ _sector	= [_this, 1] call BIS_fnc_param;
 ] call TTC_CTI_fnc_logSector;*/
 
 
-_taskState = if (TTC_CTI_unitDominatesSector) then {
+_taskState = if (TTC_CTI_unitDominatesSector(_sector, _unit)) then {
 	"Succeeded";
 } else {
 	"Created";

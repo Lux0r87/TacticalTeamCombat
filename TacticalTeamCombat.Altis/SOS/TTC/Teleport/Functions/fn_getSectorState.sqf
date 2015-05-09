@@ -5,7 +5,7 @@
 */
 
 
-#include "UI\sectorStates.hpp"
+#include "UI\sectorStates.inc"
 
 private["_sector","_dominance","_isConnected","_state"];
 

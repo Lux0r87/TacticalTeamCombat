@@ -10,8 +10,8 @@
 
 disableSerialization;
 
-#include "sectorStates.hpp"
-#include "tooltipsTeleport.hpp"
+#include "sectorStates.inc"
+#include "tooltipsTeleport.inc"
 
 #define TTC_TP_UI_basicPrice 250
 #define TTC_TP_UI_distancePrice 20

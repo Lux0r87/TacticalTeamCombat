@@ -5,7 +5,7 @@
 */
 
 #ifndef TTC_CTI_sectorPattern
-	#include "sectorPattern.hpp"
+	#include "sectorPattern.inc"
 #endif
 
 TTC_CTI_sides = [west, resistance];

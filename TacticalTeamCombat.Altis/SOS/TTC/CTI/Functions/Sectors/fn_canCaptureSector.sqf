@@ -6,14 +6,14 @@
 */
 
 
-#include "sectorVariables.hpp"
+#include "sectorVariables.inc"
 
 private ["_sector","_side","_neighbours","_canCapture","_base","_neighbourSide","_connected"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
 
-_neighbours	= TTC_CTI_sectorVariable_neighbours;
+_neighbours	= TTC_CTI_sectorVariable_neighbours(_sector);
 _canCapture	= false;
 _base		= format["base%1", _side];
 
@@ -28,15 +28,14 @@ if (_base in _neighbours) exitWith {
 // Iterate over all neighbours
 {
 	scopeName "searchLoop";
-	_sector = _x;
 
 	// Skip bases (strings).
-	if (typeName _sector != "STRING") then {
-		_neighbourSide	= TTC_CTI_sectorVariable_side;
+	if (typeName _x != "STRING") then {
+		_neighbourSide	= TTC_CTI_sectorVariable_side(_x);
 
 		// Check if the given side controls this neighbour sector.
 		if (_side == _neighbourSide) then {
-			_connected = TTC_CTI_sectorVariable_isConnectedToBase;
+			_connected = TTC_CTI_sectorVariable_isConnectedToBase(_x);
 
 			// The sector can be captured, if the neighbour sector is connected with the base.
 			if (_connected) exitWith {
