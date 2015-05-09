@@ -219,8 +219,6 @@ TTC_SHOP_ARTICLE_arifle_MXC_F = [9, "arifle_MXC_F", 0, 450] call _getWeapon;
 TTC_SHOP_ARTICLE_arifle_Katiba_C_F = [12, "arifle_Katiba_C_F", 0, 450] call _getWeapon;
 TTC_SHOP_ARTICLE_arifle_MX_F = [13, "arifle_MX_F", 0, 600] call _getWeapon;
 TTC_SHOP_ARTICLE_arifle_Katiba_F = [16, "arifle_Katiba_F", 0, 600] call _getWeapon;
-TTC_SHOP_ARTICLE_arifle_MX_GL_F = [17, "arifle_MX_GL_F", 0, 750] call _getWeapon;
-TTC_SHOP_ARTICLE_arifle_Katiba_GL_F = [19, "arifle_Katiba_GL_F", 0, 750] call _getWeapon;
 TTC_SHOP_ARTICLE_arifle_MXM_F = [28, "arifle_MXM_F", 0, 840] call _getWeapon;
 TTC_SHOP_ARTICLE_srifle_EBR_F = [29, "srifle_EBR_F", 0, 1050] call _getWeapon;
 TTC_SHOP_ARTICLE_srifle_DMR_03_F = [31, "srifle_DMR_03_F", 0, 1050] call _getWeapon;
@@ -266,17 +264,9 @@ TTC_SHOP_ARTICLE_muzzle_snds_H = [146, "muzzle_snds_H", 0, 180] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_B = [149, "muzzle_snds_B", 0, 270] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_93mmg = [152, "muzzle_snds_93mmg", 0, 405] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan = [153, "muzzle_snds_93mmg_tan", 0, 405] call _getItem;
-TTC_SHOP_ARTICLE_DemoCharge_Remote_Mag = [154, "DemoCharge_Remote_Mag", 0, 200] call _getMagazine;
-TTC_SHOP_ARTICLE_SatchelCharge_Remote_Mag = [155, "SatchelCharge_Remote_Mag", 0, 400] call _getMagazine;
-TTC_SHOP_ARTICLE_APERSMine_Range_Mag = [156, "APERSMine_Range_Mag", 0, 150] call _getMagazine;
-TTC_SHOP_ARTICLE_APERSBoundingMine_Range_Mag = [157, "APERSBoundingMine_Range_Mag", 0, 225] call _getMagazine;
-TTC_SHOP_ARTICLE_APERSTripMine_Wire_Mag = [158, "APERSTripMine_Wire_Mag", 0, 225] call _getMagazine;
-TTC_SHOP_ARTICLE_SLAMDirectionalMine_Wire_Mag = [159, "SLAMDirectionalMine_Wire_Mag", 0, 300] call _getMagazine;
-TTC_SHOP_ARTICLE_ATMine_Range_Mag = [160, "ATMine_Range_Mag", 0, 375] call _getMagazine;
 TTC_SHOP_ARTICLE_Binocular = [165, "Binocular", 0, 60] call _getWeapon;
 TTC_SHOP_ARTICLE_FirstAidKit = [167, "FirstAidKit", 0, 50] call _getWeapon;
-TTC_SHOP_ARTICLE_ToolKit = [169, "ToolKit", 0, 200] call _getWeapon;
-TTC_SHOP_ARTICLE_MineDetector = [170, "MineDetector", 0, 150] call _getWeapon;
+TTC_SHOP_ARTICLE_Medikit = [168, "Medikit", 0, 200] call _getWeapon;
 TTC_SHOP_ARTICLE_NVGoggles = [171, "NVGoggles", 0, 400] call _getWeapon;
 TTC_SHOP_ARTICLE_G_Shades_Black = [176, "G_Shades_Black", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Blue = [177, "G_Shades_Blue", 0, 5] call _getGlasses;
@@ -346,8 +336,6 @@ TTC_SHOP_ARTICLE_B_APC_Tracked_01_CRV_F = [264, "B_APC_Tracked_01_CRV_F", 0, 225
 TTC_SHOP_ARTICLE_B_APC_Tracked_01_AA_F = [265, "B_APC_Tracked_01_AA_F", 0, 3000] call _getVehicle;
 TTC_SHOP_ARTICLE_B_APC_Wheeled_01_cannon_F = [266, "B_APC_Wheeled_01_cannon_F", 0, 3750] call _getVehicle;
 TTC_SHOP_ARTICLE_B_Heli_Light_01_F = [281, "B_Heli_Light_01_F", 0, 750] call _getVehicle;
-TTC_SHOP_ARTICLE_B_UGV_01_F = [310, "B_UGV_01_F", 0, 600] call _getUGV;
-TTC_SHOP_ARTICLE_B_UGV_01_rcws_F = [311, "B_UGV_01_rcws_F", 0, 1125] call _getUGV;
 TTC_SHOP_ARTICLE_V_Chestrig_khk = [320, "V_Chestrig_khk", 0, 200] call _getVest;
 
 
@@ -365,8 +353,6 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_arifle_Katiba_C_F,
   TTC_SHOP_ARTICLE_arifle_MX_F,
   TTC_SHOP_ARTICLE_arifle_Katiba_F,
-  TTC_SHOP_ARTICLE_arifle_MX_GL_F,
-  TTC_SHOP_ARTICLE_arifle_Katiba_GL_F,
   TTC_SHOP_ARTICLE_arifle_MXM_F,
   TTC_SHOP_ARTICLE_srifle_EBR_F,
   TTC_SHOP_ARTICLE_srifle_DMR_03_F,
@@ -412,17 +398,9 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_muzzle_snds_B,
   TTC_SHOP_ARTICLE_muzzle_snds_93mmg,
   TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan,
-  TTC_SHOP_ARTICLE_DemoCharge_Remote_Mag,
-  TTC_SHOP_ARTICLE_SatchelCharge_Remote_Mag,
-  TTC_SHOP_ARTICLE_APERSMine_Range_Mag,
-  TTC_SHOP_ARTICLE_APERSBoundingMine_Range_Mag,
-  TTC_SHOP_ARTICLE_APERSTripMine_Wire_Mag,
-  TTC_SHOP_ARTICLE_SLAMDirectionalMine_Wire_Mag,
-  TTC_SHOP_ARTICLE_ATMine_Range_Mag,
   TTC_SHOP_ARTICLE_Binocular,
   TTC_SHOP_ARTICLE_FirstAidKit,
-  TTC_SHOP_ARTICLE_ToolKit,
-  TTC_SHOP_ARTICLE_MineDetector,
+  TTC_SHOP_ARTICLE_Medikit,
   TTC_SHOP_ARTICLE_NVGoggles,
   TTC_SHOP_ARTICLE_G_Shades_Black,
   TTC_SHOP_ARTICLE_G_Shades_Blue,
@@ -492,8 +470,6 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_B_APC_Tracked_01_AA_F,
   TTC_SHOP_ARTICLE_B_APC_Wheeled_01_cannon_F,
   TTC_SHOP_ARTICLE_B_Heli_Light_01_F,
-  TTC_SHOP_ARTICLE_B_UGV_01_F,
-  TTC_SHOP_ARTICLE_B_UGV_01_rcws_F,
   TTC_SHOP_ARTICLE_V_Chestrig_khk
 ];
 
@@ -505,8 +481,6 @@ TTC_SHOP_RIFLES = [
 	TTC_SHOP_ARTICLE_arifle_Katiba_C_F,
 	TTC_SHOP_ARTICLE_arifle_MX_F,
 	TTC_SHOP_ARTICLE_arifle_Katiba_F,
-	TTC_SHOP_ARTICLE_arifle_MX_GL_F,
-	TTC_SHOP_ARTICLE_arifle_Katiba_GL_F,
 	TTC_SHOP_ARTICLE_arifle_MXM_F,
 	TTC_SHOP_ARTICLE_srifle_EBR_F,
 	TTC_SHOP_ARTICLE_srifle_DMR_03_F,
@@ -569,21 +543,10 @@ TTC_SHOP_AMMUNITION = [
 	TTC_SHOP_ARTICLE_10Rnd_93x64_DMR_05_Mag
 ];
 
-TTC_SHOP_EXPLOSIVES = [
-	TTC_SHOP_ARTICLE_DemoCharge_Remote_Mag,
-	TTC_SHOP_ARTICLE_SatchelCharge_Remote_Mag,
-	TTC_SHOP_ARTICLE_APERSMine_Range_Mag,
-	TTC_SHOP_ARTICLE_APERSBoundingMine_Range_Mag,
-	TTC_SHOP_ARTICLE_APERSTripMine_Wire_Mag,
-	TTC_SHOP_ARTICLE_SLAMDirectionalMine_Wire_Mag,
-	TTC_SHOP_ARTICLE_ATMine_Range_Mag
-];
-
 TTC_SHOP_ITEMS = [
 	TTC_SHOP_ARTICLE_Binocular,
 	TTC_SHOP_ARTICLE_FirstAidKit,
-	TTC_SHOP_ARTICLE_ToolKit,
-	TTC_SHOP_ARTICLE_MineDetector,
+	TTC_SHOP_ARTICLE_Medikit,
 	TTC_SHOP_ARTICLE_NVGoggles
 ];
 
@@ -671,11 +634,6 @@ TTC_SHOP_HELICOPTERS = [
 	TTC_SHOP_ARTICLE_B_Heli_Light_01_F
 ];
 
-TTC_SHOP_UGVS = [
-	TTC_SHOP_ARTICLE_B_UGV_01_F,
-	TTC_SHOP_ARTICLE_B_UGV_01_rcws_F
-];
-
 
 
 /*
@@ -688,12 +646,10 @@ TTC_SHOP_CATEGORIES = [
   [4, "Scopes", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemoptic_ca.paa", TTC_SHOP_SCOPES],
   [5, "Attachments", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemmuzzle_ca.paa", TTC_SHOP_ATTACHMENTS],
   [7, "Ammunition", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargomag_ca.paa", TTC_SHOP_AMMUNITION],
-  [8, "Explosives", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa", TTC_SHOP_EXPLOSIVES],
   [9, "Items", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargomisc_ca.paa", TTC_SHOP_ITEMS],
   [11, "Facewear", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\goggles_ca.paa", TTC_SHOP_FACEWEAR],
   [13, "Vests", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\vest_ca.paa", TTC_SHOP_VESTS],
   [14, "Backpacks", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa", TTC_SHOP_BACKPACKS],
   [15, "Vehicles", "SOS\TTC\Shop\Icons\vehicle.paa", TTC_SHOP_VEHICLES],
-  [16, "Helicopters", "SOS\TTC\Shop\Icons\helicopter.paa", TTC_SHOP_HELICOPTERS],
-  [17, "UGVs", "SOS\TTC\Shop\Icons\ugv.paa", TTC_SHOP_UGVS]
+  [16, "Helicopters", "SOS\TTC\Shop\Icons\helicopter.paa", TTC_SHOP_HELICOPTERS]
 ];

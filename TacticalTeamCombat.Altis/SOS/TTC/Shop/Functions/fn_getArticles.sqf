@@ -4,5 +4,5 @@
     Created by BauerMitFackel
 */
 
-_articles = TTC_SHOP_articles;
+_articles = TTC_SHOP_ARTICLES;
 _articles;

@@ -8,9 +8,6 @@ class TTC_Shop {
 	class Database {	
 		file = "SOS\TTC\Shop\Database";
 
-		class init {
-			preInit = 1;
-		};
 	};
 
 	class Functions {	

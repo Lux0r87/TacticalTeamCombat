@@ -4,5 +4,5 @@
     Created by BauerMitFackel
 */
 
-_categories = TTC_SHOP_categories;
+_categories = TTC_SHOP_CATEGORIES;
 _categories;

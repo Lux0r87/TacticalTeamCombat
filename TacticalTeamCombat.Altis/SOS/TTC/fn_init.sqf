@@ -20,7 +20,6 @@ TTC_disableThermal = ["DisableThermal", 1] call BIS_fnc_getParamValue;
 // Initialize TTC CTI (Capture the Island) module.
 [] spawn TTC_CTI_fnc_init;
 
-
 // Server-side:
 if (isServer) then {
 	[] spawn TTC_CORE_fnc_runTimer;
@@ -29,6 +28,7 @@ if (isServer) then {
 
 // Client-side:
 if (hasInterface) then {
+
 	// Add the respawn inventory.
 	[] spawn TTC_CORE_fnc_addRespawnInventory;
 
@@ -40,6 +40,9 @@ if (hasInterface) then {
 
 	// Show unit markers.
 	[] spawn TTC_MAP_fnc_showMarkerForUnits;
+	
+	// Initialize TTC Shop module.
+	[] spawn TTC_SHOP_fnc_init;
 
 	// Add eventHandler to detect team kills.
 	player addEventHandler ["killed", TTC_BTC_fnc_killed];

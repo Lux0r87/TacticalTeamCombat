@@ -4,9 +4,28 @@
 
 
 /*
+	Initializes the shop database.
+*/
+_initializeDatabase = {
+	
+	diag_log "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX > _initializeDatabase";
+	
+	waitUntil {!(IsNull player) && (time > 0.0)};
+	
+	_side		= side player;
+	_roleId		= player getVariable "TTC_roleId";
+	_roleName	= _roleId call TTC_CORE_fnc_getRoleNameById;
+	
+	[] call compile preprocessFileLineNumbers format["SOS\TTC\Shop\Database\%1\%2.sqf", _side, _roleName];
+};
+
+
+/*
 	Initializes the shopping cart.
 */
 _initializeShoppingCart = {
+		
+	diag_log "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX > _initializeShoppingCart";
 		
 	_shoppingCart = [];
 	_categories = [] call TTC_SHOP_fnc_getCategories;
@@ -19,22 +38,10 @@ _initializeShoppingCart = {
 	TTC_SHOP_shoppingCart = _shoppingCart;
 };
 
+diag_log "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX > Initialize shop database";
 
 // Client-side:
 if (hasInterface) then {
-	
-	systemChat "Initializing TTC Shop";
-	
-	waitUntil {!(IsNull player) && (time > 0.0)};
-	
-	_side		= side player;
-	_roleId		= player getVariable "TTC_roleId";
-	_roleName	= _roleId call TTC_CORE_fnc_getRoleNameById;
-	
-	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Database\articles.sqf";
-	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Database\West\Combat Engineer.sqf";
-	[] call compile preprocessFileLineNumbers "SOS\TTC\Shop\Database\categories.sqf";
+	[] call _initializeDatabase;
 	[] call _initializeShoppingCart;
-
-	systemChat "TTC Shop initialized";
 };
