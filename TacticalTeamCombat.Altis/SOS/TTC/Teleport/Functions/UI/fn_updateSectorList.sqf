@@ -122,6 +122,5 @@ if (!isNil {_control}) then {
 			TTC_TP_UI_isSectorListUpdating = false;
 		};
 	};
-} else {
-	["Variable TTC_TP_UI_sectorList not defined"] call BIS_fnc_error;
 };
+

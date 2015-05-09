@@ -5,7 +5,7 @@
 #include "dominanceVariables.inc"
 #include "sectorVariables.inc"
 
-private ["_unit","_side","_visibility","_find","_canSee","_mrkArea","_mrk"];
+private ["_unit","_side","_visibility","_find","_canSee","_mrkArea","_mrk","_sectorSide","_color","_brush","_text","_task"];
 
 _unit	= [_this, 0] call BIS_fnc_param;
 _side	= side _unit;
@@ -26,15 +26,20 @@ waitUntil {TTC_CTI_initDone && !isNil "TTC_CTI_sides"};
 	_mrk		= format["mrk_Sector%1", _forEachIndex];
 
 	if (_canSee) then {
-		// Update the sector markers.
-		[_x, TTC_CTI_dominanceMax, _mrkArea, _mrk] call TTC_CTI_fnc_updateSectorMarkersLocal;
+		_sectorSide	= _x getVariable ["TTC_CTI_sector_side", sideUnknown];
+		_color		= [_sectorSide, true] call BIS_fnc_sideColor;
+		_brush		= "Solid";
+		_text		= [_x] call TTC_CTI_fnc_getSectorText;
 
 		// Create task
 		_task = [_unit, _x] call TTC_CTI_fnc_createSimpleTask;
 		_x setVariable ["TTC_CTI_sector_task", _task];
 	} else {
-		// Hide the sector markers.
-		_mrkArea setMarkerAlphaLocal 0;
-		_mrk setMarkerAlphaLocal 0;
+		_color		= "ColorUNKNOWN";
+		_brush		= "DiagGrid";
+		_text		= _x getVariable ["TTC_CTI_sector_name", ""];
 	};
+
+	// Update the sector markers.
+	[_x, TTC_CTI_dominanceMax, _mrkArea, _mrk, _color, _brush, (" " + _text)] call TTC_CTI_fnc_updateSectorMarkersLocal;
 } forEach TTC_CTI_sectors;

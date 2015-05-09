@@ -6,7 +6,7 @@
 #include "dominanceVariables.inc"
 #include "sectorVariables.inc"
 
-private ["_sector","_canSee","_mrkArea","_mrk","_update_teleportUI","_task","_taskState","_taskDesc","_taskTitle"];
+private ["_sector","_canSee","_mrkArea","_mrk","_update_teleportUI","_task","_side","_color","_brush","_text","_taskState","_taskDesc","_taskTitle"];
 
 _sector				= [_this, 0] call BIS_fnc_param;
 _canSee				= [_this, 1, false, [false]] call BIS_fnc_param;
@@ -26,7 +26,10 @@ if (_update_teleportUI && {!isNil "TTC_CTI_sectors"}) then {
 };
 
 if (_canSee) then {
-	[_sector, TTC_CTI_dominanceMax, _mrkArea, _mrk] call TTC_CTI_fnc_updateSectorMarkersLocal;
+	_side	= _sector getVariable ["TTC_CTI_sector_side", sideUnknown];
+	_color	= [_side, true] call BIS_fnc_sideColor;
+	_brush	= "Solid";
+	_text	= [_sector] call TTC_CTI_fnc_getSectorText;
 
 	// Safety measure: Create a task, if none exists.
 	if (isNull _task) then {
@@ -41,9 +44,9 @@ if (_canSee) then {
 	_taskTitle	= [_sector] call TTC_CTI_fnc_getSectorText;
 	_task setSimpleTaskDescription [_taskDesc, _taskTitle, ""];
 } else {
-	// Hide the sector markers.
-	_mrkArea setMarkerAlphaLocal 0;
-	_mrk setMarkerAlphaLocal 0;
+	_color	= "ColorUNKNOWN";
+	_brush	= "DiagGrid";
+	_text	= _sector getVariable ["TTC_CTI_sector_name", ""];
 
 	// Remove the task
 	if (!isNull _task) then {
@@ -51,3 +54,6 @@ if (_canSee) then {
 		_sector setVariable ["TTC_CTI_sector_task", taskNull];
 	};
 };
+
+// Update the sector markers.
+[_sector, TTC_CTI_dominanceMax, _mrkArea, _mrk, _color, _brush, (" " + _text)] call TTC_CTI_fnc_updateSectorMarkersLocal;
