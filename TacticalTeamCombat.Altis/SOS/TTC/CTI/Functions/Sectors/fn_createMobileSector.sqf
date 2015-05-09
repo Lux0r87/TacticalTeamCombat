@@ -9,7 +9,7 @@ private ["_sector","_side","_dir","_vehType","_speedLimit","_veh"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, TTC_CTI_sectorVariable_side(_sector), [sideUnknown]] call BIS_fnc_param;
-_dir		= [_this, 2, getDir _sector, [0]] call BIS_fnc_param;
+_dir		= [_this, 2, TTC_CTI_sectorVariable_objectDir(_sector), [0]] call BIS_fnc_param;
 _vehType	= [_this, 3, "O_Truck_03_device_F", [""]] call BIS_fnc_param;
 _speedLimit	= [_this, 4, 30, [0]] call BIS_fnc_param;
 

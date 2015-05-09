@@ -19,7 +19,7 @@ _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
 _side	= [_this, 2, east, [east]] call BIS_fnc_param;
 
 /*[
-	["Function: %1", "TTC_BASE_fnc_spawnBunkerSmall"],
+	["Function: %1", "TTC_CORE_fnc_spawnBunkerSmall"],
 	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]
 ] call TTC_CORE_fnc_log;*/
 

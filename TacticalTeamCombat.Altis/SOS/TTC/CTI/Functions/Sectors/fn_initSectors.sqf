@@ -6,7 +6,10 @@
 #include "dominanceVariables.inc"
 #include "sectorVariables.inc"
 
-private ["_sectors","_neighbours","_neighbour","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_isMobile","_shape","_mrk","_patrol","_visibility","_canSee"];
+private [
+	"_sectors","_neighbours","_neighbour","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_respawnDir","_type","_objectDir",
+	"_shape","_mrk","_bunker","_flag","_patrol","_visibility","_canSee"
+];
 
 
 _sectors = [_this, 0] call BIS_fnc_param;
@@ -44,7 +47,8 @@ _sectors = [_this, 0] call BIS_fnc_param;
 	_side		= TTC_CTI_sectorVariable_side(_sector);
 	_dominance	= TTC_CTI_sectorVariable_dominance(_sector);
 	_respawnDir	= TTC_CTI_sectorVariable_respawnDir(_sector);
-	_isMobile	= TTC_CTI_sectorVariable_isMobile(_sector);
+	_type		= TTC_CTI_sectorVariable_type(_sector);
+	_objectDir	= TTC_CTI_sectorVariable_objectDir(_sector);
 
 	// Create area marker
 	_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
@@ -53,13 +57,26 @@ _sectors = [_this, 0] call BIS_fnc_param;
 	// Create marker
 	_mrk = [_sector, _forEachIndex, _name, _side, _dominance, _respawnDir, TTC_CTI_dominanceMax] call TTC_CTI_fnc_createSectorMarker;
 
+	switch (_type) do {
+		case 0: {
+			// Spawn station (flag + sandbags).
+			_flag	= [getPos _sector, (_objectDir + 0), _side] call TTC_CORE_fnc_spawnStation;
+			_sector setVariable ["TTC_CTI_sector_flag", _flag];
+		};
+		case 1: {
+			// Spawn bag bunker.
+			_bunker	= [getPos _sector, (_objectDir + 90), _side] call TTC_CORE_fnc_spawnBagBunker;
+			_flag	= _bunker getVariable "TTC_CORE_flag";
+			_sector setVariable ["TTC_CTI_sector_flag", _flag];
+		};
+		case 2: {
+			// Create vehicle for mobile sector.
+			[_sector, _side, _objectDir] call TTC_CTI_fnc_createMobileSector;
+		};
+	};
+
 	// Create sector patrol.
 	_patrol = [_sector, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
-
-	// Create vehicle for mobile sector(s).
-	if (_isMobile) then {
-		[_sector, _side] call TTC_CTI_fnc_createMobileSector;
-	};
 
 	// Check if the sector is connected to the base.
 	_return		= [_sector] call TTC_CTI_fnc_isSectorConnectedToBase;

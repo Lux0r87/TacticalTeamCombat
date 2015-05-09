@@ -5,16 +5,19 @@
 #include "dominanceVariables.inc"
 #include "sectorVariables.inc"
 
-#define TTC_CTI_multiplier 10
-#define TTC_CTI_captureBonus 1000
-#define TTC_CTI_captureBonusTeam (TTC_CTI_captureBonus / 2)
-#define TTC_CTI_defendBonus 500
-#define TTC_CTI_defendBonusTeam (TTC_CTI_defendBonus / 2)
-#define TTC_CTI_dominanceDiff (TTC_CTI_dominanceMax - _dominance)
-#define TTC_CTI_amountAttack ((_diff min _dominance) * TTC_CTI_multiplier)
-#define TTC_CTI_amountDefend ((_diff min TTC_CTI_dominanceDiff) * TTC_CTI_multiplier)
+#define TTC_CTI_multiplier			10
+#define TTC_CTI_captureBonus		1000
+#define TTC_CTI_captureBonusTeam	(TTC_CTI_captureBonus / 2)
+#define TTC_CTI_defendBonus			500
+#define TTC_CTI_defendBonusTeam		(TTC_CTI_defendBonus / 2)
+#define TTC_CTI_dominanceDiff		(TTC_CTI_dominanceMax - _dominance)
+#define TTC_CTI_amountAttack		((_diff min _dominance) * TTC_CTI_multiplier)
+#define TTC_CTI_amountDefend		((_diff min TTC_CTI_dominanceDiff) * TTC_CTI_multiplier)
 
-private ["_sector","_side","_diff","_list","_sectorSide","_dominance","_sectorCaptured","_dominanceNew","_respawnPos","_removed","_sectorName","_marker","_patrol","_veh","_message"];
+private [
+	"_sector","_side","_diff","_list","_sectorSide","_dominance","_sectorCaptured","_dominanceNew","_respawnPos","_removed",
+	"_sectorName","_marker","_patrol","_veh","_flag","_message"
+];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
@@ -129,8 +132,15 @@ if (_sectorSide != _side) then {
 			// Unlock the vehicle for mobile sector.
 			_veh = TTC_CTI_sectorVariable_vehicle(_sector);
 
-			if (!isNil "_veh" && {!isNull _veh}) then {
+			if (!isNull _veh) then {
 				_veh lock false;
+			};
+
+			// Update the flag texture.
+			_flag = TTC_CTI_sectorVariable_flag(_sector);
+
+			if (!isNull _flag) then {
+				[_flag, _side] call TTC_CORE_fnc_setFlagTexture;
 			};
 
 			// Show message for everyone.

@@ -24,6 +24,7 @@ class TTC_Core_Functions {
 		class hint{};
 		class log{};
 		class runTimer{};
+		class setFlagTexture{};
 		class setTriggerOptions{};
 		class speedLimit{};
 		class systemChat{};
@@ -62,7 +63,10 @@ class TTC_Core_Functions {
 
 	class Spawn {
 		file = "SOS\TTC\Core\Functions\Spawn";
+		class spawnBagBunker {};
+		class spawnBunkerSmall {};
 		class spawnHelicopter {};
+		class spawnStation {};
 		class spawnVehicle {};
 	};
 
