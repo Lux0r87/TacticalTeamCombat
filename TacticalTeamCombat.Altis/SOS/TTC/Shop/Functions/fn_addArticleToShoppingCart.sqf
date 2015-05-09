@@ -34,7 +34,7 @@ _getCategoryIndex = {
 		if ((_x select 0) == _categoryId) exitWith {
 			_categoryIndex = _index;
 		};
-		_categoryIndex = _categoryIndex + 1;
+		_index = _index + 1;
 	} forEach _shoppingCart;
 	
 	_categoryIndex;

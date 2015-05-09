@@ -38,4 +38,5 @@ while {count TTC_BTC_balanceChanges > 0} do {
 
 	// Update the balance (cannot be negative!).
 	TTC_BTC_balance = (TTC_BTC_balance + _amount) max 0;
+	[] spawn TTC_SHOP_UI_fnc_updateBuy;
 };

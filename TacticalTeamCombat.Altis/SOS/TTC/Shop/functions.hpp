@@ -15,6 +15,7 @@ class TTC_Shop {
 		file = "SOS\TTC\Shop\Functions";
 
 		class addArticleToShoppingCart {};
+		class canBuy {};
 		class getArticleById {};
 		class getArticles {};
 		class getCategories {};
@@ -53,6 +54,7 @@ class TTC_Shop_UI {
 		class updateArticleDescription {};
 		class updateArticleList {};
 		class updateArticlePicture {};
+		class updateBuy {};
 		class updateCategoryList {};
 		class updateShoppingCart {};
 		class updateShoppingCartCosts {};
