@@ -21,9 +21,6 @@ if (hasInterface) then {
 	// Initialize jump script.
 	[] execVM "SOS\MiscScripts\jump.sqf";
 
-	// Initialize Virtual Arsenal.
-	//[] execVM "SOS\VirtualArsenal\initVirtualArsenal.sqf";
-
 	// Aircraft resupply zones.
 	[] execVM "SOS\MiscScripts\aircraftResupplyZone.sqf";
 
