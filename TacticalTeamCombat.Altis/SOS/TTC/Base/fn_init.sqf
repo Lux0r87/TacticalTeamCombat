@@ -13,6 +13,12 @@ if (isServer) then {
 
 	// Spawn a base for each side that is present in the current game.
 	{
+		// Broadcast the vehicle/helicopter spawn position and direction to all players (including JIP).
+		publicVariable format["TTC_BASE_%1_VehSpawnPos", _x];
+		publicVariable format["TTC_BASE_%1_VehSpawnDir", _x];
+		publicVariable format["TTC_BASE_%1_HeliSpawnPos", _x];
+		publicVariable format["TTC_BASE_%1_HeliSpawnDir", _x];
+
 		[_x] spawn TTC_BASE_fnc_spawnBase;
 	} forEach [west, east, resistance];
 };

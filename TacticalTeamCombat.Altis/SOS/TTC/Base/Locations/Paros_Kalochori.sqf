@@ -37,7 +37,7 @@ TTC_BASE_West_TeleportDir2		= 45;
 TTC_BASE_West_VehSpawnPos		= [19345, 15280];
 TTC_BASE_West_VehSpawnDir		= 43;
 
-TTC_BASE_West_HeliSpawnPos		= [19308, 15270];
+TTC_BASE_West_HeliSpawnPos		= [19299, 15261];
 TTC_BASE_West_HeliSpawnDir		= 43;
 
 TTC_BASE_West_MaintenancePos	= [19276, 15343];

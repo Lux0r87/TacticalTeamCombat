@@ -14,6 +14,11 @@ _owner			= [_this, 3, objNull, [objNull]] call BIS_fnc_param;
 _texture		= [_this, 4, "", [""]] call BIS_fnc_param;
 _lock			= [_this, 5, true, [true]] call BIS_fnc_param;
 
+/*[
+	["Function: %1", "TTC_CORE_fnc_spawnVehicle"], ["_vehicleType = %1", _vehicleType], ["_spawnPos = %1", _spawnPos], ["_spawnDir = %1", _spawnDir],
+	["_owner = %1", _owner], ["_texture = %1", _texture], ["_lock = %1", _lock]
+] call TTC_CORE_fnc_log;*/
+
 
 // Create the vehicle.
 _veh = _vehicleType createVehicle [_spawnPos select 0, _spawnPos select 1, 0.5];

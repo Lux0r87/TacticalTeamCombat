@@ -208,123 +208,6 @@ _buyFacewear = {
 	} forEach _articleNames;
 };
 
-_buyRifles = {
-	private["_articleNames"];
-
-	_articleNames = [_shoppingCart, _CATEGORY_ID_RIFLES] call _getArticleNames;
-
-	{
-		if (primaryWeapon player == "") then {
-			player addWeaponGlobal _x;
-		} else {
-			[_x, _type_weapon] call _add;
-		};
-	} forEach _articleNames;
-};
-
-_addHandgunAttachment = {
-	private["_attachment","_index","_handgunItems"];
-
-	_attachment	= _this select 0;
-	_index		= _this select 1;
-
-	_handgunItems = handgunItems player;
-
-	if ((_handgunItems select _index) == "") then {
-		player addHandgunItem _attachment;
-		_handgunItems = handgunItems player;
-
-		// If the attachment was not added successfully to the handgun, try to add it to the inventory.
-		if ((_handgunItems select _index) == "") then {
-			[_attachment, _type_weapon] call _add;
-		};
-	} else {
-		[_attachment, _type_weapon] call _add;
-	};
-};
-
-_buyHandguns = {
-	private["_articleNames"];
-
-	_articleNames = [_shoppingCart, _CATEGORY_ID_HANDGUNS] call _getArticleNames;
-
-	{
-		if (handgunWeapon player == "") then {
-			player addWeaponGlobal _x;
-		} else {
-			[_x, _type_weapon] call _add;
-		};
-	} forEach _articleNames;
-};
-
-_buyLaunchers = {
-	private["_articleNames"];
-
-	_articleNames = [_shoppingCart, _CATEGORY_ID_LAUNCHERS] call _getArticleNames;
-
-	{
-		if (secondaryWeapon player == "") then {
-			player addWeaponGlobal _x;
-		} else {
-			_weaponHolder addWeaponCargoGlobal [_x, 1];
-		};
-	} forEach _articleNames;
-};
-
-_addWeaponAttachment = {
-	private["_attachment","_index","_primaryWeaponItems"];
-
-	_attachment	= _this select 0;
-	_index		= _this select 1;
-
-	_primaryWeaponItems = primaryWeaponItems player;
-
-	if ((_primaryWeaponItems select _index) == "") then {
-		player addPrimaryWeaponItem _attachment;
-		_primaryWeaponItems = primaryWeaponItems player;
-
-		// If the attachment was not added successfully to the primary weapon, try to add it to the handgun.
-		if ((_primaryWeaponItems select _index) == "") then {
-			[_attachment, _index] call _addHandgunAttachment;
-		};
-	} else {
-		[_attachment, _index] call _addHandgunAttachment;
-	};
-};
-
-_buyAttachments = {
-	private["_attachments","_scopes","_articleNames","_return","_type","_primaryWeaponItems"];
-
-	_attachments	= [_shoppingCart, _CATEGORY_ID_ATTACHMENTS] call _getArticleNames;
-	_scopes			= [_shoppingCart, _CATEGORY_ID_SCOPES] call _getArticleNames;
-	_articleNames	= _attachments + _scopes;
-
-	{
-		_return		= [_x] call BIS_fnc_itemType;
-		_type		= _return select 1;
-		_primaryWeaponItems	= primaryWeaponItems player;
-
-		switch (_type) do {
-			case "AccessoryMuzzle": {
-				[_x, 0] call _addWeaponAttachment;
-			};
-			case "AccessoryPointer": {
-				[_x, 1] call _addWeaponAttachment;
-			};
-			case "AccessorySights": {
-				[_x, 2] call _addWeaponAttachment;
-			};
-			case "AccessoryBipod": {
-				[_x, 3] call _addWeaponAttachment;
-			};
-			default {
-				["Attachment type unknown!"] call BIS_fnc_error;
-				[_x, _type_weapon] call _add;
-			};
-		};
-	} forEach _articleNames;
-};
-
 _hasMagazine = {
 	private["_magazines","_hasMag","_return","_itemType"];
 
@@ -413,6 +296,123 @@ _buyAmmunition = {
 	} forEach _articleNames;
 };
 
+_buyRifles = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_RIFLES] call _getArticleNames;
+
+	{
+		if (primaryWeapon player == "") then {
+			player addWeaponGlobal _x;
+		} else {
+			[_x, _type_weapon] call _add;
+		};
+	} forEach _articleNames;
+};
+
+_buyHandguns = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_HANDGUNS] call _getArticleNames;
+
+	{
+		if (handgunWeapon player == "") then {
+			player addWeaponGlobal _x;
+		} else {
+			[_x, _type_weapon] call _add;
+		};
+	} forEach _articleNames;
+};
+
+_buyLaunchers = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_LAUNCHERS] call _getArticleNames;
+
+	{
+		if (secondaryWeapon player == "") then {
+			player addWeaponGlobal _x;
+		} else {
+			_weaponHolder addWeaponCargoGlobal [_x, 1];
+		};
+	} forEach _articleNames;
+};
+
+_addHandgunAttachment = {
+	private["_attachment","_index","_handgunItems"];
+
+	_attachment	= _this select 0;
+	_index		= _this select 1;
+
+	_handgunItems = handgunItems player;
+
+	if ((_handgunItems select _index) == "") then {
+		player addHandgunItem _attachment;
+		_handgunItems = handgunItems player;
+
+		// If the attachment was not added successfully to the handgun, try to add it to the inventory.
+		if ((_handgunItems select _index) == "") then {
+			[_attachment, _type_weapon] call _add;
+		};
+	} else {
+		[_attachment, _type_weapon] call _add;
+	};
+};
+
+_addWeaponAttachment = {
+	private["_attachment","_index","_primaryWeaponItems"];
+
+	_attachment	= _this select 0;
+	_index		= _this select 1;
+
+	_primaryWeaponItems = primaryWeaponItems player;
+
+	if ((_primaryWeaponItems select _index) == "") then {
+		player addPrimaryWeaponItem _attachment;
+		_primaryWeaponItems = primaryWeaponItems player;
+
+		// If the attachment was not added successfully to the primary weapon, try to add it to the handgun.
+		if ((_primaryWeaponItems select _index) == "") then {
+			[_attachment, _index] call _addHandgunAttachment;
+		};
+	} else {
+		[_attachment, _index] call _addHandgunAttachment;
+	};
+};
+
+_buyAttachments = {
+	private["_attachments","_scopes","_articleNames","_return","_type","_primaryWeaponItems"];
+
+	_attachments	= [_shoppingCart, _CATEGORY_ID_ATTACHMENTS] call _getArticleNames;
+	_scopes			= [_shoppingCart, _CATEGORY_ID_SCOPES] call _getArticleNames;
+	_articleNames	= _attachments + _scopes;
+
+	{
+		_return		= [_x] call BIS_fnc_itemType;
+		_type		= _return select 1;
+		_primaryWeaponItems	= primaryWeaponItems player;
+
+		switch (_type) do {
+			case "AccessoryMuzzle": {
+				[_x, 0] call _addWeaponAttachment;
+			};
+			case "AccessoryPointer": {
+				[_x, 1] call _addWeaponAttachment;
+			};
+			case "AccessorySights": {
+				[_x, 2] call _addWeaponAttachment;
+			};
+			case "AccessoryBipod": {
+				[_x, 3] call _addWeaponAttachment;
+			};
+			default {
+				["Attachment type unknown!"] call BIS_fnc_error;
+				[_x, _type_weapon] call _add;
+			};
+		};
+	} forEach _articleNames;
+};
+
 _buyItems = {
 	private["_articleNames","_return","_type"];
 	_articleNames	= [_shoppingCart, _CATEGORY_ID_ITEMS] call _getArticleNames;
@@ -437,6 +437,40 @@ _buyItems = {
 	} forEach _articleNames;
 };
 
+_buyVehicles = {
+	private["_vehicles","_ugvs","_articleNames","_side","_vehSpawnPos","_vehSpawnDir","_texture"];
+
+	_vehicles		= [_shoppingCart, _CATEGORY_ID_VEHICLES] call _getArticleNames;
+	_ugvs			= [_shoppingCart, _CATEGORY_ID_UGVS] call _getArticleNames;
+	_articleNames	= _vehicles + _ugvs;
+
+	_side			= side player;
+	_vehSpawnPos	= missionNamespace getVariable [format["TTC_BASE_%1_VehSpawnPos", _side], [0,0]];
+	_vehSpawnDir	= missionNamespace getVariable [format["TTC_BASE_%1_VehSpawnDir", _side], 0];
+	_texture		= if (_side == resistance) then {"Black"} else {""};
+
+	{
+		[_x, _vehSpawnPos, _vehSpawnDir, player, _texture] call TTC_CORE_fnc_spawnVehicle;
+		sleep 0.2;
+	} forEach _articleNames;
+};
+
+_buyHelicopters = {
+	private["_articleNames","_side","_heliSpawnPos","_heliSpawnDir","_texture"];
+
+	_articleNames	= [_shoppingCart, _CATEGORY_ID_HELICOPTERS] call _getArticleNames;
+
+	_side			= side player;
+	_heliSpawnPos	= missionNamespace getVariable [format["TTC_BASE_%1_HeliSpawnPos", _side], [0,0]];
+	_heliSpawnDir	= missionNamespace getVariable [format["TTC_BASE_%1_HeliSpawnDir", _side], 0];
+	_texture		= if (_side == resistance) then {"Black"} else {""};
+
+	{
+		[_x, _heliSpawnPos, _heliSpawnDir, player, _texture] call TTC_CORE_fnc_spawnHelicopter;
+		sleep 0.2;
+	} forEach _articleNames;
+};
+
 
 //////////
 
@@ -453,12 +487,14 @@ _weaponHolder	= createVehicle ["GroundWeaponHolder", _position, [], 0, "CAN_COLL
 [] call _buyUniforms;
 [] call _buyHeadwear;
 [] call _buyFacewear;
+[] call _buyAmmunition;
 [] call _buyRifles;
-[] call _buyAttachments;
 [] call _buyHandguns;
 [] call _buyLaunchers;
-[] call _buyAmmunition;
+[] call _buyAttachments;
 [] call _buyItems;
+[] call _buyVehicles;
+[] call _buyHelicopters;
 
 
 // Print articles added to the weapon holder.
