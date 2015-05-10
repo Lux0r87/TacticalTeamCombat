@@ -64,6 +64,10 @@ if (_texture != "") then {
 	};
 };
 
+// Add lock/unlock actions.
+[_veh] call TTC_CORE_fnc_addAction_lock;
+[_veh] call TTC_CORE_fnc_addAction_unlock;
+
 if (TTC_disableThermal == 1) then {
 	_veh disableTIEquipment true;
 };

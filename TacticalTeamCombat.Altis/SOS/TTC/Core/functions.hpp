@@ -1,6 +1,12 @@
 class TTC_Core_Functions {
 	tag = "TTC_CORE";
 
+	class Actions {
+		file = "SOS\TTC\Core\Functions\Actions";
+		class addAction_lock{};
+		class addAction_unlock{};
+	};
+
 	class Common {
 		file = "SOS\TTC\Core\Functions\Common";
 		class addToBlacklist{};
