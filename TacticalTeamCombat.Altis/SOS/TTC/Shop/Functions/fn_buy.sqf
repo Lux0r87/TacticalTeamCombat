@@ -30,7 +30,8 @@ _type_magazine	= 1;
 _type_backpack	= 2;
 _type_item		= 3;
 
-_assignableItemTypes = ["Map", "GPS", "UAVTerminal", "Radio", "Compass", "Watch", "NVGoggles", "LaserDesignator"];
+_assignableItemTypes	= ["Map", "GPS", "UAVTerminal", "Radio", "Compass", "Watch", "NVGoggles", "LaserDesignator"];
+_ammunitionGL			= ["Flare", "Shell", "SmokeShell"];
 
 
 /*
@@ -242,6 +243,34 @@ _addHandgunAttachment = {
 	};
 };
 
+_buyHandguns = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_HANDGUNS] call _getArticleNames;
+
+	{
+		if (handgunWeapon player == "") then {
+			player addWeaponGlobal _x;
+		} else {
+			[_x, _type_weapon] call _add;
+		};
+	} forEach _articleNames;
+};
+
+_buyLaunchers = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_LAUNCHERS] call _getArticleNames;
+
+	{
+		if (secondaryWeapon player == "") then {
+			player addWeaponGlobal _x;
+		} else {
+			_weaponHolder addWeaponCargoGlobal [_x, 1];
+		};
+	} forEach _articleNames;
+};
+
 _addWeaponAttachment = {
 	private["_attachment","_index","_primaryWeaponItems"];
 
@@ -296,40 +325,91 @@ _buyAttachments = {
 	} forEach _articleNames;
 };
 
-_buyHandguns = {
-	private["_articleNames"];
+_hasMagazine = {
+	private["_magazines","_hasMag","_return","_itemType"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_HANDGUNS] call _getArticleNames;
+	_magazines	= primaryWeaponMagazine player;
+	_hasMag		= false;
 
 	{
-		if (handgunWeapon player == "") then {
-			player addWeaponGlobal _x;
-		} else {
-			[_x, _type_weapon] call _add;
+		_return		= [_x] call BIS_fnc_itemType;
+		_itemType	= _return select 1;
+
+		if (_itemType == "Bullet") exitWith {
+			_hasMag = true;
 		};
-	} forEach _articleNames;
+	} forEach _magazines;
+
+	_hasMag;
 };
 
-_buyLaunchers = {
-	private["_articleNames"];
+_hasMagazineGL = {
+	private["_magazines","_hasGL","_return","_itemType"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_LAUNCHERS] call _getArticleNames;
+	_magazines	= primaryWeaponMagazine player;
+	_hasGL		= false;
 
 	{
-		if (secondaryWeapon player == "") then {
-			player addWeaponGlobal _x;
-		} else {
-			_weaponHolder addWeaponCargoGlobal [_x, 1];
+		_return		= [_x] call BIS_fnc_itemType;
+		_itemType	= _return select 1;
+
+		if (_itemType in _ammunitionGL) exitWith {
+			_hasGL = true;
 		};
-	} forEach _articleNames;
+	} forEach _magazines;
+
+	_hasGL;
 };
 
 _buyAmmunition = {
-	private["_articleNames"];
+	private["_articleNames","_weaponMags","_handgunMags","_launcherMags","_return","_type"];
 	_articleNames = [_shoppingCart, _CATEGORY_ID_AMMUNITION] call _getArticleNames;
+	_weaponMags		= getArray (configFile >> "CfgWeapons" >> (primaryWeapon player) >> "magazines");
+	_handgunMags	= getArray (configFile >> "CfgWeapons" >> (handgunWeapon player) >> "magazines");
+	_launcherMags	= getArray (configFile >> "CfgWeapons" >> (secondaryWeapon player) >> "magazines");
 
 	{
-		[_x, _type_magazine] call _add;
+		_return		= [_x] call BIS_fnc_itemType;
+		_type		= _return select 1;
+
+		switch (_type) do {
+			case "Bullet": {
+				// Check if the magazine can be added to the primary weapon.
+				if (_x in _weaponMags && {!([] call _hasMagazine)}) then {
+					player addMagazine _x;
+				} else { // Otherwise: Try to add the magazine to the handgun.
+					if (_x in _handgunMags && {count handgunMagazine player <= 0}) then {
+						player addMagazine _x;
+					} else {
+						[_x, _type_magazine] call _add;
+					};
+				};
+			};
+			case "Flare";
+			case "Shell";
+			case "SmokeShell": {
+				if (_x in _weaponMags && {!([] call _hasMagazineGL)}) then {
+					player addMagazine _x;					
+				} else {
+					[_x, _type_magazine] call _add;
+				};
+			};
+			case "Missile";
+			case "Rocket": {
+				if (_x in _launcherMags && {count secondaryWeaponMagazine player <= 0}) then {
+					player addMagazine _x;
+				} else {
+					[_x, _type_magazine] call _add;
+				};
+			};
+			default {
+				[_x, _type_magazine] call _add;
+			};
+		};
+
+		if (needReload player == 1) then {
+			reload player
+		};
 	} forEach _articleNames;
 };
 
