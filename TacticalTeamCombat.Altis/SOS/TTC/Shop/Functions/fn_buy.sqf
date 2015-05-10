@@ -475,11 +475,15 @@ _buyHelicopters = {
 //////////
 
 
-private["_shoppingCart","_position","_weaponHolder","_weaponCargo","_magazineCargo","_backpackCargo","_itemCargo","_count","_articles","_classNames","_amounts"];
+private["_shoppingCart","_position","_weaponHolder","_shoppingCartCosts","_weaponCargo","_magazineCargo","_backpackCargo","_itemCargo","_count","_articles","_classNames","_amounts"];
 
 _shoppingCart	= [] call TTC_SHOP_fnc_getShoppingCart;
 _position		= getPosATL player;
 _weaponHolder	= createVehicle ["GroundWeaponHolder", _position, [], 0, "CAN_COLLIDE"];
+
+// Take the money.
+_shoppingCartCosts = [] call TTC_SHOP_fnc_getShoppingCartCosts;
+["Purchase", -_shoppingCartCosts] spawn TTC_BTC_fnc_addBalanceChange;
 
 
 [] call _buyBackpacks;
