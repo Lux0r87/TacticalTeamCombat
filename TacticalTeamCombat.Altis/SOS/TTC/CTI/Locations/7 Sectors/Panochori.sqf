@@ -26,11 +26,11 @@ TTC_CTI_sides = [west, resistance];
 ]*/
 
 TTC_CTI_sectorDefinitions = [
-	["A",	[4764,11699],	0,	40,	40,	false, west,		100, TTC_CTI_neighbours_sectorA, [0, 0],	1,	0],
-	["B",	[4999,11378],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorB, [0, 0],	0,	0],
-	["C",	[4895,11314],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorC, [0, 0],	0,	0],
-	["D",	[5074,11245],	0,	70,	70,	false, east,		100, TTC_CTI_neighbours_sectorD, [0, 0],	0,	0],
-	["E",	[5070,11085],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorE, [0, 0],	0,	0],
-	["F",	[5189,11139],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorF, [0, 0],	0,	0],
-	["G",	[5388,10917],	0,	40,	40,	false, resistance,	100, TTC_CTI_neighbours_sectorG, [0, 0],	1,	0]
+	["A",	[4736,11701],	0,	40,	40,	false, west,		100, TTC_CTI_neighbours_sectorA, [155, 310],	1,	155],
+	["B",	[5001,11380],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorB, [125, 310],	0,	125],
+	["C",	[4889,11317],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorC, [130, 0],		0,	120],
+	["D",	[5074,11245],	0,	70,	70,	false, east,		100, TTC_CTI_neighbours_sectorD, [150, 330],	0,	0],
+	["E",	[5068,11086],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorE, [120, 330],	0,	330],
+	["F",	[5192,11140],	0,	40,	40,	false, east,		100, TTC_CTI_neighbours_sectorF, [150, 305],	0,	305],
+	["G",	[5388,10917],	0,	40,	40,	false, resistance,	100, TTC_CTI_neighbours_sectorG, [100, 300],	1,	285]
 ];
