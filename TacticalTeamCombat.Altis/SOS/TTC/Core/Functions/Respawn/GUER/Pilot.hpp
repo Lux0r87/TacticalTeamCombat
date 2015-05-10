@@ -1,4 +1,4 @@
-class GUER_HelicopterPilot {
+class GUER_Pilot {
 	displayName = "Helicopter Pilot";
 	icon = "\A3\Ui_f\data\GUI\Cfg\Ranks\sergeant_gs.paa";
 

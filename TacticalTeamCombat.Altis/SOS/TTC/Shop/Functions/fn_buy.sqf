@@ -479,7 +479,7 @@ private["_shoppingCart","_position","_weaponHolder","_shoppingCartCosts","_weapo
 
 _shoppingCart	= [] call TTC_SHOP_fnc_getShoppingCart;
 _position		= getPosATL player;
-_weaponHolder	= createVehicle ["GroundWeaponHolder", _position, [], 0, "CAN_COLLIDE"];
+_weaponHolder	= createVehicle ["Library_WeaponHolder", _position, [], 0, "CAN_COLLIDE"];
 
 // Take the money.
 _shoppingCartCosts = [] call TTC_SHOP_fnc_getShoppingCartCosts;

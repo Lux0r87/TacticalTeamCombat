@@ -3,7 +3,7 @@
 	Created by BauerMitFackel
 */
 
-waitUntil {time > 0.0};
+//waitUntil {time > 0.0};
 
 _DEBUG = true;
 
@@ -83,3 +83,6 @@ _side 			= side _unit;
 
 [] call _initVariables;
 [] call _initUniformTexture;
+
+// Add the respawn inventory.
+[_unit] call TTC_CORE_fnc_addRespawnInventory;
