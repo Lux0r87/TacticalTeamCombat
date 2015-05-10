@@ -26,7 +26,6 @@ TTC_BASE_Guer_MaintenanceDir	= 227;
 
 // Blufor
 TTC_BASE_West_Pos				= [19326, 15297];
-TTC_BASE_West_Dir				= 225;
 
 TTC_BASE_West_TeleportPos1		= [19336, 15307];
 TTC_BASE_West_TeleportDir1		= 315;
@@ -46,7 +45,6 @@ TTC_BASE_West_MaintenanceDir	= 43;
 
 // Opfor
 TTC_BASE_East_Pos				= [0, 0];
-TTC_BASE_East_Dir				= 0;
 
 TTC_BASE_East_TeleportPos1		= [0, 0];
 TTC_BASE_East_TeleportDir1		= 0;
