@@ -340,6 +340,31 @@ TTC_SHOP_ARTICLE_O_APC_Tracked_02_AA_F = [-280, "O_APC_Tracked_02_AA_F", 0, 3000
 TTC_SHOP_ARTICLE_B_Heli_Light_01_F = [-281, "B_Heli_Light_01_F", 0, 750] call _getVehicle;
 TTC_SHOP_ARTICLE_I_Heli_light_03_unarmed_F = [-289, "I_Heli_light_03_unarmed_F", 0, 750] call _getVehicle;
 TTC_SHOP_ARTICLE_V_BandollierB_rgr = [-319, "V_BandollierB_rgr", 0, 200] call _getVest;
+TTC_SHOP_ARTICLE_HandGrenade = [-340, "HandGrenade", 0, 40] call _getMagazine;
+TTC_SHOP_ARTICLE_MiniGrenade = [-341, "MiniGrenade", 0, 25] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShell = [-342, "SmokeShell", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellGreen = [-344, "SmokeShellGreen", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellPurple = [-346, "SmokeShellPurple", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellOrange = [-348, "SmokeShellOrange", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_I_IR_Grenade = [-351, "I_IR_Grenade", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_1Rnd_HE_Grenade_shell = [-357, "1Rnd_HE_Grenade_shell", 0, 60] call _getMagazine;
+TTC_SHOP_ARTICLE_1Rnd_Smoke_Grenade_shell = [-359, "1Rnd_Smoke_Grenade_shell", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_1Rnd_SmokeGreen_Grenade_shell = [-361, "1Rnd_SmokeGreen_Grenade_shell", 0, 45] call _getMagazine;
+TTC_SHOP_ARTICLE_1Rnd_SmokePurple_Grenade_shell = [-363, "1Rnd_SmokePurple_Grenade_shell", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_1Rnd_SmokeOrange_Grenade_shell = [-365, "1Rnd_SmokeOrange_Grenade_shell", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_UGL_FlareWhite_F = [-373, "UGL_FlareWhite_F", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_UGL_FlareRed_F = [-375, "UGL_FlareRed_F", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_UGL_FlareCIR_F = [-377, "UGL_FlareCIR_F", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_green = [-383, "Chemlight_green", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_red = [-384, "Chemlight_red", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_yellow = [-385, "Chemlight_yellow", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_blue = [-386, "Chemlight_blue", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_bipod_03_F_blk = [-393, "bipod_03_F_blk", 0, 250] call _getItem;
+TTC_SHOP_ARTICLE_bipod_03_F_oli = [-394, "bipod_03_F_oli", 0, 250] call _getItem;
+TTC_SHOP_ARTICLE_30Rnd_556x45_Stanag_Tracer_Red = [-395, "30Rnd_556x45_Stanag_Tracer_Red", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_30Rnd_556x45_Stanag_Tracer_Green = [-396, "30Rnd_556x45_Stanag_Tracer_Green", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green = [-397, "30Rnd_65x39_caseless_green", 0, 60] call _getMagazine;
+TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer = [-398, "30Rnd_65x39_caseless_green_mag_Tracer", 0, 30] call _getMagazine;
 
 
 /*
@@ -476,7 +501,32 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_O_APC_Tracked_02_AA_F,
   TTC_SHOP_ARTICLE_B_Heli_Light_01_F,
   TTC_SHOP_ARTICLE_I_Heli_light_03_unarmed_F,
-  TTC_SHOP_ARTICLE_V_BandollierB_rgr
+  TTC_SHOP_ARTICLE_V_BandollierB_rgr,
+  TTC_SHOP_ARTICLE_HandGrenade,
+  TTC_SHOP_ARTICLE_MiniGrenade,
+  TTC_SHOP_ARTICLE_SmokeShell,
+  TTC_SHOP_ARTICLE_SmokeShellGreen,
+  TTC_SHOP_ARTICLE_SmokeShellPurple,
+  TTC_SHOP_ARTICLE_SmokeShellOrange,
+  TTC_SHOP_ARTICLE_I_IR_Grenade,
+  TTC_SHOP_ARTICLE_1Rnd_HE_Grenade_shell,
+  TTC_SHOP_ARTICLE_1Rnd_Smoke_Grenade_shell,
+  TTC_SHOP_ARTICLE_1Rnd_SmokeGreen_Grenade_shell,
+  TTC_SHOP_ARTICLE_1Rnd_SmokePurple_Grenade_shell,
+  TTC_SHOP_ARTICLE_1Rnd_SmokeOrange_Grenade_shell,
+  TTC_SHOP_ARTICLE_UGL_FlareWhite_F,
+  TTC_SHOP_ARTICLE_UGL_FlareRed_F,
+  TTC_SHOP_ARTICLE_UGL_FlareCIR_F,
+  TTC_SHOP_ARTICLE_Chemlight_green,
+  TTC_SHOP_ARTICLE_Chemlight_red,
+  TTC_SHOP_ARTICLE_Chemlight_yellow,
+  TTC_SHOP_ARTICLE_Chemlight_blue,
+  TTC_SHOP_ARTICLE_bipod_03_F_blk,
+  TTC_SHOP_ARTICLE_bipod_03_F_oli,
+  TTC_SHOP_ARTICLE_30Rnd_556x45_Stanag_Tracer_Red,
+  TTC_SHOP_ARTICLE_30Rnd_556x45_Stanag_Tracer_Green,
+  TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green,
+  TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer
 ];
 
 
@@ -535,7 +585,9 @@ TTC_SHOP_ATTACHMENTS = [
 	TTC_SHOP_ARTICLE_muzzle_snds_H,
 	TTC_SHOP_ARTICLE_muzzle_snds_B,
 	TTC_SHOP_ARTICLE_muzzle_snds_93mmg,
-	TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan
+	TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan,
+	TTC_SHOP_ARTICLE_bipod_03_F_blk,
+	TTC_SHOP_ARTICLE_bipod_03_F_oli
 ];
 
 TTC_SHOP_AMMUNITION = [
@@ -548,7 +600,33 @@ TTC_SHOP_AMMUNITION = [
 	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_mag,
 	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_mag_Tracer,
 	TTC_SHOP_ARTICLE_20Rnd_762x51_Mag,
-	TTC_SHOP_ARTICLE_10Rnd_93x64_DMR_05_Mag
+	TTC_SHOP_ARTICLE_10Rnd_93x64_DMR_05_Mag,
+	TTC_SHOP_ARTICLE_1Rnd_HE_Grenade_shell,
+	TTC_SHOP_ARTICLE_1Rnd_Smoke_Grenade_shell,
+	TTC_SHOP_ARTICLE_1Rnd_SmokeGreen_Grenade_shell,
+	TTC_SHOP_ARTICLE_1Rnd_SmokePurple_Grenade_shell,
+	TTC_SHOP_ARTICLE_1Rnd_SmokeOrange_Grenade_shell,
+	TTC_SHOP_ARTICLE_UGL_FlareWhite_F,
+	TTC_SHOP_ARTICLE_UGL_FlareRed_F,
+	TTC_SHOP_ARTICLE_UGL_FlareCIR_F,
+	TTC_SHOP_ARTICLE_30Rnd_556x45_Stanag_Tracer_Red,
+	TTC_SHOP_ARTICLE_30Rnd_556x45_Stanag_Tracer_Green,
+	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green,
+	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer
+];
+
+TTC_SHOP_GRENADES = [
+	TTC_SHOP_ARTICLE_HandGrenade,
+	TTC_SHOP_ARTICLE_MiniGrenade,
+	TTC_SHOP_ARTICLE_SmokeShell,
+	TTC_SHOP_ARTICLE_SmokeShellGreen,
+	TTC_SHOP_ARTICLE_SmokeShellPurple,
+	TTC_SHOP_ARTICLE_SmokeShellOrange,
+	TTC_SHOP_ARTICLE_I_IR_Grenade,
+	TTC_SHOP_ARTICLE_Chemlight_green,
+	TTC_SHOP_ARTICLE_Chemlight_red,
+	TTC_SHOP_ARTICLE_Chemlight_yellow,
+	TTC_SHOP_ARTICLE_Chemlight_blue
 ];
 
 TTC_SHOP_ITEMS = [
@@ -655,6 +733,7 @@ TTC_SHOP_CATEGORIES = [
   [4, "Scopes", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemoptic_ca.paa", TTC_SHOP_SCOPES],
   [5, "Attachments", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemmuzzle_ca.paa", TTC_SHOP_ATTACHMENTS],
   [7, "Ammunition", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargomag_ca.paa", TTC_SHOP_AMMUNITION],
+  [75, "Grenades", "$category.icon", TTC_SHOP_GRENADES],
   [9, "Items", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargomisc_ca.paa", TTC_SHOP_ITEMS],
   [11, "Facewear", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\goggles_ca.paa", TTC_SHOP_FACEWEAR],
   [13, "Vests", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\vest_ca.paa", TTC_SHOP_VESTS],

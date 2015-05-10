@@ -320,6 +320,19 @@ TTC_SHOP_ARTICLE_I_MRAP_03_F = [-272, "I_MRAP_03_F", 0, 500] call _getVehicle;
 TTC_SHOP_ARTICLE_B_Heli_Light_01_F = [-281, "B_Heli_Light_01_F", 0, 750] call _getVehicle;
 TTC_SHOP_ARTICLE_I_Heli_light_03_unarmed_F = [-289, "I_Heli_light_03_unarmed_F", 0, 750] call _getVehicle;
 TTC_SHOP_ARTICLE_V_BandollierB_rgr = [-319, "V_BandollierB_rgr", 0, 200] call _getVest;
+TTC_SHOP_ARTICLE_HandGrenade = [-340, "HandGrenade", 0, 40] call _getMagazine;
+TTC_SHOP_ARTICLE_MiniGrenade = [-341, "MiniGrenade", 0, 25] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShell = [-342, "SmokeShell", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellGreen = [-344, "SmokeShellGreen", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellPurple = [-346, "SmokeShellPurple", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellOrange = [-348, "SmokeShellOrange", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_I_IR_Grenade = [-351, "I_IR_Grenade", 0, 20] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_green = [-383, "Chemlight_green", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_red = [-384, "Chemlight_red", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_yellow = [-385, "Chemlight_yellow", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_Chemlight_blue = [-386, "Chemlight_blue", 0, 5] call _getMagazine;
+TTC_SHOP_ARTICLE_bipod_03_F_blk = [-393, "bipod_03_F_blk", 0, 250] call _getItem;
+TTC_SHOP_ARTICLE_bipod_03_F_oli = [-394, "bipod_03_F_oli", 0, 250] call _getItem;
 
 
 /*
@@ -436,7 +449,20 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_I_MRAP_03_F,
   TTC_SHOP_ARTICLE_B_Heli_Light_01_F,
   TTC_SHOP_ARTICLE_I_Heli_light_03_unarmed_F,
-  TTC_SHOP_ARTICLE_V_BandollierB_rgr
+  TTC_SHOP_ARTICLE_V_BandollierB_rgr,
+  TTC_SHOP_ARTICLE_HandGrenade,
+  TTC_SHOP_ARTICLE_MiniGrenade,
+  TTC_SHOP_ARTICLE_SmokeShell,
+  TTC_SHOP_ARTICLE_SmokeShellGreen,
+  TTC_SHOP_ARTICLE_SmokeShellPurple,
+  TTC_SHOP_ARTICLE_SmokeShellOrange,
+  TTC_SHOP_ARTICLE_I_IR_Grenade,
+  TTC_SHOP_ARTICLE_Chemlight_green,
+  TTC_SHOP_ARTICLE_Chemlight_red,
+  TTC_SHOP_ARTICLE_Chemlight_yellow,
+  TTC_SHOP_ARTICLE_Chemlight_blue,
+  TTC_SHOP_ARTICLE_bipod_03_F_blk,
+  TTC_SHOP_ARTICLE_bipod_03_F_oli
 ];
 
 
@@ -486,7 +512,9 @@ TTC_SHOP_ATTACHMENTS = [
 	TTC_SHOP_ARTICLE_muzzle_snds_acp,
 	TTC_SHOP_ARTICLE_muzzle_snds_B,
 	TTC_SHOP_ARTICLE_muzzle_snds_93mmg,
-	TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan
+	TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan,
+	TTC_SHOP_ARTICLE_bipod_03_F_blk,
+	TTC_SHOP_ARTICLE_bipod_03_F_oli
 ];
 
 TTC_SHOP_AMMUNITION = [
@@ -498,6 +526,20 @@ TTC_SHOP_AMMUNITION = [
 	TTC_SHOP_ARTICLE_10Rnd_93x64_DMR_05_Mag,
 	TTC_SHOP_ARTICLE_5Rnd_127x108_Mag,
 	TTC_SHOP_ARTICLE_10Rnd_127x54_Mag
+];
+
+TTC_SHOP_GRENADES = [
+	TTC_SHOP_ARTICLE_HandGrenade,
+	TTC_SHOP_ARTICLE_MiniGrenade,
+	TTC_SHOP_ARTICLE_SmokeShell,
+	TTC_SHOP_ARTICLE_SmokeShellGreen,
+	TTC_SHOP_ARTICLE_SmokeShellPurple,
+	TTC_SHOP_ARTICLE_SmokeShellOrange,
+	TTC_SHOP_ARTICLE_I_IR_Grenade,
+	TTC_SHOP_ARTICLE_Chemlight_green,
+	TTC_SHOP_ARTICLE_Chemlight_red,
+	TTC_SHOP_ARTICLE_Chemlight_yellow,
+	TTC_SHOP_ARTICLE_Chemlight_blue
 ];
 
 TTC_SHOP_ITEMS = [
@@ -601,6 +643,7 @@ TTC_SHOP_CATEGORIES = [
   [4, "Scopes", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemoptic_ca.paa", TTC_SHOP_SCOPES],
   [5, "Attachments", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemmuzzle_ca.paa", TTC_SHOP_ATTACHMENTS],
   [7, "Ammunition", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargomag_ca.paa", TTC_SHOP_AMMUNITION],
+  [75, "Grenades", "$category.icon", TTC_SHOP_GRENADES],
   [9, "Items", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargomisc_ca.paa", TTC_SHOP_ITEMS],
   [10, "Headwear", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\headgear_ca.paa", TTC_SHOP_HEADWEAR],
   [11, "Facewear", "\A3\ui_f\data\gui\Rsc\RscDisplayArsenal\goggles_ca.paa", TTC_SHOP_FACEWEAR],
