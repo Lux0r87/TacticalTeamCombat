@@ -210,7 +210,7 @@ _getUAV = {
   Name:  TTC_SHOP_ARTICLE_<Class>
   Data:  [id, class, maxAmount, price]
 */
-TTC_SHOP_ARTICLE_hgun_P07_F = [-1, "hgun_P07_F", 0, 90] call _getWeapon;
+TTC_SHOP_ARTICLE_hgun_P07_F = [-1, "hgun_P07_F", 0, 80] call _getWeapon;
 TTC_SHOP_ARTICLE_hgun_Rook40_F = [-3, "hgun_Rook40_F", 0, 80] call _getWeapon;
 TTC_SHOP_ARTICLE_hgun_Pistol_heavy_01_F = [-4, "hgun_Pistol_heavy_01_F", 0, 150] call _getWeapon;
 TTC_SHOP_ARTICLE_SMG_01_F = [-6, "SMG_01_F", 0, 300] call _getWeapon;
@@ -347,18 +347,18 @@ TTC_SHOP_ARTICLE_HandGrenade = [-340, "HandGrenade", 0, 40] call _getMagazine;
 TTC_SHOP_ARTICLE_MiniGrenade = [-341, "MiniGrenade", 0, 25] call _getMagazine;
 TTC_SHOP_ARTICLE_SmokeShell = [-342, "SmokeShell", 0, 20] call _getMagazine;
 TTC_SHOP_ARTICLE_SmokeShellPurple = [-346, "SmokeShellPurple", 0, 20] call _getMagazine;
-TTC_SHOP_ARTICLE_SmokeShellBlue = [-347, "SmokeShellBlue", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_SmokeShellBlue = [-347, "SmokeShellBlue", 0, 10] call _getMagazine;
 TTC_SHOP_ARTICLE_SmokeShellOrange = [-348, "SmokeShellOrange", 0, 20] call _getMagazine;
 TTC_SHOP_ARTICLE_B_IR_Grenade = [-349, "B_IR_Grenade", 0, 20] call _getMagazine;
 TTC_SHOP_ARTICLE_1Rnd_HE_Grenade_shell = [-357, "1Rnd_HE_Grenade_shell", 0, 60] call _getMagazine;
 TTC_SHOP_ARTICLE_3Rnd_HE_Grenade_shell = [-358, "3Rnd_HE_Grenade_shell", 0, 180] call _getMagazine;
 TTC_SHOP_ARTICLE_1Rnd_Smoke_Grenade_shell = [-359, "1Rnd_Smoke_Grenade_shell", 0, 30] call _getMagazine;
 TTC_SHOP_ARTICLE_1Rnd_SmokePurple_Grenade_shell = [-363, "1Rnd_SmokePurple_Grenade_shell", 0, 30] call _getMagazine;
-TTC_SHOP_ARTICLE_1Rnd_SmokeBlue_Grenade_shell = [-364, "1Rnd_SmokeBlue_Grenade_shell", 0, 45] call _getMagazine;
+TTC_SHOP_ARTICLE_1Rnd_SmokeBlue_Grenade_shell = [-364, "1Rnd_SmokeBlue_Grenade_shell", 0, 15] call _getMagazine;
 TTC_SHOP_ARTICLE_1Rnd_SmokeOrange_Grenade_shell = [-365, "1Rnd_SmokeOrange_Grenade_shell", 0, 30] call _getMagazine;
 TTC_SHOP_ARTICLE_3Rnd_Smoke_Grenade_shell = [-366, "3Rnd_Smoke_Grenade_shell", 0, 90] call _getMagazine;
 TTC_SHOP_ARTICLE_3Rnd_SmokePurple_Grenade_shell = [-370, "3Rnd_SmokePurple_Grenade_shell", 0, 90] call _getMagazine;
-TTC_SHOP_ARTICLE_3Rnd_SmokeBlue_Grenade_shell = [-371, "3Rnd_SmokeBlue_Grenade_shell", 0, 135] call _getMagazine;
+TTC_SHOP_ARTICLE_3Rnd_SmokeBlue_Grenade_shell = [-371, "3Rnd_SmokeBlue_Grenade_shell", 0, 45] call _getMagazine;
 TTC_SHOP_ARTICLE_3Rnd_SmokeOrange_Grenade_shell = [-372, "3Rnd_SmokeOrange_Grenade_shell", 0, 90] call _getMagazine;
 TTC_SHOP_ARTICLE_UGL_FlareWhite_F = [-373, "UGL_FlareWhite_F", 0, 30] call _getMagazine;
 TTC_SHOP_ARTICLE_UGL_FlareRed_F = [-375, "UGL_FlareRed_F", 0, 30] call _getMagazine;
