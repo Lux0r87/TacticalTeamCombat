@@ -17,9 +17,9 @@ _color			= [_this, 4, [_side, true] call BIS_fnc_sideColor, [""]] call BIS_fnc_p
 _brush			= [_this, 5, "Solid", [""]] call BIS_fnc_param;
 _text			= [_this, 6, "", [""]] call BIS_fnc_param;
 
-[_sector, "TTC_CTI_fnc_updateSectorMarkersLocal", 
+/*[_sector, "TTC_CTI_fnc_updateSectorMarkersLocal", 
 	[["_dominanceMax = %1", _dominanceMax], ["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_color = %1", _color], ["_brush = %1", _brush], ["_text = %1", _text]]
-] call TTC_CTI_fnc_logSector;
+] call TTC_CTI_fnc_logSector;*/
 
 
 // Update area marker
