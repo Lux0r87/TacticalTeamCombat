@@ -26,10 +26,11 @@ _veh setDir _spawnDir;
 _veh setVariable ["TTC_isOwner", _owner, true];
 _veh lock _lock;
 
-// Remove weapons and items, re-add some FAKs
+// Remove weapons, magazines, items and backpacks.
 clearWeaponCargoGlobal _veh;
+clearMagazineCargo _veh;
 clearItemCargoGlobal _veh;
-_veh addItemCargoGlobal ["FirstAidKit", 5];
+clearBackpackCargoGlobal _veh;
 
 // Change texture
 if (_texture != "") then {

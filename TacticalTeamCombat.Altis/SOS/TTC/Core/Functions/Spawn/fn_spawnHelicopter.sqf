@@ -26,10 +26,11 @@ _veh setDir _spawnDir;
 _veh setVariable ["TTC_isOwner", _owner, true];
 _veh lock _lock;
 
-// Remove weapons and items, re-add some FAKs
+// Remove weapons, magazines, items and backpacks.
 clearWeaponCargoGlobal _veh;
+clearMagazineCargo _veh;
 clearItemCargoGlobal _veh;
-_veh addItemCargoGlobal ["FirstAidKit", 10];
+clearBackpackCargoGlobal _veh;
 
 // Replace yellow tracers with red for the armed Hellcat
 if (_vehicleType == "I_Heli_light_03_F") then {
