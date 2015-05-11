@@ -3,7 +3,7 @@
 */
 
 
-private ["_pos","_dir","_side","_flag","_className","_fencePos","_fence","_fenceTop"];
+private ["_pos","_dir","_side","_flag","_className","_fencePos","_fence","_fenceTop","_shopPos"];
 
 _pos	= [_this, 0, [0,0,0], [[]], [2, 3]] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
@@ -49,5 +49,9 @@ _fence setVectorUp (surfaceNormal _fencePos);
 
 _fenceTop		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicle;
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
+
+// Spawn outdoor shop.
+_shopPos = [((_pos select 0) - (cos(_dir + 90) * 0.5)), ((_pos select 1) + (sin(_dir + 90) * 0.5)), 0];
+[_side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnOutdoorShop;
 
 _flag

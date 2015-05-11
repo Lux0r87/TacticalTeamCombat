@@ -119,4 +119,8 @@ for "_x" from 1 to _random do {
 	_item		= [_safePos, _itemType, (random 360)] call TTC_CORE_fnc_createVehicle;
 };
 
+// Spawn outdoor shop.
+_shopPos = [((_pos select 0) - (cos(_dir + 180) * 0.4)), ((_pos select 1) + (sin(_dir + 180) * 0.4)), 0];
+[_side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnOutdoorShop;
+
 _flag
