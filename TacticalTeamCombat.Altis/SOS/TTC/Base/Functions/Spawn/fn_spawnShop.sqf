@@ -63,7 +63,7 @@ _spawnSalesman = {
 
 	_group		= createGroup _side;
 	_className	= format["%1_soldier_unarmed_f", _prefix];
-	_unitPos	= [((_pos select 0) - (cos(_dir + 90) * 0.3)), ((_pos select 1) + (sin(_dir + 90) * 0.3)), 0];
+	_unitPos	= [((_pos select 0) - (cos(_dir + 90) * 0.3)), ((_pos select 1) + (sin(_dir + 90) * 0.3)), (_pos select 2)];
 	_unit		= _group createUnit [_className, _unitPos, [], 0, "CAN_COLLIDE"];
 	_unit setDir (_dir + 180);
 	_unit allowDamage false;
@@ -141,8 +141,8 @@ _ammo attachTo [_building, [7.75, 3.5, (_height + 0.65)]];
 _ammo setVectorDirAndUp [[1,0,0],[0,0,1]];
 
 // Create AI (salesman)
-_salesman1 = [getPos _desk1] call _spawnSalesman;
-_salesman2 = [getPos _desk2] call _spawnSalesman;
+_salesman1	= [getPosATL _desk1] call _spawnSalesman;
+_salesman2	= [getPosATL _desk2] call _spawnSalesman;
 
 // Add the 'Shop' action for all players of this side (including JIP).
 [[[_salesman1, _salesman2]], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
