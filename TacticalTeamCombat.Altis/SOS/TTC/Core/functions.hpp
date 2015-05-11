@@ -72,6 +72,7 @@ class TTC_Core_Functions {
 		class spawnBagBunker {};
 		class spawnBunkerSmall {};
 		class spawnHelicopter {};
+		class spawnOutpost {};
 		class spawnStation {};
 		class spawnVehicle {};
 	};

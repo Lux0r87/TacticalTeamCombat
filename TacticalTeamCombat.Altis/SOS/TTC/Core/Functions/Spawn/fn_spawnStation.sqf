@@ -3,7 +3,7 @@
 */
 
 
-private ["_pos","_dir","_side","_flag","_fencePos","_fence"];
+private ["_pos","_dir","_side","_flag","_className","_fencePos","_fence","_fenceTop"];
 
 _pos	= [_this, 0, [0,0,0], [[]], [2, 3]] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
@@ -26,28 +26,28 @@ _fencePos	= [((_pos select 0) - (cos(_dir + 45) * 2.7)), ((_pos select 1) + (sin
 _fence		= [_fencePos, _className, (_dir + 135)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
-_fence2		= [_fencePos, _className, (_dir + 135)] call TTC_CORE_fnc_createVehicle;
-_fence2 attachTo [_fence, [0.0, 0.0, 0.8]];
+_fenceTop		= [_fencePos, _className, (_dir + 135)] call TTC_CORE_fnc_createVehicle;
+_fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 _fencePos	= [((_pos select 0) - (cos(_dir + 135) * 2.7)), ((_pos select 1) + (sin(_dir + 135) * 2.7)), 0];
 _fence		= [_fencePos, _className, (_dir + 225)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
-_fence2		= [_fencePos, _className, (_dir + 225)] call TTC_CORE_fnc_createVehicle;
-_fence2 attachTo [_fence, [0.0, 0.0, 0.8]];
+_fenceTop		= [_fencePos, _className, (_dir + 225)] call TTC_CORE_fnc_createVehicle;
+_fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 _fencePos	= [((_pos select 0) - (cos(_dir + 225) * 2.5)), ((_pos select 1) + (sin(_dir + 225) * 2.5)), 0];
 _fence		= [_fencePos, _className, (_dir + 325)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
-_fence2		= [_fencePos, _className, (_dir + 325)] call TTC_CORE_fnc_createVehicle;
-_fence2 attachTo [_fence, [0.0, 0.0, 0.8]];
+_fenceTop		= [_fencePos, _className, (_dir + 325)] call TTC_CORE_fnc_createVehicle;
+_fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 _fencePos	= [((_pos select 0) - (cos(_dir + 325) * 2.5)), ((_pos select 1) + (sin(_dir + 325) * 2.5)), 0];
 _fence		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
-_fence2		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicle;
-_fence2 attachTo [_fence, [0.0, 0.0, 0.8]];
+_fenceTop		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicle;
+_fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 _flag
