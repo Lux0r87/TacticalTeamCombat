@@ -40,13 +40,13 @@ respawnTemplatesVirtual[]	= {}; // Virtual players, used mainly in Curator missi
 respawnButton				= 1;
 
 // Sets the mode for corpse removal manager. 0 = None, 1 = All, 2 = None_But_Respawned, 3 = All_But_Respawned.
-corpseManagerMode			= 2;
+corpseManagerMode			= 1;
 // Corpse limit before which ( <= ) corpseRemovalMaxTime applies and after which ( > ) corpseRemovalMinTime applies
-corpseLimit					= 1;
+corpseLimit					= 50;
 // Remove all bodies that have been dead longer than corpseRemovalMinTime when corpseLimit is breached.
-corpseRemovalMinTime		= 30; //seconds
+corpseRemovalMinTime		= 300; //seconds
 // Maximum time a corpse can remain on the ground if total number of corpses is equal or under corpseLimit.
-corpseRemovalMaxTime		= 30;
+corpseRemovalMaxTime		= 600; //seconds
 
 // 1 = removes all playable units which do not have a human player. 0 = logging out player will have AI take control of his character. Default value is 0. (MP)
 disabledAI					= 1;
