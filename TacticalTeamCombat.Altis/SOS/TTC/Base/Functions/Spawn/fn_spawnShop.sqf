@@ -13,8 +13,8 @@ _dir		= [_this, 2] call BIS_fnc_param;
 _height		= [_this, 3, 0, [0]] call BIS_fnc_param;
 
 _pos		= getPos _building;
-_prefix	= [_side] call TTC_CORE_fnc_getPrefix;
-_type	= [_side] call TTC_CORE_fnc_getAmmoBoxType;
+_prefix		= [_side] call TTC_CORE_fnc_getPrefix;
+_type		= [_side] call TTC_CORE_fnc_getAmmoBoxType;
 
 /*[
 	["Function: %1", "TTC_Base_fnc_spawnShop"],
@@ -63,7 +63,7 @@ _spawnSalesman = {
 
 	_group		= createGroup _side;
 	_className	= format["%1_soldier_unarmed_f", _prefix];
-	_unitPos	= [((_pos select 0) - (cos(_dir + 90) * 0.3)), ((_pos select 1) + (sin(_dir + 90) * 0.3)), (_pos select 2)];
+	_unitPos	= [((_pos select 0) - (cos(_dir + 90) * 0.3)), ((_pos select 1) + (sin(_dir + 90) * 0.3)), (_pos select 2) - 0.2];
 	_unit		= _group createUnit [_className, _unitPos, [], 0, "CAN_COLLIDE"];
 	_unit setDir (_dir + 180);
 	_unit allowDamage false;
