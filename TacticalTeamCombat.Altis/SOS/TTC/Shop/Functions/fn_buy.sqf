@@ -11,6 +11,7 @@ _CATEGORY_ID_BACKPACKS		= 14;
 _CATEGORY_ID_BOATS			= 19;
 _CATEGORY_ID_EXPLOSIVES		= 8;
 _CATEGORY_ID_FACEWEAR		= 11;
+_CATEGORY_ID_GRENADES		= 75;
 _CATEGORY_ID_HANDGUNS		= 2;
 _CATEGORY_ID_HEADWEAR		= 10;
 _CATEGORY_ID_HELICOPTERS	= 16;
@@ -413,6 +414,16 @@ _buyAttachments = {
 	} forEach _articleNames;
 };
 
+_buyGrenades = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_GRENADES] call _getArticleNames;
+
+	{
+		[_x, _type_magazine] call _add;
+	} forEach _articleNames;
+};
+
 _buyItems = {
 	private["_articleNames","_return","_type"];
 	_articleNames	= [_shoppingCart, _CATEGORY_ID_ITEMS] call _getArticleNames;
@@ -496,6 +507,7 @@ _shoppingCartCosts = [] call TTC_SHOP_fnc_getShoppingCartCosts;
 [] call _buyHandguns;
 [] call _buyLaunchers;
 [] call _buyAttachments;
+[] call _buyGrenades;
 [] call _buyItems;
 [] call _buyVehicles;
 [] call _buyHelicopters;
