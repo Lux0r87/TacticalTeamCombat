@@ -219,7 +219,7 @@ TTC_SHOP_ARTICLE_srifle_DMR_05_hex_F = [-37, "srifle_DMR_05_hex_F", 0, 1050] cal
 TTC_SHOP_ARTICLE_srifle_DMR_05_tan_f = [-38, "srifle_DMR_05_tan_f", 0, 1050] call _getWeapon;
 TTC_SHOP_ARTICLE_srifle_DMR_06_camo_F = [-39, "srifle_DMR_06_camo_F", 0, 1050] call _getWeapon;
 TTC_SHOP_ARTICLE_srifle_DMR_06_olive_F = [-40, "srifle_DMR_06_olive_F", 0, 1050] call _getWeapon;
-TTC_SHOP_ARTICLE_srifle_GM6_F = [-41, "srifle_GM6_F", 0, 1365] call _getWeapon;
+TTC_SHOP_ARTICLE_srifle_GM6_F = [-41, "srifle_GM6_F", 0, 2000] call _getWeapon;
 TTC_SHOP_ARTICLE_srifle_DMR_04_F = [-45, "srifle_DMR_04_F", 0, 1365] call _getWeapon;
 TTC_SHOP_ARTICLE_srifle_DMR_04_Tan_F = [-46, "srifle_DMR_04_Tan_F", 0, 1365] call _getWeapon;
 TTC_SHOP_ARTICLE_16Rnd_9x21_Mag = [-53, "16Rnd_9x21_Mag", 0, 20] call _getMagazine;
@@ -255,8 +255,8 @@ TTC_SHOP_ARTICLE_muzzle_snds_acp = [-144, "muzzle_snds_acp", 0, 120] call _getIt
 TTC_SHOP_ARTICLE_muzzle_snds_B = [-149, "muzzle_snds_B", 0, 270] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_93mmg = [-152, "muzzle_snds_93mmg", 0, 405] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan = [-153, "muzzle_snds_93mmg_tan", 0, 405] call _getItem;
-TTC_SHOP_ARTICLE_Binocular = [-165, "Binocular", 0, 60] call _getWeapon;
-TTC_SHOP_ARTICLE_Rangefinder = [-166, "Rangefinder", 0, 600] call _getWeapon;
+TTC_SHOP_ARTICLE_Binocular = [-165, "Binocular", 0, 100] call _getWeapon;
+TTC_SHOP_ARTICLE_Rangefinder = [-166, "Rangefinder", 0, 500] call _getWeapon;
 TTC_SHOP_ARTICLE_FirstAidKit = [-167, "FirstAidKit", 0, 50] call _getWeapon;
 TTC_SHOP_ARTICLE_NVGoggles_INDEP = [-173, "NVGoggles_INDEP", 0, 400] call _getWeapon;
 TTC_SHOP_ARTICLE_G_Shades_Black = [-176, "G_Shades_Black", 0, 5] call _getGlasses;
@@ -333,6 +333,7 @@ TTC_SHOP_ARTICLE_Chemlight_yellow = [-385, "Chemlight_yellow", 0, 5] call _getMa
 TTC_SHOP_ARTICLE_Chemlight_blue = [-386, "Chemlight_blue", 0, 5] call _getMagazine;
 TTC_SHOP_ARTICLE_bipod_03_F_blk = [-393, "bipod_03_F_blk", 0, 250] call _getItem;
 TTC_SHOP_ARTICLE_bipod_03_F_oli = [-394, "bipod_03_F_oli", 0, 250] call _getItem;
+TTC_SHOP_ARTICLE_10Rnd_762x54_Mag = [-399, "10Rnd_762x54_Mag", 0, 30] call _getMagazine;
 
 
 /*
@@ -462,7 +463,8 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_Chemlight_yellow,
   TTC_SHOP_ARTICLE_Chemlight_blue,
   TTC_SHOP_ARTICLE_bipod_03_F_blk,
-  TTC_SHOP_ARTICLE_bipod_03_F_oli
+  TTC_SHOP_ARTICLE_bipod_03_F_oli,
+  TTC_SHOP_ARTICLE_10Rnd_762x54_Mag
 ];
 
 
@@ -525,7 +527,8 @@ TTC_SHOP_AMMUNITION = [
 	TTC_SHOP_ARTICLE_20Rnd_762x51_Mag,
 	TTC_SHOP_ARTICLE_10Rnd_93x64_DMR_05_Mag,
 	TTC_SHOP_ARTICLE_5Rnd_127x108_Mag,
-	TTC_SHOP_ARTICLE_10Rnd_127x54_Mag
+	TTC_SHOP_ARTICLE_10Rnd_127x54_Mag,
+	TTC_SHOP_ARTICLE_10Rnd_762x54_Mag
 ];
 
 TTC_SHOP_GRENADES = [
