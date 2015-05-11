@@ -667,6 +667,42 @@ class Mission
 			skill=0.60000002;
 		};
 	};
+	class Markers
+	{
+		items=4;
+		class Item0
+		{
+			position[]={31563.018,0.23735215,29875.594};
+			name="TTC_MAP_LEGEND_aaf";
+			text="AAF";
+			type="n_unknown";
+			colorName="ColorGUER";
+		};
+		class Item1
+		{
+			position[]={31561.838,0.037563533,26892.783};
+			name="TTC_MAP_LEGEND_unknown";
+			text="UNKNOWN";
+			type="n_unknown";
+			colorName="ColorUNKNOWN";
+		};
+		class Item2
+		{
+			position[]={31562.961,-0.063740358,28880.451};
+			name="TTC_MAP_LEGEND_nato";
+			text="NATO";
+			type="n_unknown";
+			colorName="ColorWEST";
+		};
+		class Item3
+		{
+			position[]={31562.521,-0.10609026,27886.016};
+			name="TTC_MAP_LEGEND_csat";
+			text="CSAT";
+			type="n_unknown";
+			colorName="ColorEAST";
+		};
+	};
 	class Sensors
 	{
 		items=2;

@@ -39,10 +39,10 @@ _getMarkerAlpha = {
 
 	private["_alpha"];
 
-	_alpha = 0.5;
+	_alpha = 0.33;
 	if (isPlayer _unit) then {
 	
-		_alpha = 0.75;
+		_alpha = 0.66;
 		if (_unit == player) then {
 			_alpha = 1.0;
 		} ;
@@ -86,8 +86,12 @@ _getMarkerSize = {
 _getMarkerText = {
 
 	private["_text"];
-
+	
 	_text = name _unit;
+	if (!(isPlayer _unit)) then {
+		_text = "AI";
+	};
+	
 	_text;
 };
 
