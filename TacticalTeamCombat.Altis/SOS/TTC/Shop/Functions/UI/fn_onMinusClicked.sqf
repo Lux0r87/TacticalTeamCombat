@@ -6,8 +6,6 @@
 
 disableSerialization;
 
-systemChat "Shopping cart: Minus button clicked";
-
 _control = uiNamespace getVariable ["TTC_SHOP_UI_shoppingCart_articleList", nil];
 _index = lnbCurSelRow _control;
 _articleId = _control lnbValue [_index, 0];

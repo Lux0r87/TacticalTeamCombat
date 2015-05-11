@@ -4,4 +4,7 @@
     Created by BauerMitFackel
 */
 
-systemChat "Shopping cart: Clear button clicked";
+_shoppingCart = [] call TTC_SHOP_fnc_createShoppingCart;
+TTC_SHOP_shoppingCart = _shoppingCart;
+
+[] call TTC_SHOP_UI_fnc_updateShoppingCart;

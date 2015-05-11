@@ -30,7 +30,7 @@ if (!isNil {_control}) then {
 		_position = uiNamespace getVariable "TTC_SHOP_UI_articleDescription_position";
 		_letterCount = count (toArray _text);
 		
-		systemChat format["LETTER COUNT = %1", _letterCount];
+		//systemChat format["LETTER COUNT = %1", _letterCount];
 		
 		if (_letterCount > 150) then {
 			
@@ -39,7 +39,7 @@ if (!isNil {_control}) then {
 			_w = _position select 2;
 			_h = _position select 3;
 			
-			_control ctrlSetPosition [_x, _y, _w, _h * 1.4];
+			_control ctrlSetPosition [_x, _y, _w, _h * 2];
 			_control ctrlCommit 0;
 			
 		} else {
