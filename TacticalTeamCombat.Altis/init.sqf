@@ -24,9 +24,6 @@ if (hasInterface) then {
 	// Aircraft resupply zones.
 	[] execVM "SOS\MiscScripts\aircraftResupplyZone.sqf";
 
-	// Initialize the texture of the uniform.
-	[] execVM "SOS\Textures\initUniformTexture.sqf";
-
 	// Disable AI radio chatter.
 	player disableConversation true;
 	player setVariable ["BIS_noCoreConversations", true];
