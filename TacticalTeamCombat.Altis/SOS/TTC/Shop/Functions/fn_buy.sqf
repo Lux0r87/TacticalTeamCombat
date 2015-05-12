@@ -461,7 +461,8 @@ _buyVehicles = {
 	_texture		= if (_side == resistance) then {"Black"} else {""};
 
 	{
-		[_x, _vehSpawnPos, _vehSpawnDir, player, _texture] call TTC_CORE_fnc_spawnVehicle;
+		_veh = [_x, _vehSpawnPos, _vehSpawnDir, _texture] call TTC_CORE_fnc_spawnVehicle;
+		TTC_CORE_vehicles pushBack _veh;
 		sleep 0.2;
 	} forEach _articleNames;
 };
@@ -477,7 +478,8 @@ _buyHelicopters = {
 	_texture		= if (_side == resistance) then {"Black"} else {""};
 
 	{
-		[_x, _heliSpawnPos, _heliSpawnDir, player, _texture] call TTC_CORE_fnc_spawnHelicopter;
+		_heli = [_x, _heliSpawnPos, _heliSpawnDir, _texture] call TTC_CORE_fnc_spawnHelicopter;
+		TTC_CORE_vehicles pushBack _heli;
 		sleep 0.2;
 	} forEach _articleNames;
 };

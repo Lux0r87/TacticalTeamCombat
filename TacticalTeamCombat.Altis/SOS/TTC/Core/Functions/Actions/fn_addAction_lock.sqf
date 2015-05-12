@@ -24,5 +24,5 @@ _vehicle addAction [
 	"(alive _target) &&
 	(locked _target <= 1) &&
 	(_this distance _target) < ((sizeOf typeOf _target) / 2) &&
-	((_target getVariable ['TTC_isOwner', objNull]) == _this)"
+	(_target in (missionNamespace getVariable ['TTC_CORE_vehicles', []]))"
 ];

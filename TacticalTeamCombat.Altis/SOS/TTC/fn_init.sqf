@@ -28,6 +28,9 @@ if (isServer) then {
 
 // Client-side:
 if (hasInterface) then {
+	// Array to store all vehicles/helicopters, which the player owns.
+	TTC_CORE_vehicles = [];
+
 	// Handle the fatigue.
 	[player] call TTC_CORE_fnc_handleFatigue;
 

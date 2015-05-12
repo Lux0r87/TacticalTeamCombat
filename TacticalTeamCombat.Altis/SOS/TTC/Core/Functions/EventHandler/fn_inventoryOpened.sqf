@@ -3,9 +3,10 @@
 */
 
 
-#define TTC_CORE_isLocked (_locked > 1 || _isLocked)
-#define TTC_CORE_isOwner (_unit == _container getVariable ["TTC_isOwner", objNull])
-#define TTC_CORE_displayName (getText (configFile >> "CfgVehicles" >> format["%1", typeOf _container] >> "displayName"))
+#define TTC_CORE_isLocked		(_locked > 1 || _isLocked)
+#define TTC_CORE_isOwner		(_unit == _container getVariable ["TTC_isOwner", objNull])
+#define TTC_CORE_ownsVehicle	(_container in (_unit getVariable ["TTC_CORE_vehicles", []]))
+#define TTC_CORE_displayName	(getText (configFile >> "CfgVehicles" >> format["%1", typeOf _container] >> "displayName"))
 
 private ["_unit","_container","_result","_locked","_isLocked","_containers"];
 
@@ -40,7 +41,7 @@ switch (true) do {
 	// Check if container is a vehicle/helicopter.
 	case (_container isKindOf "LandVehicle");
 	case (_container isKindOf "Air"): {
-		if (TTC_CORE_isLocked && !TTC_CORE_isOwner) then {
+		if (TTC_CORE_isLocked && !TTC_CORE_ownsVehicle) then {
 			hintSilent format["The %1's inventory is locked!", TTC_CORE_displayName];
 			_result = true;
 		};
