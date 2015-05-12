@@ -16,6 +16,7 @@ class WEST_Pilot {
 	};
 	linkedItems[] = {
 		"H_PilotHelmetHeli_B",						// Heli Pilot Helmet [NATO]
+		"V_Rangemaster_belt",						// Rangemaster Belt
 		"ItemMap",									// Map
 		"ItemCompass",								// Compass
 		"ItemWatch",								// Watch

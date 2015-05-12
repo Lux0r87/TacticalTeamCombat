@@ -16,6 +16,7 @@ class WEST_PL {
 	};
 	linkedItems[] = {
 		"H_HelmetB_camo",							// ECH (Camo)
+		"V_Rangemaster_belt",						// Rangemaster Belt
 		"ItemMap",									// Map
 		"ItemCompass",								// Compass
 		"ItemWatch",								// Watch

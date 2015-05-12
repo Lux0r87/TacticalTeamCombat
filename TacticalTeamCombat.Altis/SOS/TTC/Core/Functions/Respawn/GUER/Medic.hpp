@@ -17,6 +17,7 @@ class GUER_MED {
 	};
 	linkedItems[] = {
 		"H_HelmetIA",								// MICH
+		"V_Rangemaster_belt",						// Rangemaster Belt
 		"ItemMap",									// Map
 		"ItemCompass",								// Compass
 		"ItemWatch",								// Watch

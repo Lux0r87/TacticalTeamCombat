@@ -17,6 +17,7 @@ class GUER_Pilot {
 	};
 	linkedItems[] = {
 		"H_PilotHelmetHeli_I",						// Heli Pilot Helmet [AAF]
+		"V_Rangemaster_belt",						// Rangemaster Belt
 		"ItemMap",									// Map
 		"ItemCompass",								// Compass
 		"ItemWatch",								// Watch
