@@ -38,6 +38,10 @@ while {TTC_CTI_mobileSector_timeOut > 0} do {
 	sleep 1;
 };
 
+// Stop the vehicle.
+_veh setVelocity [0, 0, 0];
+sleep 0.1;
+
 // Move all passengers out of the vehicle.
 {
 	if (alive _x) then {

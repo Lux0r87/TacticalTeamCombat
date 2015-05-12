@@ -13,7 +13,7 @@ _sector			= [_this, 0] call BIS_fnc_param;
 _dominanceMax	= [_this, 1, 100, [0]] call BIS_fnc_param;
 _mrkArea		= [_this, 2, _sector getVariable ["TTC_CTI_sector_markerArea", ""], [""]] call BIS_fnc_param;
 _mrk			= [_this, 3, _sector getVariable ["TTC_CTI_sector_marker", ""], [""]] call BIS_fnc_param;
-_color			= [_this, 4, [_side, true] call BIS_fnc_sideColor, [""]] call BIS_fnc_param;
+_color			= [_this, 4, "ColorUNKNOWN", [""]] call BIS_fnc_param;
 _brush			= [_this, 5, "Solid", [""]] call BIS_fnc_param;
 _text			= [_this, 6, "", [""]] call BIS_fnc_param;
 

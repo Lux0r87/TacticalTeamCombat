@@ -17,7 +17,7 @@ while {true} do {
 		_dir = direction _veh;
 
 		_speed = _speed - _speedLimit;
-		_veh setVelocity [(_vel select 0)-(sin _dir*_speed),(_vel select 1)- (cos _dir*_speed),(_vel select 2)];
+		_veh setVelocity [(_vel select 0) - (sin _dir * _speed), (_vel select 1) - (cos _dir * _speed), (_vel select 2)];
 	};
 
 	sleep 0.1;

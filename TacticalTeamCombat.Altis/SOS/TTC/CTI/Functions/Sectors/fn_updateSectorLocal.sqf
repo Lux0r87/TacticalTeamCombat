@@ -43,6 +43,7 @@ if (_canSee) then {
 	_taskDesc	= [player, _sector] call TTC_CTI_fnc_getTaskDescription;
 	_taskTitle	= [_sector] call TTC_CTI_fnc_getSectorText;
 	_task setSimpleTaskDescription [_taskDesc, _taskTitle, ""];
+	_task setSimpleTaskDestination (getPos _sector);
 } else {
 	_color	= "ColorUNKNOWN";
 	_brush	= "DiagGrid";
