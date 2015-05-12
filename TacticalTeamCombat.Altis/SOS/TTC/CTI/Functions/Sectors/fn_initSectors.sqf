@@ -80,7 +80,7 @@ _sectors = [_this, 0] call BIS_fnc_param;
 	};
 
 	// Create sector patrol.
-	_patrol = [_sector, _xrad, _yrad, _side, grpNull] call TTC_CTI_fnc_createSectorPatrol;
+	_patrol = [_sector, _side, _xrad, _yrad, grpNull] call TTC_CTI_fnc_createSectorPatrol;
 
 	// Check if the sector is connected to the base.
 	_return		= [_sector] call TTC_CTI_fnc_isSectorConnectedToBase;

@@ -127,7 +127,7 @@ if (_sectorSide != _side) then {
 			_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];*/
 
 			// Create sector patrol.
-			_patrol = [_sector, nil, nil, _side] call TTC_CTI_fnc_createSectorPatrol;
+			_patrol = [_sector, _side] call TTC_CTI_fnc_createSectorPatrol;
 
 			// Unlock the vehicle for mobile sector.
 			_veh = TTC_CTI_sectorVariable_vehicle(_sector);

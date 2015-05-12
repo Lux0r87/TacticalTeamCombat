@@ -5,12 +5,12 @@
 
 #include "sectorVariables.inc"
 
-private ["_sector","_axisA","_axisB","_side","_patrol","_unitTypes","_radius","_pos","_safePos","_grp","_prefix","_unitType","_unit"];
+private ["_sector","_side","_axisA","_axisB","_patrol","_unitTypes","_radius","_pos","_safePos","_grp","_prefix","_unitType","_unit"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
-_axisA		= [_this, 1, TTC_CTI_sectorVariable_axisA(_sector), [0]] call BIS_fnc_param;
-_axisB		= [_this, 2, TTC_CTI_sectorVariable_axisB(_sector), [0]] call BIS_fnc_param;
-_side		= [_this, 3, TTC_CTI_sectorVariable_side(_sector), [sideUnknown]] call BIS_fnc_param;
+_side		= [_this, 1, TTC_CTI_sectorVariable_side(_sector), [sideUnknown]] call BIS_fnc_param;
+_axisA		= [_this, 2, TTC_CTI_sectorVariable_axisA(_sector), [0]] call BIS_fnc_param;
+_axisB		= [_this, 3, TTC_CTI_sectorVariable_axisB(_sector), [0]] call BIS_fnc_param;
 _patrol		= [_this, 4, TTC_CTI_sectorVariable_patrol(_sector), [grpNull]] call BIS_fnc_param;
 _unitTypes	= [_this, 5, ["_Soldier_SL_F","_Soldier_AR_F","_Soldier_LAT_F","_soldier_M_F","_medic_F"], [[]]] call BIS_fnc_param;
 
@@ -19,8 +19,8 @@ _radius		= _axisA min _axisB;
 _safePos	= [_pos, 0, _radius, 0, 0, 1000, 0] call BIS_fnc_findSafePos;
 
 /*[_sector, "TTC_CTI_fnc_createSectorPatrol",
-	[["_pos = %1", _pos], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_side = %1", _side], ["_patrol = %1", _patrol],
-	["_unitTypes = %1", _unitTypes], ["_radius = %1", _radius], ["_safePos = %1", _safePos]]
+	[["_side = %1", _side], ["_axisA = %1", _axisA], ["_axisB = %1", _axisB], ["_patrol = %1", _patrol],
+	["_unitTypes = %1", _unitTypes], ["_pos = %1", _pos], ["_radius = %1", _radius], ["_safePos = %1", _safePos]]
 ] call TTC_CTI_fnc_logSector;*/
 
 

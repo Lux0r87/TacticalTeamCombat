@@ -18,7 +18,7 @@ _isLocked	= _container getVariable ["TTC_isLocked", false];
 _containers	= everyContainer _container;
 
 /*[
-	["Function: %1", "TTC_Base_fnc_inventoryOpened"],
+	["Function: %1", "TTC_CORE_fnc_inventoryOpened"],
 	["_unit = %1", _unit], ["_container = %1", _container], ["type = %1", typeOf _container], ["_result = %1", _result],["_locked = %1", _locked],
 	["_isLocked = %1", _isLocked], ["isShopItem = %1", _container getVariable ["TTC_isShopItem", false]], ["_containers = %1", _containers]
 ] call TTC_CORE_fnc_log;*/
