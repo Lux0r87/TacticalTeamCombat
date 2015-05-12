@@ -241,7 +241,7 @@ TTC_SHOP_ARTICLE_muzzle_snds_acp = [-144, "muzzle_snds_acp", 0, 120] call _getIt
 TTC_SHOP_ARTICLE_muzzle_snds_H = [-146, "muzzle_snds_H", 0, 180] call _getItem;
 TTC_SHOP_ARTICLE_Binocular = [-165, "Binocular", 0, 100] call _getWeapon;
 TTC_SHOP_ARTICLE_FirstAidKit = [-167, "FirstAidKit", 0, 50] call _getWeapon;
-TTC_SHOP_ARTICLE_NVGoggles = [-171, "NVGoggles", 0, 300] call _getWeapon;
+TTC_SHOP_ARTICLE_NVGoggles = [-171, "NVGoggles", 0, 250] call _getWeapon;
 TTC_SHOP_ARTICLE_G_Shades_Black = [-176, "G_Shades_Black", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Blue = [-177, "G_Shades_Blue", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Green = [-178, "G_Shades_Green", 0, 5] call _getGlasses;
@@ -277,26 +277,26 @@ TTC_SHOP_ARTICLE_G_Balaclava_blk = [-207, "G_Balaclava_blk", 0, 25] call _getGla
 TTC_SHOP_ARTICLE_G_Balaclava_lowprofile = [-208, "G_Balaclava_lowprofile", 0, 25] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Balaclava_combat = [-209, "G_Balaclava_combat", 0, 25] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Balaclava_oli = [-210, "G_Balaclava_oli", 0, 25] call _getGlasses;
-TTC_SHOP_ARTICLE_V_Rangemaster_belt = [-224, "V_Rangemaster_belt", 0, 100] call _getVest;
-TTC_SHOP_ARTICLE_V_Chestrig_rgr = [-225, "V_Chestrig_rgr", 0, 200] call _getVest;
-TTC_SHOP_ARTICLE_V_Chestrig_blk = [-226, "V_Chestrig_blk", 0, 200] call _getVest;
-TTC_SHOP_ARTICLE_V_Chestrig_oli = [-227, "V_Chestrig_oli", 0, 200] call _getVest;
+TTC_SHOP_ARTICLE_V_Chestrig_rgr = [-225, "V_Chestrig_rgr", 0, 250] call _getVest;
+TTC_SHOP_ARTICLE_V_Chestrig_blk = [-226, "V_Chestrig_blk", 0, 250] call _getVest;
+TTC_SHOP_ARTICLE_V_Chestrig_oli = [-227, "V_Chestrig_oli", 0, 250] call _getVest;
 TTC_SHOP_ARTICLE_B_Parachute = [-252, "B_Parachute", 0, 100] call _getBackpack;
 TTC_SHOP_ARTICLE_B_Quadbike_01_F = [-255, "B_Quadbike_01_F", 0, 100] call _getVehicle;
 TTC_SHOP_ARTICLE_B_G_Offroad_01_F = [-256, "B_G_Offroad_01_F", 0, 250] call _getVehicle;
 TTC_SHOP_ARTICLE_B_G_Offroad_01_armed_F = [-257, "B_G_Offroad_01_armed_F", 0, 400] call _getVehicle;
 TTC_SHOP_ARTICLE_B_MRAP_01_F = [-258, "B_MRAP_01_F", 0, 500] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Light_01_F = [-281, "B_Heli_Light_01_F", 0, 650] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Transport_03_unarmed_F = [-282, "B_Heli_Transport_03_unarmed_F", 0, 1350] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Transport_03_unarmed_green_F = [-283, "B_Heli_Transport_03_unarmed_green_F", 0, 1350] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Transport_03_F = [-284, "B_Heli_Transport_03_F", 0, 1875] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Transport_03_black_F = [-285, "B_Heli_Transport_03_black_F", 0, 1875] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Transport_01_F = [-286, "B_Heli_Transport_01_F", 0, 1875] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Transport_01_camo_F = [-287, "B_Heli_Transport_01_camo_F", 0, 1875] call _getVehicle;
-TTC_SHOP_ARTICLE_B_Heli_Light_01_armed_F = [-288, "B_Heli_Light_01_armed_F", 0, 3750] call _getVehicle;
-TTC_SHOP_ARTICLE_O_Heli_Light_02_unarmed_F = [-292, "O_Heli_Light_02_unarmed_F", 0, 2250] call _getVehicle;
-TTC_SHOP_ARTICLE_O_Heli_Light_02_F = [-293, "O_Heli_Light_02_F", 0, 3750] call _getVehicle;
-TTC_SHOP_ARTICLE_V_Chestrig_khk = [-320, "V_Chestrig_khk", 0, 200] call _getVest;
+TTC_SHOP_ARTICLE_B_Heli_Light_01_F = [-281, "B_Heli_Light_01_F", 0, 750] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Transport_03_unarmed_F = [-282, "B_Heli_Transport_03_unarmed_F", 0, 1750] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Transport_03_unarmed_green_F = [-283, "B_Heli_Transport_03_unarmed_green_F", 0, 1750] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Transport_03_F = [-284, "B_Heli_Transport_03_F", 0, 3000] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Transport_03_black_F = [-285, "B_Heli_Transport_03_black_F", 0, 3000] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Transport_01_F = [-286, "B_Heli_Transport_01_F", 0, 3000] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Transport_01_camo_F = [-287, "B_Heli_Transport_01_camo_F", 0, 3000] call _getVehicle;
+TTC_SHOP_ARTICLE_B_Heli_Light_01_armed_F = [-288, "B_Heli_Light_01_armed_F", 0, 6250] call _getVehicle;
+TTC_SHOP_ARTICLE_O_Heli_Light_02_unarmed_F = [-292, "O_Heli_Light_02_unarmed_F", 0, 3750] call _getVehicle;
+TTC_SHOP_ARTICLE_O_Heli_Light_02_F = [-293, "O_Heli_Light_02_F", 0, 6250] call _getVehicle;
+TTC_SHOP_ARTICLE_V_Chestrig_khk = [-320, "V_Chestrig_khk", 0, 250] call _getVest;
+TTC_SHOP_ARTICLE_B_Heli_Attack_01_F = [-321, "B_Heli_Attack_01_F", 0, 9500] call _getVehicle;
 TTC_SHOP_ARTICLE_HandGrenade = [-340, "HandGrenade", 0, 40] call _getMagazine;
 TTC_SHOP_ARTICLE_MiniGrenade = [-341, "MiniGrenade", 0, 25] call _getMagazine;
 TTC_SHOP_ARTICLE_SmokeShell = [-342, "SmokeShell", 0, 20] call _getMagazine;
@@ -310,6 +310,12 @@ TTC_SHOP_ARTICLE_Chemlight_yellow = [-385, "Chemlight_yellow", 0, 5] call _getMa
 TTC_SHOP_ARTICLE_Chemlight_blue = [-386, "Chemlight_blue", 0, 5] call _getMagazine;
 TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green = [-397, "30Rnd_65x39_caseless_green", 0, 60] call _getMagazine;
 TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer = [-398, "30Rnd_65x39_caseless_green_mag_Tracer", 0, 30] call _getMagazine;
+TTC_SHOP_ARTICLE_V_TacVest_khk = [-478, "V_TacVest_khk", 0, 500] call _getVest;
+TTC_SHOP_ARTICLE_V_TacVest_brn = [-479, "V_TacVest_brn", 0, 500] call _getVest;
+TTC_SHOP_ARTICLE_V_TacVest_oli = [-480, "V_TacVest_oli", 0, 500] call _getVest;
+TTC_SHOP_ARTICLE_V_TacVest_blk = [-481, "V_TacVest_blk", 0, 500] call _getVest;
+TTC_SHOP_ARTICLE_V_TacVest_camo = [-482, "V_TacVest_camo", 0, 500] call _getVest;
+TTC_SHOP_ARTICLE_V_TacVestCamo_khk = [-484, "V_TacVestCamo_khk", 0, 500] call _getVest;
 
 
 /*
@@ -384,7 +390,6 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_G_Balaclava_lowprofile,
   TTC_SHOP_ARTICLE_G_Balaclava_combat,
   TTC_SHOP_ARTICLE_G_Balaclava_oli,
-  TTC_SHOP_ARTICLE_V_Rangemaster_belt,
   TTC_SHOP_ARTICLE_V_Chestrig_rgr,
   TTC_SHOP_ARTICLE_V_Chestrig_blk,
   TTC_SHOP_ARTICLE_V_Chestrig_oli,
@@ -404,6 +409,7 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_O_Heli_Light_02_unarmed_F,
   TTC_SHOP_ARTICLE_O_Heli_Light_02_F,
   TTC_SHOP_ARTICLE_V_Chestrig_khk,
+  TTC_SHOP_ARTICLE_B_Heli_Attack_01_F,
   TTC_SHOP_ARTICLE_HandGrenade,
   TTC_SHOP_ARTICLE_MiniGrenade,
   TTC_SHOP_ARTICLE_SmokeShell,
@@ -416,15 +422,21 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_Chemlight_yellow,
   TTC_SHOP_ARTICLE_Chemlight_blue,
   TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green,
-  TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer
+  TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer,
+  TTC_SHOP_ARTICLE_V_TacVest_khk,
+  TTC_SHOP_ARTICLE_V_TacVest_brn,
+  TTC_SHOP_ARTICLE_V_TacVest_oli,
+  TTC_SHOP_ARTICLE_V_TacVest_blk,
+  TTC_SHOP_ARTICLE_V_TacVest_camo,
+  TTC_SHOP_ARTICLE_V_TacVestCamo_khk
 ];
 
 
 TTC_SHOP_RIFLES = [
-	TTC_SHOP_ARTICLE_SMG_01_F,
 	TTC_SHOP_ARTICLE_SMG_02_F,
-	TTC_SHOP_ARTICLE_arifle_MXC_F,
-	TTC_SHOP_ARTICLE_arifle_Katiba_C_F
+	TTC_SHOP_ARTICLE_SMG_01_F,
+	TTC_SHOP_ARTICLE_arifle_Katiba_C_F,
+	TTC_SHOP_ARTICLE_arifle_MXC_F
 ];
 
 TTC_SHOP_HANDGUNS = [
@@ -435,49 +447,49 @@ TTC_SHOP_HANDGUNS = [
 
 TTC_SHOP_SCOPES = [
 	TTC_SHOP_ARTICLE_optic_MRD,
-	TTC_SHOP_ARTICLE_optic_Aco_smg,
 	TTC_SHOP_ARTICLE_optic_ACO_grn_smg,
+	TTC_SHOP_ARTICLE_optic_Aco_smg,
 	TTC_SHOP_ARTICLE_optic_Holosight_smg,
-	TTC_SHOP_ARTICLE_optic_Aco,
 	TTC_SHOP_ARTICLE_optic_ACO_grn,
+	TTC_SHOP_ARTICLE_optic_Aco,
 	TTC_SHOP_ARTICLE_optic_Holosight,
 	TTC_SHOP_ARTICLE_optic_MRCO,
-	TTC_SHOP_ARTICLE_optic_Hamr,
-	TTC_SHOP_ARTICLE_optic_Arco
+	TTC_SHOP_ARTICLE_optic_Arco,
+	TTC_SHOP_ARTICLE_optic_Hamr
 ];
 
 TTC_SHOP_ATTACHMENTS = [
-	TTC_SHOP_ARTICLE_acc_flashlight,
-	TTC_SHOP_ARTICLE_acc_pointer_IR,
-	TTC_SHOP_ARTICLE_muzzle_snds_L,
 	TTC_SHOP_ARTICLE_muzzle_snds_acp,
-	TTC_SHOP_ARTICLE_muzzle_snds_H
+	TTC_SHOP_ARTICLE_muzzle_snds_L,
+	TTC_SHOP_ARTICLE_muzzle_snds_H,
+	TTC_SHOP_ARTICLE_acc_flashlight,
+	TTC_SHOP_ARTICLE_acc_pointer_IR
 ];
 
 TTC_SHOP_AMMUNITION = [
 	TTC_SHOP_ARTICLE_16Rnd_9x21_Mag,
-	TTC_SHOP_ARTICLE_30Rnd_9x21_Mag,
 	TTC_SHOP_ARTICLE_11Rnd_45ACP_Mag,
-	TTC_SHOP_ARTICLE_30Rnd_45ACP_Mag_SMG_01,
 	TTC_SHOP_ARTICLE_30Rnd_45ACP_Mag_SMG_01_Tracer_Green,
-	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_mag,
+	TTC_SHOP_ARTICLE_30Rnd_9x21_Mag,
+	TTC_SHOP_ARTICLE_30Rnd_45ACP_Mag_SMG_01,
+	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer,
 	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_mag_Tracer,
 	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green,
-	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_green_mag_Tracer
+	TTC_SHOP_ARTICLE_30Rnd_65x39_caseless_mag
 ];
 
 TTC_SHOP_GRENADES = [
-	TTC_SHOP_ARTICLE_HandGrenade,
+	TTC_SHOP_ARTICLE_B_IR_Grenade,
 	TTC_SHOP_ARTICLE_MiniGrenade,
-	TTC_SHOP_ARTICLE_SmokeShell,
-	TTC_SHOP_ARTICLE_SmokeShellPurple,
+	TTC_SHOP_ARTICLE_HandGrenade,
 	TTC_SHOP_ARTICLE_SmokeShellBlue,
 	TTC_SHOP_ARTICLE_SmokeShellOrange,
-	TTC_SHOP_ARTICLE_B_IR_Grenade,
+	TTC_SHOP_ARTICLE_SmokeShellPurple,
+	TTC_SHOP_ARTICLE_SmokeShell,
+	TTC_SHOP_ARTICLE_Chemlight_blue,
 	TTC_SHOP_ARTICLE_Chemlight_green,
 	TTC_SHOP_ARTICLE_Chemlight_red,
-	TTC_SHOP_ARTICLE_Chemlight_yellow,
-	TTC_SHOP_ARTICLE_Chemlight_blue
+	TTC_SHOP_ARTICLE_Chemlight_yellow
 ];
 
 TTC_SHOP_ITEMS = [
@@ -487,30 +499,30 @@ TTC_SHOP_ITEMS = [
 ];
 
 TTC_SHOP_FACEWEAR = [
+	TTC_SHOP_ARTICLE_G_Diving,
+	TTC_SHOP_ARTICLE_G_Lowprofile,
+	TTC_SHOP_ARTICLE_G_Spectacles,
+	TTC_SHOP_ARTICLE_G_Squares_Tinted,
+	TTC_SHOP_ARTICLE_G_Squares,
+	TTC_SHOP_ARTICLE_G_Spectacles_Tinted,
+	TTC_SHOP_ARTICLE_G_Combat,
+	TTC_SHOP_ARTICLE_G_Tactical_Clear,
+	TTC_SHOP_ARTICLE_G_Tactical_Black,
+	TTC_SHOP_ARTICLE_G_Aviator,
 	TTC_SHOP_ARTICLE_G_Shades_Black,
 	TTC_SHOP_ARTICLE_G_Shades_Blue,
 	TTC_SHOP_ARTICLE_G_Shades_Green,
 	TTC_SHOP_ARTICLE_G_Shades_Red,
-	TTC_SHOP_ARTICLE_G_Sport_Blackred,
-	TTC_SHOP_ARTICLE_G_Sport_BlackWhite,
-	TTC_SHOP_ARTICLE_G_Sport_Blackyellow,
-	TTC_SHOP_ARTICLE_G_Sport_Checkered,
-	TTC_SHOP_ARTICLE_G_Sport_Greenblack,
 	TTC_SHOP_ARTICLE_G_Sport_Red,
-	TTC_SHOP_ARTICLE_G_Lady_Mirror,
-	TTC_SHOP_ARTICLE_G_Lady_Dark,
+	TTC_SHOP_ARTICLE_G_Sport_Blackyellow,
+	TTC_SHOP_ARTICLE_G_Sport_BlackWhite,
+	TTC_SHOP_ARTICLE_G_Sport_Checkered,
+	TTC_SHOP_ARTICLE_G_Sport_Blackred,
+	TTC_SHOP_ARTICLE_G_Sport_Greenblack,
 	TTC_SHOP_ARTICLE_G_Lady_Red,
 	TTC_SHOP_ARTICLE_G_Lady_Blue,
-	TTC_SHOP_ARTICLE_G_Spectacles,
-	TTC_SHOP_ARTICLE_G_Spectacles_Tinted,
-	TTC_SHOP_ARTICLE_G_Squares,
-	TTC_SHOP_ARTICLE_G_Squares_Tinted,
-	TTC_SHOP_ARTICLE_G_Lowprofile,
-	TTC_SHOP_ARTICLE_G_Diving,
-	TTC_SHOP_ARTICLE_G_Tactical_Clear,
-	TTC_SHOP_ARTICLE_G_Tactical_Black,
-	TTC_SHOP_ARTICLE_G_Combat,
-	TTC_SHOP_ARTICLE_G_Aviator,
+	TTC_SHOP_ARTICLE_G_Lady_Mirror,
+	TTC_SHOP_ARTICLE_G_Lady_Dark,
 	TTC_SHOP_ARTICLE_G_Bandanna_aviator,
 	TTC_SHOP_ARTICLE_G_Bandanna_beast,
 	TTC_SHOP_ARTICLE_G_Bandanna_tan,
@@ -525,11 +537,16 @@ TTC_SHOP_FACEWEAR = [
 ];
 
 TTC_SHOP_VESTS = [
-	TTC_SHOP_ARTICLE_V_Rangemaster_belt,
 	TTC_SHOP_ARTICLE_V_Chestrig_rgr,
+	TTC_SHOP_ARTICLE_V_Chestrig_khk,
 	TTC_SHOP_ARTICLE_V_Chestrig_blk,
 	TTC_SHOP_ARTICLE_V_Chestrig_oli,
-	TTC_SHOP_ARTICLE_V_Chestrig_khk
+	TTC_SHOP_ARTICLE_V_TacVestCamo_khk,
+	TTC_SHOP_ARTICLE_V_TacVest_blk,
+	TTC_SHOP_ARTICLE_V_TacVest_brn,
+	TTC_SHOP_ARTICLE_V_TacVest_camo,
+	TTC_SHOP_ARTICLE_V_TacVest_khk,
+	TTC_SHOP_ARTICLE_V_TacVest_oli
 ];
 
 TTC_SHOP_BACKPACKS = [
@@ -552,6 +569,7 @@ TTC_SHOP_HELICOPTERS = [
 	TTC_SHOP_ARTICLE_B_Heli_Transport_01_F,
 	TTC_SHOP_ARTICLE_B_Heli_Transport_01_camo_F,
 	TTC_SHOP_ARTICLE_B_Heli_Light_01_armed_F,
+	TTC_SHOP_ARTICLE_B_Heli_Attack_01_F,
 	TTC_SHOP_ARTICLE_O_Heli_Light_02_unarmed_F,
 	TTC_SHOP_ARTICLE_O_Heli_Light_02_F
 ];
