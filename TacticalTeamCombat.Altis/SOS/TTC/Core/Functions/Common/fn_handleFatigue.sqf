@@ -3,27 +3,38 @@
 */
 
 
-private ["_unit","_fatigueMax"];
-
-_unit		= [_this, 0] call BIS_fnc_param;
-_fatigueMax = ["TTC_CORE_fatigueMax", 50] call BIS_fnc_getParamValue;
-
-
-if (_fatigueMax <= 0) then {
-	_unit enableFatigue false;
-} else {
-	[_unit,_fatigueMax] spawn {
-		private ["_unit","_fatigueMax"];
-
-		_unit		= [_this, 0] call BIS_fnc_param;
-		_fatigueMax	= ([_this, 1] call BIS_fnc_param) / 100;
-
-		while {true} do {
-			if ((getFatigue _unit) > _fatigueMax) then {
-				_unit setFatigue _fatigueMax;
+_updateFatigue = {
+	
+	private["_unit", "_fatigueModifier", "_previousFatigue", "_fatigue"];
+	
+	_unit = [_this, 0] call BIS_fnc_param;
+	
+	_previousFatigue = 0;
+	while {true} do {
+		
+		_fatigue = getFatigue _unit;
+		if (_fatigue > _previousFatigue) then {
+			_fatigueModifier = 0.94 + (((_fatigue * 10) ^ 1.2) / 100);
+			if (_fatigueModifier > 1) then {
+				_fatigueModifier = 1;
 			};
-
-			sleep 1;
+			
+			diag_log format["Fatigue modifier: %1", _fatigueModifier];
+			_fatigue = _fatigue * _fatigueModifier;
 		};
+		
+		hint parseText format["Fatigue: %1", _fatigue];
+		diag_log format["Fatigue: %1", _fatigue];
+		
+		_previousFatigue = _fatigue;
+		_unit setFatigue _fatigue;
+		sleep 1;
 	};
 };
+
+
+private ["_unit","_fatigueModifier"];
+
+_unit		= [_this, 0] call BIS_fnc_param;
+_fatigueModifier = ["TTC_CORE_fatigueModifier", 0.987] call BIS_fnc_getParamValue;
+[_unit, _fatigueModifier] spawn _updateFatigue;
