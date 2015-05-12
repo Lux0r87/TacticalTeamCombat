@@ -33,7 +33,8 @@ if (hasInterface) then {
 // Server-side scripts:
 if (isServer) then {
 	// --------------- Definitions/Declarations ---------------
-	#define TTC_CTI_timer 10
+	#define TTC_CTI_timer 10			// Defines how fast the sector dominance will be updated (in seconds).
+	#define TTC_CTI_diffMultiplier 5	// The capture progress (dominance change) for every capturing soldier.
 	#define TTC_CTI_allSides [resistance, west, east]
 
 	private ["_winner","_location","_sectorPattern","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"];
@@ -133,7 +134,7 @@ if (isServer) then {
 
 						// Update the capture progress
 						if (_diff > 0) then {
-							[_x, _side, _diff*TTC_CTI_timer, _list] call TTC_CTI_fnc_updateDominance;
+							[_x, _side, _diff*TTC_CTI_diffMultiplier, _list] call TTC_CTI_fnc_updateDominance;
 						};
 					};
 				};
