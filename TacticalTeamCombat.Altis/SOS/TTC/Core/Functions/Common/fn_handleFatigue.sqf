@@ -19,12 +19,12 @@ _updateFatigue = {
 				_fatigueModifier = 1;
 			};
 			
-			diag_log format["Fatigue modifier: %1", _fatigueModifier];
+			//diag_log format["Fatigue modifier: %1", _fatigueModifier];
 			_fatigue = _fatigue * _fatigueModifier;
 		};
 		
-		hint parseText format["Fatigue: %1", _fatigue];
-		diag_log format["Fatigue: %1", _fatigue];
+		//hint parseText format["Fatigue: %1", _fatigue];
+		//diag_log format["Fatigue: %1", _fatigue];
 		
 		_previousFatigue = _fatigue;
 		_unit setFatigue _fatigue;
