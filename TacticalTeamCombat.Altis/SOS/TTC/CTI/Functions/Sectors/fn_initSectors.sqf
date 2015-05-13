@@ -7,8 +7,8 @@
 #include "sectorVariables.inc"
 
 private [
-	"_sectors","_neighbours","_neighbour","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_type","_objectDir",
-	"_shape","_mrk","_bunker","_flag","_patrol","_visibility","_canSee"
+	"_sectors","_neighbours","_neighbour","_sector","_name","_xrad","_yrad","_rectangle","_side","_dominance","_type","_objectDir","_patrolTypes",
+	"_shape","_mrk","_flag","_bunker","_patrol","_visibility","_canSee"
 ];
 
 
@@ -39,15 +39,16 @@ _sectors = [_this, 0] call BIS_fnc_param;
 
 // Iterate over all sectors:
 {
-	_sector		= _x;
-	_name		= TTC_CTI_sectorVariable_name(_sector);
-	_xrad		= TTC_CTI_sectorVariable_axisA(_sector);
-	_yrad		= TTC_CTI_sectorVariable_axisB(_sector);
-	_rectangle	= TTC_CTI_sectorVariable_rectangle(_sector);
-	_side		= TTC_CTI_sectorVariable_side(_sector);
-	_dominance	= TTC_CTI_sectorVariable_dominance(_sector);
-	_type		= TTC_CTI_sectorVariable_type(_sector);
-	_objectDir	= TTC_CTI_sectorVariable_objectDir(_sector);
+	_sector			= _x;
+	_name			= TTC_CTI_sectorVariable_name(_sector);
+	_xrad			= TTC_CTI_sectorVariable_axisA(_sector);
+	_yrad			= TTC_CTI_sectorVariable_axisB(_sector);
+	_rectangle		= TTC_CTI_sectorVariable_rectangle(_sector);
+	_side			= TTC_CTI_sectorVariable_side(_sector);
+	_dominance		= TTC_CTI_sectorVariable_dominance(_sector);
+	_type			= TTC_CTI_sectorVariable_type(_sector);
+	_objectDir		= TTC_CTI_sectorVariable_objectDir(_sector);
+	_patrolTypes	= TTC_CTI_sectorVariable_patrolTypes(_sector);
 
 	// Create area marker
 	_shape = if (_rectangle) then {"RECTANGLE";} else {"ELLIPSE";};
@@ -80,7 +81,7 @@ _sectors = [_this, 0] call BIS_fnc_param;
 	};
 
 	// Create sector patrol.
-	_patrol = [_sector, _side, _xrad, _yrad, grpNull] call TTC_CTI_fnc_createSectorPatrol;
+	_patrol = [_sector, _side, _xrad, _yrad, grpNull, _patrolTypes] call TTC_CTI_fnc_createSectorPatrol;
 
 	// Check if the sector is connected to the base.
 	_return		= [_sector] call TTC_CTI_fnc_isSectorConnectedToBase;

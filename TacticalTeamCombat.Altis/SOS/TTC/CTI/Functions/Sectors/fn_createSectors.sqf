@@ -5,25 +5,26 @@
 
 #define TTC_CTI_sector_statements ["this", "[thisTrigger] spawn TTC_CTI_fnc_createSectorDisplay;", "1004 cutFadeOut 0.5"]
 
-private ["_sectors","_name","_pos","_dir","_xrad","_yrad","_rectangle","_side","_dominance","_neighbours","_respawnDir","_type","_objectDir","_sector"];
+private ["_sectors","_name","_pos","_dir","_xrad","_yrad","_rectangle","_side","_dominance","_neighbours","_respawnDir","_type","_objectDir","_patrolTypes","_sector"];
 
 
 _sectors = [];
 
 // Iterate over all sector definitions:
 {
-	_name		= _x select 0;
-	_pos		= _x select 1;
-	_dir		= _x select 2;
-	_xrad		= _x select 3;
-	_yrad		= _x select 4;
-	_rectangle	= _x select 5;
-	_side		= _x select 6;
-	_dominance	= _x select 7;
-	_neighbours	= _x select 8;
-	_respawnDir	= _x select 9;
-	_type		= _x select 10;
-	_objectDir	= _x select 11;
+	_name			= _x select 0;
+	_pos			= _x select 1;
+	_dir			= _x select 2;
+	_xrad			= _x select 3;
+	_yrad			= _x select 4;
+	_rectangle		= _x select 5;
+	_side			= _x select 6;
+	_dominance		= _x select 7;
+	_neighbours		= _x select 8;
+	_respawnDir		= _x select 9;
+	_type			= _x select 10;
+	_objectDir		= _x select 11;
+	_patrolTypes	= _x select 12;
 
 	// Create a trigger, which represents the sector.
 	_sector = [_name, _pos, _xrad, _yrad, _dir, _rectangle, TTC_CTI_sector_statements] call TTC_CORE_fnc_createTrigger;
@@ -40,12 +41,9 @@ _sectors = [];
 	_sector setVariable ["TTC_CTI_sector_respawnDir",	_respawnDir,	true];	// Broadcast respawn positions to all clients.
 	_sector setVariable ["TTC_CTI_sector_type",			_type];
 	_sector setVariable ["TTC_CTI_sector_objectDir",	_objectDir];
+	_sector setVariable ["TTC_CTI_sector_patrolTypes",	_patrolTypes];
 
-	/*[
-		["Function: %1", "TTC_CTI_createSectors"], ["_sector = %1", _sector], ["_name = %1", _name], ["_pos = %1", _pos], ["_xrad = %1", _xrad], ["_yrad = %1", _yrad],
-		["_dir = %1", _dir], ["_rectangle = %1", _rectangle], ["_side = %1", _side], ["_dominance = %1", _dominance], ["_neighbours = %1", _neighbours],
-		["_respawnDir = %1", _respawnDir], ["_type = %1", _type], ["_objectDir = %1", _objectDir]
-	] call TTC_CORE_fnc_log;*/
+	//[_sector, "TTC_CTI_fnc_createSectors"] call TTC_CTI_fnc_logSector;
 } forEach TTC_CTI_sectorDefinitions;
 
 _sectors
