@@ -9,7 +9,7 @@
 
 private [
 	"_sector","_fncName","_messages","_name","_pos","_dir","_xrad","_yrad","_rectangle","_marker","_markerArea","_side","_dominance","_respawnPos","_respawnDir",
-	"_type","_objectDir","_patrolTypes","_flag","_patrol","_vehicle","_neighbours","_isConnected","_visibility","_task"
+	"_type","_objectDir","_patrolTypes","_flag","_patrol","_corpses","_vehicle","_neighbours","_isConnected","_visibility","_task"
 ];
 
 _sector			= [_this, 0] call BIS_fnc_param;
@@ -32,6 +32,7 @@ _type			= _sector getVariable ["TTC_CTI_sector_type", UNDEFINED];
 _objectDir		= _sector getVariable ["TTC_CTI_sector_objectDir", UNDEFINED];
 _patrolTypes	= _sector getVariable ["TTC_CTI_sector_patrolTypes", UNDEFINED];
 _patrol			= _sector getVariable ["TTC_CTI_sector_patrol", UNDEFINED];
+_corpses		= _sector getVariable ["TTC_CTI_sector_corpses", UNDEFINED];
 _flag			= _sector getVariable ["TTC_CTI_sector_flag", UNDEFINED];
 _vehicle		= _sector getVariable ["TTC_CTI_sector_vehicle", UNDEFINED];
 _neighbours		= _sector getVariable ["TTC_CTI_sector_neighbours", UNDEFINED];
@@ -44,8 +45,8 @@ _sectorMessage	= [
 	["--> _yrad = %1", _yrad], ["--> _rectangle = %1", _rectangle], ["--> _marker = %1", _marker], ["--> _markerArea = %1", _markerArea],
 	["--> _side = %1", _side], ["--> _dominance = %1", _dominance],	["--> _respawnPos = %1", _respawnPos], ["--> _respawnDir = %1", _respawnDir],
 	["--> _type = %1", _type], ["--> _objectDir = %1", _objectDir], ["--> _patrolTypes = %1", _patrolTypes], ["--> _patrol = %1", _patrol],
-	["--> _flag = %1", _flag], ["--> _vehicle = %1", _vehicle],	["--> _neighbours = %1", _neighbours], ["--> _isConnected = %1", _isConnected],
-	["--> _visibility = %1", _visibility], ["--> _task = %1", _task], ["----------------------------"]
+	["--> _corpses = %1", _corpses], ["--> _flag = %1", _flag], ["--> _vehicle = %1", _vehicle],	["--> _neighbours = %1", _neighbours],
+	["--> _isConnected = %1", _isConnected], ["--> _visibility = %1", _visibility], ["--> _task = %1", _task], ["----------------------------"]
 ];
 
 ([["Function: %1", _fncName]] + _sectorMessage + _messages) call TTC_CORE_fnc_log;

@@ -14,7 +14,7 @@ _unitIsPlayer	= isPlayer _unit;
 _killerIsPlayer	= isPlayer _killer;
 
 /*[
-	["Function: %1", "TTC_BTC_killed"], ["_unit = %1", _unit], ["_killer = %1", _killer], ["_unitIsPlayer = %1", _unitIsPlayer], ["_killerIsPlayer = %1", _killerIsPlayer]
+	["Function: %1", "TTC_BTC_fnc_killed"], ["_unit = %1", _unit], ["_killer = %1", _killer], ["_unitIsPlayer = %1", _unitIsPlayer], ["_killerIsPlayer = %1", _killerIsPlayer]
 ] call TTC_CORE_fnc_log;*/
 
 

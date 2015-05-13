@@ -41,7 +41,7 @@ _patrolType = if (typeName _find == "ARRAY") then {_patrolTypes select (_find se
 if (_patrolType > 0) then {
 	_pos		= getPos _sector;
 	_radius		= _axisA min _axisB;
-	_safePos	= [_pos, 0, _radius, 0, 0, 1000, 0] call BIS_fnc_findSafePos;
+	_safePos	= [_pos, 0, _radius, 1, 0, 1000, 0, [], [_pos, _pos]] call BIS_fnc_findSafePos;
 
 	// Get unit types, according to the patrol type.
 	_unitTypes = switch (_patrolType) do {
@@ -58,13 +58,15 @@ if (_patrolType > 0) then {
 
 	// Create new group and units.
 	_grp = createGroup _side;
+	_prefix = [_side] call TTC_CORE_fnc_getPrefix;
 
 	{
-		_prefix = [_side] call TTC_CORE_fnc_getPrefix;
-		_unitType = _prefix + _x;
-		_unit = _grp createUnit [_unitType, _safePos, [], 0, "NONE"];
-		_unit addEventHandler ["killed", TTC_BTC_fnc_killed];
+		_unitType	= _prefix + _x;
+		_unit		= _grp createUnit [_unitType, _safePos, [], 0, "NONE"];
+		_unit addEventHandler ["killed", TTC_CTI_fnc_killed];	// EH to respawn dead AI.
+		_unit addEventHandler ["killed", TTC_BTC_fnc_killed];	// EH to detect team kills and remove the gear from dead AI.
 		_unit setVariable ["TTC_isLocked", true, true];
+		_unit setVariable ["TTC_CTI_sector", _sector];
 	} forEach _unitTypes;
 
 	// Start patrolling.

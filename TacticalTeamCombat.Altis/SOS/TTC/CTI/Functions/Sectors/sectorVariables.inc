@@ -18,6 +18,7 @@
 #define TTC_CTI_sectorVariable_objectDir(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_objectDir", 0]
 #define TTC_CTI_sectorVariable_patrolTypes(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_patrolTypes", []]
 #define TTC_CTI_sectorVariable_patrol(SECTOR)				SECTOR getVariable ["TTC_CTI_sector_patrol", grpNull]
+#define TTC_CTI_sectorVariable_corpses(SECTOR)				SECTOR getVariable ["TTC_CTI_sector_corpses", []]
 #define TTC_CTI_sectorVariable_flag(SECTOR)					SECTOR getVariable ["TTC_CTI_sector_flag", objNull]
 #define TTC_CTI_sectorVariable_vehicle(SECTOR)				SECTOR getVariable ["TTC_CTI_sector_vehicle", objNull]
 #define TTC_CTI_sectorVariable_neighbours(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_neighbours", []]

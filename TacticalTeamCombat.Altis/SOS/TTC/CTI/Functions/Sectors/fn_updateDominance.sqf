@@ -126,6 +126,9 @@ if (_sectorSide != _side) then {
 			_respawnPos = [_side, _marker] call BIS_fnc_addRespawnPosition;
 			_sector setVariable ["TTC_CTI_sector_respawnPos", _respawnPos];*/
 
+			// Reset the corpses array.
+			_sector setVariable ["TTC_CTI_sector_corpses", []];
+
 			// Create sector patrol.
 			_patrol = [_sector, _side] call TTC_CTI_fnc_createSectorPatrol;
 

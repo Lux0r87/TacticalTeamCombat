@@ -6,6 +6,11 @@ class TTC_CTI_Functions {
 		class init{};
 	};
 
+	class EventHandler {
+		file = "SOS\TTC\CTI\Functions\EventHandler";
+		class killed{};
+	};
+
 	class Markers {
 		file = "SOS\TTC\CTI\Functions\Markers";
 		class createSectorAreaMarker{};

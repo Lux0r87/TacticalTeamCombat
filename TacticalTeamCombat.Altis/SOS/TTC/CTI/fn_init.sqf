@@ -32,12 +32,19 @@ if (hasInterface) then {
 
 // Server-side scripts:
 if (isServer) then {
+	// ----------------------- Includes -----------------------
+	#include "Functions\Sectors\sectorChecks.inc"
+
 	// --------------- Definitions/Declarations ---------------
 	#define TTC_CTI_timer 10			// Defines how fast the sector dominance will be updated (in seconds).
 	#define TTC_CTI_diffMultiplier 5	// The capture progress (dominance change) for every capturing soldier.
 	#define TTC_CTI_allSides [resistance, west, east]
+	#define TTC_CTI_respawnTime 600		// Time after dead AI soldiers respawn at the sector (in seconds).
 
-	private ["_winner","_location","_sectorPattern","_list","_guer","_west","_east","_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"];
+	private [
+		"_winner","_location","_sectorPattern","_sector","_patrol","_corpses","_pos","_safePos","_stop","_update","_unit","_list","_guer","_west","_east",
+		"_counts","_maxDiff","_max","_find","_sides","_side","_max2","_diff"
+	];
 
 	_winner = sideUnknown;
 
@@ -77,10 +84,55 @@ if (isServer) then {
 
 	// ---------------------- Game Loop ----------------------
 	while {_winner == sideUnknown} do {
-		// Iterate over all sectors
+		// Iterate over all sectors.
 		{
+			_sector	= _x;
+
+			// Respawn dead AI units, if the sector dominance is maximum.
+			if (TTC_CTI_isSectorDominanceMax(_sector)) then {
+				// Get sector patrol and dead units.
+				_patrol		= TTC_CTI_sectorVariable_patrol(_sector);
+				_corpses	= TTC_CTI_sectorVariable_corpses(_sector);
+
+				// Find a safe position to spawn the AI.
+				_pos		= getPos _sector;
+				_safePos	= [_pos, 0, 15, 1, 0, 1000, 0, [], [_pos, _pos]] call BIS_fnc_findSafePos;
+
+				// Helper variables.
+				_stop	= false;
+				_update	= false;
+
+				// Iterate over all corpses.
+				for [{_c = 0},{_c < (count _corpses) && !_stop},{_c = _c + 1}] do {
+					_corpse	= _corpses select _c;
+
+					// Check if it's time to respawn the unit.
+					if (time > ((_corpse select 0) + TTC_CTI_respawnTime)) then {
+						_update	= true;
+						_unit	= _patrol createUnit [(_corpse select 1), _safePos, [], 0, "NONE"];
+						_unit addEventHandler ["killed", TTC_CTI_fnc_killed];	// EH to respawn dead AI.
+						_unit addEventHandler ["killed", TTC_BTC_fnc_killed];	// EH to detect team kills and remove the gear from dead AI.
+						_unit setVariable ["TTC_isLocked", true, true];
+						_unit setVariable ["TTC_CTI_sector", _sector];
+
+						// Clear the entry (set to empty array), to delete it afterwards.
+						_corpses set [_c, []];
+					} else {
+						_stop	= true;
+					};
+				};
+
+				if (_update) then {
+					// Remove empty entries from the array.
+					_corpses = _corpses - [[]];
+
+					// Update the corpse variable.
+					_sector setVariable ["TTC_CTI_sector_corpses", _corpses];
+				};
+			};
+
 			// Copy list of units that would activate the trigger.
-			_list = +(list _x);
+			_list = +(list _sector);
 
 			if (!isNil "_list") then {
 				// Is sector not empty?
@@ -128,13 +180,14 @@ if (isServer) then {
 						_diff	= abs (_max - _max2);
 
 						/*[
-							["Function: %1", "TTC_CTI_init"], ["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
+							["Function: %1", "TTC_CTI_init"],
+							["_counts = %1", _counts], ["_maxDiff = %1", _maxDiff], ["_max = %1", _max], ["_find = %1", _find],
 							["_sides = %1", _sides], ["_side = %1", _side], ["_max2 = %1", _max2], ["_diff = %1", _diff]
 						] call TTC_CORE_fnc_log;*/
 
 						// Update the capture progress
 						if (_diff > 0) then {
-							[_x, _side, _diff*TTC_CTI_diffMultiplier, _list] call TTC_CTI_fnc_updateDominance;
+							[_sector, _side, _diff*TTC_CTI_diffMultiplier, _list] call TTC_CTI_fnc_updateDominance;
 						};
 					};
 				};
