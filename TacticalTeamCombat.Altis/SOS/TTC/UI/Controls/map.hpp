@@ -3,264 +3,359 @@
 */
 
 
-#define CT_MAP_MAIN 101
-#define ST_PICTURE 48
-
 class TTC_UI_MapControl: TTC_UI_Control {
 	access	= 0;
 	idc		= -1;
-	type	= CT_MAP_MAIN;
-	style	= ST_PICTURE;
+	type	= TTC_UI_TYPE_MAP_MAIN;
+	style	= TTC_UI_STYLE_PICTURE;
 
-	//x = 0.00;
-	//y = 0.00;
-	//w = 0.00;
-	//h = 0.00;
+	colorBackground[]			= TTC_UI_COLOR_WHITE_A100;
+	colorCountlines[]			= {0.572, 0.354, 0.188, 0.25};
+	colorCountlinesWater[]		= {0.491, 0.577, 0.702, 0.30};
+	colorForest[]				= {0.624, 0.78, 0.388, 0.50};
+	colorForestBorder[]			= TTC_UI_COLOR_TRANSPARENT;
+	colorGrid[]					= {0.10, 0.10, 0.10, 0.60};
+	colorGridMap[]				= {0.10, 0.10, 0.10, 0.60};
+	colorInactive[]				= TTC_UI_COLOR_WHITE_A50;
+	colorLevels[]				= {0.286, 0.177, 0.094, 0.50};
+	colorMainCountlines[]		= {0.572, 0.354, 0.188, 0.50};
+	colorMainCountlinesWater[]	= {0.491, 0.577, 0.702, 0.60};
+	colorMainRoads[]			= {0.90, 0.50, 0.30, 1.00};
+	colorMainRoadsFill[]		= {1.00, 0.60, 0.40 ,1.00};
+	colorNames[]				= {0.10, 0.10, 0.10, 0.90};
+	colorOutside[]				= TTC_UI_COLOR_BLACK_A100;
+	colorPowerLines[]			= {0.10, 0.10, 0.10, 1.00};
+	colorRoads[]				= {0.70, 0.70, 0.70, 1.00};
+	colorRoadsFill[]			= TTC_UI_COLOR_WHITE_A100;
+	colorRocks[]				= {0.00, 0.00, 0.00, 0.30};
+	colorRocksBorder[]			= TTC_UI_COLOR_TRANSPARENT;
+	colorRailWay[]				= {0.80, 0.20, 0,10, 1.00};
+	colorSea[]					= {0.467, 0.631, 0.851, 0.50};
+	colorText[]					= TTC_UI_COLOR_BLACK_A100;
+	colorTracks[]				= {0.84, 0.76, 0.65, 0.15};
+	colorTracksFill[]			= {0.84, 0.76, 0.65, 1.00};
 
-	colorBackground[] = {1.00, 1.00, 1.00, 1.00};
-	colorText[] = {0.00, 0.00, 0.00, 1.00};
-	colorSea[] = {0.56, 0.80, 0.98, 0.50};
-	colorForest[] = {0.60, 0.80, 0.20, 0.50};
-	colorRocks[] = {0.50, 0.50, 0.50, 0.50};
-	colorCountlines[] = {0.65, 0.45, 0.27, 0.50};
-	colorMainCountlines[] = {0.65, 0.45, 0.27, 1.00};
-	colorCountlinesWater[] = {0.00, 0.53, 1.00, 0.50};
-	colorMainCountlinesWater[] = {0.00, 0.53, 1.00, 1.00};
-	colorForestBorder[] = {0.40, 0.80, 0.00, 1.00};
-	colorRocksBorder[] = {0.50, 0.50, 0.50, 1.00};
-	colorPowerLines[] = {0.00, 0.00, 0.00, 1.00};
-	colorNames[] = {0.00, 0.00, 0.00, 1.00};
-	colorInactive[] = {1.00, 1.00, 1.00, 0.50};
-	colorLevels[] = {0.00, 0.00, 0.00, 1.00};
+	font	= TTC_UI_FONT_DEFAULT;
+	sizeEx	= "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 
-	font	= "TahomaB";
-	sizeEx	= 0.040000;
-
-	fontLabel	= "TahomaB";
-	sizeExLabel	= 0.02;
+	fontLabel	= TTC_UI_FONT_DEFAULT;
+	sizeExLabel	= "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	fontGrid	= "TahomaB";
 	sizeExGrid	= 0.02;
 	fontUnits	= "TahomaB";
-	sizeExUnits	= 0.02;
-	fontNames	= "TahomaB";
-	sizeExNames	= 0.02;
-	fontInfo	= "TahomaB";
-	sizeExInfo	= 0.02;
+	sizeExUnits	= "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
+	fontNames	= TTC_UI_FONT_DEFAULT;
+	sizeExNames	= "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8) * 2";
+	fontInfo	= TTC_UI_FONT_DEFAULT;
+	sizeExInfo	= "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 	fontLevel	= "TahomaB";
 	sizeExLevel	= 0.02;
 
-	stickX = {0.20, {"Gamma", 1.00, 1.50} };
-	stickY = {0.20, {"Gamma", 1.00, 1.50} };
-	ptsPerSquareSea		= 6;
-	ptsPerSquareTxt		= 8;
-	ptsPerSquareCLn		= 8;
-	ptsPerSquareExp		= 8;
-	ptsPerSquareCost	= 8;
-	ptsPerSquareFor		= "4.0f";
-	ptsPerSquareForEdge	= "10.0f";
-	ptsPerSquareRoad	= 2;
-	ptsPerSquareObj		= 10;
+	//stickX				= {0.20, {"Gamma", 1.00, 1.50} };
+	//stickY				= {0.20, {"Gamma", 1.00, 1.50} };
+	ptsPerSquareSea		= 5;
+	ptsPerSquareTxt		= 3;
+	ptsPerSquareCLn		= 10;
+	ptsPerSquareExp		= 10;
+	ptsPerSquareCost	= 10;
+	ptsPerSquareFor		= 9;
+	ptsPerSquareForEdge	= 9;
+	ptsPerSquareRoad	= 6;
+	ptsPerSquareObj		= 9;
 
-	text = "\ca\ui\data\map_background2_co.paa";
-	showCountourInterval	=2;
-	scaleDefault			= 0.1;
+	//text = "\ca\ui\data\map_background2_co.paa";
+	alphaFadeStartScale		= 0.00;
+	alphaFadeEndScale		= 0.00;
+	maxSatelliteAlpha		= 0.85;
 	onMouseButtonClick		= "";
 	onMouseButtonDblClick	= "";
+	scaleDefault			= 0.25;
+	scaleMin				= 0.001;
+	scaleMax				= 1;
+	showCountourInterval	= 0;
+	text					= "#(argb,8,8,3)color(1,1,1,1)";
 
 	class ActiveMarker {
-		color[] = {0.30, 0.10, 0.90, 1.00};
-		size = 50;
+		color[]		= {0.30, 0.10, 0.90, 1.00};
+		size		= 50;
 	};
+
 	class Bunker {
-		icon		= "\ca\ui\data\map_bunker_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\bunker_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 14;
 		importance	= "1.5 * 14 * 0.05";
 		coefMin		= 0.25;
 		coefMax		= 4.00;
 	};
+
 	class Bush {
-		icon		= "\ca\ui\data\map_bush_ca.paa";
-		color[]		= {0.55, 0.64, 0.43, 1.00};
-		size		= 14;
-		importance	= "0.2 * 14 * 0.05";
+		icon		= "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
+		color[]		= {0.45, 0.64, 0.33, 0.40};
+		size		= 14/2;
+		importance	= "0.2 * 14 * 0.05 * 0.05";
 		coefMin		= 0.25;
 		coefMax		= 4.00;
 	};
+
 	class BusStop {
-		icon		= "\ca\ui\data\map_busstop_ca.paa";
-		color[]		= {0.00, 0.00, 1.00, 1.00};
-		size		= 10;
-		importance	= "1 * 10 * 0.05";
-		coefMin		= 0.25;
-		coefMax		= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\busstop_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
 	};
+
+	class Chapel {
+		icon		= "\A3\ui_f\data\map\mapcontrol\Chapel_CA.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
+	};
+
+	class Church {
+		icon		= "\A3\ui_f\data\map\mapcontrol\church_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
+	};
+
+	class CustomMark {
+		icon		= "\A3\ui_f\data\map\mapcontrol\custommark_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 1;
+		coefMax		= 1;
+	};
+
 	class Command {
-		icon		= "#(argb,8,8,3)color(1,1,1,1)";
-		color[]		= {0.00, 0.00, 0.00, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\waypoint_ca.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
 		size		= 18;
-		importance	= 1.00;
-		coefMin		= 1.00;
-		coefMax		= 1.00;
+		importance	= 1;
+		coefMin		= 1;
+		coefMax		= 1;
 	};
+
 	class Cross {
-		icon		= "\ca\ui\data\map_cross_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 16;
-		importance	= "0.7 * 16 * 0.05";
-		coefMin		= 0.25;
-		coefMax		= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\Cross_CA.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
 	};
+
 	class Fortress {
-		icon		= "\ca\ui\data\map_bunker_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\bunker_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 16;
 		importance	= "2 * 16 * 0.05";
 		coefMin		= 0.25;
 		coefMax		= 4.00;
 	};
+
 	class Fuelstation {
-		icon		= "\ca\ui\data\map_fuelstation_ca.paa";
-		color[]		= {1.00, 0.35, 0.35, 1.00};
-		size		= 16;
-		importance	= "2 * 16 * 0.05";
-		coefMin		= 0.75;
-		coefMax 	= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\fuelstation_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax 	= 1.00;
 	};
+
 	class Fountain {
-		icon		= "\ca\ui\data\map_fountain_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 12;
+		icon		= "\A3\ui_f\data\map\mapcontrol\fountain_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
+		size		= 11;
 		importance	= "1 * 12 * 0.05";
 		coefMin		= 0.25;
-		coefMax		= 4.00;
-	};
-	class Hospital {
-		icon		= "\ca\ui\data\map_hospital_ca.paa";
-		color[]		= {0.78, 0.00, 0.05, 1.00};
-		size		= 16;
-		importance	= "2 * 16 * 0.05";
-		coefMin		= 0.50;
 		coefMax		= 4;
 	};
-	class Chapel {
-		icon		= "\ca\ui\data\map_chapel_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 16;
-		importance	= "1 * 16 * 0.05";
-		coefMin		= 0.90;
-		coefMax		= 4.00;
+
+	class Hospital {
+		icon		= "\A3\ui_f\data\map\mapcontrol\hospital_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
 	};
-	class Church {
-		icon		= "\ca\ui\data\map_church_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 16;
-		importance	= "2 * 16 * 0.05";
-		coefMin		= 0.90;
-		coefMax		= 4.00;
-	};
+
 	class Lighthouse {
-		icon		= "\ca\ui\data\map_lighthouse_ca.paa";
-		color[]		= {0.78, 0.00, 0.05, 1.00};
-		size		= 20;
-		importance	= "3 * 16 * 0.05";
-		coefMin		= 0.90;
-		coefMax		= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\lighthouse_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 4;
 	};
+
+	class Powersolar {
+		icon		= "\A3\ui_f\data\map\mapcontrol\powersolar_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
+	};
+
+	class Powerwave {
+		icon		= "\A3\ui_f\data\map\mapcontrol\powerwave_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
+	};
+
+	class Powerwind {
+		icon		= "\A3\ui_f\data\map\mapcontrol\powerwind_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
+	};
+
 	class Quay {
-		icon		= "\ca\ui\data\map_quay_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 16;
-		importance	= "2 * 16 * 0.05";
-		coefMin		= 0.50;
-		coefMax		= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\quay_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
 	};
+
 	class Rock {
-		icon		= "\ca\ui\data\map_rock_ca.paa";
-		color[]		= {0.35, 0.35, 0.35, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\rock_ca.paa";
+		color[]		= {0.10, 0.10, 0.10, 0.80};
 		size		= 12;
 		importance	= "0.5 * 12 * 0.05";
 		coefMin		= 0.25;
 		coefMax		= 4.00;
 	};
+
 	class Ruin {
-		icon		= "\ca\ui\data\map_ruin_ca.paa";
-		color[]		= {0.78, 0.00, 0.05, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\ruin_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 16;
 		importance	= "1.2 * 16 * 0.05";
-		coefMin		= 1.00;
-		coefMax		= 4.00;
+		coefMin		= 1;
+		coefMax		= 4;
 	};
+
+	class Shipwreck
+	{
+		icon		= "\A3\ui_f\data\map\mapcontrol\shipwreck_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
+	};
+
 	class Stack {
-		icon		= "\ca\ui\data\map_stack_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\stack_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 20;
 		importance	= "2 * 16 * 0.05";
 		coefMin		= 0.90;
-		coefMax		 = 4.00;
+		coefMax		 = 4;
 	};
+
+	class Task {
+		colorCreated[]	= TTC_UI_COLOR_WHITE_A100;
+		colorCanceled[]	= {0.70, 0.70, 0.70, 1.00};
+		colorDone[]		= {0.70, 1.00, 0.30, 1.00};
+		colorFailed[]	= {1.00, 0.30, 0.20, 1.00};
+		color[]			= {"(profilenamespace getvariable ['IGUI_TEXT_RGB_R',0])","(profilenamespace getvariable ['IGUI_TEXT_RGB_G',1])","(profilenamespace getvariable ['IGUI_TEXT_RGB_B',1])","(profilenamespace getvariable ['IGUI_TEXT_RGB_A',0.8])"};
+		icon			= "\A3\ui_f\data\map\mapcontrol\taskIcon_CA.paa";
+		iconCreated		= "\A3\ui_f\data\map\mapcontrol\taskIconCreated_CA.paa";
+		iconCanceled	= "\A3\ui_f\data\map\mapcontrol\taskIconCanceled_CA.paa";
+		iconDone		= "\A3\ui_f\data\map\mapcontrol\taskIconDone_CA.paa";
+		iconFailed		= "\A3\ui_f\data\map\mapcontrol\taskIconFailed_CA.paa";
+		size			= 27;
+		importance		= 1;
+		coefMin			= 1;
+		coefMax			= 1;
+	};
+
 	class Tree {
-		icon		= "\ca\ui\data\map_tree_ca.paa";
-		color[]		= {0.55, 0.64, 0.43, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
+		color[]		= {0.45, 0.64, 0.33, 0.40};
 		size		= 12;
 		importance	= "0.9 * 16 * 0.05";
 		coefMin		= 0.25;
-		coefMax		= 4.00;
+		coefMax		= 4;
 	};
+
 	class SmallTree {
-		icon		= "\ca\ui\data\map_smalltree_ca.paa";
-		color[]		= {0.55, 0.64, 0.43, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
+		color[]		= {0.45, 0.64, 0.33, 0.40};
 		size		= 12;
 		importance	= "0.6 * 12 * 0.05";
 		coefMin		= 0.25;
-		coefMax		= 4.00;
+		coefMax		= 4;
 	};
+
 	class Tourism {
-		icon		= "\ca\ui\data\map_tourism_ca.paa";
-		color[]		= {0.78, 0.00, 0.05, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\tourism_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 16;
 		importance	= "1 * 16 * 0.05";
 		coefMin		= 0.70;
-		coefMax		= 4.00;
+		coefMax		= 4;
 	};
+
 	class Transmitter {
-		icon		= "\ca\ui\data\map_transmitter_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 20;
-		importance	= "2 * 16 * 0.05";
-		coefMin		= 0.90;
-		coefMax		= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\transmitter_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
 	};
+
 	class ViewTower {
-		icon		= "\ca\ui\data\map_viewtower_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\viewtower_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 16;
 		importance	= "2.5 * 16 * 0.05";
 		coefMin		= 0.50;
-		coefMax		= 4.00;
+		coefMax		= 4;
 	};
+
 	class Watertower {
-		icon		= "\ca\ui\data\map_watertower_ca.paa";
-		color[]		= {0.00, 0.35, 0.70, 1.00};
-		size		= 32;
-		importance	= "1.2 * 16 * 0.05";
-		coefMin		= 0.90;
-		coefMax		= 4.00;
+		icon		= "\A3\ui_f\data\map\mapcontrol\watertower_CA.paa";
+		color[]		= TTC_UI_COLOR_WHITE_A100;
+		size		= 24;
+		importance	= 1;
+		coefMin		= 0.85;
+		coefMax		= 1;
 	};
+
 	class Waypoint {
-		icon		= "\ca\ui\data\map_waypoint_ca.paa";
-		color[]		= {0.00, 0.00, 0.00, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\waypoint_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 24;
-		importance	= 1.00;
-		coefMin		= 1.00;
-		coefMax		= 1.00;
+		importance	= 1;
+		coefMin		= 1;
+		coefMax		= 1;
 	};
+
 	class WaypointCompleted {
-		icon		= "\ca\ui\data\map_waypoint_completed_ca.paa";
-		color[]		= {0.00, 0.00, 0.00, 1.00};
+		icon		= "\A3\ui_f\data\map\mapcontrol\waypointCompleted_ca.paa";
+		color[]		= TTC_UI_COLOR_BLACK_A100;
 		size		= 24;
-		importance	= 1.00;
-		coefMin		= 1.00;
-		coefMax		= 1.00;
+		importance	= 1;
+		coefMin		= 1;
+		coefMax		= 1;
 	};
 };
