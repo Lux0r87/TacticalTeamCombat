@@ -64,12 +64,12 @@ class TTC_UI_MapControl: TTC_UI_Control {
 	ptsPerSquareObj		= 9;
 
 	//text = "\ca\ui\data\map_background2_co.paa";
-	alphaFadeStartScale		= 0.00;
-	alphaFadeEndScale		= 0.00;
+	alphaFadeStartScale		= 0.35;
+	alphaFadeEndScale		= 0.40;
 	maxSatelliteAlpha		= 0.85;
 	onMouseButtonClick		= "";
 	onMouseButtonDblClick	= "";
-	scaleDefault			= 0.25;
+	scaleDefault			= 0.16;
 	scaleMin				= 0.001;
 	scaleMax				= 1;
 	showCountourInterval	= 0;

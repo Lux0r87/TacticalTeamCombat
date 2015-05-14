@@ -2,6 +2,8 @@
     Created by BauerMitFackel
 */
 
+#include "map.hpp"
+
 #define __TTC_TP_UI_ROUND(number)		((round ((number) * 1000)) / 1000)
 
 #define TTC_TP_UI_SZ_W						__TTC_TP_UI_ROUND(safezoneW)
@@ -79,7 +81,8 @@ class TTC_TP_TeleportDialog {
 			y 				= TTC_TP_UI_SECTOR_LIST_Y;
 			w 				= TTC_TP_UI_SECTOR_LIST_W;
 			h 				= TTC_TP_UI_SECTOR_LIST_H;
-			
+
+			colorPictureSelected[]	= TTC_UI_COLOR_WHITE_A100;
 			onLBSelChanged 	= "_this spawn TTC_TP_UI_fnc_onSectorSelected;";
 		};
 		
@@ -109,7 +112,7 @@ class TTC_TP_TeleportDialog {
 			action	= "[] spawn TTC_TP_UI_fnc_onTeleportClicked;";
 		};
 
-		class TTC_TP_TeleportDialog_Map: TTC_UI_MapControl {
+		class TTC_TP_TeleportDialog_Map: TTC_TP_MapControl {
 			idc		= 60006;
 			x 		= TTC_TP_UI_MAP_X;
 			y 		= TTC_TP_UI_MAP_Y;
