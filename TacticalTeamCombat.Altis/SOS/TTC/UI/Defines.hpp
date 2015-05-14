@@ -35,6 +35,7 @@
 #include "Controls\buttonWarning.hpp"
 #include "Controls\controlsGroup.hpp"
 #include "Controls\listNBox.hpp"
+#include "Controls\map.hpp"
 #include "Controls\picture.hpp"
 #include "Controls\structuredText.hpp"
 #include "Controls\text.hpp"

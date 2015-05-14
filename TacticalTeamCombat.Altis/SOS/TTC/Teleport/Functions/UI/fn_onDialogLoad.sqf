@@ -12,3 +12,4 @@ uiNamespace setVariable ["TTC_TP_UI_sectorList_background", _dialog displayCtrl 
 uiNamespace setVariable ["TTC_TP_UI_sectorList", 			_dialog displayCtrl 60003];
 uiNamespace setVariable ["TTC_TP_UI_close", 				_dialog displayCtrl 60004];
 uiNamespace setVariable ["TTC_TP_UI_teleport", 				_dialog displayCtrl 60005];
+uiNamespace setVariable ["TTC_TP_UI_map", 					_dialog displayCtrl 60006];
