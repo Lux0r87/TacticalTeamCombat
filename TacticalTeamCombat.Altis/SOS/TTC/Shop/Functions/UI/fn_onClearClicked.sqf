@@ -5,6 +5,6 @@
 */
 
 _shoppingCart = [] call TTC_SHOP_fnc_createShoppingCart;
-TTC_SHOP_shoppingCart = _shoppingCart;
+TTC_SHOP_shoppingCarts set [0, _shoppingCart];
 
 [] call TTC_SHOP_UI_fnc_updateShoppingCart;

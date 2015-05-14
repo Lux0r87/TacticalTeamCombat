@@ -4,5 +4,7 @@
     Created by BauerMitFackel
 */
 
-_shoppingCart = TTC_SHOP_shoppingCart;
+_index = [_this, 0, 0] call BIS_fnc_param;
+
+_shoppingCart = TTC_SHOP_shoppingCarts select _index;
 _shoppingCart;

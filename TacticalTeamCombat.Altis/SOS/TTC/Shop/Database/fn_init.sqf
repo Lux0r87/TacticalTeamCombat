@@ -20,6 +20,7 @@ _initializeDatabase = {
 
 /*
 	Initializes the shopping cart.
+	Deprecated
 */
 _initializeShoppingCart = {
 				
@@ -35,8 +36,25 @@ _initializeShoppingCart = {
 };
 
 
+/*
+	Initializes the shopping cart array and adds a empty shopping cart at index 0.
+*/
+_initializeShoppingCarts = {
+				
+	_shoppingCart = [];
+	_categories = [] call TTC_SHOP_fnc_getCategories;
+	
+	{
+		_categoryId = _x select TTC_SHOP_CATEGORY_id;
+		_shoppingCart pushBack [_categoryId, []];
+	} forEach _categories;
+	
+	TTC_SHOP_shoppingCarts = [_shoppingCart];
+};
+
+
 // Client-side:
 if (hasInterface) then {
 	[] call _initializeDatabase;
-	[] call _initializeShoppingCart;
+	[] call _initializeShoppingCarts;
 };
