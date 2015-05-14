@@ -6,6 +6,8 @@
 class TTC_TP_MapControl: TTC_UI_MapControl {
 	colorCountlines[]			= {0.572, 0.354, 0.188, 0.125};
 	colorCountlinesWater[]		= {0.491, 0.577, 0.702, 0.15};
+	colorGrid[]					= {0.10, 0.10, 0.10, 0.30};
+	colorGridMap[]				= {0.10, 0.10, 0.10, 0.30};
 	colorMainCountlines[]		= {0.572, 0.354, 0.188, 0.25};
 	colorMainCountlinesWater[]	= {0.491, 0.577, 0.702, 0.30};
 
@@ -153,7 +155,7 @@ class TTC_TP_MapControl: TTC_UI_MapControl {
 
 	class Rock {
 		icon		= "\A3\ui_f\data\map\mapcontrol\rock_ca.paa";
-		color[]		= {0.10, 0.10, 0.10, 0.80};
+		color[]		= {0.30, 0.30, 0.30, 1.00};
 		size		= 12;
 		importance	= "0.5 * 12 * 0.05";
 		coefMin		= 0.25;

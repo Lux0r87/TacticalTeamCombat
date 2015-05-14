@@ -15,7 +15,7 @@ disableSerialization;
 #include "tooltipsSector.inc"
 #include "tooltipsTeleport.inc"
 
-private["_control","_index","_enable","_id","_sector","_name","_state","_teleport","_price","_balance"];
+private["_control","_index","_enable","_id","_sector","_name","_state","_teleport","_price","_balance","_map"];
 
 _control	= [_this, 0] call BIS_fnc_param;
 _index		= [_this, 1] call BIS_fnc_param;
@@ -49,7 +49,7 @@ switch (_state) do {
 };
 
 // Get the control of the 'Teleport' button.
-_teleport	= uiNamespace getVariable ["TTC_TP_UI_teleport", nil];
+_teleport	= uiNamespace getVariable "TTC_TP_UI_teleport";
 
 // Get the price for the teleport and current balance of the player.
 _price		= _control lnbValue [_index, 1];
@@ -62,5 +62,10 @@ if (_balance >= _price) then {
 	_teleport ctrlSetTooltip TTC_TP_UI_tooltipTeleport_notEnoughMoney(_name, _price);
 	_enable = false;
 };
+
+// Get the map and update the position.
+_map	= uiNamespace getVariable "TTC_TP_UI_map";
+_map ctrlMapAnimAdd [0.5, 0.05, getPos _sector];
+ctrlMapAnimCommit _map;
 
 _teleport ctrlEnable _enable;
