@@ -25,3 +25,10 @@ class TTC_CORE_DisableThermal {
 	texts[]		= {"Yes (Default)", "No"};
 	default		= 1;
 };
+
+class TTC_CORE_fatigueReduction {
+	title		= "Tactical Team Combat: Fatigue system.";
+	values[]	= {0, 10, 20, 30};
+	texts[]		= {"Arma", "Hard", "Medium (Default)", "Easy"};
+	default		= 20;
+};

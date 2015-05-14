@@ -5,36 +5,35 @@
 
 _updateFatigue = {
 	
-	private["_unit", "_fatigueModifier", "_previousFatigue", "_fatigue"];
+	private["_unit", "_fatigueReduction", "_fatigueDeltaModifier","_previousFatigue", "_fatigue"];
 	
 	_unit = [_this, 0] call BIS_fnc_param;
+	_fatigueReduction = [_this, 1] call BIS_fnc_param;
+	_fatigueDeltaModifier = _fatigueReduction / 100;
 	
 	_previousFatigue = 0;
 	while {true} do {
 		
 		_fatigue = getFatigue _unit;
 		if (_fatigue > _previousFatigue) then {
-			_fatigueModifier = 0.94 + (((_fatigue * 10) ^ 1.2) / 100);
-			if (_fatigueModifier > 1) then {
-				_fatigueModifier = 1;
+			if (_fatigue < 60) then {
+				_fatigueDelta = _fatigue - _previousFatigue;
+				_fatigue = _fatigue - (_fatigueDelta * _fatigueDeltaModifier);
+				_unit setFatigue _fatigue;
 			};
-			
-			//diag_log format["Fatigue modifier: %1", _fatigueModifier];
-			_fatigue = _fatigue * _fatigueModifier;
 		};
 		
-		//hint parseText format["Fatigue: %1", _fatigue];
-		//diag_log format["Fatigue: %1", _fatigue];
-		
 		_previousFatigue = _fatigue;
-		_unit setFatigue _fatigue;
 		sleep 1;
 	};
 };
 
 
-private ["_unit","_fatigueModifier"];
+private ["_unit","_fatigueReduction"];
 
-_unit		= [_this, 0] call BIS_fnc_param;
-_fatigueModifier = ["TTC_CORE_fatigueModifier", 0.987] call BIS_fnc_getParamValue;
-[_unit, _fatigueModifier] spawn _updateFatigue;
+_unit = [_this, 0] call BIS_fnc_param;
+_fatigueReduction = ["TTC_CORE_fatigueReduction", 0] call BIS_fnc_getParamValue;
+if (_fatigueReduction > 0) then {
+	[_unit, _fatigueReduction] spawn _updateFatigue;
+};
+
