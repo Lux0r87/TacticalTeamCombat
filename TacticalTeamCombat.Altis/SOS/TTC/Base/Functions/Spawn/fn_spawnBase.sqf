@@ -54,7 +54,6 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	_signPos		= [((_vehSpawnPos select 0) - (cos(_dir + 90) * 6)), ((_vehSpawnPos select 1) + (sin(_dir + 90) * 6)), -0.5];
 	_sign			= createVehicle ["Land_Sign_WarningMilitaryVehicles_F", _signPos, [], 0, "CAN_COLLIDE"];
 	_sign setDir (_dir - 180);
-	_sign allowDamage false;
 
 	// --------------- Helicopter spawn ---------------
 	_heliSpawnPos	= missionNamespace getVariable [format["TTC_BASE_%1_HeliSpawnPos", _side], [0,0]];
