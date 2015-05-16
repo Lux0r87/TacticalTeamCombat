@@ -29,7 +29,7 @@
 	waitUntil {!isNull findDisplay 46};
 
 	_actionText = if (isLocalized "STR_chvd_title") then {localize "STR_chvd_title"} else {"View Distance Settings"};
-	player addAction [_actionText, CHVD_fnc_openDialog, [], -99, false, true];
+	player addAction [format["<t color='#ff3300'>%1</t>", _actionText], CHVD_fnc_openDialog, [], -99, false, true];
 	player addEventHandler ["Respawn", format ["player addAction ['%1', CHVD_fnc_openDialog, [], -99, false, true]", _actionText]];
 
 	//Detect when to change setting type
