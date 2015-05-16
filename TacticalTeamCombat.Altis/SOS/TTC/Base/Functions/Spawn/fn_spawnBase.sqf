@@ -5,7 +5,7 @@
 */
 
 
-#define TTC_BASE_safetyDistance 500
+#define TTC_BASE_safetyDistance 600
 
 private [
 	"_side","_basePos","_sides","_return","_mrkTypePrefix","_mrkName","_mrkColor","_mrkText","_mrkType","_mrk","_respawnPos","_vehSpawnPos","_vehSpawnDir",
