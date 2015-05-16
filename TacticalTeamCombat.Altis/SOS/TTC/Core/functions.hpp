@@ -13,6 +13,7 @@ class TTC_Core_Functions {
 		class addWaypoint{};
 		class attachObjectsTo{};
 		class clearAmmoBox{};
+		class clearVehicleWrecks{};
 		class createAmmoBox{};
 		class createSimpleTask{};
 		class createTrigger{};
@@ -21,6 +22,7 @@ class TTC_Core_Functions {
 		class endMission{};
 		class endMissionAll{};
 		class getAmmoBoxType{};
+		class getBasePositions{};
 		class getLocation{};
 		class getMrkTypePrefix{};
 		class getPrefix{};

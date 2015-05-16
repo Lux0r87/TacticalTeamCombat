@@ -23,6 +23,8 @@ TTC_disableThermal = ["DisableThermal", 1] call BIS_fnc_getParamValue;
 // Server-side:
 if (isServer) then {
 	[] spawn TTC_CORE_fnc_runTimer;
+
+	[] spawn TTC_CORE_fnc_clearVehicleWrecks;
 };
 
 
