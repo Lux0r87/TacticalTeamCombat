@@ -28,14 +28,24 @@
 	waitUntil {!isNull player};
 	waitUntil {!isNull findDisplay 46};
 
-	player addAction ["<t color='#ff3300'>View Distance Settings</t>", CHVD_fnc_openDialog, [], -99, false, true];
-
-	player addEventHandler ["Respawn", {player addAction ["<t color='#ff3300'>View Distance Settings</t>", CHVD_fnc_openDialog, [], -99, false, true]}];
+	_actionText = if (isLocalized "STR_chvd_title") then {localize "STR_chvd_title"} else {"View Distance Settings"};
+	player addAction [format["<t color='#ff3300'>%1</t>", _actionText], CHVD_fnc_openDialog, [], -99, false, true];
+	player addEventHandler ["Respawn", format ["player addAction ['%1', CHVD_fnc_openDialog, [], -99, false, true]", _actionText]];
 
 	//Detect when to change setting type
-	while {true} do {
-		[] call CHVD_fnc_updateSettings;
-		_currentVehicle = vehicle player;
-		waitUntil {_currentVehicle != vehicle player};
+	[] spawn {
+		for "_i" from 0 to 1 step 0 do {
+			[nil, false] call CHVD_fnc_updateSettings;
+			_currentVehicle = vehicle player;
+			waitUntil {_currentVehicle != vehicle player};
+		};
+	};	
+	[] spawn {
+		for "_i" from 0 to 1 step 0 do {
+			waitUntil {UAVControl (getConnectedUAV player) select 1 != ""};
+			[nil, true] call CHVD_fnc_updateSettings;
+			waitUntil {UAVControl (getConnectedUAV player) select 1 == ""};
+			[nil, false] call CHVD_fnc_updateSettings;
+		};
 	};
 };

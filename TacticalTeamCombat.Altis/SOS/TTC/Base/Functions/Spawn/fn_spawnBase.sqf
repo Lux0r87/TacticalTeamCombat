@@ -5,8 +5,6 @@
 */
 
 
-#define TTC_BASE_safetyDistance 500
-
 private [
 	"_side","_basePos","_sides","_return","_mrkTypePrefix","_mrkName","_mrkColor","_mrkText","_mrkType","_mrk","_respawnPos","_vehSpawnPos","_vehSpawnDir",
 	"_dir","_signPos","_sign","_heliSpawnPos","_heliSpawnDir","_helipad","_maintenancePos","_maintenanceDir","_prefix","_trigger","_className","_baseDir",
@@ -25,7 +23,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	_sides = [west, east, resistance] - [_side];
 
 	{
-		["", _basePos, TTC_BASE_safetyDistance, TTC_BASE_safetyDistance, 0, false, format["%1", _x], "PRESENT"] call TTC_CORE_fnc_createZoneProtection;
+		["", _basePos, TTC_safetyDistance, TTC_safetyDistance, 0, false, format["%1", _x], "PRESENT"] call TTC_CORE_fnc_createZoneProtection;
 	} forEach _sides;
 
 	// Create zone protection, to prevent that players leave the base before the match starts.
@@ -44,7 +42,7 @@ if (format ["%1", _basePos] != "[0,0]") then {
 
 	// Create global marker (safety distance).
 	_mrkName	= format ["mrk_Base_%1_safetyDistance", _side];
-	_mrk		= [_mrkName, _basePos, "", _mrkColor, TTC_BASE_safetyDistance, TTC_BASE_safetyDistance, 0, "ELLIPSE", "Empty", 0.3] call TTC_CORE_fnc_createMarker;
+	_mrk		= [_mrkName, _basePos, "", _mrkColor, TTC_safetyDistance, TTC_safetyDistance, 0, "ELLIPSE", "Empty", 0.3] call TTC_CORE_fnc_createMarker;
 
 	// --------------- Vehicle spawn ---------------
 	_vehSpawnPos	= missionNamespace getVariable [format["TTC_BASE_%1_VehSpawnPos", _side], [0,0]];
@@ -54,7 +52,6 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	_signPos		= [((_vehSpawnPos select 0) - (cos(_dir + 90) * 6)), ((_vehSpawnPos select 1) + (sin(_dir + 90) * 6)), -0.5];
 	_sign			= createVehicle ["Land_Sign_WarningMilitaryVehicles_F", _signPos, [], 0, "CAN_COLLIDE"];
 	_sign setDir (_dir - 180);
-	_sign allowDamage false;
 
 	// --------------- Helicopter spawn ---------------
 	_heliSpawnPos	= missionNamespace getVariable [format["TTC_BASE_%1_HeliSpawnPos", _side], [0,0]];

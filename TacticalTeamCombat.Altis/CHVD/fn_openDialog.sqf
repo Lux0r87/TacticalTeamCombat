@@ -22,11 +22,15 @@ disableSerialization;
 {
 	_ctrl = ((finddisplay 2900) displayCtrl (_x select 0));
 	if (CHVD_allowNoGrass) then {
-		_ctrl lbAdd "Low";
+		_textLow = if (isLocalized "STR_chvd_low") then {localize "STR_chvd_low"} else {"Low"};
+		_ctrl lbAdd _textLow;
 	};
-	_ctrl lbAdd "Standard";
-	_ctrl lbAdd "High";
-	_ctrl lbAdd "Very High";
+	_textStandard = if (isLocalized "STR_chvd_standard") then {localize "STR_chvd_standard"} else {"Standard"};
+	_ctrl lbAdd _textStandard;
+	_textHigh = if (isLocalized "STR_chvd_high") then {localize "STR_chvd_high"} else {"High"};
+	_ctrl lbAdd _textHigh;
+	_textVeryHigh = if (isLocalized "STR_chvd_veryHigh") then {localize "STR_chvd_veryHigh"} else {"Very High"};
+	_ctrl lbAdd _textVeryHigh;
 	
 	_sel = [_x select 1] call CHVD_fnc_selTerrainQuality;
 	if (CHVD_allowNoGrass) then {

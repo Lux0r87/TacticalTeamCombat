@@ -506,7 +506,7 @@ class MagRepack_Dialog_Main
 			x = 35.625 * GUI_GRID_W + GUI_GRID_X;
 			y = 2.125 * GUI_GRID_H + GUI_GRID_Y;
 			w = 0.76 * GUI_GRID_W;
-			h = 0.75 * GUI_GRID_H
+			h = 0.75 * GUI_GRID_H;
 			
 			default = false;
 		};
