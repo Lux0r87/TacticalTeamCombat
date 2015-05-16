@@ -11,6 +11,9 @@ if (isNil "TTC_safetyTime") then {
 TTC_disableThermal = ["DisableThermal", 1] call BIS_fnc_getParamValue;
 
 
+// Set the safety distance for the bases.
+TTC_safetyDistance = 600;
+
 // Initialize TTC Base module.
 [] call TTC_BASE_fnc_init;
 
