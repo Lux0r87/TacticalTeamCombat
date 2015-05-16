@@ -1,7 +1,7 @@
 // Initialize Tactical Team Combat
 [] call TTC_fnc_init;
 
-// Set 'false' if you want to disable "None" option for terrain
+// Set 'false' if you want to disable "None" option for terrain (default: true).
 CHVD_allowNoGrass = false;
 
 // Run the briefing file.

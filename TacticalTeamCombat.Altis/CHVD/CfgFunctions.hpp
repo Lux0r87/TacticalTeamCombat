@@ -1,7 +1,7 @@
 class CHVD
 {
 	tag = "CHVD";
-	class functions
+	class script
 	{
 		file = "CHVD";
 		class onCheckedChanged {};
@@ -11,8 +11,9 @@ class CHVD
 		class onEBterrainInput {};
 		class selTerrainQuality {};
 		class updateTerrain {};
-		class updateSettings {};		
+		class updateSettings {};
 		class openDialog {};
+		class localize {};
 		class init {postInit = 1;};
 	};
 };
