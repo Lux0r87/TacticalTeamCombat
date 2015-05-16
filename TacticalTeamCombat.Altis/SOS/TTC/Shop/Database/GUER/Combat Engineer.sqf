@@ -283,6 +283,7 @@ TTC_SHOP_ARTICLE_FirstAidKit = [-167, "FirstAidKit", 0, 50] call _getWeapon;
 TTC_SHOP_ARTICLE_ToolKit = [-169, "ToolKit", 0, 200] call _getWeapon;
 TTC_SHOP_ARTICLE_MineDetector = [-170, "MineDetector", 0, 150] call _getWeapon;
 TTC_SHOP_ARTICLE_NVGoggles_INDEP = [-173, "NVGoggles_INDEP", 0, 400] call _getWeapon;
+TTC_SHOP_ARTICLE_I_UavTerminal = [-175, "I_UavTerminal", 0, 300] call _getWeapon;
 TTC_SHOP_ARTICLE_G_Shades_Black = [-176, "G_Shades_Black", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Blue = [-177, "G_Shades_Blue", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Green = [-178, "G_Shades_Green", 0, 5] call _getGlasses;
@@ -359,10 +360,6 @@ TTC_SHOP_ARTICLE_SmokeShellGreen = [-344, "SmokeShellGreen", 0, 10] call _getMag
 TTC_SHOP_ARTICLE_SmokeShellPurple = [-346, "SmokeShellPurple", 0, 20] call _getMagazine;
 TTC_SHOP_ARTICLE_SmokeShellOrange = [-348, "SmokeShellOrange", 0, 20] call _getMagazine;
 TTC_SHOP_ARTICLE_I_IR_Grenade = [-351, "I_IR_Grenade", 0, 20] call _getMagazine;
-TTC_SHOP_ARTICLE_IEDUrbanBig_Remote_Mag = [-352, "IEDUrbanBig_Remote_Mag", 0, 225] call _getMagazine;
-TTC_SHOP_ARTICLE_IEDLandBig_Remote_Mag = [-353, "IEDLandBig_Remote_Mag", 0, 225] call _getMagazine;
-TTC_SHOP_ARTICLE_IEDUrbanSmall_Remote_Mag = [-354, "IEDUrbanSmall_Remote_Mag", 0, 225] call _getMagazine;
-TTC_SHOP_ARTICLE_IEDLandSmall_Remote_Mag = [-355, "IEDLandSmall_Remote_Mag", 0, 225] call _getMagazine;
 TTC_SHOP_ARTICLE_ClaymoreDirectionalMine_Remote_Mag = [-356, "ClaymoreDirectionalMine_Remote_Mag", 0, 225] call _getMagazine;
 TTC_SHOP_ARTICLE_1Rnd_HE_Grenade_shell = [-357, "1Rnd_HE_Grenade_shell", 0, 60] call _getMagazine;
 TTC_SHOP_ARTICLE_1Rnd_Smoke_Grenade_shell = [-359, "1Rnd_Smoke_Grenade_shell", 0, 30] call _getMagazine;
@@ -470,6 +467,7 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_ToolKit,
   TTC_SHOP_ARTICLE_MineDetector,
   TTC_SHOP_ARTICLE_NVGoggles_INDEP,
+  TTC_SHOP_ARTICLE_I_UavTerminal,
   TTC_SHOP_ARTICLE_G_Shades_Black,
   TTC_SHOP_ARTICLE_G_Shades_Blue,
   TTC_SHOP_ARTICLE_G_Shades_Green,
@@ -546,10 +544,6 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_SmokeShellPurple,
   TTC_SHOP_ARTICLE_SmokeShellOrange,
   TTC_SHOP_ARTICLE_I_IR_Grenade,
-  TTC_SHOP_ARTICLE_IEDUrbanBig_Remote_Mag,
-  TTC_SHOP_ARTICLE_IEDLandBig_Remote_Mag,
-  TTC_SHOP_ARTICLE_IEDUrbanSmall_Remote_Mag,
-  TTC_SHOP_ARTICLE_IEDLandSmall_Remote_Mag,
   TTC_SHOP_ARTICLE_ClaymoreDirectionalMine_Remote_Mag,
   TTC_SHOP_ARTICLE_1Rnd_HE_Grenade_shell,
   TTC_SHOP_ARTICLE_1Rnd_Smoke_Grenade_shell,
@@ -676,10 +670,6 @@ TTC_SHOP_AMMUNITION = [
 
 TTC_SHOP_EXPLOSIVES = [
 	TTC_SHOP_ARTICLE_DemoCharge_Remote_Mag,
-	TTC_SHOP_ARTICLE_IEDLandBig_Remote_Mag,
-	TTC_SHOP_ARTICLE_IEDUrbanBig_Remote_Mag,
-	TTC_SHOP_ARTICLE_IEDLandSmall_Remote_Mag,
-	TTC_SHOP_ARTICLE_IEDUrbanSmall_Remote_Mag,
 	TTC_SHOP_ARTICLE_SatchelCharge_Remote_Mag,
 	TTC_SHOP_ARTICLE_APERSMine_Range_Mag,
 	TTC_SHOP_ARTICLE_APERSBoundingMine_Range_Mag,
@@ -705,6 +695,7 @@ TTC_SHOP_GRENADES = [
 
 TTC_SHOP_ITEMS = [
 	TTC_SHOP_ARTICLE_Binocular,
+	TTC_SHOP_ARTICLE_I_UavTerminal,
 	TTC_SHOP_ARTICLE_FirstAidKit,
 	TTC_SHOP_ARTICLE_MineDetector,
 	TTC_SHOP_ARTICLE_ToolKit,
