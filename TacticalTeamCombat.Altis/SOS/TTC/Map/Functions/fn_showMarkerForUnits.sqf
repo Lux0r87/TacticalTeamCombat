@@ -9,8 +9,7 @@ if (isDedicated) exitWith {
 };
 
 
-_RUN = true;
-_UPDATE_INTERVAL = 0.1;
+_RUN = false;
 _MARKER_PREFIX = "TTC_MAP_UNIT_MARKER";
 
 
@@ -47,12 +46,8 @@ _getNextMarker = {
 };
 
 
-//////////
-
-
-waitUntil {!(IsNull player) && (time > 0.0)};
-while {_RUN} do {
-		
+_updateMarkers = {
+	
 	_markerNumber = 0; 
 	_units = allUnits - allDead;
 	
@@ -103,9 +98,14 @@ while {_RUN} do {
 		deleteMarkerLocal _marker;
 		_marker = [] call _getNextMarker;
 	};
+};
 
-	
-	if (_UPDATE_INTERVAL > 0.0) then {
-		sleep _UPDATE_INTERVAL;
-	};
+
+//////////
+
+
+waitUntil {!(IsNull player) && (time > 0.0)};
+waitUntil {
+	[] call _updateMarkers;
+	_RUN
 };

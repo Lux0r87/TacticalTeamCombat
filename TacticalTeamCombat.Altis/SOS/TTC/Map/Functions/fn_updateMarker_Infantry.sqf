@@ -15,13 +15,27 @@ if (isDedicated) exitWith {
 _getMarkerType = {
 
 	_prefix = [_side] call TTC_CORE_fnc_getMrkTypePrefix;
-	
-	_markerType = _unit getVariable ["TTC_markerType", format["%1_unknown", _prefix]];
-	if (_unit getVariable [lm_MS_var_isIncapacitated, false]) then {
-		_markerType = "Warning";
+		
+	_markerType = "mil_triangle";
+	if (_prefix == "") then {
+		_markerType = "mil_dot";
+	} else {
+		_markerType = _unit getVariable ["TTC_markerType", format["%1_unknown", _prefix]];
+		if (_unit getVariable ["lm_MS_var_isIncapacitated", false]) then {
+			_markerType = "mil_warning";
+		};
 	};
-	
+
 	_markerType;
+};
+
+
+_getMarkerDir = {
+	
+	private["_dir"];
+	
+	_dir = getDir _unit;
+	_dir;
 };
 
 
@@ -78,7 +92,7 @@ _getMarkerSize = {
 			[1.1, 0.7];
 		};
 		default {
-			[0.0, 0.0];
+			[1.0, 1.0];
 		};
 	};
 		
@@ -112,6 +126,7 @@ _side		= side _unit;
 	
 _marker setMarkerPosLocal	(getPos _unit);
 _marker setMarkerTypeLocal	([] call _getMarkerType);	
+//_marker setMarkerDirLocal	([] call _getMarkerDir);
 _marker setMarkerColorLocal	([] call _getMarkerColor);	
 _marker setMarkerAlphaLocal	([] call _getMarkerAlpha);	
 _marker setMarkerSizeLocal	([] call _getMarkerSize);

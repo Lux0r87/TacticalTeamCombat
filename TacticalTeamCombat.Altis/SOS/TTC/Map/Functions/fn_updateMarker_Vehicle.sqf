@@ -15,26 +15,33 @@ if (isDedicated) exitWith {
 _getMarkerType = {
 
 	private["_prefix", "_vehicleClass", "_suffix", "_type"];
-
-	_prefix = [_side] call TTC_CORE_fnc_getMrkTypePrefix;	
-	_vehicleClass = getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "vehicleClass");
-	_suffix = switch (_vehicleClass) do {
-		case "Air": {
-			"air";
-		};
-		case "Armored": {
-			"armor";
-		};
-		case "Autonomous": {
-			"uav";
-		};
-		default {
-			"motor_inf";
-		};
-	};
+	_prefix = [_side] call TTC_CORE_fnc_getMrkTypePrefix;
 	
-	_type = format ["%1_%2", _prefix, _suffix];
-	_type;
+	_markerType = "mil_triangle";
+	if (_prefix == "") then {
+		_markerType = "mil_dot";
+	} else {
+	
+		_vehicleClass = getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "vehicleClass");
+		_suffix = switch (_vehicleClass) do {
+			case "Air": {
+				"air";
+			};
+			case "Armored": {
+				"armor";
+			};
+			case "Autonomous": {
+				"uav";
+			};
+			default {
+				"motor_inf";
+			};
+		};
+		
+		_markerType = format ["%1_%2", _prefix, _suffix];
+	};
+
+	_markerType;
 };
 
 
@@ -78,6 +85,9 @@ _getMarkerSize = {
 		};
 		case independent: {
 			[1.1, 0.7];
+		};
+		default {
+			[1.0, 1.0];
 		};
 	};
 		
