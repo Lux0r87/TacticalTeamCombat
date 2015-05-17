@@ -11,19 +11,24 @@
 */
 
 
+private["_safetyDistance"];
+
+
 // Run this script only on client-side.
 if (hasInterface) then {
-	waitUntil {!isNull player};
+	waitUntil {
+		_safetyDistance = missionNamespace getVariable "TTC_BASE_safetyDistance";
+		(!isNull player) && (!isNil "_safetyDistance")
+	};
 
 	player addEventHandler ["Fired", {
-		private ["_radius","_unit","_projectile","_basePos"];
+		private ["_unit","_projectile","_basePos"];
 
-		_radius		= 500;
 		_unit		= _this select 0;
 		_projectile = _this select 6;
 		_basePos	= getMarkerPos format ["mrk_Base_%1", side _unit];
 
-		if ((format ["%1", _basePos] != "[0,0]") && ((_unit distance _basePos) < _radius)) then {
+		if ((format ["%1", _basePos] != "[0,0]") && ((_unit distance _basePos) < TTC_BASE_safetyDistance)) then {
 			deleteVehicle (_projectile);
 
 			"No Fire Zone" hintC [
