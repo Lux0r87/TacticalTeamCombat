@@ -13,8 +13,15 @@ if (isDedicated) exitWith {
 	Returns the type of the marker for a given unit.
 */
 _getMarkerType = {
+
 	_prefix = [_side] call TTC_CORE_fnc_getMrkTypePrefix;
-	_unit getVariable ["TTC_markerType", format["%1_unknown", _prefix]];
+	
+	_markerType = _unit getVariable ["TTC_markerType", format["%1_unknown", _prefix]];
+	if (_unit getVariable [lm_MS_var_isIncapacitated, false]) then {
+		_markerType = "Warning";
+	};
+	
+	_markerType;
 };
 
 
