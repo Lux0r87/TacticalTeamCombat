@@ -8,8 +8,8 @@ class TTC_CORE_safetyTime {
 class TTC_CORE_locations {
 	title		= "Tactical Team Combat: Location for the mission.";
 	values[]	= {-1, 0, 1};
-	texts[]		= {"Random (Default)", "Paros - Kalochori", "Panochori"};
-	default		= 1;
+	texts[]		= {"Random (Default)", "Panochori", "Delfinaki - Ioannina"};
+	default		= -1;
 };
 
 class TTC_CORE_sectorPatterns {

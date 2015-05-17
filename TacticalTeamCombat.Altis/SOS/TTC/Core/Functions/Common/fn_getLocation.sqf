@@ -5,7 +5,7 @@
 */
 
 
-#define TTC_CORE_availableLocations ["Paros_Kalochori", "Panochori", "Delfinaki_Ioannina"]
+#define TTC_CORE_availableLocations ["Panochori", "Delfinaki_Ioannina"]
 
 private ["_index"];
 

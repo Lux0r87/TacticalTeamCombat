@@ -35,4 +35,3 @@ TTC_CTI_sectorDefinitions = [
 	["F",	[23964,20165],	0,	50,	50,	false,	east,		100, TTC_CTI_neighbours_sectorF, [50, 230],		0,	230,	[1, 1]],
 	["G",	[24390,20550],	0,	50,	50,	false,	resistance,	100, TTC_CTI_neighbours_sectorG, [65, 245],		2,	245,	[0, 2]]
 ];
-
