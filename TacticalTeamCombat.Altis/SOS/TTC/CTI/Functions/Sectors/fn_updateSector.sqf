@@ -6,8 +6,8 @@
 #include "sectorVariables.inc"
 
 private [
-	"_sector","_update_position","_update_isConnected","_update_canSee","_update_teleportUI","_target","_mrkArea","_mrk","_visibilityOld","_connectedOld","_pos",
-	"_visibility","_isNull","_sides","_return","_connected","_find","_canSee"
+	"_sector","_update_position","_update_isConnected","_update_canSee","_update_teleportUI","_target","_dir","_mrkArea","_mrk","_visibilityOld","_connectedOld",
+	"_pos","_visibility","_isNull","_sides","_return","_connected","_find","_canSee"
 ];
 
 _sector				= [_this, 0] call BIS_fnc_param;
@@ -17,6 +17,7 @@ _update_canSee		= [_this, 3, false, [false]] call BIS_fnc_param;		// Recalculate
 _update_teleportUI	= [_this, 4, false, [false]] call BIS_fnc_param;		// Refresh the teleport UI, if it's open.
 _target				= [_this, 5, ObjNull, [ObjNull]] call BIS_fnc_param;
 
+_dir			= TTC_CTI_sectorVariable_dir(_sector);
 _mrkArea		= TTC_CTI_sectorVariable_markerArea(_sector);
 _mrk			= TTC_CTI_sectorVariable_marker(_sector);
 _visibilityOld	= TTC_CTI_sectorVariable_visibility(_sector);
@@ -36,6 +37,7 @@ _sides		= if (!_isNull) then {[side _target]} else {TTC_CTI_sides};
 // Update the marker positions.
 if (_update_position) then {
 	_mrkArea setMarkerPos _pos;
+	_mrkArea setMarkerDir _dir;
 	_mrk setMarkerPos _pos;
 };
 

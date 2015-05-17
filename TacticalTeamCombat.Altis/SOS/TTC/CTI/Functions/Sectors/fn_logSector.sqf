@@ -8,8 +8,8 @@
 #define UNDEFINED "UNDEFINED"
 
 private [
-	"_sector","_fncName","_messages","_name","_pos","_dir","_xrad","_yrad","_rectangle","_marker","_markerArea","_side","_dominance","_respawnPos","_respawnDir",
-	"_type","_objectDir","_patrolTypes","_flag","_patrol","_corpses","_vehicle","_neighbours","_isConnected","_visibility","_task"
+	"_sector","_fncName","_messages","_name","_pos","_triggerArea","_dir","_xrad","_yrad","_rectangle","_marker","_markerArea","_side","_dominance","_respawnPos",
+	"_respawnDir","_type","_objectDir","_patrolTypes","_flag","_patrol","_corpses","_vehicle","_neighbours","_isConnected","_visibility","_task"
 ];
 
 _sector			= [_this, 0] call BIS_fnc_param;
@@ -18,7 +18,8 @@ _messages		= [_this, 2, [], [[]]] call BIS_fnc_param;
 
 _name			= _sector getVariable ["TTC_CTI_sector_name", UNDEFINED];
 _pos			= getPos _sector;
-_dir			= getDir _sector;
+_triggerArea	= triggerArea _sector;
+_dir			= _sector getVariable ["TTC_CTI_sector_dir", UNDEFINED];
 _xrad			= _sector getVariable ["TTC_CTI_sector_axisA", UNDEFINED];
 _yrad			= _sector getVariable ["TTC_CTI_sector_axisB", UNDEFINED];
 _rectangle		= _sector getVariable ["TTC_CTI_sector_rectangle", UNDEFINED];
@@ -41,8 +42,8 @@ _visibility		= _sector getVariable ["TTC_CTI_sector_visibility", UNDEFINED];
 _task			= _sector getVariable ["TTC_CTI_sector_task", UNDEFINED];
 
 _sectorMessage	= [
-	["---------- Sector ----------"], ["--> _name = %1", _name], ["--> _pos = %1", _pos], ["--> _dir = %1", _dir], ["--> _xrad = %1", _xrad],
-	["--> _yrad = %1", _yrad], ["--> _rectangle = %1", _rectangle], ["--> _marker = %1", _marker], ["--> _markerArea = %1", _markerArea],
+	["---------- Sector ----------"], ["--> _name = %1", _name], ["--> _pos = %1", _pos], ["--> _triggerArea = %1", _triggerArea], ["--> _dir = %1", _dir],
+	["--> _xrad = %1", _xrad], ["--> _yrad = %1", _yrad], ["--> _rectangle = %1", _rectangle], ["--> _marker = %1", _marker], ["--> _markerArea = %1", _markerArea],
 	["--> _side = %1", _side], ["--> _dominance = %1", _dominance],	["--> _respawnPos = %1", _respawnPos], ["--> _respawnDir = %1", _respawnDir],
 	["--> _type = %1", _type], ["--> _objectDir = %1", _objectDir], ["--> _patrolTypes = %1", _patrolTypes], ["--> _patrol = %1", _patrol],
 	["--> _corpses = %1", _corpses], ["--> _flag = %1", _flag], ["--> _vehicle = %1", _vehicle],	["--> _neighbours = %1", _neighbours],

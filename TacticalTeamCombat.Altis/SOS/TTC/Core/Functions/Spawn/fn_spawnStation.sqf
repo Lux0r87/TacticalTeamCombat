@@ -9,6 +9,9 @@ _pos	= [_this, 0, [0,0,0], [[]], [2, 3]] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
 _side	= [_this, 2] call BIS_fnc_param;
 
+// Workaround: Turn by 180 degrees.
+_dir	= _dir + 180;
+
 /*[
 	["Function: %1", "TTC_CORE_fnc_spawnStation"],
 	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]

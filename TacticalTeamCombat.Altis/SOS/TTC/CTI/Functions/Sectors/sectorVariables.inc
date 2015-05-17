@@ -6,6 +6,7 @@
 
 
 #define TTC_CTI_sectorVariable_name(SECTOR)					SECTOR getVariable ["TTC_CTI_sector_name", ""]
+#define TTC_CTI_sectorVariable_dir(SECTOR)					SECTOR getVariable ["TTC_CTI_sector_dir", 0]
 #define TTC_CTI_sectorVariable_axisA(SECTOR)				SECTOR getVariable ["TTC_CTI_sector_axisA", 0]
 #define TTC_CTI_sectorVariable_axisB(SECTOR)				SECTOR getVariable ["TTC_CTI_sector_axisB", 0]
 #define TTC_CTI_sectorVariable_rectangle(SECTOR)			SECTOR getVariable ["TTC_CTI_sector_rectangle", false]

@@ -32,6 +32,7 @@ _sectors = [];
 
 	// Initialize all sector variables.
 	_sector setVariable ["TTC_CTI_sector_name",			_name,			true];	// Broadcast sector name to all clients.
+	_sector setVariable ["TTC_CTI_sector_dir",			_dir];
 	_sector setVariable ["TTC_CTI_sector_axisA",		_xrad];
 	_sector setVariable ["TTC_CTI_sector_axisB",		_yrad];
 	_sector setVariable ["TTC_CTI_sector_rectangle",	_rectangle];

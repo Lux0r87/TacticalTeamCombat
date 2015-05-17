@@ -12,7 +12,7 @@ _axisA		= [_this, 3, _sector getVariable ["TTC_CTI_sector_axisA", 50], [0]] call
 _axisB		= [_this, 4, _sector getVariable ["TTC_CTI_sector_axisB", 50], [0]] call BIS_fnc_param;
 _side		= [_this, 5, _sector getVariable ["TTC_CTI_sector_side", sideUnknown], [sideUnknown]] call BIS_fnc_param;
 _dominance	= [_this, 6, _sector getVariable ["TTC_CTI_sector_dominance", 100], [0]] call BIS_fnc_param;
-_dir		= [_this, 7, getDir _sector, [0]] call BIS_fnc_param;
+_dir		= [_this, 7, _sector getVariable ["TTC_CTI_sector_dir", 0], [0]] call BIS_fnc_param;
 _mrkShape	= [_this, 8, "RECTANGLE", [""]] call BIS_fnc_param;	// "ICON", "RECTANGLE" or "ELLIPSE"
 
 /*[_sector, "TTC_CTI_fnc_createSectorAreaMarker",
