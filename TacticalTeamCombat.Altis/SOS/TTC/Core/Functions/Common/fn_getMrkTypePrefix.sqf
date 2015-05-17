@@ -6,7 +6,7 @@
 
 private ["_side", "_prefix"];
 
-_side	= [_this, 0] call BIS_fnc_param;
+_side	= [_this, 0, sideUnknown, [sideUnknown]] call BIS_fnc_param;
 
 
 _prefix = switch (_side) do {
