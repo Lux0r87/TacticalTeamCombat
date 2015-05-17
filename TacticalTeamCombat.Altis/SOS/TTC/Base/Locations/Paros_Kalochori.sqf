@@ -5,6 +5,10 @@
 */
 
 
+// Set the safety distance for the bases.
+TTC_BASE_safetyDistance			= 1300;
+
+
 // Independent
 TTC_BASE_Guer_Pos				= [22654, 18972];
 

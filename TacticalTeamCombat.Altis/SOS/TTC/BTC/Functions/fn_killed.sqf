@@ -60,7 +60,7 @@ if (_killerIsPlayer && (_unit != _killer)) then {
 
 		if (format ["%1", _basePos] != "[0,0,0]") then {
 			// Check for base rape.
-			if ((_unit distance _basePos) <= TTC_safetyDistance) then {
+			if ((_unit distance _basePos) <= TTC_BASE_safetyDistance) then {
 				[["Base Rape", TTC_CORE_penalty_baseRape], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
 				[format["%1 got punished for base raping!", name _killer], "TTC_CORE_fnc_systemChat", true, false] call BIS_fnc_MP;
 				_killer setDamage 1;

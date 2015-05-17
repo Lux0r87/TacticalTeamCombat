@@ -21,6 +21,9 @@ if (isServer) then {
 
 		[_x] spawn TTC_BASE_fnc_spawnBase;
 	} forEach [west, east, resistance];
+
+	// Broadcast the safety distance to all players (including JIP).
+	publicVariable "TTC_BASE_safetyDistance";
 };
 
 // Client-side:
