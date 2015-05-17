@@ -28,6 +28,7 @@ class TTC_Core_Functions {
 		class getPrefix{};
 		class getRoleNameById{};
 		class getSectorPattern{};
+		class getSideForFaction{};
 		class handleFatigue{};
 		class hint{};
 		class log{};

@@ -122,8 +122,8 @@ _getMarkerText = {
 
 _unit		= [_this, 0] call BIS_fnc_param;
 _marker		= [_this, 1] call BIS_fnc_param;
-_side		= side _unit;
-	
+_side		= [faction _unit] call TTC_CORE_fnc_getSideForFaction;
+
 _marker setMarkerPosLocal	(getPos _unit);
 _marker setMarkerTypeLocal	([] call _getMarkerType);	
 //_marker setMarkerDirLocal	([] call _getMarkerDir);

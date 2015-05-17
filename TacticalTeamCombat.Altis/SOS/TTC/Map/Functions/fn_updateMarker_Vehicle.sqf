@@ -126,7 +126,7 @@ _getMarkerText = {
 _vehicle	= [_this, 0] call BIS_fnc_param;
 _marker		= [_this, 1] call BIS_fnc_param;
 _crew 		= crew _vehicle;
-_side 		= side (_crew select 0);
+_side		= [faction (_crew select 0)] call TTC_CORE_fnc_getSideForFaction;
 
 _marker setMarkerPosLocal	(getPos _vehicle);
 _marker setMarkerTypeLocal	([] call _getMarkerType);	

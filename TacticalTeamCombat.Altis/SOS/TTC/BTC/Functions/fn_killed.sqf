@@ -37,25 +37,8 @@ if (_killerIsPlayer && (_unit != _killer)) then {
 			};
 		};
 	} else {
-		_side = switch (faction _unit) do {
-			case "BLU_F";
-			case "BLU_G_F": {
-				"WEST";
-			};
-			case "OPF_F";
-			case "OPF_G_F": {
-				"EAST";
-			};
-			case "IND_F";
-			case "IND_G_F": {
-				"GUER";
-			};
-			default {
-				"";
-			};
-		};
-
 		// Get the base position for the side/faction.
+		_side		= [faction _unit] call TTC_CORE_fnc_getSideForFaction;
 		_basePos	= getMarkerPos format ["mrk_Base_%1", _side];
 
 		if (format ["%1", _basePos] != "[0,0,0]") then {
