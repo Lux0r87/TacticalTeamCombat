@@ -19,10 +19,18 @@ _MARKER_PREFIX = "TTC_MAP_UNIT_MARKER";
 */
 _showMarkerForUnit = {
 
-	private["_unit", "_show"];
+	private["_unit", "_vehicle", "_show"];
 	
 	_unit = _this;
-	_show = (side player == side _unit) && (alive _unit);
+	_vehicle = vehicle _unit;
+	_show = false;
+	
+	if (_vehicle == _unit) then {
+		_show = (side player == side _unit);// && (alive _unit);
+	} else {
+		_show = (getNumber(configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") != 1);
+	};
+	
 	_show;
 };
 
@@ -42,6 +50,7 @@ _getNextMarker = {
 //////////
 
 
+waitUntil {!(IsNull player) && (time > 0.0)};
 while {_RUN} do {
 		
 	_markerNumber = 0; 

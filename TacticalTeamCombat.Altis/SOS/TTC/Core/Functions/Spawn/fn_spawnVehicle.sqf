@@ -67,4 +67,4 @@ if (TTC_disableThermal == 1) then {
 	_veh disableTIEquipment true;
 };
 
-_veh
+_veh;

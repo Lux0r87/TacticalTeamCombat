@@ -15,7 +15,15 @@ _displayName	= getText(configFile >> "CfgVehicles" >> _className >> "displayName
 // Unlock vehicle.
 _vehicle addAction [
 	format ["<t color='#00FF00'>Unlock %1</t>", _displayName],
-	{(_this select 0) lock false;},
+	{
+		_veh = _this select 0;
+		
+		if(getNumber(configFile >> "CfgVehicles" >> typeOf _veh >> "isUav") == 1) then {
+			createVehicleCrew _veh;
+		};
+		
+		_veh lock false;
+	},
 	[],
 	10,
 	true,
