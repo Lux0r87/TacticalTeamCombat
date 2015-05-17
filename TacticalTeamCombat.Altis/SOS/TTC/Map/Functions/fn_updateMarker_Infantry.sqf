@@ -22,7 +22,7 @@ _getMarkerType = {
 	} else {
 		_markerType = _unit getVariable ["TTC_markerType", format["%1_unknown", _prefix]];
 		if (_unit getVariable ["lm_MS_var_isIncapacitated", false]) then {
-			_markerType = "mil_warning";
+			_markerType = "hd_warning";
 		};
 	};
 
