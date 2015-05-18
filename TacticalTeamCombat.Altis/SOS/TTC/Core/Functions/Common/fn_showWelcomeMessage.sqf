@@ -48,6 +48,6 @@ _message = composeText [
 TTC_CORE_hintC_EH = findDisplay 72 displayAddEventHandler ["unload", {
 	0 = _this spawn {
 		_this select 0 displayRemoveEventHandler ["unload", TTC_CORE_hintC_EH];
-		hintSilent "_message";
+		hintSilent "";
 	};
 }];

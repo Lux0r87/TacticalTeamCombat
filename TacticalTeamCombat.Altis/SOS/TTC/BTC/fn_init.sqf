@@ -3,11 +3,18 @@
 */
 
 
-// Initialize the balance variable..
-TTC_BTC_balance = 0;
+#include "Functions\penalty.inc"
+
 
 // Client-side.
 if (hasInterface) then {
+	// Initialize the balance variable.
+	TTC_BTC_balance = 0;
+
+	// Initialize variables for team kill penalty.
+	TTC_BTC_penalty_teamkill		= TTC_BTC_PENALTY_TEAMKILL_PLAYER;	// Set the base value for team kill penalty.
+	TTC_BTC_penalty_teamkill_Malus	= 0;								// Additional malus: will be increased for each team kill.
+
 	// Create the balance display (HUD).
 	[] spawn TTC_BTC_fnc_createBalanceDisplay;
 

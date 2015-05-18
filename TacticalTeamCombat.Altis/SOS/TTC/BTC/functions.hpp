@@ -12,6 +12,7 @@ class TTC_Cash_Functions {
 		class basicIncome{};
 		class createBalanceDisplay{};
 		class killed{};
+		class punishForTeamkill{};
 		class removeGear{};
 		class showIncomeDisplay{};
 	};

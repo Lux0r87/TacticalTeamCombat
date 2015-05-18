@@ -3,9 +3,7 @@
 */
 
 
-#define TTC_CORE_penalty_teamkillAI		-500
-#define TTC_CORE_penalty_teamkillPlayer	-1000
-#define TTC_CORE_penalty_baseRape		-2000
+#include "penalty.inc"
 
 private ["_unit","_killer","_unitIsPlayer","_killerIsPlayer","_factionUnit","_factionKiller","_side"];
 
@@ -31,9 +29,9 @@ if (_killerIsPlayer && (_unit != _killer)) then {
 		if (vehicle _unit != vehicle _killer) then {
 			// Penalty for the player.
 			if (_unitIsPlayer) then {
-				[["Team Kill", TTC_CORE_penalty_teamkillPlayer], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
+				[[], "TTC_BTC_fnc_punishForTeamkill", _killer, false] call BIS_fnc_MP;
 			} else {
-				[["Team Kill (AI)", TTC_CORE_penalty_teamkillAI], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
+				[["Team Kill (AI)", TTC_BTC_PENALTY_TEAMKILL_AI], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
 			};
 		};
 	} else {
@@ -44,7 +42,7 @@ if (_killerIsPlayer && (_unit != _killer)) then {
 		if (format ["%1", _basePos] != "[0,0,0]") then {
 			// Check for base rape.
 			if ((_unit distance _basePos) <= TTC_BASE_safetyDistance) then {
-				[["Base Rape", TTC_CORE_penalty_baseRape], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
+				[["Base Rape", TTC_BTC_PENALTY_BASERAPE], "TTC_BTC_fnc_addBalanceChange", _killer, false] call BIS_fnc_MP;
 				[format["%1 got punished for base raping!", name _killer], "TTC_CORE_fnc_systemChat", true, false] call BIS_fnc_MP;
 				_killer setDamage 1;
 			};
