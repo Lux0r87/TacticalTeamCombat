@@ -12,6 +12,11 @@ class TTC_Base_Functions {
 		class addShopActions{};
 	};
 
+	class Common {
+		file = "SOS\TTC\Base\Functions\Common";
+		class mapAnim{};
+	};
+
 	class Protection {
 		file = "SOS\TTC\Base\Functions\Protection";
 		class noFireZone{};

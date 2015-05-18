@@ -30,4 +30,6 @@ if (isServer) then {
 if (hasInterface) then {	
 	// Firing in base protection.
 	[] call TTC_BASE_fnc_noFireZone;
+
+	[] spawn TTC_BASE_fnc_mapAnim;
 };
