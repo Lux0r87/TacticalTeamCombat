@@ -16,19 +16,5 @@ _side	= [_this, 1] call BIS_fnc_param;
 ] call TTC_CORE_fnc_log;*/
 
 
-_texture = switch (_side) do {
-	case west: {
-		"\A3\Data_F\Flags\flag_nato_co.paa";	
-	};
-	case east: {
-		"\A3\Data_F\Flags\flag_csat_co.paa";	
-	};
-	case resistance: {
-		"\A3\Data_F\Flags\flag_aaf_co.paa";	
-	};
-	default {
-		"\A3\Data_F\Flags\flag_green_co.paa";	
-	};
-};
-
+_texture = [_side] call TTC_CORE_fnc_getFlagForSide;
 _flag setFlagTexture _texture;

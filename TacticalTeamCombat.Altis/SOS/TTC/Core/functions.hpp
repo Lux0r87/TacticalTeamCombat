@@ -23,6 +23,7 @@ class TTC_Core_Functions {
 		class endMissionAll{};
 		class getAmmoBoxType{};
 		class getBasePositions{};
+		class getFlagForSide{};
 		class getLocation{};
 		class getMrkTypePrefix{};
 		class getPrefix{};
