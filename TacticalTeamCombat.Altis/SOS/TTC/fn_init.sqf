@@ -30,6 +30,9 @@ if (isServer) then {
 
 // Client-side:
 if (hasInterface) then {
+	// Show the welcome message.
+	[] spawn TTC_CORE_fnc_showWelcomeMessage;
+
 	// Array to store all vehicles/helicopters, which the player owns.
 	TTC_CORE_vehicles = [];
 
