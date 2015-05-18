@@ -9,28 +9,27 @@
 */
 
 
-private ["_change","_message","_amount","_display","_control","_color","_sign","_text"];
+if (!isDedicated) then {
+	// Update the sector list for the teleport UI.
+	if (!isNil "TTC_CTI_sectors") then {
+		TTC_CTI_sectors spawn TTC_TP_UI_fnc_updateSectorList;
+	};
 
+	// Safety measure: Initialize balances changes array, if it doesn't exist.
+	if (isNil "TTC_BTC_balanceChanges") then {
+		TTC_BTC_balanceChanges = [];
+	};
 
-// Update the sector list.
-if (!isNil "TTC_CTI_sectors") then {
-	TTC_CTI_sectors spawn TTC_TP_UI_fnc_updateSectorList;
-};
+	// Push: Add the latest change at the end of the array.
+	TTC_BTC_balanceChanges pushBack _this;
 
-// Safety measure: Initialize balances changes array, if it doesn't exist.
-if (isNil "TTC_BTC_balanceChanges") then {
-	TTC_BTC_balanceChanges = [];
-};
+	// Safety measure: Initialize showIncomeDisplay handle, if it doesn't exist.
+	if (isNil "TTC_BTC_showIncomeDisplay_handle") then {
+		TTC_BTC_showIncomeDisplay_handle = scriptNull;
+	};
 
-// Push: Add the latest change at the end of the array.
-TTC_BTC_balanceChanges pushBack _this;
-
-// Safety measure: Initialize showIncomeDisplay handle, if it doesn't exist.
-if (isNil "TTC_BTC_showIncomeDisplay_handle") then {
-	TTC_BTC_showIncomeDisplay_handle = scriptNull;
-};
-
-// Show the income display, if the script doesn't run/exist already.
-if (scriptDone TTC_BTC_showIncomeDisplay_handle) then {
-	TTC_BTC_showIncomeDisplay_handle = [] spawn TTC_BTC_fnc_showIncomeDisplay;
+	// Show the income display, if the script doesn't run/exist already.
+	if (scriptDone TTC_BTC_showIncomeDisplay_handle) then {
+		TTC_BTC_showIncomeDisplay_handle = [] spawn TTC_BTC_fnc_showIncomeDisplay;
+	};
 };
