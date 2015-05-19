@@ -6,7 +6,9 @@
 private["_separator","_flag","_box","_message"];
 
 
-waitUntil {!(IsNull player) && (time > 1)};
+waitUntil {
+	(time > 1) && (playerRespawnTime < 0)
+};
 
 _separator	= parseText "<br/>------------------------------------------------------------<br/>"; 
 _flag		= [side player] call TTC_CORE_fnc_getFlagForSide;
