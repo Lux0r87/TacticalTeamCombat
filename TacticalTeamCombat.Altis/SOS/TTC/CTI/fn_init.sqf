@@ -27,6 +27,9 @@ if (hasInterface) then {
 			hintSilent "Mobile sector stopped!";
 		};
 	};
+
+	// Draw connection between the sectors on the main map, the GPS and the UAV terminal.
+	[] call TTC_CTI_fnc_initSectorConnections;
 };
 
 

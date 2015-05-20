@@ -34,7 +34,7 @@ _sectors = [_this, 0] call BIS_fnc_param;
 		};
 	} forEach _neighbours;
 
-	_x setVariable ["TTC_CTI_sector_neighbours", _neighbours];
+	_x setVariable ["TTC_CTI_sector_neighbours", _neighbours, true];
 } forEach _sectors;
 
 // Iterate over all sectors:

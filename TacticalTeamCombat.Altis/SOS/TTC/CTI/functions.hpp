@@ -28,10 +28,12 @@ class TTC_CTI_Functions {
 		class createSectorPatrol{};
 		class createSectors{};
 		class createSimpleTask{};
+		class drawSectorConnections{};
 		class getInMobileSector{};
 		class getSectorText{};
 		class getTaskDescription{};
 		class getTaskState{};
+		class initSectorConnections{};
 		class initSectors{};
 		class initSectorsLocal{};
 		class isSectorConnectedToBase{};
