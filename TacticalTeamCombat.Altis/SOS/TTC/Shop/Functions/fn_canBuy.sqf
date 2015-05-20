@@ -4,6 +4,10 @@
     Created by BauerMitFackel
 */
 
+
+private ["_shoppingCartCosts", "_balance", "_canBuy"];
+
+
 _shoppingCartCosts = [] call TTC_SHOP_fnc_getShoppingCartCosts;
 _balance = TTC_BTC_balance;
 
