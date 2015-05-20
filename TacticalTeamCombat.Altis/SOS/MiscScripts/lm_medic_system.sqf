@@ -1245,7 +1245,7 @@ lm_MS_fnc_initPlayer = {
 	
 	// Check if player is a medic.
 	_isMedic = false;
-	_canRevive = ["B_medic_F", "O_medic_F", "I_medic_F", "B_recon_medic_F"];
+	_canRevive = ["Man"];
 	{
 		if (player isKindOf _x) then {
 			_isMedic = true;
