@@ -7,7 +7,7 @@
 
 #include "sectorVariables.inc"
 
-private ["_sector","_blacklist","_sectorSide","_neighbours","_base","_return","_neighbourSide"];
+private ["_sector","_blacklist","_sectorSide","_neighbours","_return","_neighbourSide"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _blacklist	= [_this, 1, [], [[]]] call BIS_fnc_param;
@@ -23,11 +23,10 @@ _neighbours	= TTC_CTI_sectorVariable_neighbours(_sector);
 // Add sector to blacklist.
 _blacklist pushBack _sector;
 
-_base		= format["base%1", _sectorSide];
-_return		= [false, _blacklist];
+_return = [false, _blacklist];
 
 // Return true, if one of the neighbours is the base of this side.
-if (_base in _neighbours) exitWith {
+if (_sectorSide in _neighbours) exitWith {
 	[true, _blacklist]
 };
 
@@ -35,8 +34,8 @@ if (_base in _neighbours) exitWith {
 {
 	scopeName "searchLoop";
 
-	// Skip bases (strings) and already checked sectors.
-	if ((typeName _x != "STRING") && !(_x in _blacklist)) then {
+	// Must be a trigger object, representing the sector. Skip the bases (sides) and already checked sectors.
+	if ((typeName _x == "OBJECT") && !(_x in _blacklist)) then {
 		_neighbourSide	= _x getVariable "TTC_CTI_sector_side";
 
 		// Check if the neighbour sector belong to the same side.

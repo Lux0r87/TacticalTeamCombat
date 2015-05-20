@@ -8,20 +8,19 @@
 
 #include "sectorVariables.inc"
 
-private ["_sector","_side","_neighbours","_canCapture","_base","_neighbourSide","_connected"];
+private ["_sector","_side","_neighbours","_canCapture","_neighbourSide","_connected"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _side	= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
 
 _neighbours	= TTC_CTI_sectorVariable_neighbours(_sector);
 _canCapture	= false;
-_base		= format["base%1", _side];
 
-//[_sector, "TTC_CTI_fnc_canCaptureSector", [["_side = %1", _side], ["_neighbours = %1", _neighbours], ["_base = %1", _base]]] call TTC_CTI_fnc_logSector;
+//[_sector, "TTC_CTI_fnc_canCaptureSector", [["_side = %1", _side], ["_neighbours = %1", _neighbours]]] call TTC_CTI_fnc_logSector;
 
 
 // Return true, if one of the neighbours is the base of this side.
-if (_base in _neighbours) exitWith {
+if (_side in _neighbours) exitWith {
 	true
 };
 
@@ -29,8 +28,8 @@ if (_base in _neighbours) exitWith {
 {
 	scopeName "searchLoop";
 
-	// Skip bases (strings).
-	if (typeName _x != "STRING") then {
+	// Must be a trigger object, representing the sector. Skip the bases (sides).
+	if (typeName _x == "OBJECT") then {
 		_neighbourSide	= TTC_CTI_sectorVariable_side(_x);
 
 		// Check if the given side controls this neighbour sector.
