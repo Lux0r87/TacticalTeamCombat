@@ -213,14 +213,14 @@ _getUAV = {
 TTC_SHOP_ARTICLE_hgun_ACPC2_F = [-2, "hgun_ACPC2_F", 0, 80] call _getWeapon;
 TTC_SHOP_ARTICLE_hgun_Rook40_F = [-3, "hgun_Rook40_F", 0, 80] call _getWeapon;
 TTC_SHOP_ARTICLE_hgun_Pistol_heavy_02_F = [-5, "hgun_Pistol_heavy_02_F", 0, 150] call _getWeapon;
-TTC_SHOP_ARTICLE_arifle_MX_SW_F = [-20, "arifle_MX_SW_F", 0, 700] call _getWeapon;
-TTC_SHOP_ARTICLE_LMG_Mk200_F = [-21, "LMG_Mk200_F", 0, 875] call _getWeapon;
-TTC_SHOP_ARTICLE_LMG_Zafir_F = [-22, "LMG_Zafir_F", 0, 1050] call _getWeapon;
-TTC_SHOP_ARTICLE_MMG_01_hex_F = [-23, "MMG_01_hex_F", 0, 1225] call _getWeapon;
-TTC_SHOP_ARTICLE_MMG_01_tan_F = [-24, "MMG_01_tan_F", 0, 1225] call _getWeapon;
-TTC_SHOP_ARTICLE_MMG_02_camo_F = [-25, "MMG_02_camo_F", 0, 1225] call _getWeapon;
-TTC_SHOP_ARTICLE_MMG_02_black_F = [-26, "MMG_02_black_F", 0, 1225] call _getWeapon;
-TTC_SHOP_ARTICLE_MMG_02_sand_F = [-27, "MMG_02_sand_F", 0, 1225] call _getWeapon;
+TTC_SHOP_ARTICLE_arifle_MX_SW_F = [-20, "arifle_MX_SW_F", 0, 650] call _getWeapon;
+TTC_SHOP_ARTICLE_LMG_Mk200_F = [-21, "LMG_Mk200_F", 0, 900] call _getWeapon;
+TTC_SHOP_ARTICLE_LMG_Zafir_F = [-22, "LMG_Zafir_F", 0, 1500] call _getWeapon;
+TTC_SHOP_ARTICLE_MMG_01_hex_F = [-23, "MMG_01_hex_F", 0, 1300] call _getWeapon;
+TTC_SHOP_ARTICLE_MMG_01_tan_F = [-24, "MMG_01_tan_F", 0, 1300] call _getWeapon;
+TTC_SHOP_ARTICLE_MMG_02_camo_F = [-25, "MMG_02_camo_F", 0, 1300] call _getWeapon;
+TTC_SHOP_ARTICLE_MMG_02_black_F = [-26, "MMG_02_black_F", 0, 1300] call _getWeapon;
+TTC_SHOP_ARTICLE_MMG_02_sand_F = [-27, "MMG_02_sand_F", 0, 1300] call _getWeapon;
 TTC_SHOP_ARTICLE_16Rnd_9x21_Mag = [-53, "16Rnd_9x21_Mag", 0, 20] call _getMagazine;
 TTC_SHOP_ARTICLE_30Rnd_9x21_Mag = [-54, "30Rnd_9x21_Mag", 0, 40] call _getMagazine;
 TTC_SHOP_ARTICLE_6Rnd_45ACP_Cylinder = [-55, "6Rnd_45ACP_Cylinder", 0, 15] call _getMagazine;
@@ -235,32 +235,32 @@ TTC_SHOP_ARTICLE_130Rnd_338_Mag = [-72, "130Rnd_338_Mag", 0, 140] call _getMagaz
 TTC_SHOP_ARTICLE_150Rnd_93x64_Mag = [-74, "150Rnd_93x64_Mag", 0, 150] call _getMagazine;
 TTC_SHOP_ARTICLE_acc_flashlight = [-119, "acc_flashlight", 0, 25] call _getItem;
 TTC_SHOP_ARTICLE_acc_pointer_IR = [-120, "acc_pointer_IR", 0, 50] call _getItem;
-TTC_SHOP_ARTICLE_optic_Yorris = [-122, "optic_Yorris", 0, 75] call _getItem;
+TTC_SHOP_ARTICLE_optic_Yorris = [-122, "optic_Yorris", 0, 50] call _getItem;
 TTC_SHOP_ARTICLE_optic_Aco = [-126, "optic_Aco", 0, 100] call _getItem;
 TTC_SHOP_ARTICLE_optic_ACO_grn = [-127, "optic_ACO_grn", 0, 100] call _getItem;
 TTC_SHOP_ARTICLE_optic_Holosight = [-128, "optic_Holosight", 0, 125] call _getItem;
-TTC_SHOP_ARTICLE_optic_MRCO = [-129, "optic_MRCO", 0, 200] call _getItem;
-TTC_SHOP_ARTICLE_optic_Hamr = [-130, "optic_Hamr", 0, 300] call _getItem;
-TTC_SHOP_ARTICLE_optic_Arco = [-131, "optic_Arco", 0, 300] call _getItem;
-TTC_SHOP_ARTICLE_optic_AMS = [-133, "optic_AMS", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_AMS_khk = [-134, "optic_AMS_khk", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_AMS_snd = [-135, "optic_AMS_snd", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_KHS_blk = [-136, "optic_KHS_blk", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_KHS_hex = [-137, "optic_KHS_hex", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_KHS_old = [-138, "optic_KHS_old", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_KHS_tan = [-139, "optic_KHS_tan", 0, 375] call _getItem;
-TTC_SHOP_ARTICLE_optic_DMS = [-140, "optic_DMS", 0, 450] call _getItem;
+TTC_SHOP_ARTICLE_optic_MRCO = [-129, "optic_MRCO", 0, 300] call _getItem;
+TTC_SHOP_ARTICLE_optic_Hamr = [-130, "optic_Hamr", 0, 400] call _getItem;
+TTC_SHOP_ARTICLE_optic_Arco = [-131, "optic_Arco", 0, 400] call _getItem;
+TTC_SHOP_ARTICLE_optic_AMS = [-133, "optic_AMS", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_AMS_khk = [-134, "optic_AMS_khk", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_AMS_snd = [-135, "optic_AMS_snd", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_KHS_blk = [-136, "optic_KHS_blk", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_KHS_hex = [-137, "optic_KHS_hex", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_KHS_old = [-138, "optic_KHS_old", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_KHS_tan = [-139, "optic_KHS_tan", 0, 500] call _getItem;
+TTC_SHOP_ARTICLE_optic_DMS = [-140, "optic_DMS", 0, 650] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_L = [-143, "muzzle_snds_L", 0, 120] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_acp = [-144, "muzzle_snds_acp", 0, 120] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_H_SW = [-147, "muzzle_snds_H_SW", 0, 180] call _getItem;
 TTC_SHOP_ARTICLE_muzzle_snds_H_MG = [-148, "muzzle_snds_H_MG", 0, 180] call _getItem;
-TTC_SHOP_ARTICLE_muzzle_snds_338_black = [-150, "muzzle_snds_338_black", 0, 405] call _getItem;
-TTC_SHOP_ARTICLE_muzzle_snds_338_green = [-151, "muzzle_snds_338_green", 0, 405] call _getItem;
-TTC_SHOP_ARTICLE_muzzle_snds_93mmg = [-152, "muzzle_snds_93mmg", 0, 405] call _getItem;
-TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan = [-153, "muzzle_snds_93mmg_tan", 0, 405] call _getItem;
+TTC_SHOP_ARTICLE_muzzle_snds_338_black = [-150, "muzzle_snds_338_black", 0, 400] call _getItem;
+TTC_SHOP_ARTICLE_muzzle_snds_338_green = [-151, "muzzle_snds_338_green", 0, 400] call _getItem;
+TTC_SHOP_ARTICLE_muzzle_snds_93mmg = [-152, "muzzle_snds_93mmg", 0, 400] call _getItem;
+TTC_SHOP_ARTICLE_muzzle_snds_93mmg_tan = [-153, "muzzle_snds_93mmg_tan", 0, 400] call _getItem;
 TTC_SHOP_ARTICLE_Binocular = [-165, "Binocular", 0, 100] call _getWeapon;
 TTC_SHOP_ARTICLE_FirstAidKit = [-167, "FirstAidKit", 0, 50] call _getWeapon;
-TTC_SHOP_ARTICLE_NVGoggles_INDEP = [-173, "NVGoggles_INDEP", 0, 400] call _getWeapon;
+TTC_SHOP_ARTICLE_NVGoggles_INDEP = [-173, "NVGoggles_INDEP", 0, 300] call _getWeapon;
 TTC_SHOP_ARTICLE_G_Shades_Black = [-176, "G_Shades_Black", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Blue = [-177, "G_Shades_Blue", 0, 5] call _getGlasses;
 TTC_SHOP_ARTICLE_G_Shades_Green = [-178, "G_Shades_Green", 0, 5] call _getGlasses;
@@ -321,7 +321,7 @@ TTC_SHOP_ARTICLE_B_Carryall_mcamo = [-249, "B_Carryall_mcamo", 0, 450] call _get
 TTC_SHOP_ARTICLE_B_Carryall_khk = [-250, "B_Carryall_khk", 0, 450] call _getBackpack;
 TTC_SHOP_ARTICLE_B_Carryall_cbr = [-251, "B_Carryall_cbr", 0, 450] call _getBackpack;
 TTC_SHOP_ARTICLE_B_Parachute = [-252, "B_Parachute", 0, 100] call _getBackpack;
-TTC_SHOP_ARTICLE_I_Quadbike_01_F = [-269, "I_Quadbike_01_F", 0, 100] call _getVehicle;
+TTC_SHOP_ARTICLE_I_Quadbike_01_F = [-269, "I_Quadbike_01_F", 0, 50] call _getVehicle;
 TTC_SHOP_ARTICLE_I_G_Offroad_01_F = [-270, "I_G_Offroad_01_F", 0, 250] call _getVehicle;
 TTC_SHOP_ARTICLE_I_G_Offroad_01_armed_F = [-271, "I_G_Offroad_01_armed_F", 0, 400] call _getVehicle;
 TTC_SHOP_ARTICLE_I_MRAP_03_F = [-272, "I_MRAP_03_F", 0, 500] call _getVehicle;
@@ -333,7 +333,7 @@ TTC_SHOP_ARTICLE_I_APC_tracked_03_cannon_F = [-277, "I_APC_tracked_03_cannon_F",
 TTC_SHOP_ARTICLE_O_APC_Tracked_02_AA_F = [-280, "O_APC_Tracked_02_AA_F", 0, 5000] call _getVehicle;
 TTC_SHOP_ARTICLE_B_Heli_Light_01_F = [-281, "B_Heli_Light_01_F", 0, 1250] call _getVehicle;
 TTC_SHOP_ARTICLE_I_Heli_light_03_unarmed_F = [-289, "I_Heli_light_03_unarmed_F", 0, 1250] call _getVehicle;
-TTC_SHOP_ARTICLE_muzzle_snds_338_sand = [-318, "muzzle_snds_338_sand", 0, 405] call _getItem;
+TTC_SHOP_ARTICLE_muzzle_snds_338_sand = [-318, "muzzle_snds_338_sand", 0, 400] call _getItem;
 TTC_SHOP_ARTICLE_V_BandollierB_rgr = [-319, "V_BandollierB_rgr", 0, 200] call _getVest;
 TTC_SHOP_ARTICLE_HandGrenade = [-340, "HandGrenade", 0, 40] call _getMagazine;
 TTC_SHOP_ARTICLE_MiniGrenade = [-341, "MiniGrenade", 0, 25] call _getMagazine;
@@ -346,8 +346,8 @@ TTC_SHOP_ARTICLE_Chemlight_green = [-383, "Chemlight_green", 0, 5] call _getMaga
 TTC_SHOP_ARTICLE_Chemlight_red = [-384, "Chemlight_red", 0, 5] call _getMagazine;
 TTC_SHOP_ARTICLE_Chemlight_yellow = [-385, "Chemlight_yellow", 0, 5] call _getMagazine;
 TTC_SHOP_ARTICLE_Chemlight_blue = [-386, "Chemlight_blue", 0, 5] call _getMagazine;
-TTC_SHOP_ARTICLE_bipod_03_F_blk = [-393, "bipod_03_F_blk", 0, 250] call _getItem;
-TTC_SHOP_ARTICLE_bipod_03_F_oli = [-394, "bipod_03_F_oli", 0, 250] call _getItem;
+TTC_SHOP_ARTICLE_bipod_03_F_blk = [-393, "bipod_03_F_blk", 0, 200] call _getItem;
+TTC_SHOP_ARTICLE_bipod_03_F_oli = [-394, "bipod_03_F_oli", 0, 200] call _getItem;
 TTC_SHOP_ARTICLE_V_TacVest_khk = [-478, "V_TacVest_khk", 0, 500] call _getVest;
 TTC_SHOP_ARTICLE_V_TacVest_brn = [-479, "V_TacVest_brn", 0, 500] call _getVest;
 TTC_SHOP_ARTICLE_V_TacVest_oli = [-480, "V_TacVest_oli", 0, 500] call _getVest;
@@ -513,12 +513,12 @@ TTC_SHOP_ARTICLES = [
 TTC_SHOP_RIFLES = [
 	TTC_SHOP_ARTICLE_arifle_MX_SW_F,
 	TTC_SHOP_ARTICLE_LMG_Mk200_F,
-	TTC_SHOP_ARTICLE_LMG_Zafir_F,
 	TTC_SHOP_ARTICLE_MMG_01_hex_F,
 	TTC_SHOP_ARTICLE_MMG_01_tan_F,
 	TTC_SHOP_ARTICLE_MMG_02_black_F,
 	TTC_SHOP_ARTICLE_MMG_02_camo_F,
-	TTC_SHOP_ARTICLE_MMG_02_sand_F
+	TTC_SHOP_ARTICLE_MMG_02_sand_F,
+	TTC_SHOP_ARTICLE_LMG_Zafir_F
 ];
 
 TTC_SHOP_HANDGUNS = [
