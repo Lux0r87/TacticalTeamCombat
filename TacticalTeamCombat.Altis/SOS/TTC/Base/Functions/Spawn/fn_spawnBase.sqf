@@ -60,6 +60,12 @@ if (format ["%1", _basePos] != "[0,0]") then {
 	// Create helipad.
 	_helipad		= createVehicle ["Land_HelipadSquare_F", _heliSpawnPos, [], 0, "CAN_COLLIDE"];
 	_helipad setDir _heliSpawnDir;
+	
+	// Create global marker.
+	_mrkName		= format ["mrk_HelicopterSpawn_%1", _side];
+	_mrkText		= "Helicopter Spawn";
+	_mrkType		= format["%1_air", _mrkTypePrefix];
+	_mrk			= [_mrkName, _heliSpawnPos, _mrkText, _mrkColor, 1, 1, 0, "ICON", _mrkType] call TTC_CORE_fnc_createMarker;
 
 	// --------------- Maintenance ---------------
 	_maintenancePos	= missionNamespace getVariable [format["TTC_BASE_%1_MaintenancePos", _side], [0,0]];
