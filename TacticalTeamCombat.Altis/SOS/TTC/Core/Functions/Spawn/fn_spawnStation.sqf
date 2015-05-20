@@ -25,28 +25,28 @@ _flag setDir _dir;
 
 // Create sandbags.
 _className	= "Land_BagFence_Round_F";
-_fencePos	= [((_pos select 0) - (cos(_dir + 45) * 2.7)), ((_pos select 1) + (sin(_dir + 45) * 2.7)), 0];
+_fencePos	= [((_pos select 0) - (cos(_dir + 45) * 2.7)), ((_pos select 1) + (sin(_dir + 45) * 2.7)), -0.1];
 _fence		= [_fencePos, _className, (_dir + 135)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
 _fenceTop		= [_fencePos, _className, (_dir + 135)] call TTC_CORE_fnc_createVehicle;
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
-_fencePos	= [((_pos select 0) - (cos(_dir + 135) * 2.7)), ((_pos select 1) + (sin(_dir + 135) * 2.7)), 0];
+_fencePos	= [((_pos select 0) - (cos(_dir + 135) * 2.7)), ((_pos select 1) + (sin(_dir + 135) * 2.7)), -0.1];
 _fence		= [_fencePos, _className, (_dir + 225)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
 _fenceTop		= [_fencePos, _className, (_dir + 225)] call TTC_CORE_fnc_createVehicle;
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
-_fencePos	= [((_pos select 0) - (cos(_dir + 225) * 2.5)), ((_pos select 1) + (sin(_dir + 225) * 2.5)), 0];
+_fencePos	= [((_pos select 0) - (cos(_dir + 225) * 2.5)), ((_pos select 1) + (sin(_dir + 225) * 2.5)), -0.1];
 _fence		= [_fencePos, _className, (_dir + 325)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
 _fenceTop		= [_fencePos, _className, (_dir + 325)] call TTC_CORE_fnc_createVehicle;
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
-_fencePos	= [((_pos select 0) - (cos(_dir + 325) * 2.5)), ((_pos select 1) + (sin(_dir + 325) * 2.5)), 0];
+_fencePos	= [((_pos select 0) - (cos(_dir + 325) * 2.5)), ((_pos select 1) + (sin(_dir + 325) * 2.5)), -0.1];
 _fence		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicle;
 _fence setVectorUp (surfaceNormal _fencePos);
 
@@ -54,7 +54,7 @@ _fenceTop		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicl
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 // Spawn outdoor shop.
-_shopPos = [((_pos select 0) - (cos(_dir + 90) * 0.5)), ((_pos select 1) + (sin(_dir + 90) * 0.5)), 0];
+_shopPos = [((_pos select 0) - (cos(_dir + 90) * 0.6)), ((_pos select 1) + (sin(_dir + 90) * 0.6)), 0];
 [_side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnOutdoorShop;
 
 _flag

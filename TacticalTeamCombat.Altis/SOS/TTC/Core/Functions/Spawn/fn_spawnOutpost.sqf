@@ -29,17 +29,21 @@ _createSandbags = {
 
 	_sandbagPos	= [((_pos select 0) - (cos(_dir + 90) * 1.5)), ((_pos select 1) + (sin(_dir + 90) * 1.5)), -0.1];
 	_sandbag	= [_sandbagPos, "Land_BagFence_Long_F", (_dir + 90)] call _createSandbag;
+	_sandbag setVectorUp (surfaceNormal _sandbagPos);
 
 	_bagCorner	= [_pos, "Land_BagFence_Corner_F", (_dir + 270)] call _createSandbag;
 	_bagCorner attachTo [_sandbag, [-2.05, 0.23, 0.0]];
 	_bagCorner setVectorDirAndUp [[0,-1,0],[0,0,1]];
+	_bagCorner setVectorUp (surfaceNormal (getPos _bagCorner));
 
 	_sandbagPos	= [((_pos select 0) - (cos(_dir + 270) * 1.5)), ((_pos select 1) + (sin(_dir + 270) * 1.5)), -0.1];
 	_sandbag	= [_sandbagPos, "Land_BagFence_Long_F", (_dir + 90)] call _createSandbag;
+	_sandbag setVectorUp (surfaceNormal _sandbagPos);
 
 	_bagCorner	= [_pos, "Land_BagFence_Corner_F", (_dir + 180)] call _createSandbag;
 	_bagCorner attachTo [_sandbag, [2.0, 0.38, 0.0]];
 	_bagCorner setVectorDirAndUp [[1,0,0],[0,0,1]];
+	_bagCorner setVectorUp (surfaceNormal (getPos _bagCorner));
 };
 
 
