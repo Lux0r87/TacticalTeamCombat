@@ -24,9 +24,8 @@ _showMarkerForUnit = {
 	_vehicle = vehicle _unit;
 	_show = false;
 	
-	if (_vehicle == _unit) then {
-		_show = (faction player == faction _unit);// && (alive _unit);
-	} else {
+	_show = (faction player == faction _unit);
+	if (_show) then {
 		_show = (getNumber(configFile >> "CfgVehicles" >> typeOf _vehicle >> "isUav") != 1);
 	};
 	
