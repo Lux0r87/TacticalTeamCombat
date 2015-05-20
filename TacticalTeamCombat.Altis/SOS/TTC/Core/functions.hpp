@@ -20,6 +20,7 @@ class TTC_Core_Functions {
 		class createVehicle{};
 		class createZoneProtection{};
 		class endMission{};
+		class findControls{};
 		class endMissionAll{};
 		class getAmmoBoxType{};
 		class getBasePositions{};
