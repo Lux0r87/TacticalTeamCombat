@@ -6,7 +6,7 @@
 
 
 // Set the safety distance for the bases.
-TTC_BASE_safetyDistance			= 800;
+TTC_BASE_safetyDistance			= 700;
 
 
 // Independent
