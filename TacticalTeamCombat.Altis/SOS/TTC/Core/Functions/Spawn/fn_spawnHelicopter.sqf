@@ -22,6 +22,7 @@ _lock			= [_this, 4, true, [true]] call BIS_fnc_param;
 // Create the vehicle.
 _veh = _vehicleType createVehicle [_spawnPos select 0, _spawnPos select 1, 0.5];
 _veh setDir _spawnDir;
+_veh setVectorUp (surfaceNormal (getPos _veh));
 _veh lock _lock;
 
 // Remove weapons, magazines, items and backpacks.
