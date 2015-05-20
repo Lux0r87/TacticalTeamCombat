@@ -11,10 +11,10 @@
 
 #define TTC_CTI_sectorPattern "7 sectors pattern"
 
-#define TTC_CTI_neighbours_sectorA [west, 1, 2]			// Index: 0
-#define TTC_CTI_neighbours_sectorB [0, 3, 4]			// Index: 1
-#define TTC_CTI_neighbours_sectorC [0, 3, 5]			// Index: 2
-#define TTC_CTI_neighbours_sectorD [1, 2, 4, 5]			// Index: 3
-#define TTC_CTI_neighbours_sectorE [1, 3, 6]			// Index: 4
-#define TTC_CTI_neighbours_sectorF [2, 3, 6]			// Index: 5
-#define TTC_CTI_neighbours_sectorG [4, 5, resistance]	// Index: 6
+#define TTC_CTI_neighbours_sectorA [west, 1, 2]			// Index: 0		// Neighbours: Base west, B, C
+#define TTC_CTI_neighbours_sectorB [0, 2, 3, 4]			// Index: 1		// Neighbours: A, C, D, E
+#define TTC_CTI_neighbours_sectorC [0, 1, 3, 5]			// Index: 2		// Neighbours: A, B, D, F
+#define TTC_CTI_neighbours_sectorD [1, 2, 4, 5]			// Index: 3		// Neighbours: B, C, E, F
+#define TTC_CTI_neighbours_sectorE [1, 3, 5, 6]			// Index: 4		// Neighbours: B, D, F, G
+#define TTC_CTI_neighbours_sectorF [2, 3, 4, 6]			// Index: 5		// Neighbours: C, D, E, G
+#define TTC_CTI_neighbours_sectorG [4, 5, resistance]	// Index: 6		// Neighbours: E, F, Base guer
