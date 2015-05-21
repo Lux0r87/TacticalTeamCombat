@@ -4,7 +4,8 @@
 
 
 private [
-	"_side","_building","_dir","_height","_pos","_prefix","_type","_desk1","_desk2","_money","_rack","_ammo","_className","_barrel","_salesman1","_salesman2"
+	"_side","_building","_dir","_height","_pos","_prefix","_type","_desk1","_desk2","_money","_rack","_ammo","_className","_barrel",
+	"_deskPos","_unitPos","_salesman1","_salesman2"
 ];
 
 _side		= [_this, 0] call BIS_fnc_param;
@@ -58,17 +59,20 @@ _createRack = {
 };
 
 _spawnSalesman = {
-	private ["_pos","_group","_className","_unitPos","_unit"];	
+	private ["_pos","_group","_className","_unit","_logic"];	
 	_pos	= _this select 0;
 
 	_group		= createGroup _side;
 	_className	= format["%1_soldier_unarmed_f", _prefix];
-	_unitPos	= [((_pos select 0) - (cos(_dir + 90) * 0.3)), ((_pos select 1) + (sin(_dir + 90) * 0.3)), (_pos select 2) - 0.2];
-	_unit		= _group createUnit [_className, _unitPos, [], 0, "CAN_COLLIDE"];
-	_unit setDir (_dir + 180);
+	_unit		= _group createUnit [_className, _pos, [], 0, "CAN_COLLIDE"];
 	_unit allowDamage false;
 	_unit setSkill  0;
 	_unit disableAI "MOVE";
+
+	// Create a game logic as helper.
+	_logic		= _group createUnit ["Logic", _pos, [], 0, "CAN_COLLIDE"];
+	_logic setDir (_dir - 180);
+	_unit attachTo [_logic, [0, 0, 0]];
 
 	_unit;
 };
@@ -141,8 +145,13 @@ _ammo attachTo [_building, [7.75, 3.5, (_height + 0.65)]];
 _ammo setVectorDirAndUp [[1,0,0],[0,0,1]];
 
 // Create AI (salesman)
-_salesman1	= [getPosATL _desk1] call _spawnSalesman;
-_salesman2	= [getPosATL _desk2] call _spawnSalesman;
+_deskPos	= getPosATL _desk1;
+_unitPos	= [((_deskPos select 0) - (cos(_dir + 100) * 1.0)), ((_deskPos select 1) + (sin(_dir + 100) * 1.0)), (_deskPos select 2)];
+_salesman1	= [_unitPos] call _spawnSalesman;
+
+_deskPos	= getPosATL _desk2;
+_unitPos	= [((_deskPos select 0) - (cos(_dir + 90) * 1.0)), ((_deskPos select 1) + (sin(_dir + 90) * 1.0)), (_deskPos select 2)];
+_salesman2	= [_unitPos] call _spawnSalesman;
 
 // Add the 'Shop' action for all players of this side (including JIP).
 [[[_salesman1, _salesman2]], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
