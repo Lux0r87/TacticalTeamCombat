@@ -1,6 +1,6 @@
 /*
 	Defines the neighbours for all sectors, according to the following concept:
-	https://cloud.githubusercontent.com/assets/11304010/7549440/c46b5956-f634-11e4-825d-0655790b6f41.png
+	https://cloud.githubusercontent.com/assets/11304010/7730791/946b59a4-ff1c-11e4-81b9-9e9111f5fd55.png
 
 	- The numbers for the neighbours represent the index in the TTC_CTI_sectorDefinitions array.
 	- The side is used to represent the base a team.
