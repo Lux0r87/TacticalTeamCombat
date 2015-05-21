@@ -14,10 +14,7 @@
 #define TTC_CTI_amountAttack		((_diff min _dominance) * TTC_CTI_multiplier)
 #define TTC_CTI_amountDefend		((_diff min TTC_CTI_dominanceDiff) * TTC_CTI_multiplier)
 
-private [
-	"_sector","_side","_diff","_list","_sectorSide","_dominance","_sectorCaptured","_dominanceNew","_respawnPos","_removed",
-	"_sectorName","_marker","_patrol","_veh","_flag","_message"
-];
+private ["_sector","_side","_diff","_list","_sectorSide","_dominance","_sectorCaptured","_dominanceNew","_respawnPos","_removed","_marker","_patrol","_veh","_flag"];
 
 _sector		= [_this, 0] call BIS_fnc_param;
 _side		= [_this, 1, sideUnknown, [sideUnknown]] call BIS_fnc_param;
@@ -108,7 +105,6 @@ if (_sectorSide != _side) then {
 		// Sector captured by attacking side:
 		if (_dominanceNew == TTC_CTI_dominanceMin) then {
 			_sectorCaptured	= true;
-			_sectorName		= TTC_CTI_sectorVariable_name(_sector);
 			_marker			= TTC_CTI_sectorVariable_marker(_sector);
 
 			// Set dominance to maximum + change side of sector.
@@ -145,13 +141,6 @@ if (_sectorSide != _side) then {
 			if (!isNull _flag) then {
 				[_flag, _side] call TTC_CORE_fnc_setFlagTexture;
 			};
-
-			// Show message for everyone.
-			_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
-			<t align='center' size='1.5'>%1</t><br/><br/>
-			The sector was captured by %2.", _sectorName, _side];
-
-			[_message,"TTC_CORE_fnc_hint"] call BIS_fnc_MP;
 		};
 
 		// Update the sector.
