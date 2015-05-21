@@ -147,15 +147,17 @@ if (isServer) then {
 
 					// Iterate over the list of units in this trigger area.
 					{
-						switch (side _x) do {
-							case resistance: {
-								_guer pushBack _x;
-							};
-							case west: {
-								_west pushBack _x;
-							};
-							case east: {
-								_east pushBack _x;
+						if (getNumber(configFile >> "CfgVehicles" >> typeOf _x >> "isUav") != 1) then {
+							switch (side _x) do {
+								case resistance: {
+									_guer pushBack _x;
+								};
+								case west: {
+									_west pushBack _x;
+								};
+								case east: {
+									_east pushBack _x;
+								};
 							};
 						};
 					} forEach _list;
@@ -204,8 +206,6 @@ if (isServer) then {
 	};
 
 	// ------------------------- End -------------------------
-
-
 	// Show message for everyone.
 	_message = parseText format ["<t align='center' size='2'>Sector Control</t><br/>
 	<t align='center' size='1.5'>%1 wins</t><br/><br/>
