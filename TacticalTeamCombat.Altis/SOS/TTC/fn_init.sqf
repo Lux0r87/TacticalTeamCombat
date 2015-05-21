@@ -56,12 +56,6 @@ if (hasInterface) then {
 
 	// Add variableEventHandler to show the remaining safety time.
 	"TTC_safetyTime" addPublicVariableEventHandler {
-		_value = _this select 1;
-
-		if (_value > 0) then {
-			hintSilent format ["The mission starts in: %1s", _value];
-		} else {
-			hintSilent "Mission started!";
-		};
+		[_this select 1] spawn TTC_CORE_fnc_showTimerDisplay;
 	};
 };
