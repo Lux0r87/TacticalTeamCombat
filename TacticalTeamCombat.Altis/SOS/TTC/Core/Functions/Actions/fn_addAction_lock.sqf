@@ -16,15 +16,25 @@ _displayName	= getText(configFile >> "CfgVehicles" >> _className >> "displayName
 _vehicle addAction [
 	format ["<t color='#FF0000'>Lock %1</t>", _displayName],
 	{
-		_veh = _this select 0;
-		
-		// delete the crew if the vehicle is a uav/ugv
+		_veh	= _this select 0;
+		_caller	= _this select 1;
+
+		// Check for UAV/UGV.
 		if(getNumber(configFile >> "CfgVehicles" >> typeOf _veh >> "isUav") == 1) then {
-			_crew = crew _veh;
-			{_veh deleteVehicleCrew _x} forEach _crew; 
+			if (vehicle _caller == _caller) then {
+				// Delete the crew.
+				{
+					_x action ["engineOff", _veh];
+					_veh deleteVehicleCrew _x;
+				} forEach (crew _veh);
+
+				_veh lock true;
+			} else {
+				hintSilent "You can't lock the UAV/UGV, while you're controlling it.";
+			};
+		} else {
+			_veh lock true;
 		};
-		
-		_veh lock true;
 	},
 	[],
 	10,
