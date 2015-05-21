@@ -53,8 +53,8 @@ _fence setVectorUp (surfaceNormal _fencePos);
 _fenceTop		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicle;
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
-// Spawn outdoor shop.
+// Spawn sector shop.
 _shopPos = [((_pos select 0) - (cos(_dir + 90) * 0.6)), ((_pos select 1) + (sin(_dir + 90) * 0.6)), 0];
-[_side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnOutdoorShop;
+[_side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnSectorShop;
 
 _flag

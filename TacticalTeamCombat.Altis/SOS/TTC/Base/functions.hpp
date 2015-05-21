@@ -26,7 +26,7 @@ class TTC_Base_Functions {
 		file = "SOS\TTC\Base\Functions\Spawn";
 		class spawnBase {};
 		class spawnInfoArea {};
-		class spawnOutdoorShop {};
+		class spawnSectorShop {};
 		class spawnShop {};
 		class spawnTeleporter {};
 	};

@@ -12,7 +12,7 @@ _dir	= [_this, 2] call BIS_fnc_param;
 _type	= [_side] call TTC_CORE_fnc_getAmmoBoxType;
 
 /*[
-	["Function: %1", "TTC_Base_fnc_spawnOutdoorShop"],
+	["Function: %1", "TTC_Base_fnc_spawnSectorShop"],
 	["_side = %1", _side], ["_pos = %1", _pos], ["_dir = %1", _dir], ["_type = %1", _type]
 ] call TTC_CORE_fnc_log;*/
 

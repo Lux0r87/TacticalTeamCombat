@@ -46,8 +46,8 @@ _flag setVectorDir (vectorDir _bunker);
 [_flag, _side] call TTC_CORE_fnc_setFlagTexture;
 _bunker setVariable ["TTC_CORE_flag", _flag];
 
-// Spawn outdoor shop.
+// Spawn sector shop.
 _shopPos = [((_pos select 0) - (cos(_dir) * 1.1)), ((_pos select 1) + (sin(_dir) * 1.1)), 0];
-[_side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnOutdoorShop;
+[_side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnSectorShop;
 
 _bunker
