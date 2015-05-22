@@ -45,6 +45,10 @@ _shoppingCart	= [_this, 0] call BIS_fnc_param;
 _articleId		= [_this, 1] call BIS_fnc_param;
 _amount			= [_this, 2, 1, [0]] call BIS_fnc_param;
 
+
+[_articleId, _amount, _shoppingCart] call BIS_fnc_log;
+
+
 _path = [_shoppingCart, _articleId] call BIS_fnc_findNestedElement;
 if (_path isEqualTo []) then {	
 	_categoryId		= (_articleId call TTC_SHOP_fnc_getCategoryByArticleId) select TTC_SHOP_CATEGORY_id;

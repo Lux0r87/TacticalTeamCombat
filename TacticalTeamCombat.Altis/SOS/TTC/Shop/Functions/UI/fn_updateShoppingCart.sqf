@@ -41,7 +41,7 @@ _addArticleEntryToList = {
 private["_shoppingCart","_articleList","_articleEntries","_shoppingCartCosts"];
 
 
-_shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
+_shoppingCart = _this;
 
 _articleList = uiNamespace getVariable ["TTC_SHOP_UI_shoppingCart_articleList", nil];
 lnbClear _articleList;
@@ -53,7 +53,7 @@ lnbClear _articleList;
 	} forEach _articleEntries;
 } forEach _shoppingCart;
 
-_shoppingCartCosts = [] call TTC_SHOP_fnc_getShoppingCartCosts;
+_shoppingCartCosts = _shoppingCart call TTC_SHOP_fnc_getShoppingCartCosts;
 _shoppingCartCosts call TTC_SHOP_UI_fnc_updateShoppingCartCosts;
 
-[] call TTC_SHOP_UI_fnc_updateBuy;
+_shoppingCart call TTC_SHOP_UI_fnc_updateBuy;

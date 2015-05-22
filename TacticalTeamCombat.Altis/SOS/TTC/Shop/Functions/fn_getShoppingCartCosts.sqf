@@ -5,7 +5,11 @@
 */
 
 private["_shoppingCart","_costs","_articleEntries","_article","_amount","_price"];
-_shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
+
+
+
+
+_shoppingCart = [_this, 0] call BIS_fnc_param;;
 _costs = 0;
 
 {

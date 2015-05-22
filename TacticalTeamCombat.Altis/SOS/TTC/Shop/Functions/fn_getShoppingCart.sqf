@@ -4,7 +4,7 @@
     Created by BauerMitFackel
 */
 
-private ["_index","_savedShoppingCart","_shoppingCart","_article","_amount"];
+private ["_index","_savedShoppingCart","_shoppingCart","_article","_amount","_articleId"];
 
 _index = [_this, 0, 0] call BIS_fnc_param;
 
@@ -23,7 +23,7 @@ _shoppingCart		= [] call TTC_SHOP_fnc_createShoppingCart;
 		_articleId	= _article select TTC_SHOP_ARTICLE_id;
 
 		if ([_article] call TTC_SHOP_fnc_isArticleAvailable) then {
-			[_articleId, _amount, _shoppingCart] call TTC_SHOP_fnc_addArticleToShoppingCart;
+			[_shoppingCart, _articleId, _amount] call TTC_SHOP_fnc_addArticleToShoppingCart;
 		};
 	} forEach (_x select 1);
 } forEach _savedShoppingCart;
