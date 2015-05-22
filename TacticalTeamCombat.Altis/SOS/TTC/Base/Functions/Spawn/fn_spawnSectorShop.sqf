@@ -36,5 +36,5 @@ _ammo		= [_pos, _className, _dir] call TTC_CORE_fnc_createAmmoBox;
 _ammo setVectorUp (surfaceNormal _pos);
 
 // Add the 'Shop' action for all players of this side (including JIP).
-//[[[_phone1, _phone2]], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
+[[[_phone1, _phone2], TTC_SHOP_LOCATION_SECTOR], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
 

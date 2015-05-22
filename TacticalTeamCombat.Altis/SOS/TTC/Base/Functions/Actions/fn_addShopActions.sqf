@@ -5,12 +5,13 @@
 */
 
 
-private ["_objects"];
+private ["_objects","_location"];
 
-_objects = [_this, 0] call BIS_fnc_param;
+_objects	= [_this, 0] call BIS_fnc_param;
+_location	= [_this, 1] call BIS_fnc_param;
 
 
 // Shop
 {
-	[_x] call TTC_SHOP_fnc_addAction;
+	[_x, _location] call TTC_SHOP_fnc_addAction;
 } forEach _objects;

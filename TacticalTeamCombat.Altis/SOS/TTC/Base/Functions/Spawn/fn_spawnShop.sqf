@@ -154,4 +154,4 @@ _unitPos	= [((_deskPos select 0) - (cos(_dir + 90) * 1.0)), ((_deskPos select 1)
 _salesman2	= [_unitPos] call _spawnSalesman;
 
 // Add the 'Shop' action for all players of this side (including JIP).
-[[[_salesman1, _salesman2]], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
+[[[_salesman1, _salesman2], TTC_SHOP_LOCATION_BASE], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;

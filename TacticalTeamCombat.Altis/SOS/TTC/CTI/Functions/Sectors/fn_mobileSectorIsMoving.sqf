@@ -7,7 +7,7 @@
 
 #define TTC_CTI_speedLimit 30
 
-private ["_veh","_sector","_timeOut","_sectorSide","_message","_marker","_respawnPos","_sectorName","_removed"];
+private ["_veh","_sector","_timeOut","_sectorSide","_message","_script","_marker","_respawnPos","_sectorName","_removed"];
 
 _veh		= [_this, 0] call BIS_fnc_param;
 _sector		= [_this, 1] call BIS_fnc_param;
