@@ -4,6 +4,7 @@
     Created by BauerMitFackel
 */
 
+private["_categories"];
 
 _categories = switch (TTC_SHOP_location) do {
 	case TTC_SHOP_LOCATION_BASE		: {TTC_SHOP_BASE_CATEGORIES};

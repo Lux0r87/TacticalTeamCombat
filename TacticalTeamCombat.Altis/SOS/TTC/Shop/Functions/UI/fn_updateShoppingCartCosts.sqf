@@ -9,6 +9,8 @@
 
 disableSerialization;
 
+private["_control","_costs","_text"];
+
 _control = uiNamespace getVariable ["TTC_SHOP_UI_shoppingCart_costs", nil];
 if (!isNil {_control}) then {
 	

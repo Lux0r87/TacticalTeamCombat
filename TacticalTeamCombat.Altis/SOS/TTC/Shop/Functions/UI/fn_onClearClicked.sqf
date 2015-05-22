@@ -4,6 +4,9 @@
     Created by BauerMitFackel
 */
 
+
+private["_shoppingCart"];
+
 _shoppingCart = [] call TTC_SHOP_fnc_createShoppingCart;
 TTC_SHOP_shoppingCarts set [0, _shoppingCart];
 

@@ -11,8 +11,7 @@
     Created by BauerMitFackel
 */
 
-_search = {
-	
+_search = {	
 	private["_id", "_categories", "_category"];
 	
 	_id = _this;
@@ -31,6 +30,8 @@ _search = {
 
 //////////
 
+
+private["_category"];
 
 _category = _this call _search;
 if (isNil {_category}) then {

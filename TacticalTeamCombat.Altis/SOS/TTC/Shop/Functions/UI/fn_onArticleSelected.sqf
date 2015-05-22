@@ -10,9 +10,12 @@
 
 disableSerialization;
 
+private["_control","_index","_article","_id"];
+
 _control	= [_this, 0] call BIS_fnc_param;
 _index		= [_this, 1] call BIS_fnc_param;
 _article	= nil;
+
 
 if (_index >= 0) then {
 	_id = _control lnbValue [_index, 0];

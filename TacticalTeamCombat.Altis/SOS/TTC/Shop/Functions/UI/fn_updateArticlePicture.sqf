@@ -9,6 +9,8 @@
 
 disableSerialization;
 
+private["_control", "_article", "_picture"];
+
 _control = uiNamespace getVariable ["TTC_SHOP_UI_articlePicture", nil];
 if (!isNil {_control}) then {
 	

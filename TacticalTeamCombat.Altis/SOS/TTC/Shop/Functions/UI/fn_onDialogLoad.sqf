@@ -4,6 +4,8 @@
 
 disableSerialization;
 
+private["_dialog"];
+
 _dialog = [_this, 0] call BIS_fnc_param;
 
 uiNamespace setVariable ["TTC_SHOP_UI_dialog", 								_dialog];

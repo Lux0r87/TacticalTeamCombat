@@ -8,7 +8,10 @@
     Created by BauerMitFackel
 */
 
+
 disableSerialization;
+
+private["_control","_index","_articles","_id","_category"];
 
 _control	= [_this, 0] call BIS_fnc_param;
 _index		= [_this, 1] call BIS_fnc_param;

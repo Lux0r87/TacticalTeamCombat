@@ -17,7 +17,6 @@ disableSerialization;
 		1: ARRAY	- category array
 */
 _addCategoryToList = {
-
 	private["_control", "_category", "_id", "_name", "_icon", "_index"];
 	
 	_control = [_this, 0] call BIS_fnc_param;
@@ -35,6 +34,8 @@ _addCategoryToList = {
 
 //////////
 
+
+private["_control","_selectFirstRow"];
 
 _control = uiNamespace getVariable ["TTC_SHOP_UI_categoryList", nil];
 if (!isNil {_control}) then {

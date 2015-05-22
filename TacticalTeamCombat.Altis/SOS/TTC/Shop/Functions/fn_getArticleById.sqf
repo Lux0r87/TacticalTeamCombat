@@ -11,9 +11,11 @@
     Created by BauerMitFackel
 */
 
-_id = _this;
-_articles = [] call TTC_SHOP_fnc_getArticles;
-_article = nil;
+private["_id","_articles","_article"];
+
+_id			= _this;
+_articles	= [] call TTC_SHOP_fnc_getArticles;
+_article	= nil;
 
 {
 	if ((_x select 0) == _id) exitWith {

@@ -11,6 +11,8 @@
     Created by BauerMitFackel
 */
 
+private["_array","_id","_path"];
+
 _array	= [_this, 0] call BIS_fnc_param;
 _id		= [_this, 1] call BIS_fnc_param;
 

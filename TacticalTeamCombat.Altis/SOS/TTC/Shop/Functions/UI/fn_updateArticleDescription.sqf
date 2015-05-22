@@ -7,7 +7,10 @@
     Created by BauerMitFackel
 */
 
+
 disableSerialization;
+
+private["_control","_article","_displayName","_description","_text","_position","_letterCount","_x","_y","_w","_h"];
 
 _control = uiNamespace getVariable ["TTC_SHOP_UI_articleDescription", nil];
 if (!isNil {_control}) then {

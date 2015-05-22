@@ -38,6 +38,9 @@ _addArticleEntryToList = {
 //////////
 
 
+private["_shoppingCart","_articleList","_articleEntries","_shoppingCartCosts"];
+
+
 _shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
 
 _articleList = uiNamespace getVariable ["TTC_SHOP_UI_shoppingCart_articleList", nil];
