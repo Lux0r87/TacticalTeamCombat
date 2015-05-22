@@ -38,6 +38,7 @@ class TTC_Core_Functions {
 		class runTimer{};
 		class setFlagTexture{};
 		class setTriggerOptions{};
+		class setVelocity{};
 		class showTimerDisplay{};
 		class showWelcomeMessage{};
 		class speedLimit{};
