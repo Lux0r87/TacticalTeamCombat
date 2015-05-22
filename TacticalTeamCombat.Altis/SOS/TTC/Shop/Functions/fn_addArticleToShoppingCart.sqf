@@ -39,11 +39,11 @@ _getCategoryIndex = {
 	_categoryIndex;
 };
 
-private["_articleId","_amount","_path","_categoryId","_categoryIndex","_article","_entry","_entryIndex","_entryAmount"];
+private["_shoppingCart","_articleId","_amount","_path","_categoryId","_categoryIndex","_article","_entry","_entryIndex","_entryAmount"];
 
-_articleId		= [_this, 0] call BIS_fnc_param;
-_amount			= [_this, 1, 1, [0]] call BIS_fnc_param;
-_shoppingCart	= [_this, 2, ([] call TTC_SHOP_fnc_getShoppingCart), [[]]] call BIS_fnc_param;
+_shoppingCart	= [_this, 0] call BIS_fnc_param;
+_articleId		= [_this, 1] call BIS_fnc_param;
+_amount			= [_this, 2, 1, [0]] call BIS_fnc_param;
 
 _path = [_shoppingCart, _articleId] call BIS_fnc_findNestedElement;
 if (_path isEqualTo []) then {	

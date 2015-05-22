@@ -11,6 +11,8 @@
     Created by BauerMitFackel
 */
 
+private["_articleId","_shoppingCart","_path","_categoryIndex","_entryIndex","_entries","_entry","_amount"];
+
 _articleId = _this;
 _shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
 

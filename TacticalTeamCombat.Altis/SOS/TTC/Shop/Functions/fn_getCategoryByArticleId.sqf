@@ -10,6 +10,8 @@
     Created by BauerMitFackel
 */
 
+private ["_articleId","_categories","_category","_path"];
+
 _articleId = _this;
 _categories = [] call TTC_SHOP_fnc_getCategories;
 _category = nil;
