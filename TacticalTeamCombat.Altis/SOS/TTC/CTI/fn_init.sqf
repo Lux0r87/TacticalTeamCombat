@@ -18,16 +18,6 @@ if (hasInterface) then {
 	// Initialize the sectors (markers + task) locally.
 	[player] spawn TTC_CTI_fnc_initSectorsLocal;
 
-	"TTC_CTI_mobileSector_timeOut" addPublicVariableEventHandler {
-		_value = _this select 1;
-
-		if (_value > 0) then {
-			hintSilent format ["%1s left to move the mobile sector.", _value];
-		} else {
-			hintSilent "Mobile sector stopped!";
-		};
-	};
-
 	// Draw connection between the sectors on the main map, the GPS and the UAV terminal.
 	[] call TTC_CTI_fnc_initSectorConnections;
 };
