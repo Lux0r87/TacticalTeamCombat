@@ -16,10 +16,10 @@ _variable	= _a vectorMultiply (1/_magnitude);		// a / |a|
 _dotProduct	= _b vectorDotProduct _variable;		// (b . (a / [a])
 _orthogonal	= _variable vectorMultiply _dotProduct;	// ((b . (a / [a])) * (a / |a|)
 
-[
+/*[
 	["Function: %1", "TTC_CORE_fnc_getOrthogonalVector"],
 	["_a = %1", _a], ["_b = %1", _b], ["_magnitude = %1", _magnitude], ["_variable = %1", _variable],
 	["_dotProduct = %1", _dotProduct], ["_orthogonal = %1", _orthogonal]
-] call TTC_CORE_fnc_log;
+] call TTC_CORE_fnc_log;*/
 
 _orthogonal

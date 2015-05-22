@@ -6,14 +6,15 @@
 #include "dominanceVariables.inc"
 #include "sectorVariables.inc"
 
-private ["_sector","_canSee","_mrkArea","_mrk","_update_teleportUI","_task","_side","_color","_brush","_text","_taskState","_taskDesc","_taskTitle"];
+private ["_sector","_canSee","_mrkArea","_mrk","_update_position","_update_teleportUI","_task","_side","_color","_brush","_text","_taskState","_taskDesc","_taskTitle"];
 
 _sector				= [_this, 0] call BIS_fnc_param;
 _canSee				= [_this, 1, false, [false]] call BIS_fnc_param;
 _mrkArea			= [_this, 2, TTC_CTI_sectorVariable_markerArea(_sector), [""]] call BIS_fnc_param;
 _mrk				= [_this, 3, TTC_CTI_sectorVariable_marker(_sector), [""]] call BIS_fnc_param;
-_update_teleportUI	= [_this, 4, false, [false]] call BIS_fnc_param;		// Refresh the teleport UI, if it's open.
-_task				= [_this, 5, TTC_CTI_sectorVariable_task(_sector), [taskNull]] call BIS_fnc_param;
+_update_position	= [_this, 4, false, [false]] call BIS_fnc_param;		// Update the task position.
+_update_teleportUI	= [_this, 5, false, [false]] call BIS_fnc_param;		// Refresh the teleport UI, if it's open.
+_task				= [_this, 6, TTC_CTI_sectorVariable_task(_sector), [taskNull]] call BIS_fnc_param;
 
 /*[_sector, "TTC_CTI_fnc_updateSectorLocal",
 	[["_canSee = %1", _canSee], ["_mrkArea = %1", _mrkArea], ["_mrk = %1", _mrk], ["_update_teleportUI = %1", _update_teleportUI], ["_task = %1", _task]]
@@ -43,7 +44,11 @@ if (_canSee) then {
 	_taskDesc	= [player, _sector] call TTC_CTI_fnc_getTaskDescription;
 	_taskTitle	= [_sector] call TTC_CTI_fnc_getSectorText;
 	_task setSimpleTaskDescription [_taskDesc, _taskTitle, ""];
-	_task setSimpleTaskDestination (getPos _sector);
+
+	// Update the task position.
+	if (_update_position) then {
+		_task setSimpleTaskDestination (getPos _sector);
+	};
 } else {
 	_color	= "ColorUNKNOWN";
 	_brush	= "DiagGrid";

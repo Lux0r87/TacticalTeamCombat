@@ -36,7 +36,7 @@ if (!isNull _sector) then {
 		// Check if the vehicle is (possibly) not moving.
 		if (!(_veh getVariable ["TTC_isMoving", false])) then {
 			TTC_CTI_mobileSector_timeOut = TTC_timeOut;
-			[_veh, _unit, _sector, _sectorSide] spawn TTC_CTI_fnc_mobileSectorIsMoving;
+			[_veh, _sector, _sectorSide] spawn TTC_CTI_fnc_mobileSectorIsMoving;
 		};
 	};
 };

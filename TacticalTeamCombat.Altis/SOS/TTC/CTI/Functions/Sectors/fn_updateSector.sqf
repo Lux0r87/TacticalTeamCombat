@@ -66,7 +66,7 @@ if (_update_isConnected) then {
 		_canSee = _visibility select _find;
 	};
 
-	[[_sector, _canSee, _mrkArea, _mrk, _update_teleportUI], "TTC_CTI_fnc_updateSectorLocal", _target, false] call BIS_fnc_MP;
+	[[_sector, _canSee, _mrkArea, _mrk, _update_position, _update_teleportUI], "TTC_CTI_fnc_updateSectorLocal", _target, false] call BIS_fnc_MP;
 } forEach _sides;
 
 // Only update the variable, if it changed.

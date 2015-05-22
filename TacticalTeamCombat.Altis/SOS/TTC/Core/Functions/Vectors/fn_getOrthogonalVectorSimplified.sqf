@@ -14,9 +14,9 @@ _b	= [_this, 1] call BIS_fnc_param;
 _dotProduct	= _b vectorDotProduct _a;			// (b . a)
 _orthogonal	= _a vectorMultiply _dotProduct;	// (b . a) * a
 
-[
+/*[
 	["Function: %1", "TTC_CORE_fnc_getOrthogonalVectorSimplified"],
 	["_a = %1", _a], ["_b = %1", _b], ["_dotProduct = %1", _dotProduct], ["_orthogonal = %1", _orthogonal]
-] call TTC_CORE_fnc_log;
+] call TTC_CORE_fnc_log;*/
 
 _orthogonal

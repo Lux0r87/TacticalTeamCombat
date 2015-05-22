@@ -33,6 +33,7 @@ class TTC_Core_Functions {
 		class getSideForFaction{};
 		class handleFatigue{};
 		class hint{};
+		class lock{};
 		class log{};
 		class runTimer{};
 		class setFlagTexture{};
