@@ -5,7 +5,7 @@
 class TTC_Shop {
 	tag = "TTC_SHOP";
 	
-	class TTC_Medic_Initialization {
+	class Initialization {
 		
 		class init {
 			file = "SOS\TTC\Shop\init.sqf";
@@ -45,7 +45,7 @@ class TTC_Shop {
 class TTC_Shop_UI {
 	tag = "TTC_SHOP_UI";
 
-	class TFunctions {	
+	class Functions {	
 		file = "SOS\TTC\Shop\Functions\UI";
 
 		class createDialog {};
