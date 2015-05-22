@@ -20,11 +20,13 @@ _shoppingCart		= [] call TTC_SHOP_fnc_createShoppingCart;
 	{
 		_article	= _x select 0;
 		_amount		= _x select 1;
+		_articleId	= _article select TTC_SHOP_ARTICLE_id;
 
 		if ([_article] call TTC_SHOP_fnc_isArticleAvailable) then {
-			[_article, _shoppingCart, _amount] call TTC_SHOP_fnc_addArticleToShoppingCart;
+			[_articleId, _amount, _shoppingCart] call TTC_SHOP_fnc_addArticleToShoppingCart;
 		};
 	} forEach (_x select 1);
 } forEach _savedShoppingCart;
 
+TTC_SHOP_shoppingCarts set [0, _shoppingCart];
 _shoppingCart;

@@ -4,6 +4,8 @@
     Created by BauerMitFackel
 */
 
+private ["_shoppingCart","_categories"];
+
 _shoppingCart = [];
 _categories = [] call TTC_SHOP_fnc_getCategories;
 
