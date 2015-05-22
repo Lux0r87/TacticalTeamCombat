@@ -4,7 +4,7 @@
     Created by Lux0r
 */
 
-private ["_article"];
+private ["_article","_isAvailable"];
 
 _article = [_this, 0] call BIS_fnc_param;
 

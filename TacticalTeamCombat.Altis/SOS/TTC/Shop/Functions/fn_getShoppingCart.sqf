@@ -22,7 +22,6 @@ _shoppingCart		= [] call TTC_SHOP_fnc_createShoppingCart;
 		_amount		= _x select 1;
 
 		if ([_article] call TTC_SHOP_fnc_isArticleAvailable) then {
-			((_shoppingCart select _categoryIndex) select 1) pushBack _x;
 			[_article, _shoppingCart, _amount] call TTC_SHOP_fnc_addArticleToShoppingCart;
 		};
 	} forEach (_x select 1);

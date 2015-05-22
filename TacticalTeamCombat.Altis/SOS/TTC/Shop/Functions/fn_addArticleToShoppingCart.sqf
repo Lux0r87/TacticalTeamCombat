@@ -43,15 +43,14 @@ private["_articleId","_amount","_path","_categoryId","_categoryIndex","_article"
 
 _articleId		= [_this, 0] call BIS_fnc_param;
 _amount			= [_this, 1, 1, [0]] call BIS_fnc_param;
-_shoppingCart	= [_this, 2, [] call TTC_SHOP_fnc_getShoppingCart, [[]]] call BIS_fnc_param;
+_shoppingCart	= [_this, 2, ([] call TTC_SHOP_fnc_getShoppingCart), [[]]] call BIS_fnc_param;
 
 _path = [_shoppingCart, _articleId] call BIS_fnc_findNestedElement;
 if (_path isEqualTo []) then {	
-	_categoryId = (_articleId call TTC_SHOP_fnc_getCategoryByArticleId) select TTC_SHOP_CATEGORY_id;
-	_categoryIndex = [_shoppingCart, _categoryId] call _getCategoryIndex;
-	
-	_article = _articleId call TTC_SHOP_fnc_getArticleById;
-	_entry = [_article, 1];
+	_categoryId		= (_articleId call TTC_SHOP_fnc_getCategoryByArticleId) select TTC_SHOP_CATEGORY_id;
+	_categoryIndex	= [_shoppingCart, _categoryId] call _getCategoryIndex;	
+	_article		= _articleId call TTC_SHOP_fnc_getArticleById;
+	_entry			= [_article, _amount];
 	((_shoppingCart select _categoryIndex) select 1) pushBack _entry;
 } else {
 	_categoryIndex	= _path select 0;
