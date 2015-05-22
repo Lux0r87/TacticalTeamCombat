@@ -37,4 +37,3 @@ _ammo setVectorUp (surfaceNormal _pos);
 
 // Add the 'Shop' action for all players of this side (including JIP).
 [[[_phone1, _phone2], TTC_SHOP_LOCATION_SECTOR], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
-

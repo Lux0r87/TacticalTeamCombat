@@ -25,6 +25,7 @@ class TTC_Shop {
 		class getCategoryById {};
 		class getShoppingCart {};
 		class getShoppingCartCosts {};
+		class isArticleAvailable {};
 		class removeArticleFromShoppingCart {};
 	};
 
