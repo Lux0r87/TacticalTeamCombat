@@ -47,11 +47,8 @@ if (!isNil {_control}) then {
 		_selectFirstRow = false;
 		
 		{		
-			_containsArticles = !((_x select TTC_SHOP_CATEGORY_articles) isEqualTo []);
-			if (_containsArticles) then {
-				[_control, _x] call _addCategoryToList;
-				_selectFirstRow = true;
-			};
+			[_control, _x] call _addCategoryToList;
+			_selectFirstRow = true;
 		} forEach _this;
 		
 		if (_selectFirstRow) then {
