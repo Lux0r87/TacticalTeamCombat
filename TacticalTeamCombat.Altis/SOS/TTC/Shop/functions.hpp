@@ -4,13 +4,19 @@
 
 class TTC_Shop {
 	tag = "TTC_SHOP";
-
-	class Database {	
-		file = "SOS\TTC\Shop\Database";
-
-		class init {};
+	
+	class TTC_Medic_Initialization {
+		
+		class init {
+			file = "SOS\TTC\Shop\init.sqf";
+		};
+		
+		class preInit {
+			preInit = 1;
+			file = "SOS\TTC\Shop\preInit.sqf";
+		};
 	};
-
+	
 	class Functions {	
 		file = "SOS\TTC\Shop\Functions";
 
