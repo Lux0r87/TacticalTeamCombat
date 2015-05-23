@@ -20,5 +20,6 @@ _object addAction [
 	true,
 	true,
 	"",
-	"(_this distance _target) < 4"
+	"((_this distance _target) < 4) &&
+	(((_target getVariable['TTC_accordingSector', objNull]) getVariable['TTC_CTI_sector_side', side _this]) == (side _this))"
 ];

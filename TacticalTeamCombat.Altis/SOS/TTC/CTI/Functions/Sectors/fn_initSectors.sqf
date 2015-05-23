@@ -61,17 +61,17 @@ _sectors = [_this, 0] call BIS_fnc_param;
 	switch (_type) do {
 		case 0: {
 			// Spawn station (flag + sandbags).
-			_flag	= [getPos _sector, _objectDir, _side] call TTC_CTI_fnc_spawnStation;
+			_flag	= [_sector, _objectDir, _side] call TTC_CTI_fnc_spawnStation;
 			_sector setVariable ["TTC_CTI_sector_flag", _flag];
 		};
 		case 1: {
 			// Spawn outpost (flag + camouflage net).
-			_flag	= [getPos _sector, _objectDir, _side] call TTC_CTI_fnc_spawnOutpost;
+			_flag	= [_sector, _objectDir, _side] call TTC_CTI_fnc_spawnOutpost;
 			_sector setVariable ["TTC_CTI_sector_flag", _flag];
 		};
 		case 2: {
 			// Spawn bag bunker.
-			_bunker	= [getPos _sector, (_objectDir + 90), _side] call TTC_CTI_fnc_spawnBagBunker;
+			_bunker	= [_sector, (_objectDir + 90), _side] call TTC_CTI_fnc_spawnBagBunker;
 			_flag	= _bunker getVariable "TTC_CORE_flag";
 			_sector setVariable ["TTC_CTI_sector_flag", _flag];
 		};

@@ -3,11 +3,12 @@
 */
 
 
-private ["_side","_pos","_dir","_type","_table","_phone1","_phone2","_className","_ammo"];
+private ["_sector","_side","_pos","_dir","_type","_table","_phone1","_phone2","_className","_ammo"];
 
-_side	= [_this, 0] call BIS_fnc_param;
-_pos	= [_this, 1] call BIS_fnc_param;
-_dir	= [_this, 2] call BIS_fnc_param;
+_sector	= [_this, 0] call BIS_fnc_param;
+_side	= [_this, 1] call BIS_fnc_param;
+_pos	= [_this, 2] call BIS_fnc_param;
+_dir	= [_this, 3] call BIS_fnc_param;
 
 _type	= [_side] call TTC_CORE_fnc_getAmmoBoxType;
 
@@ -35,5 +36,8 @@ _className	= format["Box_%1_Ammo_F", _type];
 _ammo		= [_pos, _className, _dir] call TTC_CORE_fnc_createAmmoBox;
 _ammo setVectorUp (surfaceNormal _pos);
 
-// Add the 'Shop' action for all players of this side (including JIP).
-[[[_phone1, _phone2], TTC_SHOP_LOCATION_SECTOR], "TTC_BASE_fnc_addShopActions", _side, true] call BIS_fnc_MP;
+_phone1 setVariable["TTC_accordingSector", _sector, true];
+_phone2 setVariable["TTC_accordingSector", _sector, true];
+
+// Add the 'Shop' action for all players (including JIP).
+[[[_phone1, _phone2], TTC_SHOP_LOCATION_SECTOR], "TTC_BASE_fnc_addShopActions", true, true] call BIS_fnc_MP;

@@ -48,18 +48,17 @@ _createSandbags = {
 
 
 private [
-	"_pos","_dir","_side","_flag","_cutterPos","_cutter","_className","_camoNet","_locations","_direction","_distance","_reference",
+	"_sector","_dir","_side","_pos","_flag","_cutterPos","_cutter","_className","_camoNet","_locations","_direction","_distance","_reference",
 	"_firePos","_fire","_itemType","_safePos","_item"
 ];
 
-_pos	= [_this, 0, [0,0,0], [[]], [2, 3]] call BIS_fnc_param;
+_sector	= [_this, 0] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
 _side	= [_this, 2] call BIS_fnc_param;
 
-/*[
-	["Function: %1", "TTC_CTI_fnc_spawnOutpost"],
-	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]
-] call TTC_CORE_fnc_log;*/
+_pos	= getPos _sector;
+
+//[_sector, "TTC_CTI_fnc_spawnOutpost", [["_dir = %1", _dir], ["_side = %1", _side], ["_pos = %1", _pos]]] call TTC_CTI_fnc_logSector;
 
 
 // Create a flag
@@ -125,6 +124,6 @@ for "_x" from 1 to _random do {
 
 // Spawn sector shop.
 _shopPos = [((_pos select 0) - (cos(_dir + 180) * 0.4)), ((_pos select 1) + (sin(_dir + 180) * 0.4)), 0];
-[_side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnSectorShop;
+[_sector, _side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnSectorShop;
 
 _flag

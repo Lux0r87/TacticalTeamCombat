@@ -3,16 +3,15 @@
 */
 
 
-private ["_pos","_dir","_side","_towerClass","_bunker","_fence","_flag","_shopPos"];
+private ["_sector","_dir","_side","_pos","_towerClass","_bunker","_fence","_flag","_shopPos"];
 
-_pos	= [_this, 0, [0,0,0], [[]], [2, 3]] call BIS_fnc_param;
+_sector	= [_this, 0] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
 _side	= [_this, 2] call BIS_fnc_param;
 
-/*[
-	["Function: %1", "TTC_CTI_fnc_spawnBagBunker"],
-	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]
-] call TTC_CORE_fnc_log;*/
+_pos	= getPos _sector;
+
+//[_sector, "TTC_CTI_fnc_spawnBagBunker", [["_dir = %1", _dir], ["_side = %1", _side], ["_pos = %1", _pos]]] call TTC_CTI_fnc_logSector;
 
 
 // Spawn bunker
@@ -48,6 +47,6 @@ _bunker setVariable ["TTC_CORE_flag", _flag];
 
 // Spawn sector shop.
 _shopPos = [((_pos select 0) - (cos(_dir) * 1.1)), ((_pos select 1) + (sin(_dir) * 1.1)), 0];
-[_side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnSectorShop;
+[_sector, _side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnSectorShop;
 
 _bunker

@@ -3,19 +3,16 @@
 */
 
 
-private ["_pos","_dir","_side","_flag","_className","_fencePos","_fence","_fenceTop","_shopPos"];
+private ["_sector","_dir","_side","_pos","_flag","_className","_fencePos","_fence","_fenceTop","_shopPos"];
 
-_pos	= [_this, 0, [0,0,0], [[]], [2, 3]] call BIS_fnc_param;
+_sector	= [_this, 0] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
 _side	= [_this, 2] call BIS_fnc_param;
 
-// Workaround: Turn by 180 degrees.
-_dir	= _dir + 180;
+_pos	= getPos _sector;
+_dir	= _dir + 180;	// Workaround: Turn by 180 degrees.
 
-/*[
-	["Function: %1", "TTC_CTI_fnc_spawnStation"],
-	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]
-] call TTC_CORE_fnc_log;*/
+//[_sector, "TTC_CTI_fnc_spawnStation", [["_dir = %1", _dir], ["_side = %1", _side], ["_pos = %1", _pos]]] call TTC_CTI_fnc_logSector;
 
 
 // Create a flag
@@ -55,6 +52,6 @@ _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 // Spawn sector shop.
 _shopPos = [((_pos select 0) - (cos(_dir + 90) * 0.6)), ((_pos select 1) + (sin(_dir + 90) * 0.6)), 0];
-[_side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnSectorShop;
+[_sector, _side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnSectorShop;
 
 _flag
