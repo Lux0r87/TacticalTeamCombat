@@ -6,21 +6,18 @@
 
 private["_shoppingCart","_costs","_articleEntries","_article","_amount","_price"];
 
-
-
-
-_shoppingCart = [_this, 0] call BIS_fnc_param;;
+_shoppingCart = [_this, 0] call BIS_fnc_param;
 _costs = 0;
+
 
 {
 	_articleEntries = _x select 1;
 	{
-		_article = _x select 0;
-		_amount = _x select 1;
-		_price = _article select TTC_SHOP_ARTICLE_price;
-		
-		_costs = _costs + (_price * _amount);
-		
+		_article	= _x select 0;
+		_amount		= _x select 1;
+		_price		= _article select TTC_SHOP_ARTICLE_price;
+
+		_costs		= _costs + (_price * _amount);
 	} forEach _articleEntries;
 } forEach _shoppingCart;
 

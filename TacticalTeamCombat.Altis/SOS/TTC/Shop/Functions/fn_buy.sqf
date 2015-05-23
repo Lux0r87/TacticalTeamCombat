@@ -495,7 +495,7 @@ _position		= getPosATL player;
 _weaponHolder	= createVehicle ["Library_WeaponHolder", _position, [], 0, "CAN_COLLIDE"];
 
 // Take the money.
-_shoppingCartCosts = _shoppingCart call TTC_SHOP_fnc_getShoppingCartCosts;
+_shoppingCartCosts = [_shoppingCart] call TTC_SHOP_fnc_getShoppingCartCosts;
 ["Purchase", -_shoppingCartCosts] spawn TTC_BTC_fnc_addBalanceChange;
 
 

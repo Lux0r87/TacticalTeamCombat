@@ -16,8 +16,8 @@ private ["_control", "_containsArticles", "_shoppingCart", "_articleEntries", "_
 _control = uiNamespace getVariable ["TTC_SHOP_UI_buy", nil];
 if (!isNil {_control}) then {
 	
-	_containsArticles = false;
-	_shoppingCart = [_this, 0] call BIS_fnc_param;
+	_containsArticles	= false;
+	_shoppingCart		= [_this, 0] call BIS_fnc_param;
 	{
 		_articleEntries = _x select 1;
 		if (!(_articleEntries isEqualTo [])) exitWith {
@@ -28,7 +28,7 @@ if (!isNil {_control}) then {
 	
 	_enable = false;
 	if (_containsArticles) then {
-		_enable = _shoppingCart call TTC_SHOP_fnc_canBuy;
+		_enable = [_shoppingCart] call TTC_SHOP_fnc_canBuy;
 	};
 	
 	_control ctrlEnable _enable;

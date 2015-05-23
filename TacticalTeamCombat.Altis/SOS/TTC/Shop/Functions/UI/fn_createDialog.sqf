@@ -26,4 +26,6 @@ _categories call TTC_SHOP_UI_fnc_updateCategoryList;
 
 // Setup shopping cart
 _shoppingCart = [] call TTC_SHOP_fnc_getShoppingCart;
+_shoppingCart = [_shoppingCart] call TTC_SHOP_fnc_getAvailableArticles;
+//TTC_SHOP_shoppingCarts set [0, _shoppingCart];
 _shoppingCart call TTC_SHOP_UI_fnc_updateShoppingCart;

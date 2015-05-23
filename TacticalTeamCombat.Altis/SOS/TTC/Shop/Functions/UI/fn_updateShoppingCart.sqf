@@ -53,7 +53,7 @@ lnbClear _articleList;
 	} forEach _articleEntries;
 } forEach _shoppingCart;
 
-_shoppingCartCosts = _shoppingCart call TTC_SHOP_fnc_getShoppingCartCosts;
+_shoppingCartCosts = [_shoppingCart] call TTC_SHOP_fnc_getShoppingCartCosts;
 _shoppingCartCosts call TTC_SHOP_UI_fnc_updateShoppingCartCosts;
 
-_shoppingCart call TTC_SHOP_UI_fnc_updateBuy;
+[_shoppingCart] call TTC_SHOP_UI_fnc_updateBuy;
