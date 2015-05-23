@@ -45,4 +45,11 @@ class TTC_CTI_Functions {
 		class updateSectorLocal{};
 		class updateSectors{};
 	};
+
+	class Spawn {
+		file = "SOS\TTC\CTI\Functions\Spawn";
+		class spawnBagBunker {};
+		class spawnOutpost {};
+		class spawnStation {};
+	};
 };

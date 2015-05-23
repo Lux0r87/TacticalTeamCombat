@@ -78,11 +78,8 @@ class TTC_Core_Functions {
 
 	class Spawn {
 		file = "SOS\TTC\Core\Functions\Spawn";
-		class spawnBagBunker {};
 		class spawnBunkerSmall {};
 		class spawnHelicopter {};
-		class spawnOutpost {};
-		class spawnStation {};
 		class spawnVehicle {};
 	};
 

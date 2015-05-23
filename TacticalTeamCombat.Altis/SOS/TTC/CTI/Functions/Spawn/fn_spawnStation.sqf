@@ -13,7 +13,7 @@ _side	= [_this, 2] call BIS_fnc_param;
 _dir	= _dir + 180;
 
 /*[
-	["Function: %1", "TTC_CORE_fnc_spawnStation"],
+	["Function: %1", "TTC_CTI_fnc_spawnStation"],
 	["_pos = %1", _pos], ["_dir = %1", _dir], ["_side = %1", _side]
 ] call TTC_CORE_fnc_log;*/
 
