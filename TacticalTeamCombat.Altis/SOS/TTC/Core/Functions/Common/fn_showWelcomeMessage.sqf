@@ -23,7 +23,7 @@ _message = composeText [
 	lineBreak,
 	parseText "<t color='#27AE60'>Bitcoins:</t><t size='0.9'> You can earn money by capturing sectors and by defending them against the enemy.</t>",
 	lineBreak,
-	parseText "<t color='#27AE60'>Shop:</t><t size='0.9'> The shop provides you with the gear and vehicle you will need to achieve the mission.</t>",
+	parseText "<t color='#27AE60'>Shop:</t><t size='0.9'> The shop provides you with the gear and vehicle you will need to achieve the mission. Ammunition and basic items are also available at the sectors.</t>",
 	lineBreak,
 	parseText "<t color='#27AE60'>Teleporting:</t><t size='0.9'> In the base are some research buildings, where you can teleport to sectors dominated by your team. It costs some money (depending on the distance), but will allow you to return faster to the AO (area of operation).</t>",
 	lineBreak,
