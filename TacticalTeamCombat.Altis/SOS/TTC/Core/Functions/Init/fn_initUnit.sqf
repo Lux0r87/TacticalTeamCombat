@@ -5,7 +5,7 @@
 
 //waitUntil {time > 0.0};
 
-_DEBUG = true;
+_DEBUG = false;
 
 /*
 _rolesFile = "TTC_ROLES" call TTC_CORE_fnc_getConstantsFile;
@@ -20,8 +20,6 @@ _initUniformTexture = {
 
 	if (_uniformTexture != "") then {
 		_unit setObjectTextureGlobal [0, _uniformTexture]; 
-	} else {
-		diag_log format["INFO (TTC_CORE_fnc_initUnit): No uniform texture for unit %1", _unit];
 	};
 	
 	// Debug 
