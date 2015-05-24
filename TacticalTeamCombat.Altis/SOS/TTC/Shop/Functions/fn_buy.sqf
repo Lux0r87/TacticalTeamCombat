@@ -414,6 +414,16 @@ _buyAttachments = {
 	} forEach _articleNames;
 };
 
+_buyExplosives = {
+	private["_articleNames"];
+
+	_articleNames = [_shoppingCart, _CATEGORY_ID_EXPLOSIVES] call _getArticleNames;
+
+	{
+		[_x, _type_magazine] call _add;
+	} forEach _articleNames;
+};
+
 _buyGrenades = {
 	private["_articleNames"];
 
@@ -509,6 +519,7 @@ _shoppingCartCosts = [_shoppingCart] call TTC_SHOP_fnc_getShoppingCartCosts;
 [] call _buyHandguns;
 [] call _buyLaunchers;
 [] call _buyAttachments;
+[] call _buyExplosives;
 [] call _buyGrenades;
 [] call _buyItems;
 [] call _buyVehicles;
