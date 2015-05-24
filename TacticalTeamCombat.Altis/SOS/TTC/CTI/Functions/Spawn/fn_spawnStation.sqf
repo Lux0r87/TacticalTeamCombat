@@ -3,7 +3,7 @@
 */
 
 
-private ["_sector","_dir","_side","_pos","_flag","_className","_fencePos","_fence","_fenceTop","_shopPos"];
+private ["_sector","_dir","_side","_pos","_flag","_flagPos","_className","_fencePos","_fence","_fenceTop","_shopPos"];
 
 _sector	= [_this, 0] call BIS_fnc_param;
 _dir	= [_this, 1, 0, [0]] call BIS_fnc_param;
@@ -19,6 +19,7 @@ _dir	= _dir + 180;	// Workaround: Turn by 180 degrees.
 _flag = [_pos, "FlagPole_F"] call TTC_CORE_fnc_createVehicle;
 _flag setDir _dir;
 [_flag, _side] call TTC_CORE_fnc_setFlagTexture;
+_flagPos = getPos _flag;
 
 // Create sandbags.
 _className	= "Land_BagFence_Round_F";
@@ -51,7 +52,7 @@ _fenceTop		= [_fencePos, _className, (_dir + 45)] call TTC_CORE_fnc_createVehicl
 _fenceTop attachTo [_fence, [0.0, 0.0, 0.8]];
 
 // Spawn sector shop.
-_shopPos = [((_pos select 0) - (cos(_dir + 90) * 0.6)), ((_pos select 1) + (sin(_dir + 90) * 0.6)), 0];
+_shopPos = [((_flagPos select 0) - (cos(_dir + 90) * 0.75)), ((_flagPos select 1) + (sin(_dir + 90) * 0.75)), 0];
 [_sector, _side, _shopPos, (_dir + 90)] call TTC_BASE_fnc_spawnSectorShop;
 
 _flag
