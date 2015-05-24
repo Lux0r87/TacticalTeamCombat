@@ -10,7 +10,7 @@ _pos			= [_this, 1] call BIS_fnc_param;
 _radius			= [_this, 2, 50, [0]] call BIS_fnc_param;
 _wpType			= [_this, 3, "LOITER", [""]] call BIS_fnc_param;		// "MOVE", "SAD", "HOLD", "SENTRY", "GUARD", "TALK", "SCRIPTED", "LOITER", ...
 _wpBehaviour	= [_this, 4, "AWARE", [""]] call BIS_fnc_param;			// "UNCHANGED", "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"
-_wpCombatMode	= [_this, 5, "GREEN", [""]] call BIS_fnc_param; 		// "NO CHANGE", "BLUE", "GREEN", "WHITE", "YELLOW", "RED"
+_wpCombatMode	= [_this, 5, "YELLOW", [""]] call BIS_fnc_param; 		// "NO CHANGE", "BLUE", "GREEN", "WHITE", "YELLOW", "RED"
 _wpSpeed		= [_this, 6, "NORMAL", [""]] call BIS_fnc_param;		// "NO CHANGE", "LIMITED", "NORMAL", "FULL"
 _wpFormation	= [_this, 7, "STAG COLUMN", [""]] call BIS_fnc_param;	// "NO CHANGE", "COLUMN", "STAG COLUMN", "WEDGE", "LINE", ...
 
