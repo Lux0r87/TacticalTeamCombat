@@ -10,7 +10,7 @@
 // String (usually mission name) shown during mission loading.
 onLoadName					= "Tactical Team Combat";
 // Displays a message while the mission is loading.
-onLoadMission				= "v0.4.3 (Alpha)";
+onLoadMission				= "v0.4.4 (Alpha)";
 // Define whether you will see the time and date displayed while the mission loads. 1 means visible, 0 hidden.
 onLoadMissionTime			= 0;
 // Define whether you will see the time and date displayed while the intro loads. 1 means visible, 0 hidden.
