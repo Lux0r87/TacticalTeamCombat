@@ -33,8 +33,7 @@ _createSandbags = {
 
 	_bagCorner	= [_pos, "Land_BagFence_Corner_F", (_dir + 270)] call _createSandbag;
 	_bagCorner attachTo [_sandbag, [-2.05, 0.23, 0.0]];
-	_bagCorner setVectorDirAndUp [[0,-1,0],[0,0,1]];
-	_bagCorner setVectorUp (surfaceNormal (getPos _bagCorner));
+	_bagCorner setVectorDirAndUp [[0,-1,0], (surfaceNormal (getPos _bagCorner))];
 
 	_sandbagPos	= [((_pos select 0) - (cos(_dir + 270) * 1.5)), ((_pos select 1) + (sin(_dir + 270) * 1.5)), -0.1];
 	_sandbag	= [_sandbagPos, "Land_BagFence_Long_F", (_dir + 90)] call _createSandbag;
@@ -42,14 +41,13 @@ _createSandbags = {
 
 	_bagCorner	= [_pos, "Land_BagFence_Corner_F", (_dir + 180)] call _createSandbag;
 	_bagCorner attachTo [_sandbag, [2.0, 0.38, 0.0]];
-	_bagCorner setVectorDirAndUp [[1,0,0],[0,0,1]];
-	_bagCorner setVectorUp (surfaceNormal (getPos _bagCorner));
+	_bagCorner setVectorDirAndUp [[1,0,0], (surfaceNormal (getPos _bagCorner))];
 };
 
 
 private [
-	"_sector","_dir","_side","_pos","_flag","_cutterPos","_cutter","_className","_camoNet","_locations","_direction","_distance","_reference",
-	"_firePos","_fire","_itemType","_safePos","_item"
+	"_sector","_dir","_side","_pos","_flag","_flagPos","_cutterPos","_cutter","_className","_camoNetPos","_camoNet","_locations","_direction","_distance",
+	"_reference","_firePos","_fire","_itemType","_safePos","_item"
 ];
 
 _sector	= [_this, 0] call BIS_fnc_param;
@@ -65,12 +63,13 @@ _pos	= getPos _sector;
 _flag = [_pos, "FlagPole_F"] call TTC_CORE_fnc_createVehicle;
 _flag setDir _dir;
 [_flag, _side] call TTC_CORE_fnc_setFlagTexture;
+_flagPos = getPos _flag;
 
 // Spawn grass cutter
-_cutterPos	= [((_pos select 0) - (cos(_dir) * 3)), ((_pos select 1) + (sin(_dir) * 3)), 0];
+_cutterPos	= [((_flagPos select 0) - (cos(_dir) * 3)), ((_flagPos select 1) + (sin(_dir) * 3)), 0];
 _cutter = createVehicle ["Land_ClutterCutter_large_F", _cutterPos, [], 0, "CAN_COLLIDE"];
 
-_cutterPos	= [((_pos select 0) - (cos(_dir + 180) * 3)), ((_pos select 1) + (sin((_dir + 180)) * 3)), 0];
+_cutterPos	= [((_flagPos select 0) - (cos(_dir + 180) * 3)), ((_flagPos select 1) + (sin((_dir + 180)) * 3)), 0];
 _cutter = createVehicle ["Land_ClutterCutter_large_F", _cutterPos, [], 0, "CAN_COLLIDE"];
 
 // Create a camouflage net.
@@ -89,8 +88,9 @@ _className = switch (_side) do {
 	};
 };
 
-_camoNet	= [_pos, _className, _dir] call TTC_CORE_fnc_createVehicle;
-_camoNet setVectorUp (surfaceNormal _pos);
+_camoNetPos	= [((_flagPos select 0) - (cos(_dir) * 0.25)), ((_flagPos select 1) + (sin(_dir) * 0.25)), 0];
+_camoNet	= [_camoNetPos, _className, _dir] call TTC_CORE_fnc_createVehicle;
+_camoNet setVectorUp (surfaceNormal _camoNetPos);
 
 // Create sandbags.
 _locations = [
@@ -103,13 +103,13 @@ _locations = [
 {
 	_direction	= _x select 0;
 	_distance	= _x select 1;
-	_reference	= [((_pos select 0) - (cos(_direction) * _distance)), ((_pos select 1) + (sin(_direction) * _distance)), 0];
+	_reference	= [((_flagPos select 0) - (cos(_direction) * _distance)), ((_flagPos select 1) + (sin(_direction) * _distance)), 0];
 
 	[_reference, _direction] call _createSandbags;
 } forEach _locations;
 
 // Create a burning camp fire.
-_firePos	= [((_pos select 0) - (cos(_dir) * 1.4)), ((_pos select 1) + (sin(_dir) * 1.4)), 0.1];
+_firePos	= [((_flagPos select 0) - (cos(_dir) * 1.3)), ((_flagPos select 1) + (sin(_dir) * 1.3)), 0.1];
 _fire		= [_firePos, "Campfire_burning_F", (_dir)] call TTC_CORE_fnc_createVehicle;
 _fire setVectorUp (surfaceNormal _firePos);
 
@@ -118,12 +118,12 @@ _random = [5, 10] call BIS_fnc_randomInt;
 
 for "_x" from 1 to _random do {
 	_itemType	= TTC_smallItems call BIS_fnc_selectRandom;
-	_safePos	= [_firePos, 0.9, 3, 0, 0, 1000, 0, [], [_pos, _pos]] call BIS_fnc_findSafePos;
+	_safePos	= [_firePos, 0.9, 3, 0, 0, 1000, 0, [], [_flagPos, _flagPos]] call BIS_fnc_findSafePos;
 	_item		= [_safePos, _itemType, (random 360)] call TTC_CORE_fnc_createVehicle;
 };
 
 // Spawn sector shop.
-_shopPos = [((_pos select 0) - (cos(_dir + 180) * 0.4)), ((_pos select 1) + (sin(_dir + 180) * 0.4)), 0];
+_shopPos = [((_flagPos select 0) - (cos(_dir + 180) * 0.7)), ((_flagPos select 1) + (sin(_dir + 180) * 0.7)), 0];
 [_sector, _side, _shopPos, (_dir + 180)] call TTC_BASE_fnc_spawnSectorShop;
 
 _flag

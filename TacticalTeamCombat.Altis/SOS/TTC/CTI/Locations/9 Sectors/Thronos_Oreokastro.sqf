@@ -30,7 +30,7 @@ TTC_CTI_sectorDefinitions = [
 	["A",	[4411,20819],	0,	100,	100,	false, west,		100, TTC_CTI_neighbours_sectorA, [340, 130],	2,	340,	[2, 0]],
 	["B",	[3784,21494],	0,	100,	100,	false, east,		100, TTC_CTI_neighbours_sectorB, [85, 85],		0,	85,		[1, 1]],
 	["C",	[4583,21403],	0,	110,	110,	false, east,		100, TTC_CTI_neighbours_sectorC, [315, 315],	0,	315,	[1, 1]],
-	["D",	[3715,22309],	0,	100,	100,	false, east,		100, TTC_CTI_neighbours_sectorD, [140, 140],	1,	140,	[1, 1]],
+	["D",	[3714.5,22308],	0,	100,	100,	false, east,		100, TTC_CTI_neighbours_sectorD, [135, 135],	1,	135,	[1, 1]],
 	["E",	[4420,21867],	0,	75,		75,		false, east,		100, TTC_CTI_neighbours_sectorE, [80, 140],		0,	110,	[1, 1]],
 	["F",	[4931,21602],	0,	75,		75,		false, east,		100, TTC_CTI_neighbours_sectorF, [5, 280],		0,	280,	[1, 1]],
 	["G",	[4662,22316],	0,	100,	100,	false, east,		100, TTC_CTI_neighbours_sectorG, [210, 210],	0,	210,	[1, 1]],
