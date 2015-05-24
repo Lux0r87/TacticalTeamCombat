@@ -13,8 +13,9 @@ disableSerialization;
 #include "sectorStates.inc"
 #include "tooltipsTeleport.inc"
 
-#define TTC_TP_UI_basicPrice 250
+#define TTC_TP_UI_basicPrice 100
 #define TTC_TP_UI_distancePrice 20
+#define TTC_TP_UI_maxPrice 800
 
 
 private[
@@ -55,7 +56,7 @@ if (!isNil {_control}) then {
 					_sectorPos	= getPos _x;
 					_distance	= _basePos distance _sectorPos;
 					_distPrice	= (floor (_distance / 100)) * TTC_TP_UI_distancePrice;
-					_price		= TTC_TP_UI_basicPrice + _distPrice;
+					_price		= (TTC_TP_UI_basicPrice + _distPrice) min TTC_TP_UI_maxPrice;
 
 					// Get the state of the sector.
 					_state = [_x] call TTC_TP_fnc_getSectorState;
