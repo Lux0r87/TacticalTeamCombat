@@ -259,10 +259,12 @@ _buyAmmunition = {
 		switch (_type) do {
 			case "Bullet": {
 				// Check if the magazine can be added to the primary weapon.
-				if (_x in _weaponMags && {!([] call _hasMagazine)}) then {
+				if (!_reloadedWeapon && (_x in _weaponMags) && {!([] call _hasMagazine)}) then {
+					_reloadedWeapon = true;
 					player addMagazine _x;
 				} else { // Otherwise: Try to add the magazine to the handgun.
-					if (_x in _handgunMags && {count handgunMagazine player <= 0}) then {
+					if (!_reloadedHandgun && (_x in _handgunMags) && {count handgunMagazine player <= 0}) then {
+						_reloadedHandgun = true;
 						player addMagazine _x;
 					} else {
 						[_x, _type_magazine] call _add;
@@ -272,7 +274,8 @@ _buyAmmunition = {
 			case "Flare";
 			case "Shell";
 			case "SmokeShell": {
-				if (_x in _weaponMags && {!([] call _hasMagazineGL)}) then {
+				if (!_reloadedGL && (_x in _weaponMags) && {!([] call _hasMagazineGL)}) then {
+					_reloadedGL = true;
 					player addMagazine _x;					
 				} else {
 					[_x, _type_magazine] call _add;
@@ -280,7 +283,8 @@ _buyAmmunition = {
 			};
 			case "Missile";
 			case "Rocket": {
-				if (_x in _launcherMags && {count secondaryWeaponMagazine player <= 0}) then {
+				if (!_reloadedLauncher && (_x in _launcherMags) && {count secondaryWeaponMagazine player <= 0}) then {
+					_reloadedLauncher = true;
 					player addMagazine _x;
 				} else {
 					[_x, _type_magazine] call _add;
@@ -503,6 +507,12 @@ private["_shoppingCart","_position","_weaponHolder","_shoppingCartCosts","_weapo
 _shoppingCart	= [] call TTC_SHOP_fnc_getShoppingCart;
 _position		= getPosATL player;
 _weaponHolder	= createVehicle ["Library_WeaponHolder", _position, [], 0, "CAN_COLLIDE"];
+
+// Helper variables.
+_reloadedHandgun	= false;
+_reloadedWeapon		= false;
+_reloadedGL			= false;
+_reloadedLauncher	= false;
 
 // Take the money.
 _shoppingCartCosts = [_shoppingCart] call TTC_SHOP_fnc_getShoppingCartCosts;
