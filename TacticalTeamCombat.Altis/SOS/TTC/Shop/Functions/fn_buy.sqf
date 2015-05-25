@@ -26,10 +26,14 @@ _CATEGORY_ID_UNIFORMS		= 12;
 _CATEGORY_ID_VEHICLES		= 15;
 _CATEGORY_ID_VESTS			= 13;
 
-_type_weapon	= 0;
-_type_magazine	= 1;
-_type_backpack	= 2;
-_type_item		= 3;
+_type_weapon		= 0;
+_type_magazine		= 1;
+_type_backpack		= 2;
+_type_item			= 3;
+
+_target_backpack	= 0;
+_target_vest		= 1;
+_target_uniform		= 2;
 
 _assignableItemTypes	= ["Map", "GPS", "UAVTerminal", "Radio", "Compass", "Watch", "NVGoggles", "LaserDesignator"];
 _ammunitionGL			= ["Flare", "Shell", "SmokeShell"];
@@ -104,7 +108,29 @@ _hasItemType = {
 	_hasItem;
 };
 
-_add = {
+_addToWeaponHolder = {
+	private["_article","_type"];
+
+	_article	= _this select 0;
+	_type		= _this select 1;
+
+	switch (_type) do {
+		case _type_weapon: {
+			_weaponHolder addWeaponCargoGlobal [_article, 1];
+		};
+		case _type_magazine: {
+			_weaponHolder addMagazineCargoGlobal [_article, 1];
+		};
+		case _type_backpack: {
+			_weaponHolder addBackpackCargoGlobal [_article, 1];
+		};
+		case _type_item: {
+			_weaponHolder addItemCargoGlobal [_article, 1];
+		};
+	};
+};
+
+_addToUniform = {
 	private["_article","_type"];
 
 	_article	= _this select 0;
@@ -121,76 +147,263 @@ _add = {
 			player addItemToBackpack _article;
 		};
 		default {
-			switch (_type) do {
-				case _type_weapon: {
-					_weaponHolder addWeaponCargoGlobal [_article, 1];
-				};
-				case _type_magazine: {
-					_weaponHolder addMagazineCargoGlobal [_article, 1];
-				};
-				case _type_backpack: {
-					_weaponHolder addBackpackCargoGlobal [_article, 1];
-				};
-				case _type_item: {
-					_weaponHolder addItemCargoGlobal [_article, 1];
-				};
-			};
+			[_article, _type] call _addToWeaponHolder;
 		};
 	};
 };
 
-_buyBackpacks = {
-	private["_articleNames"];
+_addToVest = {
+	private["_article","_type"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_BACKPACKS] call _getArticleNames;
+	_article	= _this select 0;
+	_type		= _this select 1;
+
+	switch (true) do {
+		case (player canAddItemToVest _article): {
+			player addItemToVest _article;
+		};
+		case (player canAddItemToUniform _article): {
+			player addItemToUniform  _article;
+		};
+		case (player canAddItemToBackpack _article): {
+			player addItemToBackpack _article;
+		};
+		default {
+			[_article, _type] call _addToWeaponHolder;
+		};
+	};
+};
+
+_addToBackpack = {
+	private["_article","_type"];
+
+	_article	= _this select 0;
+	_type		= _this select 1;
+
+	switch (true) do {
+		case (player canAddItemToBackpack _article): {
+			player addItemToBackpack _article;
+		};
+		case (player canAddItemToVest _article): {
+			player addItemToVest _article;
+		};
+		case (player canAddItemToUniform _article): {
+			player addItemToUniform  _article;
+		};
+		default {
+			[_article, _type] call _addToWeaponHolder;
+		};
+	};
+};
+
+_addTo = {
+	private["_target","_article","_type"];
+
+	_target		= _this select 0;
+	_article	= _this select 1;
+	_type		= _this select 2;
+
+	switch (_target) do {
+		case _target_uniform: {
+			[_article, _type] call _addToUniform;
+		};
+		case _target_vest: {
+			[_article, _type] call _addToVest;
+		};
+		case _target_backpack: {
+			[_article, _type] call _addToBackpack;
+		};
+	};
+};
+
+_addStoredItems = {
+	private["_storedItems","_target","_return","_category","_type"];
+
+	_storedItems = _this select 0;
+	_target		 = _this select 1;
 
 	{
-		if (backpack player == "") then {
-			player addBackpackGlobal _x;
-		} else {
-			_weaponHolder addBackpackCargoGlobal [_x, 1];
+		_return		= [_x] call BIS_fnc_itemType;
+		_category	= _return select 0;
+		_type		= _return select 1;
+
+		switch (_category) do {
+			case "Weapon": {
+				switch (_type) do {
+					case "AssaultRifle";
+					case "GrenadeLauncher";
+					case "MachineGun";
+					case "Rifle";
+					case "SubmachineGun";
+					case "SniperRifle";
+					case "Handgun";
+					case "Launcher";
+					case "MissileLauncher";
+					case "RocketLauncher": {
+						[_target, _x, _type_weapon] call _addTo;
+					};
+					case "Magazine";
+					case "Throw": {
+						[_target, _x, _type_magazine] call _addTo;
+					};
+					default {
+						["Unknown weapon"] call BIS_fnc_log;
+					};
+				};
+			};
+			case "Item": {				
+				switch (_type) do {
+					case "AccessoryMuzzle";
+					case "AccessoryPointer";
+					case "AccessorySights";
+					case "Binocular": {
+						[_target, _x, _type_weapon] call _addTo;
+					};
+					case "Compass";
+					case "FirstAidKit";
+					case "GPS";
+					case "LaserDesignator";
+					case "Map";
+					case "Medikit";
+					case "MineDetector";
+					case "NVGoggles";
+					case "Radio";
+					case "Toolkit";
+					case "UAVTerminal";
+					case "Watch": {
+						[_target, _x, _type_item] call _addTo;
+					};
+					default {
+						["Unknown item"] call BIS_fnc_log;
+					};
+				};
+			};
+			case "Equipment": {
+				switch (_type) do {
+					case "Glasses";
+					case "Headgear";
+					case "Vest";
+					case "Uniform": {
+						[_target, _x, _type_item] call _addTo;
+					};
+					case "Backpack": {
+						[_target, _x, _type_backpack] call _addTo;
+					};
+					default {
+						["Unknown equipment"] call BIS_fnc_log;
+					};
+				};
+			};
+			case "Magazine": {
+				[_target, _x, _type_magazine] call _addTo;
+			};
+			case "Mine": {
+				[_target, _x, _type_magazine] call _addTo;
+			};
+			default {
+				["Unknown category"] call BIS_fnc_log;
+			};
 		};
-	} forEach _articleNames;
+	} forEach _storedItems;
+};
+
+_buyBackpacks = {
+	private["_articleNames","_storeItems","_backpackItems"];
+
+	_articleNames	= [_this, 0, ([_shoppingCart, _CATEGORY_ID_BACKPACKS] call _getArticleNames), [[]]] call BIS_fnc_param;
+	_storeItems		= [_this, 1, true, [true]] call BIS_fnc_param;
+
+	if !(_articleNames isEqualTo []) then {
+		// Store items of the unit's current backpack.
+		if (_storeItems) then {
+			_backpackItems = backpackItems player;
+			TTC_SHOP_storedItems_backpack = TTC_SHOP_storedItems_backpack + _backpackItems;
+
+			// Clear the backpack.
+			clearAllItemsFromBackpack player;
+		};
+
+		// Add new backpack(s).
+		{
+			player addBackpackGlobal _x;
+		} forEach _articleNames;
+	};
 };
 
 _buyVests = {
-	private["_articleNames"];
+	private["_articleNames","_storeItems","_vestItems","_vest"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_VESTS] call _getArticleNames;
+	_articleNames	= [_this, 0, ([_shoppingCart, _CATEGORY_ID_VESTS] call _getArticleNames), [[]]] call BIS_fnc_param;
+	_storeItems		= [_this, 1, true, [true]] call BIS_fnc_param;
 
-	{
-		if (vest player == "") then {
-			player addVest _x;
-		} else {
-			[_x, _type_item] call _add;
+	if !(_articleNames isEqualTo []) then {
+		// Store items of the unit's current vest.
+		if (_storeItems) then {
+			_vestItems = vestItems player;
+			TTC_SHOP_storedItems_vest = TTC_SHOP_storedItems_vest + _vestItems;
+
+			// Clear the vest.
+			/*{
+				player removeItemFromVest _x;
+			} forEach _vestItems;*/
 		};
-	} forEach _articleNames;
+
+		// Add new vest(s).
+		{
+			_vest = vest player;
+
+			// Add the vest to the ground holder, if it's not a 'Rangemaster Belt'.
+			if (_vest != "V_Rangemaster_belt") then {
+				_weaponHolder addItemCargoGlobal [_vest, 1];
+			};
+
+			player addVest _x;
+		} forEach _articleNames;
+	};
 };
 
 _buyUniforms = {
-	private["_articleNames"];
+	private["_articleNames","_storeItems","_uniformItems","_uniform"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_UNIFORMS] call _getArticleNames;
+	_articleNames	= [_this, 0, ([_shoppingCart, _CATEGORY_ID_UNIFORMS] call _getArticleNames), [[]]] call BIS_fnc_param;
+	_storeItems		= [_this, 1, true, [true]] call BIS_fnc_param;
 
-	{
-		if (uniform player == "") then {
-			player forceAddUniform _x;
-		} else {
-			[_x, _type_item] call _add;
+	if !(_articleNames isEqualTo []) then {
+		// Store items of the unit's current uniform.
+		if (_storeItems) then {
+			_uniformItems = uniformItems player;
+			TTC_SHOP_storedItems_uniform = TTC_SHOP_storedItems_uniform + _uniformItems;
+
+			// Clear the uniform.
+			/*{
+				player removeItemFromUniform _x;
+			} forEach _uniformItems;*/
 		};
-	} forEach _articleNames;
+
+		// Add new uniform(s).
+		{
+			_uniform = uniform player;
+
+			if (_uniform != "") then {
+				// Add the old uniform to the ground holder.
+				_weaponHolder addItemCargoGlobal [_uniform, 1];
+			};
+
+			player forceAddUniform _x;
+		} forEach _articleNames;
+	};
 };
 
 _buyHeadwear = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_HEADWEAR] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_HEADWEAR] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
 		if (headgear player == "") then {
 			player addHeadgear _x;
 		} else {
-			[_x, _type_item] call _add;
+			[_x, _type_item] call _addToUniform;
 		};
 	} forEach _articleNames;
 };
@@ -198,28 +411,28 @@ _buyHeadwear = {
 _buyFacewear = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_FACEWEAR] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_FACEWEAR] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
 		if (goggles player == "") then {
 			player addGoggles _x;
 		} else {
-			[_x, _type_item] call _add;
+			[_x, _type_item] call _addToUniform;
 		};
 	} forEach _articleNames;
 };
 
 _hasMagazine = {
-	private["_magazines","_hasMag","_return","_itemType"];
+	private["_magazines","_hasMag","_return","_type"];
 
 	_magazines	= primaryWeaponMagazine player;
 	_hasMag		= false;
 
 	{
-		_return		= [_x] call BIS_fnc_itemType;
-		_itemType	= _return select 1;
+		_return	= [_x] call BIS_fnc_itemType;
+		_type	= _return select 1;
 
-		if (_itemType == "Bullet") exitWith {
+		if (_type == "Bullet") exitWith {
 			_hasMag = true;
 		};
 	} forEach _magazines;
@@ -228,16 +441,16 @@ _hasMagazine = {
 };
 
 _hasMagazineGL = {
-	private["_magazines","_hasGL","_return","_itemType"];
+	private["_magazines","_hasGL","_return","_type"];
 
 	_magazines	= primaryWeaponMagazine player;
 	_hasGL		= false;
 
 	{
-		_return		= [_x] call BIS_fnc_itemType;
-		_itemType	= _return select 1;
+		_return	= [_x] call BIS_fnc_itemType;
+		_type	= _return select 1;
 
-		if (_itemType in _ammunitionGL) exitWith {
+		if (_type in _ammunitionGL) exitWith {
 			_hasGL = true;
 		};
 	} forEach _magazines;
@@ -247,14 +460,16 @@ _hasMagazineGL = {
 
 _buyAmmunition = {
 	private["_articleNames","_weaponMags","_handgunMags","_launcherMags","_return","_type"];
-	_articleNames = [_shoppingCart, _CATEGORY_ID_AMMUNITION] call _getArticleNames;
+
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_AMMUNITION] call _getArticleNames), [[]]] call BIS_fnc_param;
+
 	_weaponMags		= getArray (configFile >> "CfgWeapons" >> (primaryWeapon player) >> "magazines");
 	_handgunMags	= getArray (configFile >> "CfgWeapons" >> (handgunWeapon player) >> "magazines");
 	_launcherMags	= getArray (configFile >> "CfgWeapons" >> (secondaryWeapon player) >> "magazines");
 
 	{
-		_return		= [_x] call BIS_fnc_itemType;
-		_type		= _return select 1;
+		_return	= [_x] call BIS_fnc_itemType;
+		_type	= _return select 1;
 
 		switch (_type) do {
 			case "Bullet": {
@@ -267,7 +482,7 @@ _buyAmmunition = {
 						_reloadedHandgun = true;
 						player addMagazine _x;
 					} else {
-						[_x, _type_magazine] call _add;
+						[_x, _type_magazine] call _addToUniform;
 					};
 				};
 			};
@@ -278,7 +493,7 @@ _buyAmmunition = {
 					_reloadedGL = true;
 					player addMagazine _x;					
 				} else {
-					[_x, _type_magazine] call _add;
+					[_x, _type_magazine] call _addToUniform;
 				};
 			};
 			case "Missile";
@@ -287,11 +502,11 @@ _buyAmmunition = {
 					_reloadedLauncher = true;
 					player addMagazine _x;
 				} else {
-					[_x, _type_magazine] call _add;
+					[_x, _type_magazine] call _addToUniform;
 				};
 			};
 			default {
-				[_x, _type_magazine] call _add;
+				[_x, _type_magazine] call _addToUniform;
 			};
 		};
 
@@ -304,13 +519,13 @@ _buyAmmunition = {
 _buyRifles = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_RIFLES] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_RIFLES] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
 		if (primaryWeapon player == "") then {
 			player addWeaponGlobal _x;
 		} else {
-			[_x, _type_weapon] call _add;
+			[_x, _type_weapon] call _addToUniform;
 		};
 	} forEach _articleNames;
 };
@@ -318,13 +533,13 @@ _buyRifles = {
 _buyHandguns = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_HANDGUNS] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_HANDGUNS] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
 		if (handgunWeapon player == "") then {
 			player addWeaponGlobal _x;
 		} else {
-			[_x, _type_weapon] call _add;
+			[_x, _type_weapon] call _addToUniform;
 		};
 	} forEach _articleNames;
 };
@@ -332,7 +547,7 @@ _buyHandguns = {
 _buyLaunchers = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_LAUNCHERS] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_LAUNCHERS] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
 		if (secondaryWeapon player == "") then {
@@ -357,10 +572,10 @@ _addHandgunAttachment = {
 
 		// If the attachment was not added successfully to the handgun, try to add it to the inventory.
 		if ((_handgunItems select _index) == "") then {
-			[_attachment, _type_weapon] call _add;
+			[_attachment, _type_weapon] call _addToUniform;
 		};
 	} else {
-		[_attachment, _type_weapon] call _add;
+		[_attachment, _type_weapon] call _addToUniform;
 	};
 };
 
@@ -385,16 +600,24 @@ _addWeaponAttachment = {
 	};
 };
 
-_buyAttachments = {
-	private["_attachments","_scopes","_articleNames","_return","_type","_primaryWeaponItems"];
+_getAttachmentsFromShoppingCart = {
+	private["_attachments","_scopes","_articleNames"];
 
 	_attachments	= [_shoppingCart, _CATEGORY_ID_ATTACHMENTS] call _getArticleNames;
 	_scopes			= [_shoppingCart, _CATEGORY_ID_SCOPES] call _getArticleNames;
 	_articleNames	= _attachments + _scopes;
 
+	_articleNames;
+};
+
+_buyAttachments = {
+	private["_attachments","_scopes","_articleNames","_return","_type","_primaryWeaponItems"];
+
+	_articleNames = [_this, 0, ([] call _getAttachmentsFromShoppingCart), [[]]] call BIS_fnc_param;
+
 	{
-		_return		= [_x] call BIS_fnc_itemType;
-		_type		= _return select 1;
+		_return	= [_x] call BIS_fnc_itemType;
+		_type	= _return select 1;
 		_primaryWeaponItems	= primaryWeaponItems player;
 
 		switch (_type) do {
@@ -412,7 +635,7 @@ _buyAttachments = {
 			};
 			default {
 				["Attachment type unknown!"] call BIS_fnc_error;
-				[_x, _type_weapon] call _add;
+				[_x, _type_weapon] call _addToUniform;
 			};
 		};
 	} forEach _articleNames;
@@ -421,42 +644,43 @@ _buyAttachments = {
 _buyExplosives = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_EXPLOSIVES] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_EXPLOSIVES] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
-		[_x, _type_magazine] call _add;
+		[_x, _type_magazine] call _addToUniform;
 	} forEach _articleNames;
 };
 
 _buyGrenades = {
 	private["_articleNames"];
 
-	_articleNames = [_shoppingCart, _CATEGORY_ID_GRENADES] call _getArticleNames;
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_GRENADES] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
-		[_x, _type_magazine] call _add;
+		[_x, _type_magazine] call _addToUniform;
 	} forEach _articleNames;
 };
 
 _buyItems = {
 	private["_articleNames","_return","_type"];
-	_articleNames	= [_shoppingCart, _CATEGORY_ID_ITEMS] call _getArticleNames;
+
+	_articleNames = [_this, 0, ([_shoppingCart, _CATEGORY_ID_ITEMS] call _getArticleNames), [[]]] call BIS_fnc_param;
 
 	{
-		_return		= [_x] call BIS_fnc_itemType;
-		_type		= _return select 1;
+		_return	= [_x] call BIS_fnc_itemType;
+		_type	= _return select 1;
 
 		if (_type == "Binocular") then {
 			if !([_type] call _hasItemType) then {
 				player addWeaponGlobal _x;
 			} else {
-				[_x, _type_weapon] call _add;
+				[_x, _type_weapon] call _addToUniform;
 			};
 		} else {
 			if (_type in _assignableItemTypes && {!([_type] call _hasItemType)}) then {
 				player linkItem _x;
 			} else {
-				[_x, _type_item] call _add;
+				[_x, _type_item] call _addToUniform;
 			};
 		};
 	} forEach _articleNames;
@@ -502,7 +726,10 @@ _buyHelicopters = {
 //////////
 
 
-private["_shoppingCart","_position","_weaponHolder","_shoppingCartCosts","_weaponCargo","_magazineCargo","_backpackCargo","_itemCargo","_count","_articles","_classNames","_amounts"];
+private[
+	"_shoppingCart","_position","_weaponHolder","_reloadedHandgun","_reloadedWeapon","_reloadedGL","_reloadedLauncher","_shoppingCartCosts",
+	"_weaponCargo","_magazineCargo","_backpackCargo","_itemCargo","_count","_articles","_classNames","_amounts"
+];
 
 _shoppingCart	= [] call TTC_SHOP_fnc_getShoppingCart;
 _position		= getPosATL player;
@@ -514,6 +741,11 @@ _reloadedWeapon		= false;
 _reloadedGL			= false;
 _reloadedLauncher	= false;
 
+// Variable to store items from replaced uniform/vest/backpack.
+TTC_SHOP_storedItems_backpack	= [];
+TTC_SHOP_storedItems_vest		= [];
+TTC_SHOP_storedItems_uniform	= [];
+
 // Take the money.
 _shoppingCartCosts = [_shoppingCart] call TTC_SHOP_fnc_getShoppingCartCosts;
 ["Purchase", -_shoppingCartCosts] spawn TTC_BTC_fnc_addBalanceChange;
@@ -522,6 +754,9 @@ _shoppingCartCosts = [_shoppingCart] call TTC_SHOP_fnc_getShoppingCartCosts;
 [] call _buyBackpacks;
 [] call _buyVests;
 [] call _buyUniforms;
+[TTC_SHOP_storedItems_backpack, _target_backpack] call _addStoredItems;
+[TTC_SHOP_storedItems_vest, _target_vest] call _addStoredItems;
+[TTC_SHOP_storedItems_uniform, _target_uniform] call _addStoredItems;
 [] call _buyHeadwear;
 [] call _buyFacewear;
 [] call _buyAmmunition;
