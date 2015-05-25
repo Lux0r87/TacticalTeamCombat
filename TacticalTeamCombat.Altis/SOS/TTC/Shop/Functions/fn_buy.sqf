@@ -476,11 +476,11 @@ _buyAmmunition = {
 				// Check if the magazine can be added to the primary weapon.
 				if (!_reloadedWeapon && (_x in _weaponMags) && {!([] call _hasMagazine)}) then {
 					_reloadedWeapon = true;
-					player addMagazine _x;
+					player addMagazineGlobal _x;
 				} else { // Otherwise: Try to add the magazine to the handgun.
 					if (!_reloadedHandgun && (_x in _handgunMags) && {count handgunMagazine player <= 0}) then {
 						_reloadedHandgun = true;
-						player addMagazine _x;
+						player addMagazineGlobal _x;
 					} else {
 						[_x, _type_magazine] call _addToUniform;
 					};
@@ -491,7 +491,7 @@ _buyAmmunition = {
 			case "SmokeShell": {
 				if (!_reloadedGL && (_x in _weaponMags) && {!([] call _hasMagazineGL)}) then {
 					_reloadedGL = true;
-					player addMagazine _x;					
+					player addMagazineGlobal _x;					
 				} else {
 					[_x, _type_magazine] call _addToUniform;
 				};
@@ -500,7 +500,7 @@ _buyAmmunition = {
 			case "Rocket": {
 				if (!_reloadedLauncher && (_x in _launcherMags) && {count secondaryWeaponMagazine player <= 0}) then {
 					_reloadedLauncher = true;
-					player addMagazine _x;
+					player addMagazineGlobal _x;
 				} else {
 					[_x, _type_magazine] call _addToUniform;
 				};
