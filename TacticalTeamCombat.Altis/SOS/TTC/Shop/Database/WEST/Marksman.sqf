@@ -316,7 +316,6 @@ TTC_SHOP_ARTICLE_H_Shemag_olive_hs = [-214, "H_Shemag_olive_hs", 45, false] call
 TTC_SHOP_ARTICLE_H_ShemagOpen_khk = [-215, "H_ShemagOpen_khk", 30, false] call _getWeapon;
 TTC_SHOP_ARTICLE_H_ShemagOpen_tan = [-216, "H_ShemagOpen_tan", 30, false] call _getWeapon;
 TTC_SHOP_ARTICLE_U_B_GhillieSuit = [-222, "U_B_GhillieSuit", 800, false] call _getUniform;
-TTC_SHOP_ARTICLE_U_I_GhillieSuit = [-223, "U_I_GhillieSuit", 800, false] call _getUniform;
 TTC_SHOP_ARTICLE_V_Chestrig_rgr = [-225, "V_Chestrig_rgr", 250, false] call _getVest;
 TTC_SHOP_ARTICLE_V_Chestrig_blk = [-226, "V_Chestrig_blk", 250, false] call _getVest;
 TTC_SHOP_ARTICLE_V_Chestrig_oli = [-227, "V_Chestrig_oli", 250, false] call _getVest;
@@ -355,6 +354,9 @@ TTC_SHOP_ARTICLE_V_TacVest_oli = [-480, "V_TacVest_oli", 500, false] call _getVe
 TTC_SHOP_ARTICLE_V_TacVest_blk = [-481, "V_TacVest_blk", 500, false] call _getVest;
 TTC_SHOP_ARTICLE_V_TacVest_camo = [-482, "V_TacVest_camo", 500, false] call _getVest;
 TTC_SHOP_ARTICLE_V_TacVestCamo_khk = [-484, "V_TacVestCamo_khk", 500, false] call _getVest;
+TTC_SHOP_ARTICLE_U_B_FullGhillie_lsh = [-490, "U_B_FullGhillie_lsh", 800, false] call _getUniform;
+TTC_SHOP_ARTICLE_U_B_FullGhillie_sard = [-491, "U_B_FullGhillie_sard", 800, false] call _getUniform;
+TTC_SHOP_ARTICLE_U_B_FullGhillie_ard = [-492, "U_B_FullGhillie_ard", 800, false] call _getUniform;
 
 
 /*
@@ -468,7 +470,6 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_H_ShemagOpen_khk,
   TTC_SHOP_ARTICLE_H_ShemagOpen_tan,
   TTC_SHOP_ARTICLE_U_B_GhillieSuit,
-  TTC_SHOP_ARTICLE_U_I_GhillieSuit,
   TTC_SHOP_ARTICLE_V_Chestrig_rgr,
   TTC_SHOP_ARTICLE_V_Chestrig_blk,
   TTC_SHOP_ARTICLE_V_Chestrig_oli,
@@ -506,7 +507,10 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_V_TacVest_oli,
   TTC_SHOP_ARTICLE_V_TacVest_blk,
   TTC_SHOP_ARTICLE_V_TacVest_camo,
-  TTC_SHOP_ARTICLE_V_TacVestCamo_khk
+  TTC_SHOP_ARTICLE_V_TacVestCamo_khk,
+  TTC_SHOP_ARTICLE_U_B_FullGhillie_lsh,
+  TTC_SHOP_ARTICLE_U_B_FullGhillie_sard,
+  TTC_SHOP_ARTICLE_U_B_FullGhillie_ard
 ];
 
 
@@ -663,7 +667,9 @@ TTC_SHOP_BASE_FACEWEAR = [
 ];
 
 TTC_SHOP_BASE_UNIFORMS = [
-	TTC_SHOP_ARTICLE_U_I_GhillieSuit,
+	TTC_SHOP_ARTICLE_U_B_FullGhillie_ard,
+	TTC_SHOP_ARTICLE_U_B_FullGhillie_lsh,
+	TTC_SHOP_ARTICLE_U_B_FullGhillie_sard,
 	TTC_SHOP_ARTICLE_U_B_GhillieSuit
 ];
 

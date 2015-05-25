@@ -346,6 +346,9 @@ TTC_SHOP_ARTICLE_V_TacVest_oli = [-480, "V_TacVest_oli", 500, false] call _getVe
 TTC_SHOP_ARTICLE_V_TacVest_blk = [-481, "V_TacVest_blk", 500, false] call _getVest;
 TTC_SHOP_ARTICLE_V_TacVest_camo = [-482, "V_TacVest_camo", 500, false] call _getVest;
 TTC_SHOP_ARTICLE_V_TacVestCamo_khk = [-484, "V_TacVestCamo_khk", 500, false] call _getVest;
+TTC_SHOP_ARTICLE_U_I_FullGhillie_lsh = [-496, "U_I_FullGhillie_lsh", 800, false] call _getUniform;
+TTC_SHOP_ARTICLE_U_I_FullGhillie_sard = [-497, "U_I_FullGhillie_sard", 800, false] call _getUniform;
+TTC_SHOP_ARTICLE_U_I_FullGhillie_ard = [-498, "U_I_FullGhillie_ard", 800, false] call _getUniform;
 
 
 /*
@@ -488,7 +491,10 @@ TTC_SHOP_ARTICLES = [
   TTC_SHOP_ARTICLE_V_TacVest_oli,
   TTC_SHOP_ARTICLE_V_TacVest_blk,
   TTC_SHOP_ARTICLE_V_TacVest_camo,
-  TTC_SHOP_ARTICLE_V_TacVestCamo_khk
+  TTC_SHOP_ARTICLE_V_TacVestCamo_khk,
+  TTC_SHOP_ARTICLE_U_I_FullGhillie_lsh,
+  TTC_SHOP_ARTICLE_U_I_FullGhillie_sard,
+  TTC_SHOP_ARTICLE_U_I_FullGhillie_ard
 ];
 
 
@@ -635,6 +641,9 @@ TTC_SHOP_BASE_FACEWEAR = [
 ];
 
 TTC_SHOP_BASE_UNIFORMS = [
+	TTC_SHOP_ARTICLE_U_I_FullGhillie_ard,
+	TTC_SHOP_ARTICLE_U_I_FullGhillie_lsh,
+	TTC_SHOP_ARTICLE_U_I_FullGhillie_sard,
 	TTC_SHOP_ARTICLE_U_I_GhillieSuit
 ];
 
