@@ -1,7 +1,7 @@
 /*
 	Buys all articles from the shopping cart.
 	
-    Created by BauerMitFackel
+    Created by BauerMitFackel and Lux0r
 */
 
 
@@ -130,21 +130,21 @@ _addToWeaponHolder = {
 	};
 };
 
-_addToUniform = {
+_addToBackpack = {
 	private["_article","_type"];
 
 	_article	= _this select 0;
 	_type		= _this select 1;
 
 	switch (true) do {
-		case (player canAddItemToUniform _article): {
-			player addItemToUniform  _article;
+		case (player canAddItemToBackpack _article): {
+			player addItemToBackpack _article;
 		};
 		case (player canAddItemToVest _article): {
 			player addItemToVest _article;
 		};
-		case (player canAddItemToBackpack _article): {
-			player addItemToBackpack _article;
+		case (player canAddItemToUniform _article): {
+			player addItemToUniform  _article;
 		};
 		default {
 			[_article, _type] call _addToWeaponHolder;
@@ -174,21 +174,21 @@ _addToVest = {
 	};
 };
 
-_addToBackpack = {
+_addToUniform = {
 	private["_article","_type"];
 
 	_article	= _this select 0;
 	_type		= _this select 1;
 
 	switch (true) do {
-		case (player canAddItemToBackpack _article): {
-			player addItemToBackpack _article;
+		case (player canAddItemToUniform _article): {
+			player addItemToUniform  _article;
 		};
 		case (player canAddItemToVest _article): {
 			player addItemToVest _article;
 		};
-		case (player canAddItemToUniform _article): {
-			player addItemToUniform  _article;
+		case (player canAddItemToBackpack _article): {
+			player addItemToBackpack _article;
 		};
 		default {
 			[_article, _type] call _addToWeaponHolder;
@@ -204,14 +204,14 @@ _addTo = {
 	_type		= _this select 2;
 
 	switch (_target) do {
-		case _target_uniform: {
-			[_article, _type] call _addToUniform;
+		case _target_backpack: {
+			[_article, _type] call _addToBackpack;
 		};
 		case _target_vest: {
 			[_article, _type] call _addToVest;
 		};
-		case _target_backpack: {
-			[_article, _type] call _addToBackpack;
+		case _target_uniform: {
+			[_article, _type] call _addToUniform;
 		};
 	};
 };
